@@ -1,0 +1,400 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'futaba_ch.dart';
+
+// **************************************************************************
+// CopyWithGenerator
+// **************************************************************************
+
+abstract class _$FutabaChBoardCWProxy {
+  FutabaChBoard id(String id);
+
+  FutabaChBoard name(String name);
+
+  FutabaChBoard directory(String directory);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChBoard(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaChBoard(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaChBoard call({
+    String? id,
+    String? name,
+    String? directory,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfFutabaChBoard.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfFutabaChBoard.copyWith.fieldName(...)`
+class _$FutabaChBoardCWProxyImpl implements _$FutabaChBoardCWProxy {
+  const _$FutabaChBoardCWProxyImpl(this._value);
+
+  final FutabaChBoard _value;
+
+  @override
+  FutabaChBoard id(String id) => this(id: id);
+
+  @override
+  FutabaChBoard name(String name) => this(name: name);
+
+  @override
+  FutabaChBoard directory(String directory) => this(directory: directory);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChBoard(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaChBoard(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaChBoard call({
+    Object? id = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+    Object? directory = const $CopyWithPlaceholder(),
+  }) {
+    return FutabaChBoard(
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as String,
+      name: name == const $CopyWithPlaceholder() || name == null
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String,
+      directory: directory == const $CopyWithPlaceholder() || directory == null
+          ? _value.directory
+          // ignore: cast_nullable_to_non_nullable
+          : directory as String,
+    );
+  }
+}
+
+extension $FutabaChBoardCopyWith on FutabaChBoard {
+  /// Returns a callable class that can be used as follows: `instanceOfFutabaChBoard.copyWith(...)` or like so:`instanceOfFutabaChBoard.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$FutabaChBoardCWProxy get copyWith => _$FutabaChBoardCWProxyImpl(this);
+}
+
+abstract class _$FutabaChThreadCWProxy {
+  FutabaChThread id(String id);
+
+  FutabaChThread title(String title);
+
+  FutabaChThread resCount(int resCount);
+
+  FutabaChThread img(String? img);
+
+  FutabaChThread directory(String directory);
+
+  FutabaChThread boardId(String boardId);
+
+  FutabaChThread difference(int? difference);
+
+  FutabaChThread isNewPost(bool isNewPost);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChThread(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaChThread(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaChThread call({
+    String? id,
+    String? title,
+    int? resCount,
+    String? img,
+    String? directory,
+    String? boardId,
+    int? difference,
+    bool? isNewPost,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfFutabaChThread.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfFutabaChThread.copyWith.fieldName(...)`
+class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
+  const _$FutabaChThreadCWProxyImpl(this._value);
+
+  final FutabaChThread _value;
+
+  @override
+  FutabaChThread id(String id) => this(id: id);
+
+  @override
+  FutabaChThread title(String title) => this(title: title);
+
+  @override
+  FutabaChThread resCount(int resCount) => this(resCount: resCount);
+
+  @override
+  FutabaChThread img(String? img) => this(img: img);
+
+  @override
+  FutabaChThread directory(String directory) => this(directory: directory);
+
+  @override
+  FutabaChThread boardId(String boardId) => this(boardId: boardId);
+
+  @override
+  FutabaChThread difference(int? difference) => this(difference: difference);
+
+  @override
+  FutabaChThread isNewPost(bool isNewPost) => this(isNewPost: isNewPost);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChThread(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaChThread(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaChThread call({
+    Object? id = const $CopyWithPlaceholder(),
+    Object? title = const $CopyWithPlaceholder(),
+    Object? resCount = const $CopyWithPlaceholder(),
+    Object? img = const $CopyWithPlaceholder(),
+    Object? directory = const $CopyWithPlaceholder(),
+    Object? boardId = const $CopyWithPlaceholder(),
+    Object? difference = const $CopyWithPlaceholder(),
+    Object? isNewPost = const $CopyWithPlaceholder(),
+  }) {
+    return FutabaChThread(
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as String,
+      title: title == const $CopyWithPlaceholder() || title == null
+          ? _value.title
+          // ignore: cast_nullable_to_non_nullable
+          : title as String,
+      resCount: resCount == const $CopyWithPlaceholder() || resCount == null
+          ? _value.resCount
+          // ignore: cast_nullable_to_non_nullable
+          : resCount as int,
+      img: img == const $CopyWithPlaceholder()
+          ? _value.img
+          // ignore: cast_nullable_to_non_nullable
+          : img as String?,
+      directory: directory == const $CopyWithPlaceholder() || directory == null
+          ? _value.directory
+          // ignore: cast_nullable_to_non_nullable
+          : directory as String,
+      boardId: boardId == const $CopyWithPlaceholder() || boardId == null
+          ? _value.boardId
+          // ignore: cast_nullable_to_non_nullable
+          : boardId as String,
+      difference: difference == const $CopyWithPlaceholder()
+          ? _value.difference
+          // ignore: cast_nullable_to_non_nullable
+          : difference as int?,
+      isNewPost: isNewPost == const $CopyWithPlaceholder() || isNewPost == null
+          ? _value.isNewPost
+          // ignore: cast_nullable_to_non_nullable
+          : isNewPost as bool,
+    );
+  }
+}
+
+extension $FutabaChThreadCopyWith on FutabaChThread {
+  /// Returns a callable class that can be used as follows: `instanceOfFutabaChThread.copyWith(...)` or like so:`instanceOfFutabaChThread.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$FutabaChThreadCWProxy get copyWith => _$FutabaChThreadCWProxyImpl(this);
+}
+
+abstract class _$FutabaChContentCWProxy {
+  FutabaChContent index(int index);
+
+  FutabaChContent thumbnail(String? thumbnail);
+
+  FutabaChContent src(String? src);
+
+  FutabaChContent body(String body);
+
+  FutabaChContent number(int number);
+
+  FutabaChContent created(String created);
+
+  FutabaChContent agree(int? agree);
+
+  FutabaChContent name(String name);
+
+  FutabaChContent directory(String directory);
+
+  FutabaChContent title(String? title);
+
+  FutabaChContent quotes(List<String?> quotes);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChContent(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaChContent(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaChContent call({
+    int? index,
+    String? thumbnail,
+    String? src,
+    String? body,
+    int? number,
+    String? created,
+    int? agree,
+    String? name,
+    String? directory,
+    String? title,
+    List<String?>? quotes,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfFutabaChContent.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfFutabaChContent.copyWith.fieldName(...)`
+class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
+  const _$FutabaChContentCWProxyImpl(this._value);
+
+  final FutabaChContent _value;
+
+  @override
+  FutabaChContent index(int index) => this(index: index);
+
+  @override
+  FutabaChContent thumbnail(String? thumbnail) => this(thumbnail: thumbnail);
+
+  @override
+  FutabaChContent src(String? src) => this(src: src);
+
+  @override
+  FutabaChContent body(String body) => this(body: body);
+
+  @override
+  FutabaChContent number(int number) => this(number: number);
+
+  @override
+  FutabaChContent created(String created) => this(created: created);
+
+  @override
+  FutabaChContent agree(int? agree) => this(agree: agree);
+
+  @override
+  FutabaChContent name(String name) => this(name: name);
+
+  @override
+  FutabaChContent directory(String directory) => this(directory: directory);
+
+  @override
+  FutabaChContent title(String? title) => this(title: title);
+
+  @override
+  FutabaChContent quotes(List<String?> quotes) => this(quotes: quotes);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChContent(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaChContent(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaChContent call({
+    Object? index = const $CopyWithPlaceholder(),
+    Object? thumbnail = const $CopyWithPlaceholder(),
+    Object? src = const $CopyWithPlaceholder(),
+    Object? body = const $CopyWithPlaceholder(),
+    Object? number = const $CopyWithPlaceholder(),
+    Object? created = const $CopyWithPlaceholder(),
+    Object? agree = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+    Object? directory = const $CopyWithPlaceholder(),
+    Object? title = const $CopyWithPlaceholder(),
+    Object? quotes = const $CopyWithPlaceholder(),
+  }) {
+    return FutabaChContent(
+      index: index == const $CopyWithPlaceholder() || index == null
+          ? _value.index
+          // ignore: cast_nullable_to_non_nullable
+          : index as int,
+      thumbnail: thumbnail == const $CopyWithPlaceholder()
+          ? _value.thumbnail
+          // ignore: cast_nullable_to_non_nullable
+          : thumbnail as String?,
+      src: src == const $CopyWithPlaceholder()
+          ? _value.src
+          // ignore: cast_nullable_to_non_nullable
+          : src as String?,
+      body: body == const $CopyWithPlaceholder() || body == null
+          ? _value.body
+          // ignore: cast_nullable_to_non_nullable
+          : body as String,
+      number: number == const $CopyWithPlaceholder() || number == null
+          ? _value.number
+          // ignore: cast_nullable_to_non_nullable
+          : number as int,
+      created: created == const $CopyWithPlaceholder() || created == null
+          ? _value.created
+          // ignore: cast_nullable_to_non_nullable
+          : created as String,
+      agree: agree == const $CopyWithPlaceholder()
+          ? _value.agree
+          // ignore: cast_nullable_to_non_nullable
+          : agree as int?,
+      name: name == const $CopyWithPlaceholder() || name == null
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String,
+      directory: directory == const $CopyWithPlaceholder() || directory == null
+          ? _value.directory
+          // ignore: cast_nullable_to_non_nullable
+          : directory as String,
+      title: title == const $CopyWithPlaceholder()
+          ? _value.title
+          // ignore: cast_nullable_to_non_nullable
+          : title as String?,
+      quotes: quotes == const $CopyWithPlaceholder() || quotes == null
+          ? _value.quotes
+          // ignore: cast_nullable_to_non_nullable
+          : quotes as List<String?>,
+    );
+  }
+}
+
+extension $FutabaChContentCopyWith on FutabaChContent {
+  /// Returns a callable class that can be used as follows: `instanceOfFutabaChContent.copyWith(...)` or like so:`instanceOfFutabaChContent.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$FutabaChContentCWProxy get copyWith => _$FutabaChContentCWProxyImpl(this);
+}
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+FutabaChContent _$FutabaChContentFromJson(Map<String, dynamic> json) =>
+    FutabaChContent(
+      index: json['index'] as int,
+      thumbnail: json['thumbnail'] as String?,
+      src: json['src'] as String?,
+      body: json['body'] as String,
+      number: json['number'] as int,
+      created: json['created'] as String,
+      agree: json['agree'] as int?,
+      name: json['name'] as String,
+      directory: json['directory'] as String,
+      title: json['title'] as String?,
+      quotes: (json['quotes'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$FutabaChContentToJson(FutabaChContent instance) =>
+    <String, dynamic>{
+      'index': instance.index,
+      'body': instance.body,
+      'thumbnail': instance.thumbnail,
+      'src': instance.src,
+      'number': instance.number,
+      'created': instance.created,
+      'agree': instance.agree,
+      'title': instance.title,
+      'name': instance.name,
+      'directory': instance.directory,
+      'quotes': instance.quotes,
+    };
