@@ -18,7 +18,6 @@ class FiveChBoardMetaData {
 
   factory FiveChBoardMetaData.fromJson(Map<String, dynamic> json) =>
       _$FiveChBoardMetaDataFromJson(json);
-  
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake, createToJson: false)
@@ -130,7 +129,7 @@ class FiveChThreadTitleData extends ThreadData with WithDateTime {
     // final created = int.tryParse(id) ?? 0;
     // final diviDay = ((current - created) / 86400);
     // final result = resCount / diviDay;
-    // // logger(
+    // // logger.d(
     // //     'ikioi: $result, resCount:$resCount, current:$current, datId:$datId, created:$createdNum, diviDay:$diviDay');
     // return double.tryParse(result.toStringAsFixed(2)) ?? 0;
     return getIkioi(int.tryParse(id) ?? 0, resCount);
@@ -172,7 +171,7 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
       final id = splited[2];
       final subtring = id.length > 3 ? id.substring(3) : '';
       // if(subtring.endsWith('●'))
-      // logger('getId: id:$id, sub:$subtring');
+      // logger.d('getId: id:$id, sub:$subtring');
 
       return subtring == '???' ? '' : subtring;
     }
@@ -182,7 +181,7 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
   @override
   Set<String?> get anchorList {
     final list = RegExp(r'>>[0-9]*').allMatches(body).toSet();
-    // logger('anchor: ${list}');
+    // logger.d('anchor: ${list}');
     return list.map((e) => e.group(0)).toSet();
   }
 

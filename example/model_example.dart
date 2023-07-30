@@ -2,5 +2,5 @@
 
 void main() {
   // var awesome = Awesome();
-  // logger('awesome: ${awesome.isAwesome}');
+  // logger.d('awesome: ${awesome.isAwesome}');
 }

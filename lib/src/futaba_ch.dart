@@ -76,7 +76,7 @@ class FutabaChContent extends ContentData with WithDateTime {
   DateTime get createdAt {
     final datetime = created.substring(0, created.indexOf('('));
     final daytime = created.substring(created.indexOf(')') + 1);
-    // logger('createdAt: $datetime, daytime: $daytime');
+    // logger.d('createdAt: $datetime, daytime: $daytime');
     // if (daytime == null) {
     //   return DateTime.now();
     // }
