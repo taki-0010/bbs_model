@@ -272,7 +272,7 @@ mixin class WithDateTime {
     // final created = int.tryParse(datetime) ?? 0;
     final diviDay = ((current - createdAt) / 86400);
     final result = resCount / diviDay;
-    // print(
+    // logger(
     //     'ikioi: $result, resCount:$resCount, current:$current, datId:$datId, created:$createdNum, diviDay:$diviDay');
     return double.tryParse(result.toStringAsFixed(2)) ?? 0;
   }

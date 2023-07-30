@@ -86,7 +86,7 @@ class GirlsChContent extends ContentData with WithDateTime {
   @override
   Set<String?> get anchorList {
     final list = RegExp(r'>>[0-9]*').allMatches(body).toSet();
-    // print('anchor: ${list}');
+    // logger('anchor: ${list}');
     return list.map((e) => e.group(0)).toSet();
   }
 

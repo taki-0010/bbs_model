@@ -39,8 +39,6 @@ class FutabaChThread extends ThreadData {
   String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override
   String get thumbnailUrl => 'https://$directory.2chan.net$img';
-
-
 }
 
 @JsonSerializable()
@@ -78,7 +76,7 @@ class FutabaChContent extends ContentData with WithDateTime {
   DateTime get createdAt {
     final datetime = created.substring(0, created.indexOf('('));
     final daytime = created.substring(created.indexOf(')') + 1);
-    // print('createdAt: $datetime, daytime: $daytime');
+    // logger('createdAt: $datetime, daytime: $daytime');
     // if (daytime == null) {
     //   return DateTime.now();
     // }

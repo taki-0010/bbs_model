@@ -820,15 +820,6 @@ FiveChBoardMetaData _$FiveChBoardMetaDataFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$FiveChBoardMetaDataToJson(
-        FiveChBoardMetaData instance) =>
-    <String, dynamic>{
-      'last_modify_string': instance.lastModifyString,
-      'description': instance.description,
-      'last_modify': instance.lastModify,
-      'menu_list': instance.menuList,
-    };
-
 FiveChBoardCategoryJsonData _$FiveChBoardCategoryJsonDataFromJson(
         Map<String, dynamic> json) =>
     FiveChBoardCategoryJsonData(
@@ -839,14 +830,6 @@ FiveChBoardCategoryJsonData _$FiveChBoardCategoryJsonDataFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$FiveChBoardCategoryJsonDataToJson(
-        FiveChBoardCategoryJsonData instance) =>
-    <String, dynamic>{
-      'category_number': instance.categoryNumber,
-      'category_name': instance.categoryName,
-      'category_content': instance.categoryContent,
-    };
-
 FiveChBoardJsonData _$FiveChBoardJsonDataFromJson(Map<String, dynamic> json) =>
     FiveChBoardJsonData(
       categoryOrder: json['category_order'] as int,
@@ -856,17 +839,6 @@ FiveChBoardJsonData _$FiveChBoardJsonDataFromJson(Map<String, dynamic> json) =>
       categoryName: json['category_name'] as String,
       boardName: json['board_name'] as String,
     );
-
-Map<String, dynamic> _$FiveChBoardJsonDataToJson(
-        FiveChBoardJsonData instance) =>
-    <String, dynamic>{
-      'category_order': instance.categoryOrder,
-      'directory_name': instance.directoryName,
-      'url': instance.url,
-      'category': instance.category,
-      'category_name': instance.categoryName,
-      'board_name': instance.boardName,
-    };
 
 FiveChThreadContentData _$FiveChThreadContentDataFromJson(
         Map<String, dynamic> json) =>
