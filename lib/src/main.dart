@@ -1,5 +1,5 @@
 import 'importer.dart';
-
+import 'package:timeago/timeago.dart' as ta;
 part 'main.g.dart';
 
 @JsonSerializable()
@@ -248,6 +248,10 @@ abstract class ContentData {
 }
 
 mixin class WithDateTime {
+  String getTimeago(final DateTime value) {
+    return ta.format(value);
+  }
+
   DateTime getDateTime(final String datetime, final String time) {
     final date = datetime.split('/');
     final yearData = date.firstOrNull ?? '0';
@@ -276,4 +280,11 @@ mixin class WithDateTime {
     //     'ikioi: $result, resCount:$resCount, current:$current, datId:$datId, created:$createdNum, diviDay:$diviDay');
     return double.tryParse(result.toStringAsFixed(2)) ?? 0;
   }
+}
+
+@immutable
+final class GroupData {
+  const GroupData({required this.date, required this.firstIndex});
+  final String date;
+  final int firstIndex;
 }

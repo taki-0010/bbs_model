@@ -29,7 +29,8 @@ class ForumSettingsData {
       required this.cacheExpire,
       this.threadsOrder = ThreadsOrder.ikioi,
       this.positionToGet = PositionToGet.first,
-      this.visibleResCountThreshold = 5});
+      this.visibleResCountThreshold = 5,
+      this.favoritesBoardList =const[]});
 
   final Communities forum;
   final ThemeList theme;
@@ -37,6 +38,7 @@ class ForumSettingsData {
   final ThreadsOrder threadsOrder;
   final PositionToGet positionToGet;
   final int visibleResCountThreshold;
+  final List<String?> favoritesBoardList;
 
   factory ForumSettingsData.fromJson(Map<String, dynamic> json) =>
       _$ForumSettingsDataFromJson(json);
