@@ -2,6 +2,34 @@ import 'importer.dart';
 
 part 'forum.g.dart';
 
+@JsonSerializable()
+@CopyWith()
+@immutable
+class ForumSettingsData {
+  const ForumSettingsData(
+      {required this.forum,
+      required this.theme,
+      required this.cacheExpire,
+      this.threadsOrder = ThreadsOrder.ikioi,
+      this.positionToGet = PositionToGet.first,
+      this.visibleResCountThreshold = 5,
+      this.openLinkByWebview = true,
+      this.favoritesBoardList = const []});
+
+  final Communities forum;
+  final ThemeList theme;
+  final CacheExpire cacheExpire;
+  final ThreadsOrder threadsOrder;
+  final PositionToGet positionToGet;
+  final int visibleResCountThreshold;
+  final bool openLinkByWebview;
+  final List<String?> favoritesBoardList;
+
+  factory ForumSettingsData.fromJson(Map<String, dynamic> json) =>
+      _$ForumSettingsDataFromJson(json);
+  Map<String, dynamic> toJson() => _$ForumSettingsDataToJson(this);
+}
+
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable

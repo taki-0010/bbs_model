@@ -19,31 +19,6 @@ class UserSettingsData {
   Map<String, dynamic> toJson() => _$UserSettingsDataToJson(this);
 }
 
-@JsonSerializable()
-@CopyWith()
-@immutable
-class ForumSettingsData {
-  const ForumSettingsData(
-      {required this.forum,
-      required this.theme,
-      required this.cacheExpire,
-      this.threadsOrder = ThreadsOrder.ikioi,
-      this.positionToGet = PositionToGet.first,
-      this.visibleResCountThreshold = 5,
-      this.favoritesBoardList =const[]});
-
-  final Communities forum;
-  final ThemeList theme;
-  final CacheExpire cacheExpire;
-  final ThreadsOrder threadsOrder;
-  final PositionToGet positionToGet;
-  final int visibleResCountThreshold;
-  final List<String?> favoritesBoardList;
-
-  factory ForumSettingsData.fromJson(Map<String, dynamic> json) =>
-      _$ForumSettingsDataFromJson(json);
-  Map<String, dynamic> toJson() => _$ForumSettingsDataToJson(this);
-}
 
 @JsonSerializable()
 @CopyWith()
