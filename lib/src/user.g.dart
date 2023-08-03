@@ -81,6 +81,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData visibleResCountThreshold(int visibleResCountThreshold);
 
+  ForumSettingsData favoritesBoardList(List<String?> favoritesBoardList);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -94,6 +96,7 @@ abstract class _$ForumSettingsDataCWProxy {
     ThreadsOrder? threadsOrder,
     PositionToGet? positionToGet,
     int? visibleResCountThreshold,
+    List<String?>? favoritesBoardList,
   });
 }
 
@@ -126,6 +129,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(visibleResCountThreshold: visibleResCountThreshold);
 
   @override
+  ForumSettingsData favoritesBoardList(List<String?> favoritesBoardList) =>
+      this(favoritesBoardList: favoritesBoardList);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -140,6 +147,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? threadsOrder = const $CopyWithPlaceholder(),
     Object? positionToGet = const $CopyWithPlaceholder(),
     Object? visibleResCountThreshold = const $CopyWithPlaceholder(),
+    Object? favoritesBoardList = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       forum: forum == const $CopyWithPlaceholder() || forum == null
@@ -171,6 +179,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
               ? _value.visibleResCountThreshold
               // ignore: cast_nullable_to_non_nullable
               : visibleResCountThreshold as int,
+      favoritesBoardList: favoritesBoardList == const $CopyWithPlaceholder() ||
+              favoritesBoardList == null
+          ? _value.favoritesBoardList
+          // ignore: cast_nullable_to_non_nullable
+          : favoritesBoardList as List<String?>,
     );
   }
 }
@@ -337,6 +350,10 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
           $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
               PositionToGet.first,
       visibleResCountThreshold: json['visibleResCountThreshold'] as int? ?? 5,
+      favoritesBoardList: (json['favoritesBoardList'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -347,6 +364,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'threadsOrder': _$ThreadsOrderEnumMap[instance.threadsOrder]!,
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
       'visibleResCountThreshold': instance.visibleResCountThreshold,
+      'favoritesBoardList': instance.favoritesBoardList,
     };
 
 const _$ThemeListEnumMap = {

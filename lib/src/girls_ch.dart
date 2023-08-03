@@ -28,7 +28,7 @@ class GirlsChThread extends ThreadData with WithDateTime {
 
   String get url => '/topics/$id/';
   @override
-  String? get thumbnailUrl => img;
+  String? get thumbnailUrl => img?.thumbnailUri;
 
   @override
   double get ikioi {
@@ -55,7 +55,7 @@ class GirlsChContent extends ContentData with WithDateTime {
       {required super.index,
       required this.name,
       required super.body,
-      this.img,
+      super.src,
       required this.plus,
       required this.minus,
       required this.postAt,
@@ -66,7 +66,7 @@ class GirlsChContent extends ContentData with WithDateTime {
   // final int index;
   final String name;
   // final String body;
-  final String? img;
+  // final String? img;
   final int plus;
   final int minus;
   final String postAt;
@@ -79,6 +79,11 @@ class GirlsChContent extends ContentData with WithDateTime {
     final splited = postAt.split(' ');
     return getDateTime(splited[0], splited[1]);
   }
+
+  @override
+  String? get srcThumbnail => src?.srcUri;
+  @override
+  String? get srcContent => src?.srcUri;
 
   @override
   String get getId => id ?? '';

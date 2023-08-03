@@ -38,7 +38,7 @@ class FutabaChThread extends ThreadData {
 
   String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override
-  String get thumbnailUrl => 'https://$directory.2chan.net$img';
+  String get thumbnailUrl => 'https://$directory.2chan.net${img?.thumbnailUri}';
 }
 
 @JsonSerializable()
@@ -47,8 +47,8 @@ class FutabaChThread extends ThreadData {
 class FutabaChContent extends ContentData with WithDateTime {
   const FutabaChContent(
       {required super.index,
-      this.thumbnail,
-      this.src,
+      // this.thumbnail,
+      super.src,
       required super.body,
       required this.number,
       required this.created,
@@ -57,8 +57,8 @@ class FutabaChContent extends ContentData with WithDateTime {
       required this.directory,
       this.title,
       this.quotes = const []});
-  final String? thumbnail;
-  final String? src;
+  // final String? thumbnail;
+  // final String? src;
   final int number;
   final String created;
   final int? agree;
@@ -67,10 +67,15 @@ class FutabaChContent extends ContentData with WithDateTime {
   final String directory;
   final List<String?> quotes;
 
-  String? get thumnailUrl =>
-      thumbnail != null ? 'https://$directory.2chan.net/$thumbnail' : null;
-  String? get scrUrl =>
-      src != null ? 'https://$directory.2chan.net/$src' : null;
+  @override
+  String? get srcThumbnail => src?.thumbnailUri != null
+      ? 'https://$directory.2chan.net/${src?.thumbnailUri}'
+      : null;
+
+  @override
+  String? get srcContent => src?.srcUri != null
+      ? 'https://$directory.2chan.net/${src?.srcUri}'
+      : null;
 
   @override
   DateTime get createdAt {

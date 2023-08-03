@@ -79,7 +79,7 @@ abstract class _$GirlsChThreadCWProxy {
 
   GirlsChThread isNewPost(bool isNewPost);
 
-  GirlsChThread img(String? img);
+  GirlsChThread img(SrcData? img);
 
   GirlsChThread updateAtStr(String? updateAtStr);
 
@@ -96,7 +96,7 @@ abstract class _$GirlsChThreadCWProxy {
     String? boardId,
     int? difference,
     bool? isNewPost,
-    String? img,
+    SrcData? img,
     String? updateAtStr,
   });
 }
@@ -126,7 +126,7 @@ class _$GirlsChThreadCWProxyImpl implements _$GirlsChThreadCWProxy {
   GirlsChThread isNewPost(bool isNewPost) => this(isNewPost: isNewPost);
 
   @override
-  GirlsChThread img(String? img) => this(img: img);
+  GirlsChThread img(SrcData? img) => this(img: img);
 
   @override
   GirlsChThread updateAtStr(String? updateAtStr) =>
@@ -178,7 +178,7 @@ class _$GirlsChThreadCWProxyImpl implements _$GirlsChThreadCWProxy {
       img: img == const $CopyWithPlaceholder()
           ? _value.img
           // ignore: cast_nullable_to_non_nullable
-          : img as String?,
+          : img as SrcData?,
       updateAtStr: updateAtStr == const $CopyWithPlaceholder()
           ? _value.updateAtStr
           // ignore: cast_nullable_to_non_nullable
@@ -200,7 +200,7 @@ abstract class _$GirlsChContentCWProxy {
 
   GirlsChContent body(String body);
 
-  GirlsChContent img(String? img);
+  GirlsChContent src(SrcData? src);
 
   GirlsChContent plus(int plus);
 
@@ -226,7 +226,7 @@ abstract class _$GirlsChContentCWProxy {
     int? index,
     String? name,
     String? body,
-    String? img,
+    SrcData? src,
     int? plus,
     int? minus,
     String? postAt,
@@ -253,7 +253,7 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
   GirlsChContent body(String body) => this(body: body);
 
   @override
-  GirlsChContent img(String? img) => this(img: img);
+  GirlsChContent src(SrcData? src) => this(src: src);
 
   @override
   GirlsChContent plus(int plus) => this(plus: plus);
@@ -288,7 +288,7 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
     Object? index = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? body = const $CopyWithPlaceholder(),
-    Object? img = const $CopyWithPlaceholder(),
+    Object? src = const $CopyWithPlaceholder(),
     Object? plus = const $CopyWithPlaceholder(),
     Object? minus = const $CopyWithPlaceholder(),
     Object? postAt = const $CopyWithPlaceholder(),
@@ -310,10 +310,10 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
           ? _value.body
           // ignore: cast_nullable_to_non_nullable
           : body as String,
-      img: img == const $CopyWithPlaceholder()
-          ? _value.img
+      src: src == const $CopyWithPlaceholder()
+          ? _value.src
           // ignore: cast_nullable_to_non_nullable
-          : img as String?,
+          : src as SrcData?,
       plus: plus == const $CopyWithPlaceholder() || plus == null
           ? _value.plus
           // ignore: cast_nullable_to_non_nullable
@@ -362,7 +362,9 @@ GirlsChContent _$GirlsChContentFromJson(Map<String, dynamic> json) =>
       index: json['index'] as int,
       name: json['name'] as String,
       body: json['body'] as String,
-      img: json['img'] as String?,
+      src: json['src'] == null
+          ? null
+          : SrcData.fromJson(json['src'] as Map<String, dynamic>),
       plus: json['plus'] as int,
       minus: json['minus'] as int,
       postAt: json['postAt'] as String,
@@ -378,8 +380,8 @@ Map<String, dynamic> _$GirlsChContentToJson(GirlsChContent instance) =>
       'index': instance.index,
       'body': instance.body,
       'urlSet': instance.urlSet,
+      'src': instance.src,
       'name': instance.name,
-      'img': instance.img,
       'plus': instance.plus,
       'minus': instance.minus,
       'postAt': instance.postAt,

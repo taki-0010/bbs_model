@@ -84,7 +84,7 @@ abstract class _$FutabaChThreadCWProxy {
 
   FutabaChThread resCount(int resCount);
 
-  FutabaChThread img(String? img);
+  FutabaChThread img(SrcData? img);
 
   FutabaChThread directory(String directory);
 
@@ -104,7 +104,7 @@ abstract class _$FutabaChThreadCWProxy {
     String? id,
     String? title,
     int? resCount,
-    String? img,
+    SrcData? img,
     String? directory,
     String? boardId,
     int? difference,
@@ -128,7 +128,7 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
   FutabaChThread resCount(int resCount) => this(resCount: resCount);
 
   @override
-  FutabaChThread img(String? img) => this(img: img);
+  FutabaChThread img(SrcData? img) => this(img: img);
 
   @override
   FutabaChThread directory(String directory) => this(directory: directory);
@@ -176,7 +176,7 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
       img: img == const $CopyWithPlaceholder()
           ? _value.img
           // ignore: cast_nullable_to_non_nullable
-          : img as String?,
+          : img as SrcData?,
       directory: directory == const $CopyWithPlaceholder() || directory == null
           ? _value.directory
           // ignore: cast_nullable_to_non_nullable
@@ -206,9 +206,7 @@ extension $FutabaChThreadCopyWith on FutabaChThread {
 abstract class _$FutabaChContentCWProxy {
   FutabaChContent index(int index);
 
-  FutabaChContent thumbnail(String? thumbnail);
-
-  FutabaChContent src(String? src);
+  FutabaChContent src(SrcData? src);
 
   FutabaChContent body(String body);
 
@@ -234,8 +232,7 @@ abstract class _$FutabaChContentCWProxy {
   /// ````
   FutabaChContent call({
     int? index,
-    String? thumbnail,
-    String? src,
+    SrcData? src,
     String? body,
     int? number,
     String? created,
@@ -257,10 +254,7 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
   FutabaChContent index(int index) => this(index: index);
 
   @override
-  FutabaChContent thumbnail(String? thumbnail) => this(thumbnail: thumbnail);
-
-  @override
-  FutabaChContent src(String? src) => this(src: src);
+  FutabaChContent src(SrcData? src) => this(src: src);
 
   @override
   FutabaChContent body(String body) => this(body: body);
@@ -296,7 +290,6 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
   /// ````
   FutabaChContent call({
     Object? index = const $CopyWithPlaceholder(),
-    Object? thumbnail = const $CopyWithPlaceholder(),
     Object? src = const $CopyWithPlaceholder(),
     Object? body = const $CopyWithPlaceholder(),
     Object? number = const $CopyWithPlaceholder(),
@@ -312,14 +305,10 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
           ? _value.index
           // ignore: cast_nullable_to_non_nullable
           : index as int,
-      thumbnail: thumbnail == const $CopyWithPlaceholder()
-          ? _value.thumbnail
-          // ignore: cast_nullable_to_non_nullable
-          : thumbnail as String?,
       src: src == const $CopyWithPlaceholder()
           ? _value.src
           // ignore: cast_nullable_to_non_nullable
-          : src as String?,
+          : src as SrcData?,
       body: body == const $CopyWithPlaceholder() || body == null
           ? _value.body
           // ignore: cast_nullable_to_non_nullable
@@ -369,8 +358,9 @@ extension $FutabaChContentCopyWith on FutabaChContent {
 FutabaChContent _$FutabaChContentFromJson(Map<String, dynamic> json) =>
     FutabaChContent(
       index: json['index'] as int,
-      thumbnail: json['thumbnail'] as String?,
-      src: json['src'] as String?,
+      src: json['src'] == null
+          ? null
+          : SrcData.fromJson(json['src'] as Map<String, dynamic>),
       body: json['body'] as String,
       number: json['number'] as int,
       created: json['created'] as String,
@@ -388,7 +378,6 @@ Map<String, dynamic> _$FutabaChContentToJson(FutabaChContent instance) =>
     <String, dynamic>{
       'index': instance.index,
       'body': instance.body,
-      'thumbnail': instance.thumbnail,
       'src': instance.src,
       'number': instance.number,
       'created': instance.created,

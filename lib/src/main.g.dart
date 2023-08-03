@@ -487,7 +487,9 @@ ThreadData _$ThreadDataFromJson(Map<String, dynamic> json) => ThreadData(
       id: json['id'] as String,
       title: json['title'] as String,
       resCount: json['resCount'] as int,
-      img: json['img'] as String?,
+      img: json['img'] == null
+          ? null
+          : SrcData.fromJson(json['img'] as Map<String, dynamic>),
       updateAtStr: json['updateAtStr'] as String?,
       difference: json['difference'] as int?,
       boardId: json['boardId'] as String,
@@ -499,7 +501,7 @@ Map<String, dynamic> _$ThreadDataToJson(ThreadData instance) =>
       'id': instance.id,
       'title': instance.title,
       'resCount': instance.resCount,
-      'img': instance.img,
+      'img': instance.img?.toJson(),
       'updateAtStr': instance.updateAtStr,
       'difference': instance.difference,
       'isNewPost': instance.isNewPost,

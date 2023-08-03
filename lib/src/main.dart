@@ -191,7 +191,7 @@ class BoardDataForStorage {
   Map<String, dynamic> toJson() => _$BoardDataForStorageToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 // @CopyWith()
 @immutable
 class ThreadData {
@@ -207,7 +207,7 @@ class ThreadData {
   final String id;
   final String title;
   final int resCount;
-  final String? img;
+  final SrcData? img;
   final String? updateAtStr;
   final int? difference;
   final bool isNewPost;
@@ -237,10 +237,15 @@ class BoardData {
 }
 
 abstract class ContentData {
-  const ContentData({required this.index, required this.body, this.urlSet});
+  const ContentData(
+      {required this.index, required this.body, this.urlSet, this.src});
   final int index;
   final String body;
   final List<String?>? urlSet;
+  final SrcData? src;
+
+  String? get srcThumbnail => null;
+  String? get srcContent => null;
 
   DateTime get createdAt => DateTime.now();
   String get getId => '';
