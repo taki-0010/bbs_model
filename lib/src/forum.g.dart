@@ -21,7 +21,13 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData openLinkByWebview(bool openLinkByWebview);
 
+  ForumSettingsData useFavoritesBoards(bool useFavoritesBoards);
+
   ForumSettingsData favoritesBoardList(List<String?> favoritesBoardList);
+
+  ForumSettingsData sortHistoryByExpire(bool sortHistoryByExpire);
+
+  ForumSettingsData viewByBoardInHistory(bool viewByBoardInHistory);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -37,7 +43,10 @@ abstract class _$ForumSettingsDataCWProxy {
     PositionToGet? positionToGet,
     int? visibleResCountThreshold,
     bool? openLinkByWebview,
+    bool? useFavoritesBoards,
     List<String?>? favoritesBoardList,
+    bool? sortHistoryByExpire,
+    bool? viewByBoardInHistory,
   });
 }
 
@@ -74,8 +83,20 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(openLinkByWebview: openLinkByWebview);
 
   @override
+  ForumSettingsData useFavoritesBoards(bool useFavoritesBoards) =>
+      this(useFavoritesBoards: useFavoritesBoards);
+
+  @override
   ForumSettingsData favoritesBoardList(List<String?> favoritesBoardList) =>
       this(favoritesBoardList: favoritesBoardList);
+
+  @override
+  ForumSettingsData sortHistoryByExpire(bool sortHistoryByExpire) =>
+      this(sortHistoryByExpire: sortHistoryByExpire);
+
+  @override
+  ForumSettingsData viewByBoardInHistory(bool viewByBoardInHistory) =>
+      this(viewByBoardInHistory: viewByBoardInHistory);
 
   @override
 
@@ -93,7 +114,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? positionToGet = const $CopyWithPlaceholder(),
     Object? visibleResCountThreshold = const $CopyWithPlaceholder(),
     Object? openLinkByWebview = const $CopyWithPlaceholder(),
+    Object? useFavoritesBoards = const $CopyWithPlaceholder(),
     Object? favoritesBoardList = const $CopyWithPlaceholder(),
+    Object? sortHistoryByExpire = const $CopyWithPlaceholder(),
+    Object? viewByBoardInHistory = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       forum: forum == const $CopyWithPlaceholder() || forum == null
@@ -130,11 +154,28 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.openLinkByWebview
           // ignore: cast_nullable_to_non_nullable
           : openLinkByWebview as bool,
+      useFavoritesBoards: useFavoritesBoards == const $CopyWithPlaceholder() ||
+              useFavoritesBoards == null
+          ? _value.useFavoritesBoards
+          // ignore: cast_nullable_to_non_nullable
+          : useFavoritesBoards as bool,
       favoritesBoardList: favoritesBoardList == const $CopyWithPlaceholder() ||
               favoritesBoardList == null
           ? _value.favoritesBoardList
           // ignore: cast_nullable_to_non_nullable
           : favoritesBoardList as List<String?>,
+      sortHistoryByExpire:
+          sortHistoryByExpire == const $CopyWithPlaceholder() ||
+                  sortHistoryByExpire == null
+              ? _value.sortHistoryByExpire
+              // ignore: cast_nullable_to_non_nullable
+              : sortHistoryByExpire as bool,
+      viewByBoardInHistory:
+          viewByBoardInHistory == const $CopyWithPlaceholder() ||
+                  viewByBoardInHistory == null
+              ? _value.viewByBoardInHistory
+              // ignore: cast_nullable_to_non_nullable
+              : viewByBoardInHistory as bool,
     );
   }
 }
@@ -285,10 +326,13 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
               PositionToGet.first,
       visibleResCountThreshold: json['visibleResCountThreshold'] as int? ?? 5,
       openLinkByWebview: json['openLinkByWebview'] as bool? ?? true,
+      useFavoritesBoards: json['useFavoritesBoards'] as bool? ?? false,
       favoritesBoardList: (json['favoritesBoardList'] as List<dynamic>?)
               ?.map((e) => e as String?)
               .toList() ??
           const [],
+      sortHistoryByExpire: json['sortHistoryByExpire'] as bool? ?? false,
+      viewByBoardInHistory: json['viewByBoardInHistory'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -300,7 +344,10 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
       'visibleResCountThreshold': instance.visibleResCountThreshold,
       'openLinkByWebview': instance.openLinkByWebview,
+      'useFavoritesBoards': instance.useFavoritesBoards,
       'favoritesBoardList': instance.favoritesBoardList,
+      'sortHistoryByExpire': instance.sortHistoryByExpire,
+      'viewByBoardInHistory': instance.viewByBoardInHistory,
     };
 
 const _$CommunitiesEnumMap = {

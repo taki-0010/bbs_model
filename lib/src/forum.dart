@@ -14,7 +14,10 @@ class ForumSettingsData {
       this.positionToGet = PositionToGet.first,
       this.visibleResCountThreshold = 5,
       this.openLinkByWebview = true,
-      this.favoritesBoardList = const []});
+      this.useFavoritesBoards = false,
+      this.favoritesBoardList = const [],
+      this.sortHistoryByExpire = false,
+      this.viewByBoardInHistory = true});
 
   final Communities forum;
   final ThemeList theme;
@@ -23,7 +26,10 @@ class ForumSettingsData {
   final PositionToGet positionToGet;
   final int visibleResCountThreshold;
   final bool openLinkByWebview;
+  final bool useFavoritesBoards;
   final List<String?> favoritesBoardList;
+  final bool sortHistoryByExpire;
+  final bool viewByBoardInHistory;
 
   factory ForumSettingsData.fromJson(Map<String, dynamic> json) =>
       _$ForumSettingsDataFromJson(json);

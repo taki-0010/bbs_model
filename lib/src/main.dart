@@ -293,3 +293,4 @@ final class GroupData {
   final String date;
   final int firstIndex;
 }
+
