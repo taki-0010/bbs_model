@@ -58,28 +58,31 @@ final class FiveChBoardJsonData {
       _$FiveChBoardJsonDataFromJson(json);
 }
 
+
+
+@JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class FiveChCategoryData extends BoardData {
+class FiveChCategoryData  {
   const FiveChCategoryData(
-      {required super.id,
-      required super.name,
+      {
       required this.categoryNumber,
       required this.categoryContent});
   final String categoryNumber;
-  final List<FiveChBoardData> categoryContent;
+  final List<BoardData> categoryContent;
 
-  @override
-  Communities? get type => Communities.fiveCh;
+    factory FiveChCategoryData.fromJson(Map<String, dynamic> json) =>
+      _$FiveChCategoryDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FiveChCategoryDataToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class FiveChBoardData extends BoardData {
+class FiveChBoardData {
   const FiveChBoardData(
-      {required super.id,
-      required super.name,
-      required this.url,
+      {required this.url,
       required this.category,
       required this.categoryOrder,
       required this.categoryName,
@@ -90,14 +93,16 @@ class FiveChBoardData extends BoardData {
   final int category;
   final String categoryName;
 
-  @override
-  Communities? get type => Communities.fiveCh;
-
   String? get domain {
     final replaced = url.replaceFirst('https://', '');
     final domain = replaced.substring(0, replaced.indexOf('/'));
     return domain;
   }
+
+  factory FiveChBoardData.fromJson(Map<String, dynamic> json) =>
+      _$FiveChBoardDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FiveChBoardDataToJson(this);
 }
 
 @CopyWith()

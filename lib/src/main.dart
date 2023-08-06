@@ -226,17 +226,7 @@ class ThreadData {
   Map<String, dynamic> toJson() => _$ThreadDataToJson(this);
 }
 
-@JsonSerializable()
-abstract class BoardData {
-  const BoardData({required this.id, required this.name});
-  final String id;
-  final String name;
 
-  Communities? get type => null;
-  factory BoardData.fromJson(Map<String, dynamic> json) =>
-      _$BoardDataFromJson(json);
-  Map<String, dynamic> toJson() => _$BoardDataToJson(this);
-}
 
 abstract class ContentData {
   const ContentData(

@@ -289,13 +289,9 @@ extension $FiveChBoardJsonDataCopyWith on FiveChBoardJsonData {
 }
 
 abstract class _$FiveChCategoryDataCWProxy {
-  FiveChCategoryData id(String id);
-
-  FiveChCategoryData name(String name);
-
   FiveChCategoryData categoryNumber(String categoryNumber);
 
-  FiveChCategoryData categoryContent(List<FiveChBoardData> categoryContent);
+  FiveChCategoryData categoryContent(List<BoardData> categoryContent);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FiveChCategoryData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -304,10 +300,8 @@ abstract class _$FiveChCategoryDataCWProxy {
   /// FiveChCategoryData(...).copyWith(id: 12, name: "My name")
   /// ````
   FiveChCategoryData call({
-    String? id,
-    String? name,
     String? categoryNumber,
-    List<FiveChBoardData>? categoryContent,
+    List<BoardData>? categoryContent,
   });
 }
 
@@ -318,17 +312,11 @@ class _$FiveChCategoryDataCWProxyImpl implements _$FiveChCategoryDataCWProxy {
   final FiveChCategoryData _value;
 
   @override
-  FiveChCategoryData id(String id) => this(id: id);
-
-  @override
-  FiveChCategoryData name(String name) => this(name: name);
-
-  @override
   FiveChCategoryData categoryNumber(String categoryNumber) =>
       this(categoryNumber: categoryNumber);
 
   @override
-  FiveChCategoryData categoryContent(List<FiveChBoardData> categoryContent) =>
+  FiveChCategoryData categoryContent(List<BoardData> categoryContent) =>
       this(categoryContent: categoryContent);
 
   @override
@@ -340,20 +328,10 @@ class _$FiveChCategoryDataCWProxyImpl implements _$FiveChCategoryDataCWProxy {
   /// FiveChCategoryData(...).copyWith(id: 12, name: "My name")
   /// ````
   FiveChCategoryData call({
-    Object? id = const $CopyWithPlaceholder(),
-    Object? name = const $CopyWithPlaceholder(),
     Object? categoryNumber = const $CopyWithPlaceholder(),
     Object? categoryContent = const $CopyWithPlaceholder(),
   }) {
     return FiveChCategoryData(
-      id: id == const $CopyWithPlaceholder() || id == null
-          ? _value.id
-          // ignore: cast_nullable_to_non_nullable
-          : id as String,
-      name: name == const $CopyWithPlaceholder() || name == null
-          ? _value.name
-          // ignore: cast_nullable_to_non_nullable
-          : name as String,
       categoryNumber: categoryNumber == const $CopyWithPlaceholder() ||
               categoryNumber == null
           ? _value.categoryNumber
@@ -363,7 +341,7 @@ class _$FiveChCategoryDataCWProxyImpl implements _$FiveChCategoryDataCWProxy {
               categoryContent == null
           ? _value.categoryContent
           // ignore: cast_nullable_to_non_nullable
-          : categoryContent as List<FiveChBoardData>,
+          : categoryContent as List<BoardData>,
     );
   }
 }
@@ -376,10 +354,6 @@ extension $FiveChCategoryDataCopyWith on FiveChCategoryData {
 }
 
 abstract class _$FiveChBoardDataCWProxy {
-  FiveChBoardData id(String id);
-
-  FiveChBoardData name(String name);
-
   FiveChBoardData url(String url);
 
   FiveChBoardData category(int category);
@@ -397,8 +371,6 @@ abstract class _$FiveChBoardDataCWProxy {
   /// FiveChBoardData(...).copyWith(id: 12, name: "My name")
   /// ````
   FiveChBoardData call({
-    String? id,
-    String? name,
     String? url,
     int? category,
     int? categoryOrder,
@@ -412,12 +384,6 @@ class _$FiveChBoardDataCWProxyImpl implements _$FiveChBoardDataCWProxy {
   const _$FiveChBoardDataCWProxyImpl(this._value);
 
   final FiveChBoardData _value;
-
-  @override
-  FiveChBoardData id(String id) => this(id: id);
-
-  @override
-  FiveChBoardData name(String name) => this(name: name);
 
   @override
   FiveChBoardData url(String url) => this(url: url);
@@ -446,8 +412,6 @@ class _$FiveChBoardDataCWProxyImpl implements _$FiveChBoardDataCWProxy {
   /// FiveChBoardData(...).copyWith(id: 12, name: "My name")
   /// ````
   FiveChBoardData call({
-    Object? id = const $CopyWithPlaceholder(),
-    Object? name = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
     Object? category = const $CopyWithPlaceholder(),
     Object? categoryOrder = const $CopyWithPlaceholder(),
@@ -455,14 +419,6 @@ class _$FiveChBoardDataCWProxyImpl implements _$FiveChBoardDataCWProxy {
     Object? directoryName = const $CopyWithPlaceholder(),
   }) {
     return FiveChBoardData(
-      id: id == const $CopyWithPlaceholder() || id == null
-          ? _value.id
-          // ignore: cast_nullable_to_non_nullable
-          : id as String,
-      name: name == const $CopyWithPlaceholder() || name == null
-          ? _value.name
-          // ignore: cast_nullable_to_non_nullable
-          : name as String,
       url: url == const $CopyWithPlaceholder() || url == null
           ? _value.url
           // ignore: cast_nullable_to_non_nullable
@@ -839,6 +795,39 @@ FiveChBoardJsonData _$FiveChBoardJsonDataFromJson(Map<String, dynamic> json) =>
       categoryName: json['category_name'] as String,
       boardName: json['board_name'] as String,
     );
+
+FiveChCategoryData _$FiveChCategoryDataFromJson(Map<String, dynamic> json) =>
+    FiveChCategoryData(
+      categoryNumber: json['categoryNumber'] as String,
+      categoryContent: (json['categoryContent'] as List<dynamic>)
+          .map((e) => BoardData.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$FiveChCategoryDataToJson(FiveChCategoryData instance) =>
+    <String, dynamic>{
+      'categoryNumber': instance.categoryNumber,
+      'categoryContent':
+          instance.categoryContent.map((e) => e.toJson()).toList(),
+    };
+
+FiveChBoardData _$FiveChBoardDataFromJson(Map<String, dynamic> json) =>
+    FiveChBoardData(
+      url: json['url'] as String,
+      category: json['category'] as int,
+      categoryOrder: json['categoryOrder'] as int,
+      categoryName: json['categoryName'] as String,
+      directoryName: json['directoryName'] as String,
+    );
+
+Map<String, dynamic> _$FiveChBoardDataToJson(FiveChBoardData instance) =>
+    <String, dynamic>{
+      'categoryOrder': instance.categoryOrder,
+      'directoryName': instance.directoryName,
+      'url': instance.url,
+      'category': instance.category,
+      'categoryName': instance.categoryName,
+    };
 
 FiveChThreadContentData _$FiveChThreadContentDataFromJson(
         Map<String, dynamic> json) =>

@@ -2,16 +2,19 @@ import 'package:model/src/importer.dart';
 
 part 'girls_ch.g.dart';
 
+@JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class GirlsChCategory extends BoardData {
-  const GirlsChCategory({required super.id, required super.name});
-  // final String url;
+class GirlsChCategory {
+  const GirlsChCategory({required this.url});
+  final String url;
   // final String name;
-  String get url => '/topics/category/$id/';
+  // String get url => '/topics/category/$id/';
+      factory GirlsChCategory.fromJson(Map<String, dynamic> json) =>
+      _$GirlsChCategoryFromJson(json);
 
-    @override
-  Communities? get type => Communities.girlsCh;
+  Map<String, dynamic> toJson() => _$GirlsChCategoryToJson(this);
+
 }
 
 @CopyWith()

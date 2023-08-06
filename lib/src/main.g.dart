@@ -507,13 +507,3 @@ Map<String, dynamic> _$ThreadDataToJson(ThreadData instance) =>
       'isNewPost': instance.isNewPost,
       'boardId': instance.boardId,
     };
-
-BoardData _$BoardDataFromJson(Map<String, dynamic> json) => BoardData(
-      id: json['id'] as String,
-      name: json['name'] as String,
-    );
-
-Map<String, dynamic> _$BoardDataToJson(BoardData instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-    };

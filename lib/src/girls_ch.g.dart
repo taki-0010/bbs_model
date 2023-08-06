@@ -7,9 +7,7 @@ part of 'girls_ch.dart';
 // **************************************************************************
 
 abstract class _$GirlsChCategoryCWProxy {
-  GirlsChCategory id(String id);
-
-  GirlsChCategory name(String name);
+  GirlsChCategory url(String url);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GirlsChCategory(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -18,8 +16,7 @@ abstract class _$GirlsChCategoryCWProxy {
   /// GirlsChCategory(...).copyWith(id: 12, name: "My name")
   /// ````
   GirlsChCategory call({
-    String? id,
-    String? name,
+    String? url,
   });
 }
 
@@ -30,10 +27,7 @@ class _$GirlsChCategoryCWProxyImpl implements _$GirlsChCategoryCWProxy {
   final GirlsChCategory _value;
 
   @override
-  GirlsChCategory id(String id) => this(id: id);
-
-  @override
-  GirlsChCategory name(String name) => this(name: name);
+  GirlsChCategory url(String url) => this(url: url);
 
   @override
 
@@ -44,18 +38,13 @@ class _$GirlsChCategoryCWProxyImpl implements _$GirlsChCategoryCWProxy {
   /// GirlsChCategory(...).copyWith(id: 12, name: "My name")
   /// ````
   GirlsChCategory call({
-    Object? id = const $CopyWithPlaceholder(),
-    Object? name = const $CopyWithPlaceholder(),
+    Object? url = const $CopyWithPlaceholder(),
   }) {
     return GirlsChCategory(
-      id: id == const $CopyWithPlaceholder() || id == null
-          ? _value.id
+      url: url == const $CopyWithPlaceholder() || url == null
+          ? _value.url
           // ignore: cast_nullable_to_non_nullable
-          : id as String,
-      name: name == const $CopyWithPlaceholder() || name == null
-          ? _value.name
-          // ignore: cast_nullable_to_non_nullable
-          : name as String,
+          : url as String,
     );
   }
 }
@@ -356,6 +345,16 @@ extension $GirlsChContentCopyWith on GirlsChContent {
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
+
+GirlsChCategory _$GirlsChCategoryFromJson(Map<String, dynamic> json) =>
+    GirlsChCategory(
+      url: json['url'] as String,
+    );
+
+Map<String, dynamic> _$GirlsChCategoryToJson(GirlsChCategory instance) =>
+    <String, dynamic>{
+      'url': instance.url,
+    };
 
 GirlsChContent _$GirlsChContentFromJson(Map<String, dynamic> json) =>
     GirlsChContent(

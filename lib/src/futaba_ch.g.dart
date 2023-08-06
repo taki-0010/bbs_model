@@ -7,11 +7,9 @@ part of 'futaba_ch.dart';
 // **************************************************************************
 
 abstract class _$FutabaChBoardCWProxy {
-  FutabaChBoard id(String id);
-
-  FutabaChBoard name(String name);
-
   FutabaChBoard directory(String directory);
+
+  FutabaChBoard path(String path);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChBoard(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -20,9 +18,8 @@ abstract class _$FutabaChBoardCWProxy {
   /// FutabaChBoard(...).copyWith(id: 12, name: "My name")
   /// ````
   FutabaChBoard call({
-    String? id,
-    String? name,
     String? directory,
+    String? path,
   });
 }
 
@@ -33,13 +30,10 @@ class _$FutabaChBoardCWProxyImpl implements _$FutabaChBoardCWProxy {
   final FutabaChBoard _value;
 
   @override
-  FutabaChBoard id(String id) => this(id: id);
-
-  @override
-  FutabaChBoard name(String name) => this(name: name);
-
-  @override
   FutabaChBoard directory(String directory) => this(directory: directory);
+
+  @override
+  FutabaChBoard path(String path) => this(path: path);
 
   @override
 
@@ -50,23 +44,18 @@ class _$FutabaChBoardCWProxyImpl implements _$FutabaChBoardCWProxy {
   /// FutabaChBoard(...).copyWith(id: 12, name: "My name")
   /// ````
   FutabaChBoard call({
-    Object? id = const $CopyWithPlaceholder(),
-    Object? name = const $CopyWithPlaceholder(),
     Object? directory = const $CopyWithPlaceholder(),
+    Object? path = const $CopyWithPlaceholder(),
   }) {
     return FutabaChBoard(
-      id: id == const $CopyWithPlaceholder() || id == null
-          ? _value.id
-          // ignore: cast_nullable_to_non_nullable
-          : id as String,
-      name: name == const $CopyWithPlaceholder() || name == null
-          ? _value.name
-          // ignore: cast_nullable_to_non_nullable
-          : name as String,
       directory: directory == const $CopyWithPlaceholder() || directory == null
           ? _value.directory
           // ignore: cast_nullable_to_non_nullable
           : directory as String,
+      path: path == const $CopyWithPlaceholder() || path == null
+          ? _value.path
+          // ignore: cast_nullable_to_non_nullable
+          : path as String,
     );
   }
 }
@@ -354,6 +343,18 @@ extension $FutabaChContentCopyWith on FutabaChContent {
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
+
+FutabaChBoard _$FutabaChBoardFromJson(Map<String, dynamic> json) =>
+    FutabaChBoard(
+      directory: json['directory'] as String,
+      path: json['path'] as String,
+    );
+
+Map<String, dynamic> _$FutabaChBoardToJson(FutabaChBoard instance) =>
+    <String, dynamic>{
+      'directory': instance.directory,
+      'path': instance.path,
+    };
 
 FutabaChContent _$FutabaChContentFromJson(Map<String, dynamic> json) =>
     FutabaChContent(

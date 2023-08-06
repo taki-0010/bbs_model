@@ -2,16 +2,17 @@ import 'importer.dart';
 
 part 'futaba_ch.g.dart';
 
+@JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class FutabaChBoard extends BoardData {
-  const FutabaChBoard(
-      {required super.id, required super.name, required this.directory});
+class FutabaChBoard {
+  const FutabaChBoard({required this.directory, required this.path});
   final String directory;
+  final String path;
   // final String name;
   String get catalog => '?mode=cat';
   String get sort => '?sort=';
-  String get path => '//$directory.2chan.net/$id';
+  // String get path => '//$directory.2chan.net/$id';
   String get url => '$path/futaba.htm';
   String get catalogUrl => '$path/futaba.php$catalog';
   String get newListUrl => '$path/futaba.php$catalog${sort}1';
@@ -19,8 +20,10 @@ class FutabaChBoard extends BoardData {
   String get hugListUrl => '$path/futaba.php$catalog${sort}3';
   String get ikioiListUrl => '$path/futaba.php$catalog${sort}6';
 
-    @override
-  Communities? get type => Communities.futabaCh;
+  factory FutabaChBoard.fromJson(Map<String, dynamic> json) =>
+      _$FutabaChBoardFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FutabaChBoardToJson(this);
 }
 
 @CopyWith()

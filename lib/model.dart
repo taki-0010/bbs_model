@@ -6,6 +6,7 @@ library;
 export 'src/model_base.dart';
 export 'src/five_ch.dart';
 export 'src/main.dart';
+export 'src/board.dart';
 export 'src/forum.dart';
 export 'src/girls_ch.dart';
 export 'src/futaba_ch.dart';
