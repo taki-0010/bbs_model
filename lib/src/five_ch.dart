@@ -68,6 +68,9 @@ class FiveChCategoryData extends BoardData {
       required this.categoryContent});
   final String categoryNumber;
   final List<FiveChBoardData> categoryContent;
+
+  @override
+  Communities? get type => Communities.fiveCh;
 }
 
 @CopyWith()
@@ -86,6 +89,9 @@ class FiveChBoardData extends BoardData {
   final String url;
   final int category;
   final String categoryName;
+
+  @override
+  Communities? get type => Communities.fiveCh;
 
   String? get domain {
     final replaced = url.replaceFirst('https://', '');

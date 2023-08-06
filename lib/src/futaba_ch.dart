@@ -18,6 +18,9 @@ class FutabaChBoard extends BoardData {
   String get oldListUrl => '$path/futaba.php$catalog${sort}2';
   String get hugListUrl => '$path/futaba.php$catalog${sort}3';
   String get ikioiListUrl => '$path/futaba.php$catalog${sort}6';
+
+    @override
+  Communities? get type => Communities.futabaCh;
 }
 
 @CopyWith()

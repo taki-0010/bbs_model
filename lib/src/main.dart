@@ -181,7 +181,7 @@ final class LastOpenedContentIndex {
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class BoardDataForStorage {
+final class BoardDataForStorage {
   const BoardDataForStorage({required this.board, required this.threads});
   final BoardData board;
   final List<ThreadData?> threads;
@@ -227,10 +227,12 @@ class ThreadData {
 }
 
 @JsonSerializable()
-class BoardData {
+abstract class BoardData {
   const BoardData({required this.id, required this.name});
   final String id;
   final String name;
+
+  Communities? get type => null;
   factory BoardData.fromJson(Map<String, dynamic> json) =>
       _$BoardDataFromJson(json);
   Map<String, dynamic> toJson() => _$BoardDataToJson(this);
@@ -293,4 +295,3 @@ final class GroupData {
   final String date;
   final int firstIndex;
 }
-

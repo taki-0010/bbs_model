@@ -9,6 +9,9 @@ class GirlsChCategory extends BoardData {
   // final String url;
   // final String name;
   String get url => '/topics/category/$id/';
+
+    @override
+  Communities? get type => Communities.girlsCh;
 }
 
 @CopyWith()

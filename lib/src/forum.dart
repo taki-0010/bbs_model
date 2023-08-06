@@ -17,7 +17,9 @@ class ForumSettingsData {
       this.useFavoritesBoards = false,
       this.favoritesBoardList = const [],
       this.sortHistoryByExpire = false,
-      this.viewByBoardInHistory = true});
+      this.viewByBoardInHistory = false,
+      this.viewByBoardInFavorites = false,
+      });
 
   final Communities forum;
   final ThemeList theme;
@@ -30,6 +32,7 @@ class ForumSettingsData {
   final List<String?> favoritesBoardList;
   final bool sortHistoryByExpire;
   final bool viewByBoardInHistory;
+  final bool viewByBoardInFavorites;
 
   factory ForumSettingsData.fromJson(Map<String, dynamic> json) =>
       _$ForumSettingsDataFromJson(json);
