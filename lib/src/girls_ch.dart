@@ -27,14 +27,14 @@ class GirlsChThread extends ThreadData with WithDateTime {
       required super.boardId,
       super.difference,
       super.isNewPost,
-      super.img,
+      super.thumbnail,
       required super.updateAtStr});
   // final String? img;
   // final String categoryId;
 
   String get url => '/topics/$id/';
   @override
-  String? get thumbnailUrl => img?.thumbnailUri;
+  String? get thumbnailUrl => thumbnail?.thumbnailUri;
 
   @override
   double get ikioi {
@@ -59,7 +59,7 @@ class GirlsChThread extends ThreadData with WithDateTime {
 class GirlsChContent extends ContentData with WithDateTime {
   const GirlsChContent(
       {required super.index,
-      required this.name,
+      required super.name,
       required super.body,
       super.src,
       required this.plus,
@@ -70,7 +70,7 @@ class GirlsChContent extends ContentData with WithDateTime {
       this.id,
       super.urlSet});
   // final int index;
-  final String name;
+  // final String name;
   // final String body;
   // final String? img;
   final int plus;

@@ -15,13 +15,13 @@ abstract class _$ContentMetaDataCWProxy {
 
   ContentMetaData favorite(bool favorite);
 
-  ContentMetaData lastResCount(int lastResCount);
+  ContentMetaData resCount(int resCount);
 
-  ContentMetaData thumbnailUrl(String? thumbnailUrl);
+  ContentMetaData thumbnail(SrcData? thumbnail);
 
   ContentMetaData boardId(String boardId);
 
-  ContentMetaData title(String? title);
+  ContentMetaData title(String title);
 
   ContentMetaData positionToGet(PositionToGet positionToGet);
 
@@ -42,8 +42,8 @@ abstract class _$ContentMetaDataCWProxy {
     int? cacheId,
     String? gotAt,
     bool? favorite,
-    int? lastResCount,
-    String? thumbnailUrl,
+    int? resCount,
+    SrcData? thumbnail,
     String? boardId,
     String? title,
     PositionToGet? positionToGet,
@@ -72,18 +72,16 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
   ContentMetaData favorite(bool favorite) => this(favorite: favorite);
 
   @override
-  ContentMetaData lastResCount(int lastResCount) =>
-      this(lastResCount: lastResCount);
+  ContentMetaData resCount(int resCount) => this(resCount: resCount);
 
   @override
-  ContentMetaData thumbnailUrl(String? thumbnailUrl) =>
-      this(thumbnailUrl: thumbnailUrl);
+  ContentMetaData thumbnail(SrcData? thumbnail) => this(thumbnail: thumbnail);
 
   @override
   ContentMetaData boardId(String boardId) => this(boardId: boardId);
 
   @override
-  ContentMetaData title(String? title) => this(title: title);
+  ContentMetaData title(String title) => this(title: title);
 
   @override
   ContentMetaData positionToGet(PositionToGet positionToGet) =>
@@ -114,8 +112,8 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
     Object? cacheId = const $CopyWithPlaceholder(),
     Object? gotAt = const $CopyWithPlaceholder(),
     Object? favorite = const $CopyWithPlaceholder(),
-    Object? lastResCount = const $CopyWithPlaceholder(),
-    Object? thumbnailUrl = const $CopyWithPlaceholder(),
+    Object? resCount = const $CopyWithPlaceholder(),
+    Object? thumbnail = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? positionToGet = const $CopyWithPlaceholder(),
@@ -140,23 +138,22 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
           ? _value.favorite
           // ignore: cast_nullable_to_non_nullable
           : favorite as bool,
-      lastResCount:
-          lastResCount == const $CopyWithPlaceholder() || lastResCount == null
-              ? _value.lastResCount
-              // ignore: cast_nullable_to_non_nullable
-              : lastResCount as int,
-      thumbnailUrl: thumbnailUrl == const $CopyWithPlaceholder()
-          ? _value.thumbnailUrl
+      resCount: resCount == const $CopyWithPlaceholder() || resCount == null
+          ? _value.resCount
           // ignore: cast_nullable_to_non_nullable
-          : thumbnailUrl as String?,
+          : resCount as int,
+      thumbnail: thumbnail == const $CopyWithPlaceholder()
+          ? _value.thumbnail
+          // ignore: cast_nullable_to_non_nullable
+          : thumbnail as SrcData?,
       boardId: boardId == const $CopyWithPlaceholder() || boardId == null
           ? _value.boardId
           // ignore: cast_nullable_to_non_nullable
           : boardId as String,
-      title: title == const $CopyWithPlaceholder()
+      title: title == const $CopyWithPlaceholder() || title == null
           ? _value.title
           // ignore: cast_nullable_to_non_nullable
-          : title as String?,
+          : title as String,
       positionToGet:
           positionToGet == const $CopyWithPlaceholder() || positionToGet == null
               ? _value.positionToGet
@@ -390,10 +387,12 @@ ContentMetaData _$ContentMetaDataFromJson(Map<String, dynamic> json) =>
       cacheId: json['cacheId'] as int,
       gotAt: json['gotAt'] as String,
       favorite: json['favorite'] as bool? ?? false,
-      lastResCount: json['lastResCount'] as int,
-      thumbnailUrl: json['thumbnailUrl'] as String?,
+      resCount: json['resCount'] as int,
+      thumbnail: json['thumbnail'] == null
+          ? null
+          : SrcData.fromJson(json['thumbnail'] as Map<String, dynamic>),
       boardId: json['boardId'] as String,
-      title: json['title'] as String?,
+      title: json['title'] as String,
       positionToGet:
           $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
               PositionToGet.first,
@@ -417,13 +416,13 @@ ContentMetaData _$ContentMetaDataFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$ContentMetaDataToJson(ContentMetaData instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'title': instance.title,
+      'resCount': instance.resCount,
+      'boardId': instance.boardId,
+      'thumbnail': instance.thumbnail,
       'cacheId': instance.cacheId,
       'gotAt': instance.gotAt,
       'favorite': instance.favorite,
-      'lastResCount': instance.lastResCount,
-      'thumbnailUrl': instance.thumbnailUrl,
-      'boardId': instance.boardId,
-      'title': instance.title,
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
       'fiveCh': instance.fiveCh,
       'girlsCh': instance.girlsCh,
@@ -487,9 +486,9 @@ ThreadData _$ThreadDataFromJson(Map<String, dynamic> json) => ThreadData(
       id: json['id'] as String,
       title: json['title'] as String,
       resCount: json['resCount'] as int,
-      img: json['img'] == null
+      thumbnail: json['thumbnail'] == null
           ? null
-          : SrcData.fromJson(json['img'] as Map<String, dynamic>),
+          : SrcData.fromJson(json['thumbnail'] as Map<String, dynamic>),
       updateAtStr: json['updateAtStr'] as String?,
       difference: json['difference'] as int?,
       boardId: json['boardId'] as String,
@@ -501,9 +500,9 @@ Map<String, dynamic> _$ThreadDataToJson(ThreadData instance) =>
       'id': instance.id,
       'title': instance.title,
       'resCount': instance.resCount,
-      'img': instance.img?.toJson(),
+      'boardId': instance.boardId,
+      'thumbnail': instance.thumbnail?.toJson(),
       'updateAtStr': instance.updateAtStr,
       'difference': instance.difference,
       'isNewPost': instance.isNewPost,
-      'boardId': instance.boardId,
     };

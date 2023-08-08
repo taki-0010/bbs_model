@@ -5,30 +5,31 @@ part 'main.g.dart';
 @JsonSerializable()
 @CopyWith()
 @immutable
-class ContentMetaData {
+class ContentMetaData extends ThreadBase {
   const ContentMetaData(
-      {required this.id,
+      {required super.id,
       required this.cacheId,
       required this.gotAt,
       this.favorite = false,
-      required this.lastResCount,
-      this.thumbnailUrl,
-      required this.boardId,
-      this.title,
+      required super.resCount,
+      super.thumbnail,
+      // this.thumbnailUrl,
+      required super.boardId,
+      required super.title,
       this.positionToGet = PositionToGet.first,
       // this.startIndex = 1,
       // this.endIndex = 1000,
       this.fiveCh,
       this.girlsCh,
       this.futabaCh});
-  final String id;
+  // final String id;
   final int cacheId;
   final String gotAt;
   final bool favorite;
-  final int lastResCount;
-  final String? thumbnailUrl;
-  final String boardId;
-  final String? title;
+  // final int lastResCount;
+  // final String? thumbnailUrl;
+  // final String boardId;
+  // final String? title;
   final PositionToGet positionToGet;
   // final int startIndex;
   // final int endIndex;
@@ -36,6 +37,12 @@ class ContentMetaData {
   final List<FiveChThreadContentData?>? fiveCh;
   final List<GirlsChContent?>? girlsCh;
   final List<FutabaChContent?>? futabaCh;
+
+  @override
+  int get getResCount => endIndex ?? 0;
+
+  @override
+  String? get thumbnailUrl => thumbnail?.thumbnailUri;
 
   bool get empty => fiveCh == null && girlsCh == null && futabaCh == null;
   List<ContentData?>? get content {
@@ -191,31 +198,50 @@ final class BoardDataForStorage {
   Map<String, dynamic> toJson() => _$BoardDataForStorageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-// @CopyWith()
-@immutable
-class ThreadData {
-  const ThreadData(
+abstract class ThreadBase {
+  const ThreadBase(
       {required this.id,
       required this.title,
       required this.resCount,
-      this.img,
-      this.updateAtStr,
-      this.difference,
       required this.boardId,
-      this.isNewPost = false});
+      this.thumbnail});
   final String id;
   final String title;
   final int resCount;
-  final SrcData? img;
+  final String boardId;
+  final SrcData? thumbnail;
+
+  int get getResCount => resCount;
+
+  String? get thumbnailUrl => null;
+}
+
+@JsonSerializable(explicitToJson: true)
+// @CopyWith()
+@immutable
+class ThreadData extends ThreadBase {
+  const ThreadData(
+      {required super.id,
+      required super.title,
+      required super.resCount,
+      super.thumbnail,
+      // this.img,
+      this.updateAtStr,
+      this.difference,
+      required super.boardId,
+      this.isNewPost = false});
+  // final String id;
+  // final String title;
+  // final int resCount;
+  // final SrcData? img;
   final String? updateAtStr;
   final int? difference;
   final bool isNewPost;
-  final String boardId;
+  // final String boardId;
 
-  String? get thumbnailUrl {
-    return null;
-  }
+  // String? get thumbnailUrl {
+  //   return null;
+  // }
 
   double get ikioi {
     return 0.0;
@@ -226,15 +252,18 @@ class ThreadData {
   Map<String, dynamic> toJson() => _$ThreadDataToJson(this);
 }
 
-
-
 abstract class ContentData {
   const ContentData(
-      {required this.index, required this.body, this.urlSet, this.src});
+      {required this.index,
+      required this.body,
+      this.urlSet,
+      this.src,
+      required this.name});
   final int index;
   final String body;
   final List<String?>? urlSet;
   final SrcData? src;
+  final String name;
 
   String? get srcThumbnail => null;
   String? get srcContent => null;
@@ -242,6 +271,7 @@ abstract class ContentData {
   DateTime get createdAt => DateTime.now();
   String get getId => '';
   Set<String?> get anchorList => {};
+  String? get getUserId => null;
 }
 
 mixin class WithDateTime {
@@ -285,3 +315,4 @@ final class GroupData {
   final String date;
   final int firstIndex;
 }
+

@@ -33,7 +33,7 @@ class FutabaChThread extends ThreadData {
     required super.id,
     required super.title,
     required super.resCount,
-    super.img,
+    super.thumbnail,
     required this.directory,
     required super.boardId,
     super.difference,
@@ -44,7 +44,7 @@ class FutabaChThread extends ThreadData {
 
   String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override
-  String get thumbnailUrl => 'https://$directory.2chan.net${img?.thumbnailUri}';
+  String get thumbnailUrl => 'https://$directory.2chan.net${thumbnail?.thumbnailUri}';
 }
 
 @JsonSerializable()
@@ -59,7 +59,7 @@ class FutabaChContent extends ContentData with WithDateTime {
       required this.number,
       required this.created,
       required this.agree,
-      required this.name,
+      required super.name,
       required this.directory,
       this.title,
       this.quotes = const []});
@@ -69,7 +69,7 @@ class FutabaChContent extends ContentData with WithDateTime {
   final String created;
   final int? agree;
   final String? title;
-  final String name;
+  // final String name;
   final String directory;
   final List<String?> quotes;
 

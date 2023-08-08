@@ -73,7 +73,7 @@ abstract class _$FutabaChThreadCWProxy {
 
   FutabaChThread resCount(int resCount);
 
-  FutabaChThread img(SrcData? img);
+  FutabaChThread thumbnail(SrcData? thumbnail);
 
   FutabaChThread directory(String directory);
 
@@ -93,7 +93,7 @@ abstract class _$FutabaChThreadCWProxy {
     String? id,
     String? title,
     int? resCount,
-    SrcData? img,
+    SrcData? thumbnail,
     String? directory,
     String? boardId,
     int? difference,
@@ -117,7 +117,7 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
   FutabaChThread resCount(int resCount) => this(resCount: resCount);
 
   @override
-  FutabaChThread img(SrcData? img) => this(img: img);
+  FutabaChThread thumbnail(SrcData? thumbnail) => this(thumbnail: thumbnail);
 
   @override
   FutabaChThread directory(String directory) => this(directory: directory);
@@ -143,7 +143,7 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
     Object? id = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? resCount = const $CopyWithPlaceholder(),
-    Object? img = const $CopyWithPlaceholder(),
+    Object? thumbnail = const $CopyWithPlaceholder(),
     Object? directory = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? difference = const $CopyWithPlaceholder(),
@@ -162,10 +162,10 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
           ? _value.resCount
           // ignore: cast_nullable_to_non_nullable
           : resCount as int,
-      img: img == const $CopyWithPlaceholder()
-          ? _value.img
+      thumbnail: thumbnail == const $CopyWithPlaceholder()
+          ? _value.thumbnail
           // ignore: cast_nullable_to_non_nullable
-          : img as SrcData?,
+          : thumbnail as SrcData?,
       directory: directory == const $CopyWithPlaceholder() || directory == null
           ? _value.directory
           // ignore: cast_nullable_to_non_nullable
@@ -380,11 +380,11 @@ Map<String, dynamic> _$FutabaChContentToJson(FutabaChContent instance) =>
       'index': instance.index,
       'body': instance.body,
       'src': instance.src,
+      'name': instance.name,
       'number': instance.number,
       'created': instance.created,
       'agree': instance.agree,
       'title': instance.title,
-      'name': instance.name,
       'directory': instance.directory,
       'quotes': instance.quotes,
     };

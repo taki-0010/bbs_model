@@ -638,6 +638,8 @@ abstract class _$FiveChThreadContentDataCWProxy {
 
   FiveChThreadContentData directoryName(String directoryName);
 
+  FiveChThreadContentData userId(String? userId);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FiveChThreadContentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -654,6 +656,7 @@ abstract class _$FiveChThreadContentDataCWProxy {
     List<String?>? urlSet,
     String? domain,
     String? directoryName,
+    String? userId,
   });
 }
 
@@ -694,6 +697,9 @@ class _$FiveChThreadContentDataCWProxyImpl
       this(directoryName: directoryName);
 
   @override
+  FiveChThreadContentData userId(String? userId) => this(userId: userId);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FiveChThreadContentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -711,6 +717,7 @@ class _$FiveChThreadContentDataCWProxyImpl
     Object? urlSet = const $CopyWithPlaceholder(),
     Object? domain = const $CopyWithPlaceholder(),
     Object? directoryName = const $CopyWithPlaceholder(),
+    Object? userId = const $CopyWithPlaceholder(),
   }) {
     return FiveChThreadContentData(
       index: index == const $CopyWithPlaceholder() || index == null
@@ -750,6 +757,10 @@ class _$FiveChThreadContentDataCWProxyImpl
               ? _value.directoryName
               // ignore: cast_nullable_to_non_nullable
               : directoryName as String,
+      userId: userId == const $CopyWithPlaceholder()
+          ? _value.userId
+          // ignore: cast_nullable_to_non_nullable
+          : userId as String?,
     );
   }
 }
@@ -842,6 +853,7 @@ FiveChThreadContentData _$FiveChThreadContentDataFromJson(
           (json['urlSet'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       domain: json['domain'] as String,
       directoryName: json['directoryName'] as String,
+      userId: json['userId'] as String?,
     );
 
 Map<String, dynamic> _$FiveChThreadContentDataToJson(
@@ -856,4 +868,5 @@ Map<String, dynamic> _$FiveChThreadContentDataToJson(
       'title': instance.title,
       'domain': instance.domain,
       'directoryName': instance.directoryName,
+      'userId': instance.userId,
     };

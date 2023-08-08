@@ -58,20 +58,16 @@ final class FiveChBoardJsonData {
       _$FiveChBoardJsonDataFromJson(json);
 }
 
-
-
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class FiveChCategoryData  {
+class FiveChCategoryData {
   const FiveChCategoryData(
-      {
-      required this.categoryNumber,
-      required this.categoryContent});
+      {required this.categoryNumber, required this.categoryContent});
   final String categoryNumber;
   final List<BoardData> categoryContent;
 
-    factory FiveChCategoryData.fromJson(Map<String, dynamic> json) =>
+  factory FiveChCategoryData.fromJson(Map<String, dynamic> json) =>
       _$FiveChCategoryDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$FiveChCategoryDataToJson(this);
@@ -153,20 +149,22 @@ class FiveChThreadTitleData extends ThreadData with WithDateTime {
 class FiveChThreadContentData extends ContentData with WithDateTime {
   const FiveChThreadContentData(
       {required super.index,
-      required this.name,
+      required super.name,
       this.email,
       required this.dateAndId,
       required super.body,
       this.title,
       super.urlSet,
       required this.domain,
-      required this.directoryName});
-  final String name;
+      required this.directoryName,
+      this.userId});
+  // final String name;
   final String? email;
   final String dateAndId;
   final String? title;
   final String domain;
   final String directoryName;
+  final String? userId;
   // final List<String?>? urlSet;
 
   @override
@@ -182,12 +180,15 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
       final id = splited[2];
       final subtring = id.length > 3 ? id.substring(3) : '';
       // if(subtring.endsWith('●'))
-      // logger.d('getId: id:$id, sub:$subtring');
+      // logger.d('getId: splited: $splited, id:$id, sub:$subtring');
 
       return subtring == '???' ? '' : subtring;
     }
     return '';
   }
+
+  @override
+  String? get getUserId => userId;
 
   @override
   Set<String?> get anchorList {
