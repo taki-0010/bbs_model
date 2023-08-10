@@ -13,6 +13,7 @@ export 'src/futaba_ch.dart';
 export 'src/user.dart';
 export 'src/enum.dart';
 export 'src/platform.dart';
+export 'src/util.dart';
 export 'logger.dart';
 
 // TODO: Export any libraries intended for clients of this package.

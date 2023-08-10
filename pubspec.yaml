@@ -17,7 +17,7 @@ dependencies:
   logger: ^2.0.1
   timeago: ^3.5.0
   string_extensions: ^0.6.12
-  # html_unescape: ^2.0.0
+  html_unescape: ^2.0.0
 
 dev_dependencies:
   lints: ^2.0.0

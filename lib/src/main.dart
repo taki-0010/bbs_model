@@ -134,7 +134,9 @@ class ContentMetaData extends ThreadBase {
     }
   }
 
-  Uri get url => Uri.parse('https://$getUrl');
+  String get getFullUrl => 'https://$getUrl';
+
+  Uri get url => Uri.parse(getFullUrl);
 
   bool get useWebview =>
       type == Communities.girlsCh || type == Communities.futabaCh;
@@ -315,4 +317,3 @@ final class GroupData {
   final String date;
   final int firstIndex;
 }
-
