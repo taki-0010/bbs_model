@@ -9,8 +9,6 @@ part of 'main.dart';
 abstract class _$ContentMetaDataCWProxy {
   ContentMetaData id(String id);
 
-  ContentMetaData cacheId(int cacheId);
-
   ContentMetaData gotAt(String gotAt);
 
   ContentMetaData favorite(bool favorite);
@@ -24,6 +22,8 @@ abstract class _$ContentMetaDataCWProxy {
   ContentMetaData boardId(String boardId);
 
   ContentMetaData title(String title);
+
+  ContentMetaData boardName(String? boardName);
 
   ContentMetaData positionToGet(PositionToGet positionToGet);
 
@@ -43,7 +43,6 @@ abstract class _$ContentMetaDataCWProxy {
   /// ````
   ContentMetaData call({
     String? id,
-    int? cacheId,
     String? gotAt,
     bool? favorite,
     int? resCount,
@@ -51,6 +50,7 @@ abstract class _$ContentMetaDataCWProxy {
     bool? archived,
     String? boardId,
     String? title,
+    String? boardName,
     PositionToGet? positionToGet,
     int? difference,
     List<FiveChThreadContentData?>? fiveCh,
@@ -67,9 +67,6 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
 
   @override
   ContentMetaData id(String id) => this(id: id);
-
-  @override
-  ContentMetaData cacheId(int cacheId) => this(cacheId: cacheId);
 
   @override
   ContentMetaData gotAt(String gotAt) => this(gotAt: gotAt);
@@ -91,6 +88,9 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
 
   @override
   ContentMetaData title(String title) => this(title: title);
+
+  @override
+  ContentMetaData boardName(String? boardName) => this(boardName: boardName);
 
   @override
   ContentMetaData positionToGet(PositionToGet positionToGet) =>
@@ -121,7 +121,6 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
   /// ````
   ContentMetaData call({
     Object? id = const $CopyWithPlaceholder(),
-    Object? cacheId = const $CopyWithPlaceholder(),
     Object? gotAt = const $CopyWithPlaceholder(),
     Object? favorite = const $CopyWithPlaceholder(),
     Object? resCount = const $CopyWithPlaceholder(),
@@ -129,6 +128,7 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
     Object? archived = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
+    Object? boardName = const $CopyWithPlaceholder(),
     Object? positionToGet = const $CopyWithPlaceholder(),
     Object? difference = const $CopyWithPlaceholder(),
     Object? fiveCh = const $CopyWithPlaceholder(),
@@ -140,10 +140,6 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as String,
-      cacheId: cacheId == const $CopyWithPlaceholder() || cacheId == null
-          ? _value.cacheId
-          // ignore: cast_nullable_to_non_nullable
-          : cacheId as int,
       gotAt: gotAt == const $CopyWithPlaceholder() || gotAt == null
           ? _value.gotAt
           // ignore: cast_nullable_to_non_nullable
@@ -172,6 +168,10 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
           ? _value.title
           // ignore: cast_nullable_to_non_nullable
           : title as String,
+      boardName: boardName == const $CopyWithPlaceholder()
+          ? _value.boardName
+          // ignore: cast_nullable_to_non_nullable
+          : boardName as String?,
       positionToGet:
           positionToGet == const $CopyWithPlaceholder() || positionToGet == null
               ? _value.positionToGet
@@ -406,7 +406,6 @@ extension $BoardDataForStorageCopyWith on BoardDataForStorage {
 ContentMetaData _$ContentMetaDataFromJson(Map<String, dynamic> json) =>
     ContentMetaData(
       id: json['id'] as String,
-      cacheId: json['cacheId'] as int,
       gotAt: json['gotAt'] as String,
       favorite: json['favorite'] as bool? ?? false,
       resCount: json['resCount'] as int,
@@ -416,6 +415,7 @@ ContentMetaData _$ContentMetaDataFromJson(Map<String, dynamic> json) =>
       archived: json['archived'] as bool? ?? false,
       boardId: json['boardId'] as String,
       title: json['title'] as String,
+      boardName: json['boardName'] as String?,
       positionToGet:
           $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
               PositionToGet.first,
@@ -445,7 +445,7 @@ Map<String, dynamic> _$ContentMetaDataToJson(ContentMetaData instance) =>
       'boardId': instance.boardId,
       'thumbnail': instance.thumbnail,
       'difference': instance.difference,
-      'cacheId': instance.cacheId,
+      'boardName': instance.boardName,
       'gotAt': instance.gotAt,
       'favorite': instance.favorite,
       'archived': instance.archived,

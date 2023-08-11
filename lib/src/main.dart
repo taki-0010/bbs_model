@@ -8,7 +8,7 @@ part 'main.g.dart';
 class ContentMetaData extends ThreadBase {
   const ContentMetaData(
       {required super.id,
-      required this.cacheId,
+      // required this.cacheId,
       required this.gotAt,
       this.favorite = false,
       required super.resCount,
@@ -17,6 +17,7 @@ class ContentMetaData extends ThreadBase {
       // this.thumbnailUrl,
       required super.boardId,
       required super.title,
+      super.boardName,
       this.positionToGet = PositionToGet.first,
       super.difference,
       // this.startIndex = 1,
@@ -25,7 +26,7 @@ class ContentMetaData extends ThreadBase {
       this.girlsCh,
       this.futabaCh});
   // final String id;
-  final int cacheId;
+  // final int cacheId;
   final String gotAt;
   final bool favorite;
   final bool archived;
