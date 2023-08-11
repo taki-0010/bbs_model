@@ -114,6 +114,7 @@ class FiveChThreadTitleData extends ThreadData with WithDateTime {
       required this.domain,
       required super.boardId,
       super.difference,
+      super.boardName,
       super.isNewPost,
       required super.updateAtStr});
   final int filesize;

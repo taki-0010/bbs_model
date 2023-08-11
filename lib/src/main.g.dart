@@ -19,11 +19,15 @@ abstract class _$ContentMetaDataCWProxy {
 
   ContentMetaData thumbnail(SrcData? thumbnail);
 
+  ContentMetaData archived(bool archived);
+
   ContentMetaData boardId(String boardId);
 
   ContentMetaData title(String title);
 
   ContentMetaData positionToGet(PositionToGet positionToGet);
+
+  ContentMetaData difference(int? difference);
 
   ContentMetaData fiveCh(List<FiveChThreadContentData?>? fiveCh);
 
@@ -44,9 +48,11 @@ abstract class _$ContentMetaDataCWProxy {
     bool? favorite,
     int? resCount,
     SrcData? thumbnail,
+    bool? archived,
     String? boardId,
     String? title,
     PositionToGet? positionToGet,
+    int? difference,
     List<FiveChThreadContentData?>? fiveCh,
     List<GirlsChContent?>? girlsCh,
     List<FutabaChContent?>? futabaCh,
@@ -78,6 +84,9 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
   ContentMetaData thumbnail(SrcData? thumbnail) => this(thumbnail: thumbnail);
 
   @override
+  ContentMetaData archived(bool archived) => this(archived: archived);
+
+  @override
   ContentMetaData boardId(String boardId) => this(boardId: boardId);
 
   @override
@@ -86,6 +95,9 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
   @override
   ContentMetaData positionToGet(PositionToGet positionToGet) =>
       this(positionToGet: positionToGet);
+
+  @override
+  ContentMetaData difference(int? difference) => this(difference: difference);
 
   @override
   ContentMetaData fiveCh(List<FiveChThreadContentData?>? fiveCh) =>
@@ -114,9 +126,11 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
     Object? favorite = const $CopyWithPlaceholder(),
     Object? resCount = const $CopyWithPlaceholder(),
     Object? thumbnail = const $CopyWithPlaceholder(),
+    Object? archived = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? positionToGet = const $CopyWithPlaceholder(),
+    Object? difference = const $CopyWithPlaceholder(),
     Object? fiveCh = const $CopyWithPlaceholder(),
     Object? girlsCh = const $CopyWithPlaceholder(),
     Object? futabaCh = const $CopyWithPlaceholder(),
@@ -146,6 +160,10 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
           ? _value.thumbnail
           // ignore: cast_nullable_to_non_nullable
           : thumbnail as SrcData?,
+      archived: archived == const $CopyWithPlaceholder() || archived == null
+          ? _value.archived
+          // ignore: cast_nullable_to_non_nullable
+          : archived as bool,
       boardId: boardId == const $CopyWithPlaceholder() || boardId == null
           ? _value.boardId
           // ignore: cast_nullable_to_non_nullable
@@ -159,6 +177,10 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
               ? _value.positionToGet
               // ignore: cast_nullable_to_non_nullable
               : positionToGet as PositionToGet,
+      difference: difference == const $CopyWithPlaceholder()
+          ? _value.difference
+          // ignore: cast_nullable_to_non_nullable
+          : difference as int?,
       fiveCh: fiveCh == const $CopyWithPlaceholder()
           ? _value.fiveCh
           // ignore: cast_nullable_to_non_nullable
@@ -391,11 +413,13 @@ ContentMetaData _$ContentMetaDataFromJson(Map<String, dynamic> json) =>
       thumbnail: json['thumbnail'] == null
           ? null
           : SrcData.fromJson(json['thumbnail'] as Map<String, dynamic>),
+      archived: json['archived'] as bool? ?? false,
       boardId: json['boardId'] as String,
       title: json['title'] as String,
       positionToGet:
           $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
               PositionToGet.first,
+      difference: json['difference'] as int?,
       fiveCh: (json['fiveCh'] as List<dynamic>?)
           ?.map((e) => e == null
               ? null
@@ -420,9 +444,11 @@ Map<String, dynamic> _$ContentMetaDataToJson(ContentMetaData instance) =>
       'resCount': instance.resCount,
       'boardId': instance.boardId,
       'thumbnail': instance.thumbnail,
+      'difference': instance.difference,
       'cacheId': instance.cacheId,
       'gotAt': instance.gotAt,
       'favorite': instance.favorite,
+      'archived': instance.archived,
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
       'fiveCh': instance.fiveCh,
       'girlsCh': instance.girlsCh,
@@ -492,6 +518,8 @@ ThreadData _$ThreadDataFromJson(Map<String, dynamic> json) => ThreadData(
       updateAtStr: json['updateAtStr'] as String?,
       difference: json['difference'] as int?,
       boardId: json['boardId'] as String,
+      boardName: json['boardName'] as String?,
+      catalog: json['catalog'] as bool? ?? false,
       isNewPost: json['isNewPost'] as bool? ?? false,
     );
 
@@ -502,7 +530,9 @@ Map<String, dynamic> _$ThreadDataToJson(ThreadData instance) =>
       'resCount': instance.resCount,
       'boardId': instance.boardId,
       'thumbnail': instance.thumbnail?.toJson(),
-      'updateAtStr': instance.updateAtStr,
       'difference': instance.difference,
+      'boardName': instance.boardName,
+      'updateAtStr': instance.updateAtStr,
       'isNewPost': instance.isNewPost,
+      'catalog': instance.catalog,
     };

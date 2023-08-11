@@ -471,6 +471,8 @@ abstract class _$FiveChThreadTitleDataCWProxy {
 
   FiveChThreadTitleData difference(int? difference);
 
+  FiveChThreadTitleData boardName(String? boardName);
+
   FiveChThreadTitleData isNewPost(bool isNewPost);
 
   FiveChThreadTitleData updateAtStr(String? updateAtStr);
@@ -491,6 +493,7 @@ abstract class _$FiveChThreadTitleDataCWProxy {
     String? domain,
     String? boardId,
     int? difference,
+    String? boardName,
     bool? isNewPost,
     String? updateAtStr,
   });
@@ -534,6 +537,10 @@ class _$FiveChThreadTitleDataCWProxyImpl
       this(difference: difference);
 
   @override
+  FiveChThreadTitleData boardName(String? boardName) =>
+      this(boardName: boardName);
+
+  @override
   FiveChThreadTitleData isNewPost(bool isNewPost) => this(isNewPost: isNewPost);
 
   @override
@@ -558,6 +565,7 @@ class _$FiveChThreadTitleDataCWProxyImpl
     Object? domain = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? difference = const $CopyWithPlaceholder(),
+    Object? boardName = const $CopyWithPlaceholder(),
     Object? isNewPost = const $CopyWithPlaceholder(),
     Object? updateAtStr = const $CopyWithPlaceholder(),
   }) {
@@ -600,6 +608,10 @@ class _$FiveChThreadTitleDataCWProxyImpl
           ? _value.difference
           // ignore: cast_nullable_to_non_nullable
           : difference as int?,
+      boardName: boardName == const $CopyWithPlaceholder()
+          ? _value.boardName
+          // ignore: cast_nullable_to_non_nullable
+          : boardName as String?,
       isNewPost: isNewPost == const $CopyWithPlaceholder() || isNewPost == null
           ? _value.isNewPost
           // ignore: cast_nullable_to_non_nullable

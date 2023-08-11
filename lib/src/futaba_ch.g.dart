@@ -83,6 +83,10 @@ abstract class _$FutabaChThreadCWProxy {
 
   FutabaChThread isNewPost(bool isNewPost);
 
+  FutabaChThread updateAtStr(String? updateAtStr);
+
+  FutabaChThread catalog(bool catalog);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChThread(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -98,6 +102,8 @@ abstract class _$FutabaChThreadCWProxy {
     String? boardId,
     int? difference,
     bool? isNewPost,
+    String? updateAtStr,
+    bool? catalog,
   });
 }
 
@@ -132,6 +138,13 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
   FutabaChThread isNewPost(bool isNewPost) => this(isNewPost: isNewPost);
 
   @override
+  FutabaChThread updateAtStr(String? updateAtStr) =>
+      this(updateAtStr: updateAtStr);
+
+  @override
+  FutabaChThread catalog(bool catalog) => this(catalog: catalog);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChThread(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -148,6 +161,8 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
     Object? boardId = const $CopyWithPlaceholder(),
     Object? difference = const $CopyWithPlaceholder(),
     Object? isNewPost = const $CopyWithPlaceholder(),
+    Object? updateAtStr = const $CopyWithPlaceholder(),
+    Object? catalog = const $CopyWithPlaceholder(),
   }) {
     return FutabaChThread(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -182,6 +197,14 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
           ? _value.isNewPost
           // ignore: cast_nullable_to_non_nullable
           : isNewPost as bool,
+      updateAtStr: updateAtStr == const $CopyWithPlaceholder()
+          ? _value.updateAtStr
+          // ignore: cast_nullable_to_non_nullable
+          : updateAtStr as String?,
+      catalog: catalog == const $CopyWithPlaceholder() || catalog == null
+          ? _value.catalog
+          // ignore: cast_nullable_to_non_nullable
+          : catalog as bool,
     );
   }
 }

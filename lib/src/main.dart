@@ -13,10 +13,12 @@ class ContentMetaData extends ThreadBase {
       this.favorite = false,
       required super.resCount,
       super.thumbnail,
+      this.archived = false,
       // this.thumbnailUrl,
       required super.boardId,
       required super.title,
       this.positionToGet = PositionToGet.first,
+      super.difference,
       // this.startIndex = 1,
       // this.endIndex = 1000,
       this.fiveCh,
@@ -26,6 +28,7 @@ class ContentMetaData extends ThreadBase {
   final int cacheId;
   final String gotAt;
   final bool favorite;
+  final bool archived;
   // final int lastResCount;
   // final String? thumbnailUrl;
   // final String boardId;
@@ -206,12 +209,16 @@ abstract class ThreadBase {
       required this.title,
       required this.resCount,
       required this.boardId,
+      this.difference,
+      this.boardName,
       this.thumbnail});
   final String id;
   final String title;
   final int resCount;
   final String boardId;
   final SrcData? thumbnail;
+  final int? difference;
+  final String? boardName;
 
   int get getResCount => resCount;
 
@@ -229,16 +236,19 @@ class ThreadData extends ThreadBase {
       super.thumbnail,
       // this.img,
       this.updateAtStr,
-      this.difference,
+      super.difference,
       required super.boardId,
+      super.boardName,
+      this.catalog = false,
       this.isNewPost = false});
   // final String id;
   // final String title;
   // final int resCount;
   // final SrcData? img;
   final String? updateAtStr;
-  final int? difference;
+  // final int? difference;
   final bool isNewPost;
+  final bool catalog;
   // final String boardId;
 
   // String? get thumbnailUrl {

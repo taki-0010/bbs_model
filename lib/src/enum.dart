@@ -11,10 +11,10 @@ enum ThemeList { m3Purple, rosewood, sanJuanBlue, espresso }
 
 enum CacheExpire {
   oneDay(days: 1),
-  oneWeek(days:7),
+  oneWeek(days: 7),
   twoWeeks(days: 14),
-  oneMonth(days: 30),
-  indefinite(days: null);
+  oneMonth(days: 30);
+  // indefinite(days: null);
 
   const CacheExpire({this.days});
   final int? days;

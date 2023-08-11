@@ -11,7 +11,7 @@ class FutabaChBoard {
   final String path;
   // final String name;
   String get catalog => '?mode=cat';
-  String get sort => '?sort=';
+  String get sort => '&sort=';
   // String get path => '//$directory.2chan.net/$id';
   String get url => '$path/futaba.htm';
   String get catalogUrl => '$path/futaba.php$catalog';
@@ -28,7 +28,7 @@ class FutabaChBoard {
 
 @CopyWith()
 @immutable
-class FutabaChThread extends ThreadData {
+class FutabaChThread extends ThreadData with WithDateTime {
   const FutabaChThread({
     required super.id,
     required super.title,
@@ -38,6 +38,8 @@ class FutabaChThread extends ThreadData {
     required super.boardId,
     super.difference,
     super.isNewPost,
+    super.updateAtStr,
+    super.catalog,
   });
   // final String boardId;
   final String directory;
@@ -45,6 +47,18 @@ class FutabaChThread extends ThreadData {
   String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override
   String get thumbnailUrl => 'https://$directory.2chan.net${thumbnail?.thumbnailUri}';
+   @override
+  double get ikioi {
+    // final current = DateTime.now().millisecondsSinceEpoch * 0.001;
+    // // final createdNum = datId.substring(0, datId.length - 4);
+    // final created = int.tryParse(id) ?? 0;
+    // final diviDay = ((current - created) / 86400);
+    // final result = resCount / diviDay;
+    // // logger.d(
+    // //     'ikioi: $result, resCount:$resCount, current:$current, datId:$datId, created:$createdNum, diviDay:$diviDay');
+    // return double.tryParse(result.toStringAsFixed(2)) ?? 0;
+    return getIkioi(int.tryParse(id) ?? 0, resCount);
+  }
 }
 
 @JsonSerializable()
@@ -62,6 +76,7 @@ class FutabaChContent extends ContentData with WithDateTime {
       required super.name,
       required this.directory,
       this.title,
+      
       this.quotes = const []});
   // final String? thumbnail;
   // final String? src;

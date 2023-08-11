@@ -16,6 +16,7 @@ class ForumSettingsData {
       this.openLinkByWebview = true,
       this.useFavoritesBoards = false,
       this.favoritesBoardList = const [],
+      this.searchWordList = const [],
       this.sortHistoryByExpire = false,
       this.viewByBoardInHistory = false,
       this.viewByBoardInFavorites = false,
@@ -30,6 +31,7 @@ class ForumSettingsData {
   final bool openLinkByWebview;
   final bool useFavoritesBoards;
   final List<String?> favoritesBoardList;
+  final List<String?> searchWordList;
   final bool sortHistoryByExpire;
   final bool viewByBoardInHistory;
   final bool viewByBoardInFavorites;

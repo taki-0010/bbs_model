@@ -25,6 +25,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData favoritesBoardList(List<String?> favoritesBoardList);
 
+  ForumSettingsData searchWordList(List<String?> searchWordList);
+
   ForumSettingsData sortHistoryByExpire(bool sortHistoryByExpire);
 
   ForumSettingsData viewByBoardInHistory(bool viewByBoardInHistory);
@@ -47,6 +49,7 @@ abstract class _$ForumSettingsDataCWProxy {
     bool? openLinkByWebview,
     bool? useFavoritesBoards,
     List<String?>? favoritesBoardList,
+    List<String?>? searchWordList,
     bool? sortHistoryByExpire,
     bool? viewByBoardInHistory,
     bool? viewByBoardInFavorites,
@@ -94,6 +97,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(favoritesBoardList: favoritesBoardList);
 
   @override
+  ForumSettingsData searchWordList(List<String?> searchWordList) =>
+      this(searchWordList: searchWordList);
+
+  @override
   ForumSettingsData sortHistoryByExpire(bool sortHistoryByExpire) =>
       this(sortHistoryByExpire: sortHistoryByExpire);
 
@@ -123,6 +130,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? openLinkByWebview = const $CopyWithPlaceholder(),
     Object? useFavoritesBoards = const $CopyWithPlaceholder(),
     Object? favoritesBoardList = const $CopyWithPlaceholder(),
+    Object? searchWordList = const $CopyWithPlaceholder(),
     Object? sortHistoryByExpire = const $CopyWithPlaceholder(),
     Object? viewByBoardInHistory = const $CopyWithPlaceholder(),
     Object? viewByBoardInFavorites = const $CopyWithPlaceholder(),
@@ -172,6 +180,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.favoritesBoardList
           // ignore: cast_nullable_to_non_nullable
           : favoritesBoardList as List<String?>,
+      searchWordList: searchWordList == const $CopyWithPlaceholder() ||
+              searchWordList == null
+          ? _value.searchWordList
+          // ignore: cast_nullable_to_non_nullable
+          : searchWordList as List<String?>,
       sortHistoryByExpire:
           sortHistoryByExpire == const $CopyWithPlaceholder() ||
                   sortHistoryByExpire == null
@@ -345,6 +358,10 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String?)
               .toList() ??
           const [],
+      searchWordList: (json['searchWordList'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
       sortHistoryByExpire: json['sortHistoryByExpire'] as bool? ?? false,
       viewByBoardInHistory: json['viewByBoardInHistory'] as bool? ?? false,
       viewByBoardInFavorites: json['viewByBoardInFavorites'] as bool? ?? false,
@@ -361,6 +378,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'openLinkByWebview': instance.openLinkByWebview,
       'useFavoritesBoards': instance.useFavoritesBoards,
       'favoritesBoardList': instance.favoritesBoardList,
+      'searchWordList': instance.searchWordList,
       'sortHistoryByExpire': instance.sortHistoryByExpire,
       'viewByBoardInHistory': instance.viewByBoardInHistory,
       'viewByBoardInFavorites': instance.viewByBoardInFavorites,
@@ -384,7 +402,6 @@ const _$CacheExpireEnumMap = {
   CacheExpire.oneWeek: 'oneWeek',
   CacheExpire.twoWeeks: 'twoWeeks',
   CacheExpire.oneMonth: 'oneMonth',
-  CacheExpire.indefinite: 'indefinite',
 };
 
 const _$ThreadsOrderEnumMap = {
