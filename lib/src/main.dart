@@ -5,42 +5,60 @@ part 'main.g.dart';
 @JsonSerializable()
 @CopyWith()
 @immutable
-class ContentMetaData extends ThreadBase {
-  const ContentMetaData(
+class ThreadMarkData extends ThreadBase {
+  const ThreadMarkData(
       {required super.id,
+      required super.type,
       // required this.cacheId,
       required this.gotAt,
-      this.favorite = false,
+      // this.favorite = false,
       required super.resCount,
+      this.favorite = false,
+      // required super.lastIndex,
       super.thumbnail,
-      this.archived = false,
+      // this.archived = false,
+      required super.url,
       // this.thumbnailUrl,
       required super.boardId,
       required super.title,
       super.boardName,
-      this.positionToGet = PositionToGet.first,
-      super.difference,
-      // this.startIndex = 1,
-      // this.endIndex = 1000,
-      this.fiveCh,
-      this.girlsCh,
-      this.futabaCh});
+      super.positionToGet = PositionToGet.first,
+      // super.difference,
+
+      this.startIndex,
+      this.endIndex,
+      required this.retentionPeriod,
+      this.marks = const {},
+      this.mutePosterIds = const {},
+      this.muteUserIds = const {}
+      // this.fiveCh,
+      // this.girlsCh,
+      // this.futabaCh
+      });
   // final String id;
   // final int cacheId;
   final String gotAt;
-  final bool favorite;
-  final bool archived;
+  
+  // final bool archived;
+  final int? startIndex;
+  final int? endIndex;
+  // final String url;
   // final int lastResCount;
   // final String? thumbnailUrl;
   // final String boardId;
   // final String? title;
-  final PositionToGet positionToGet;
+  // final PositionToGet positionToGet;
+  final bool favorite;
+  final String retentionPeriod;
+  final Set<ResMarkData?> marks;
+  final Set<String?> mutePosterIds;
+  final Set<String?> muteUserIds;
   // final int startIndex;
   // final int endIndex;
   // final int? lastPositionedIndex;
-  final List<FiveChThreadContentData?>? fiveCh;
-  final List<GirlsChContent?>? girlsCh;
-  final List<FutabaChContent?>? futabaCh;
+  // final List<FiveChThreadContentData?>? fiveCh;
+  // final List<GirlsChContent?>? girlsCh;
+  // final List<FutabaChContent?>? futabaCh;
 
   @override
   int get getResCount => endIndex ?? 0;
@@ -48,30 +66,36 @@ class ContentMetaData extends ThreadBase {
   @override
   String? get thumbnailUrl => thumbnail?.thumbnailUri;
 
-  bool get empty => fiveCh == null && girlsCh == null && futabaCh == null;
-  List<ContentData?>? get content {
-    switch (type) {
-      case Communities.fiveCh:
-        return fiveCh;
-      case Communities.girlsCh:
-        return girlsCh;
-      case Communities.futabaCh:
-        return futabaCh;
-      default:
-        return null;
-    }
-  }
+  // String get futabaDirectory {
+  //   final origin = uri.origin;
+  //   final index = origin.indexOf('.');
+  //   return origin.substring(0, index);
+  // }
 
-  Communities? get type {
-    if (fiveCh != null) {
-      return Communities.fiveCh;
-    } else if (girlsCh != null) {
-      return Communities.girlsCh;
-    } else if (futabaCh != null) {
-      return Communities.futabaCh;
-    }
-    return null;
-  }
+  // bool get empty => fiveCh == null && girlsCh == null && futabaCh == null;
+  // List<ContentData?>? get content {
+  //   switch (type) {
+  //     case Communities.fiveCh:
+  //       return fiveCh;
+  //     case Communities.girlsCh:
+  //       return girlsCh;
+  //     case Communities.futabaCh:
+  //       return futabaCh;
+  //     default:
+  //       return null;
+  //   }
+  // }
+
+  // Communities? get type {
+  //   if (fiveCh != null) {
+  //     return Communities.fiveCh;
+  //   } else if (girlsCh != null) {
+  //     return Communities.girlsCh;
+  //   } else if (futabaCh != null) {
+  //     return Communities.futabaCh;
+  //   }
+  //   return null;
+  // }
 
   // String? get title {
   //   switch (type) {
@@ -86,82 +110,26 @@ class ContentMetaData extends ThreadBase {
   //   }
   // }
 
-  int? get startIndex {
-    switch (type) {
-      case Communities.fiveCh:
-        return fiveCh?.firstOrNull?.index;
-      case Communities.girlsCh:
-        return girlsCh?.firstOrNull?.index;
-      case Communities.futabaCh:
-        return futabaCh?.firstOrNull?.index;
-      default:
-        return null;
-    }
-  }
+  factory ThreadMarkData.fromJson(Map<String, dynamic> json) =>
+      _$ThreadMarkDataFromJson(json);
+  Map<String, dynamic> toJson() => _$ThreadMarkDataToJson(this);
+}
 
-  int? get endIndex {
-    switch (type) {
-      case Communities.fiveCh:
-        return fiveCh?.lastOrNull?.index;
-      case Communities.girlsCh:
-        return girlsCh?.lastOrNull?.index;
-      case Communities.futabaCh:
-        return futabaCh?.lastOrNull?.index;
-      default:
-        return null;
-    }
-  }
+@JsonSerializable()
+@CopyWith()
+@immutable
+final class ResMarkData {
+  const ResMarkData({
+    required this.index,
+    required this.icon,
+  });
+  final int index;
+  final MarkIcon icon;
+  // final Set<LastOpenedContentIndex?>? contents;
 
-  String? get fiveChKey {
-    if (fiveCh != null) {
-      final replaced = id.replaceAll('.dat', '');
-      final result = replaced.replaceAll('fiveCh_', '');
-      return result;
-    }
-    return null;
-  }
-
-  DateTime get createdAt {
-    return content?.firstOrNull?.createdAt ?? DateTime.now();
-  }
-
-  String get getUrl {
-    switch (type) {
-      case Communities.fiveCh:
-        return '$fiveDomain/test/read.cgi/$fiveDirectoryName/$id';
-      case Communities.girlsCh:
-        return 'girlschannel.net/topics/$id';
-      case Communities.futabaCh:
-        return '$futabaDirectory.2chan.net/$boardId/res/$id.htm';
-      default:
-        return '';
-    }
-  }
-
-  String get getFullUrl => 'https://$getUrl';
-
-  Uri get url => Uri.parse(getFullUrl);
-
-  bool get useWebview =>
-      type == Communities.girlsCh || type == Communities.futabaCh;
-
-  // String? get boardId {
-  //   switch (type) {
-  //     case Communities.fiveCh:
-  //       return fiveDirectoryName;
-  //     case Communities.futabaCh:
-
-  //     default:
-  //   }
-  // }
-
-  String? get futabaDirectory => futabaCh?.firstOrNull?.directory;
-  String? get fiveDomain => fiveCh?.firstOrNull?.domain;
-  String? get fiveDirectoryName => fiveCh?.firstOrNull?.directoryName;
-
-  factory ContentMetaData.fromJson(Map<String, dynamic> json) =>
-      _$ContentMetaDataFromJson(json);
-  Map<String, dynamic> toJson() => _$ContentMetaDataToJson(this);
+  factory ResMarkData.fromJson(Map<String, dynamic> json) =>
+      _$ResMarkDataFromJson(json);
+  Map<String, dynamic> toJson() => _$ResMarkDataToJson(this);
 }
 
 @JsonSerializable()
@@ -191,79 +159,18 @@ final class LastOpenedContentIndex {
   Map<String, dynamic> toJson() => _$LastOpenedContentIndexToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-@CopyWith()
-@immutable
-final class BoardDataForStorage {
-  const BoardDataForStorage({required this.board, required this.threads});
-  final BoardData board;
-  final List<ThreadData?> threads;
-
-  factory BoardDataForStorage.fromJson(Map<String, dynamic> json) =>
-      _$BoardDataForStorageFromJson(json);
-  Map<String, dynamic> toJson() => _$BoardDataForStorageToJson(this);
-}
-
-abstract class ThreadBase {
-  const ThreadBase(
-      {required this.id,
-      required this.title,
-      required this.resCount,
-      required this.boardId,
-      this.difference,
-      this.boardName,
-      this.thumbnail});
-  final String id;
-  final String title;
-  final int resCount;
-  final String boardId;
-  final SrcData? thumbnail;
-  final int? difference;
-  final String? boardName;
-
-  int get getResCount => resCount;
-
-  String? get thumbnailUrl => null;
-}
-
-@JsonSerializable(explicitToJson: true)
+// @JsonSerializable(explicitToJson: true)
 // @CopyWith()
-@immutable
-class ThreadData extends ThreadBase {
-  const ThreadData(
-      {required super.id,
-      required super.title,
-      required super.resCount,
-      super.thumbnail,
-      // this.img,
-      this.updateAtStr,
-      super.difference,
-      required super.boardId,
-      super.boardName,
-      this.catalog = false,
-      this.isNewPost = false});
-  // final String id;
-  // final String title;
-  // final int resCount;
-  // final SrcData? img;
-  final String? updateAtStr;
-  // final int? difference;
-  final bool isNewPost;
-  final bool catalog;
-  // final String boardId;
+// @immutable
+// final class BoardDataForStorage {
+//   const BoardDataForStorage({required this.board, required this.threads});
+//   final BoardData board;
+//   final List<ThreadData?> threads;
 
-  // String? get thumbnailUrl {
-  //   return null;
-  // }
-
-  double get ikioi {
-    return 0.0;
-  }
-
-  factory ThreadData.fromJson(Map<String, dynamic> json) =>
-      _$ThreadDataFromJson(json);
-  Map<String, dynamic> toJson() => _$ThreadDataToJson(this);
-}
+//   factory BoardDataForStorage.fromJson(Map<String, dynamic> json) =>
+//       _$BoardDataForStorageFromJson(json);
+//   Map<String, dynamic> toJson() => _$BoardDataForStorageToJson(this);
+// }
 
 abstract class ContentData {
   const ContentData(

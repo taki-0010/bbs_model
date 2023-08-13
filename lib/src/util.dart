@@ -32,7 +32,7 @@ final class StringMethodData {
   static String stlipHtml(final String value) => value.stripHtml ?? '';
 
   static String firstAndEllipsis(final String value) {
-    final i = value.first(n: 9);
+    final i = value.first(n: 14);
     return i != null ? '$i...' : value;
   }
 }

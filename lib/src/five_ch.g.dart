@@ -469,7 +469,9 @@ abstract class _$FiveChThreadTitleDataCWProxy {
 
   FiveChThreadTitleData boardId(String boardId);
 
-  FiveChThreadTitleData difference(int? difference);
+  FiveChThreadTitleData type(Communities type);
+
+  FiveChThreadTitleData url(String url);
 
   FiveChThreadTitleData boardName(String? boardName);
 
@@ -492,7 +494,8 @@ abstract class _$FiveChThreadTitleDataCWProxy {
     int? lastmodifyNum,
     String? domain,
     String? boardId,
-    int? difference,
+    Communities? type,
+    String? url,
     String? boardName,
     bool? isNewPost,
     String? updateAtStr,
@@ -533,8 +536,10 @@ class _$FiveChThreadTitleDataCWProxyImpl
   FiveChThreadTitleData boardId(String boardId) => this(boardId: boardId);
 
   @override
-  FiveChThreadTitleData difference(int? difference) =>
-      this(difference: difference);
+  FiveChThreadTitleData type(Communities type) => this(type: type);
+
+  @override
+  FiveChThreadTitleData url(String url) => this(url: url);
 
   @override
   FiveChThreadTitleData boardName(String? boardName) =>
@@ -564,7 +569,8 @@ class _$FiveChThreadTitleDataCWProxyImpl
     Object? lastmodifyNum = const $CopyWithPlaceholder(),
     Object? domain = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
-    Object? difference = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
+    Object? url = const $CopyWithPlaceholder(),
     Object? boardName = const $CopyWithPlaceholder(),
     Object? isNewPost = const $CopyWithPlaceholder(),
     Object? updateAtStr = const $CopyWithPlaceholder(),
@@ -604,10 +610,14 @@ class _$FiveChThreadTitleDataCWProxyImpl
           ? _value.boardId
           // ignore: cast_nullable_to_non_nullable
           : boardId as String,
-      difference: difference == const $CopyWithPlaceholder()
-          ? _value.difference
+      type: type == const $CopyWithPlaceholder() || type == null
+          ? _value.type
           // ignore: cast_nullable_to_non_nullable
-          : difference as int?,
+          : type as Communities,
+      url: url == const $CopyWithPlaceholder() || url == null
+          ? _value.url
+          // ignore: cast_nullable_to_non_nullable
+          : url as String,
       boardName: boardName == const $CopyWithPlaceholder()
           ? _value.boardName
           // ignore: cast_nullable_to_non_nullable

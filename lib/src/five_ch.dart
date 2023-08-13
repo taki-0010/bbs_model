@@ -108,12 +108,15 @@ class FiveChThreadTitleData extends ThreadData with WithDateTime {
       {required super.id,
       required super.title,
       required super.resCount,
+      // required super.lastIndex,
       required this.filesize,
       required this.permission,
       required this.lastmodifyNum,
       required this.domain,
       required super.boardId,
-      super.difference,
+      required super.type,
+      required super.url,
+      // super.difference,
       super.boardName,
       super.isNewPost,
       required super.updateAtStr});
@@ -126,6 +129,8 @@ class FiveChThreadTitleData extends ThreadData with WithDateTime {
   // String get datId {
   //   return '$id.dat';
   // }
+
+
 
   @override
   String? get thumbnailUrl => null;

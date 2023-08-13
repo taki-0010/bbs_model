@@ -6,148 +6,162 @@ part of 'main.dart';
 // CopyWithGenerator
 // **************************************************************************
 
-abstract class _$ContentMetaDataCWProxy {
-  ContentMetaData id(String id);
+abstract class _$ThreadMarkDataCWProxy {
+  ThreadMarkData id(String id);
 
-  ContentMetaData gotAt(String gotAt);
+  ThreadMarkData type(Communities type);
 
-  ContentMetaData favorite(bool favorite);
+  ThreadMarkData gotAt(String gotAt);
 
-  ContentMetaData resCount(int resCount);
+  ThreadMarkData resCount(int resCount);
 
-  ContentMetaData thumbnail(SrcData? thumbnail);
+  ThreadMarkData thumbnail(SrcData? thumbnail);
 
-  ContentMetaData archived(bool archived);
+  ThreadMarkData url(String url);
 
-  ContentMetaData boardId(String boardId);
+  ThreadMarkData boardId(String boardId);
 
-  ContentMetaData title(String title);
+  ThreadMarkData title(String title);
 
-  ContentMetaData boardName(String? boardName);
+  ThreadMarkData boardName(String? boardName);
 
-  ContentMetaData positionToGet(PositionToGet positionToGet);
+  ThreadMarkData positionToGet(PositionToGet positionToGet);
 
-  ContentMetaData difference(int? difference);
+  ThreadMarkData startIndex(int? startIndex);
 
-  ContentMetaData fiveCh(List<FiveChThreadContentData?>? fiveCh);
+  ThreadMarkData endIndex(int? endIndex);
 
-  ContentMetaData girlsCh(List<GirlsChContent?>? girlsCh);
+  ThreadMarkData retentionPeriod(String retentionPeriod);
 
-  ContentMetaData futabaCh(List<FutabaChContent?>? futabaCh);
+  ThreadMarkData marks(Set<ResMarkData?> marks);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ContentMetaData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ThreadMarkData mutePosterIds(Set<String?> mutePosterIds);
+
+  ThreadMarkData muteUserIds(Set<String?> muteUserIds);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// ContentMetaData(...).copyWith(id: 12, name: "My name")
+  /// ThreadMarkData(...).copyWith(id: 12, name: "My name")
   /// ````
-  ContentMetaData call({
+  ThreadMarkData call({
     String? id,
+    Communities? type,
     String? gotAt,
-    bool? favorite,
     int? resCount,
     SrcData? thumbnail,
-    bool? archived,
+    String? url,
     String? boardId,
     String? title,
     String? boardName,
     PositionToGet? positionToGet,
-    int? difference,
-    List<FiveChThreadContentData?>? fiveCh,
-    List<GirlsChContent?>? girlsCh,
-    List<FutabaChContent?>? futabaCh,
+    int? startIndex,
+    int? endIndex,
+    String? retentionPeriod,
+    Set<ResMarkData?>? marks,
+    Set<String?>? mutePosterIds,
+    Set<String?>? muteUserIds,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfContentMetaData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfContentMetaData.copyWith.fieldName(...)`
-class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
-  const _$ContentMetaDataCWProxyImpl(this._value);
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfThreadMarkData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfThreadMarkData.copyWith.fieldName(...)`
+class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
+  const _$ThreadMarkDataCWProxyImpl(this._value);
 
-  final ContentMetaData _value;
-
-  @override
-  ContentMetaData id(String id) => this(id: id);
+  final ThreadMarkData _value;
 
   @override
-  ContentMetaData gotAt(String gotAt) => this(gotAt: gotAt);
+  ThreadMarkData id(String id) => this(id: id);
 
   @override
-  ContentMetaData favorite(bool favorite) => this(favorite: favorite);
+  ThreadMarkData type(Communities type) => this(type: type);
 
   @override
-  ContentMetaData resCount(int resCount) => this(resCount: resCount);
+  ThreadMarkData gotAt(String gotAt) => this(gotAt: gotAt);
 
   @override
-  ContentMetaData thumbnail(SrcData? thumbnail) => this(thumbnail: thumbnail);
+  ThreadMarkData resCount(int resCount) => this(resCount: resCount);
 
   @override
-  ContentMetaData archived(bool archived) => this(archived: archived);
+  ThreadMarkData thumbnail(SrcData? thumbnail) => this(thumbnail: thumbnail);
 
   @override
-  ContentMetaData boardId(String boardId) => this(boardId: boardId);
+  ThreadMarkData url(String url) => this(url: url);
 
   @override
-  ContentMetaData title(String title) => this(title: title);
+  ThreadMarkData boardId(String boardId) => this(boardId: boardId);
 
   @override
-  ContentMetaData boardName(String? boardName) => this(boardName: boardName);
+  ThreadMarkData title(String title) => this(title: title);
 
   @override
-  ContentMetaData positionToGet(PositionToGet positionToGet) =>
+  ThreadMarkData boardName(String? boardName) => this(boardName: boardName);
+
+  @override
+  ThreadMarkData positionToGet(PositionToGet positionToGet) =>
       this(positionToGet: positionToGet);
 
   @override
-  ContentMetaData difference(int? difference) => this(difference: difference);
+  ThreadMarkData startIndex(int? startIndex) => this(startIndex: startIndex);
 
   @override
-  ContentMetaData fiveCh(List<FiveChThreadContentData?>? fiveCh) =>
-      this(fiveCh: fiveCh);
+  ThreadMarkData endIndex(int? endIndex) => this(endIndex: endIndex);
 
   @override
-  ContentMetaData girlsCh(List<GirlsChContent?>? girlsCh) =>
-      this(girlsCh: girlsCh);
+  ThreadMarkData retentionPeriod(String retentionPeriod) =>
+      this(retentionPeriod: retentionPeriod);
 
   @override
-  ContentMetaData futabaCh(List<FutabaChContent?>? futabaCh) =>
-      this(futabaCh: futabaCh);
+  ThreadMarkData marks(Set<ResMarkData?> marks) => this(marks: marks);
+
+  @override
+  ThreadMarkData mutePosterIds(Set<String?> mutePosterIds) =>
+      this(mutePosterIds: mutePosterIds);
+
+  @override
+  ThreadMarkData muteUserIds(Set<String?> muteUserIds) =>
+      this(muteUserIds: muteUserIds);
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ContentMetaData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// ContentMetaData(...).copyWith(id: 12, name: "My name")
+  /// ThreadMarkData(...).copyWith(id: 12, name: "My name")
   /// ````
-  ContentMetaData call({
+  ThreadMarkData call({
     Object? id = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
     Object? gotAt = const $CopyWithPlaceholder(),
-    Object? favorite = const $CopyWithPlaceholder(),
     Object? resCount = const $CopyWithPlaceholder(),
     Object? thumbnail = const $CopyWithPlaceholder(),
-    Object? archived = const $CopyWithPlaceholder(),
+    Object? url = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? boardName = const $CopyWithPlaceholder(),
     Object? positionToGet = const $CopyWithPlaceholder(),
-    Object? difference = const $CopyWithPlaceholder(),
-    Object? fiveCh = const $CopyWithPlaceholder(),
-    Object? girlsCh = const $CopyWithPlaceholder(),
-    Object? futabaCh = const $CopyWithPlaceholder(),
+    Object? startIndex = const $CopyWithPlaceholder(),
+    Object? endIndex = const $CopyWithPlaceholder(),
+    Object? retentionPeriod = const $CopyWithPlaceholder(),
+    Object? marks = const $CopyWithPlaceholder(),
+    Object? mutePosterIds = const $CopyWithPlaceholder(),
+    Object? muteUserIds = const $CopyWithPlaceholder(),
   }) {
-    return ContentMetaData(
+    return ThreadMarkData(
       id: id == const $CopyWithPlaceholder() || id == null
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as String,
+      type: type == const $CopyWithPlaceholder() || type == null
+          ? _value.type
+          // ignore: cast_nullable_to_non_nullable
+          : type as Communities,
       gotAt: gotAt == const $CopyWithPlaceholder() || gotAt == null
           ? _value.gotAt
           // ignore: cast_nullable_to_non_nullable
           : gotAt as String,
-      favorite: favorite == const $CopyWithPlaceholder() || favorite == null
-          ? _value.favorite
-          // ignore: cast_nullable_to_non_nullable
-          : favorite as bool,
       resCount: resCount == const $CopyWithPlaceholder() || resCount == null
           ? _value.resCount
           // ignore: cast_nullable_to_non_nullable
@@ -156,10 +170,10 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
           ? _value.thumbnail
           // ignore: cast_nullable_to_non_nullable
           : thumbnail as SrcData?,
-      archived: archived == const $CopyWithPlaceholder() || archived == null
-          ? _value.archived
+      url: url == const $CopyWithPlaceholder() || url == null
+          ? _value.url
           // ignore: cast_nullable_to_non_nullable
-          : archived as bool,
+          : url as String,
       boardId: boardId == const $CopyWithPlaceholder() || boardId == null
           ? _value.boardId
           // ignore: cast_nullable_to_non_nullable
@@ -177,30 +191,101 @@ class _$ContentMetaDataCWProxyImpl implements _$ContentMetaDataCWProxy {
               ? _value.positionToGet
               // ignore: cast_nullable_to_non_nullable
               : positionToGet as PositionToGet,
-      difference: difference == const $CopyWithPlaceholder()
-          ? _value.difference
+      startIndex: startIndex == const $CopyWithPlaceholder()
+          ? _value.startIndex
           // ignore: cast_nullable_to_non_nullable
-          : difference as int?,
-      fiveCh: fiveCh == const $CopyWithPlaceholder()
-          ? _value.fiveCh
+          : startIndex as int?,
+      endIndex: endIndex == const $CopyWithPlaceholder()
+          ? _value.endIndex
           // ignore: cast_nullable_to_non_nullable
-          : fiveCh as List<FiveChThreadContentData?>?,
-      girlsCh: girlsCh == const $CopyWithPlaceholder()
-          ? _value.girlsCh
+          : endIndex as int?,
+      retentionPeriod: retentionPeriod == const $CopyWithPlaceholder() ||
+              retentionPeriod == null
+          ? _value.retentionPeriod
           // ignore: cast_nullable_to_non_nullable
-          : girlsCh as List<GirlsChContent?>?,
-      futabaCh: futabaCh == const $CopyWithPlaceholder()
-          ? _value.futabaCh
+          : retentionPeriod as String,
+      marks: marks == const $CopyWithPlaceholder() || marks == null
+          ? _value.marks
           // ignore: cast_nullable_to_non_nullable
-          : futabaCh as List<FutabaChContent?>?,
+          : marks as Set<ResMarkData?>,
+      mutePosterIds:
+          mutePosterIds == const $CopyWithPlaceholder() || mutePosterIds == null
+              ? _value.mutePosterIds
+              // ignore: cast_nullable_to_non_nullable
+              : mutePosterIds as Set<String?>,
+      muteUserIds:
+          muteUserIds == const $CopyWithPlaceholder() || muteUserIds == null
+              ? _value.muteUserIds
+              // ignore: cast_nullable_to_non_nullable
+              : muteUserIds as Set<String?>,
     );
   }
 }
 
-extension $ContentMetaDataCopyWith on ContentMetaData {
-  /// Returns a callable class that can be used as follows: `instanceOfContentMetaData.copyWith(...)` or like so:`instanceOfContentMetaData.copyWith.fieldName(...)`.
+extension $ThreadMarkDataCopyWith on ThreadMarkData {
+  /// Returns a callable class that can be used as follows: `instanceOfThreadMarkData.copyWith(...)` or like so:`instanceOfThreadMarkData.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$ContentMetaDataCWProxy get copyWith => _$ContentMetaDataCWProxyImpl(this);
+  _$ThreadMarkDataCWProxy get copyWith => _$ThreadMarkDataCWProxyImpl(this);
+}
+
+abstract class _$ResMarkDataCWProxy {
+  ResMarkData index(int index);
+
+  ResMarkData icon(MarkIcon icon);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ResMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// ResMarkData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  ResMarkData call({
+    int? index,
+    MarkIcon? icon,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfResMarkData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfResMarkData.copyWith.fieldName(...)`
+class _$ResMarkDataCWProxyImpl implements _$ResMarkDataCWProxy {
+  const _$ResMarkDataCWProxyImpl(this._value);
+
+  final ResMarkData _value;
+
+  @override
+  ResMarkData index(int index) => this(index: index);
+
+  @override
+  ResMarkData icon(MarkIcon icon) => this(icon: icon);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ResMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// ResMarkData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  ResMarkData call({
+    Object? index = const $CopyWithPlaceholder(),
+    Object? icon = const $CopyWithPlaceholder(),
+  }) {
+    return ResMarkData(
+      index: index == const $CopyWithPlaceholder() || index == null
+          ? _value.index
+          // ignore: cast_nullable_to_non_nullable
+          : index as int,
+      icon: icon == const $CopyWithPlaceholder() || icon == null
+          ? _value.icon
+          // ignore: cast_nullable_to_non_nullable
+          : icon as MarkIcon,
+    );
+  }
+}
+
+extension $ResMarkDataCopyWith on ResMarkData {
+  /// Returns a callable class that can be used as follows: `instanceOfResMarkData.copyWith(...)` or like so:`instanceOfResMarkData.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$ResMarkDataCWProxy get copyWith => _$ResMarkDataCWProxyImpl(this);
 }
 
 abstract class _$LastOpenedIndexCWProxy {
@@ -337,127 +422,91 @@ extension $LastOpenedContentIndexCopyWith on LastOpenedContentIndex {
       _$LastOpenedContentIndexCWProxyImpl(this);
 }
 
-abstract class _$BoardDataForStorageCWProxy {
-  BoardDataForStorage board(BoardData board);
-
-  BoardDataForStorage threads(List<ThreadData?> threads);
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BoardDataForStorage(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// BoardDataForStorage(...).copyWith(id: 12, name: "My name")
-  /// ````
-  BoardDataForStorage call({
-    BoardData? board,
-    List<ThreadData?>? threads,
-  });
-}
-
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfBoardDataForStorage.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfBoardDataForStorage.copyWith.fieldName(...)`
-class _$BoardDataForStorageCWProxyImpl implements _$BoardDataForStorageCWProxy {
-  const _$BoardDataForStorageCWProxyImpl(this._value);
-
-  final BoardDataForStorage _value;
-
-  @override
-  BoardDataForStorage board(BoardData board) => this(board: board);
-
-  @override
-  BoardDataForStorage threads(List<ThreadData?> threads) =>
-      this(threads: threads);
-
-  @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BoardDataForStorage(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// BoardDataForStorage(...).copyWith(id: 12, name: "My name")
-  /// ````
-  BoardDataForStorage call({
-    Object? board = const $CopyWithPlaceholder(),
-    Object? threads = const $CopyWithPlaceholder(),
-  }) {
-    return BoardDataForStorage(
-      board: board == const $CopyWithPlaceholder() || board == null
-          ? _value.board
-          // ignore: cast_nullable_to_non_nullable
-          : board as BoardData,
-      threads: threads == const $CopyWithPlaceholder() || threads == null
-          ? _value.threads
-          // ignore: cast_nullable_to_non_nullable
-          : threads as List<ThreadData?>,
-    );
-  }
-}
-
-extension $BoardDataForStorageCopyWith on BoardDataForStorage {
-  /// Returns a callable class that can be used as follows: `instanceOfBoardDataForStorage.copyWith(...)` or like so:`instanceOfBoardDataForStorage.copyWith.fieldName(...)`.
-  // ignore: library_private_types_in_public_api
-  _$BoardDataForStorageCWProxy get copyWith =>
-      _$BoardDataForStorageCWProxyImpl(this);
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ContentMetaData _$ContentMetaDataFromJson(Map<String, dynamic> json) =>
-    ContentMetaData(
+ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
+    ThreadMarkData(
       id: json['id'] as String,
+      type: $enumDecode(_$CommunitiesEnumMap, json['type']),
       gotAt: json['gotAt'] as String,
-      favorite: json['favorite'] as bool? ?? false,
       resCount: json['resCount'] as int,
       thumbnail: json['thumbnail'] == null
           ? null
           : SrcData.fromJson(json['thumbnail'] as Map<String, dynamic>),
-      archived: json['archived'] as bool? ?? false,
+      url: json['url'] as String,
       boardId: json['boardId'] as String,
       title: json['title'] as String,
       boardName: json['boardName'] as String?,
       positionToGet:
           $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
               PositionToGet.first,
-      difference: json['difference'] as int?,
-      fiveCh: (json['fiveCh'] as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : FiveChThreadContentData.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      girlsCh: (json['girlsCh'] as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : GirlsChContent.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      futabaCh: (json['futabaCh'] as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : FutabaChContent.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      startIndex: json['startIndex'] as int?,
+      endIndex: json['endIndex'] as int?,
+      retentionPeriod: json['retentionPeriod'] as String,
+      marks: (json['marks'] as List<dynamic>?)
+              ?.map((e) => e == null
+                  ? null
+                  : ResMarkData.fromJson(e as Map<String, dynamic>))
+              .toSet() ??
+          const {},
+      mutePosterIds: (json['mutePosterIds'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toSet() ??
+          const {},
+      muteUserIds: (json['muteUserIds'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toSet() ??
+          const {},
     );
 
-Map<String, dynamic> _$ContentMetaDataToJson(ContentMetaData instance) =>
+Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'type': _$CommunitiesEnumMap[instance.type]!,
       'title': instance.title,
       'resCount': instance.resCount,
       'boardId': instance.boardId,
       'thumbnail': instance.thumbnail,
-      'difference': instance.difference,
       'boardName': instance.boardName,
-      'gotAt': instance.gotAt,
-      'favorite': instance.favorite,
-      'archived': instance.archived,
+      'url': instance.url,
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
-      'fiveCh': instance.fiveCh,
-      'girlsCh': instance.girlsCh,
-      'futabaCh': instance.futabaCh,
+      'gotAt': instance.gotAt,
+      'startIndex': instance.startIndex,
+      'endIndex': instance.endIndex,
+      'retentionPeriod': instance.retentionPeriod,
+      'marks': instance.marks.toList(),
+      'mutePosterIds': instance.mutePosterIds.toList(),
+      'muteUserIds': instance.muteUserIds.toList(),
     };
+
+const _$CommunitiesEnumMap = {
+  Communities.fiveCh: 'fiveCh',
+  Communities.girlsCh: 'girlsCh',
+  Communities.futabaCh: 'futabaCh',
+};
 
 const _$PositionToGetEnumMap = {
   PositionToGet.first: 'first',
   PositionToGet.last: 'last',
+};
+
+ResMarkData _$ResMarkDataFromJson(Map<String, dynamic> json) => ResMarkData(
+      index: json['index'] as int,
+      icon: $enumDecode(_$MarkIconEnumMap, json['icon']),
+    );
+
+Map<String, dynamic> _$ResMarkDataToJson(ResMarkData instance) =>
+    <String, dynamic>{
+      'index': instance.index,
+      'icon': _$MarkIconEnumMap[instance.icon]!,
+    };
+
+const _$MarkIconEnumMap = {
+  MarkIcon.self: 'self',
+  MarkIcon.edit: 'edit',
+  MarkIcon.hot: 'hot',
 };
 
 LastOpenedIndex _$LastOpenedIndexFromJson(Map<String, dynamic> json) =>
@@ -490,49 +539,4 @@ Map<String, dynamic> _$LastOpenedContentIndexToJson(
     <String, dynamic>{
       'id': instance.id,
       'index': instance.index,
-    };
-
-BoardDataForStorage _$BoardDataForStorageFromJson(Map<String, dynamic> json) =>
-    BoardDataForStorage(
-      board: BoardData.fromJson(json['board'] as Map<String, dynamic>),
-      threads: (json['threads'] as List<dynamic>)
-          .map((e) =>
-              e == null ? null : ThreadData.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$BoardDataForStorageToJson(
-        BoardDataForStorage instance) =>
-    <String, dynamic>{
-      'board': instance.board.toJson(),
-      'threads': instance.threads.map((e) => e?.toJson()).toList(),
-    };
-
-ThreadData _$ThreadDataFromJson(Map<String, dynamic> json) => ThreadData(
-      id: json['id'] as String,
-      title: json['title'] as String,
-      resCount: json['resCount'] as int,
-      thumbnail: json['thumbnail'] == null
-          ? null
-          : SrcData.fromJson(json['thumbnail'] as Map<String, dynamic>),
-      updateAtStr: json['updateAtStr'] as String?,
-      difference: json['difference'] as int?,
-      boardId: json['boardId'] as String,
-      boardName: json['boardName'] as String?,
-      catalog: json['catalog'] as bool? ?? false,
-      isNewPost: json['isNewPost'] as bool? ?? false,
-    );
-
-Map<String, dynamic> _$ThreadDataToJson(ThreadData instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'resCount': instance.resCount,
-      'boardId': instance.boardId,
-      'thumbnail': instance.thumbnail?.toJson(),
-      'difference': instance.difference,
-      'boardName': instance.boardName,
-      'updateAtStr': instance.updateAtStr,
-      'isNewPost': instance.isNewPost,
-      'catalog': instance.catalog,
     };

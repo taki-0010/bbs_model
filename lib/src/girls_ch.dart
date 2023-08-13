@@ -24,15 +24,19 @@ class GirlsChThread extends ThreadData with WithDateTime {
       {required super.id,
       required super.title,
       required super.resCount,
+      // required super.lastIndex,
       required super.boardId,
-      super.difference,
+      required super.type,
+      required super.url,
+      // super.difference,
       super.isNewPost,
       super.thumbnail,
       required super.updateAtStr});
   // final String? img;
   // final String categoryId;
 
-  String get url => '/topics/$id/';
+  // String get url => '/topics/$id/';
+
   @override
   String? get thumbnailUrl => thumbnail?.thumbnailUri;
 

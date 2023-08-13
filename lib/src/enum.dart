@@ -35,3 +35,9 @@ enum PositionToGet {
   const PositionToGet({required this.label});
   final String label;
 }
+
+enum MarkIcon {
+  self,
+  edit,
+  hot;
+}
