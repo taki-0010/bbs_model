@@ -32,7 +32,31 @@ final class StringMethodData {
   static String stlipHtml(final String value) => value.stripHtml ?? '';
 
   static String firstAndEllipsis(final String value) {
-    final i = value.first(n: 14);
-    return i != null ? '$i...' : value;
+    int count = 0;
+    int strLength = 0;
+    String? result;
+    final textcode = Characters(value);
+    final splittedText = textcode.string.split('');
+    for (final t in splittedText) {
+      final bytes = strByteNum(t);
+      strLength += 1;
+      count += bytes;
+      if (count >= 26) {
+        result = value.first(n: strLength);
+        break;
+      }
+    }
+    // final i = value.first(n: 14);
+    return result != null ? '$result...' : value;
+    // final i = value.first(n: 14);
+    // return i != null ? '$i...' : value;
+  }
+
+  static int strByteNum(final String value) {
+    // logger.d('byte: ${value.readAsBytesSync()}');
+    // final textcode = Characters(value);
+    // textcode.firstOrNull?.asy
+    final bool isTwo = RegExp(r'[^\x01-\x7E]').hasMatch(value);
+    return isTwo ? 2 : 1;
   }
 }
