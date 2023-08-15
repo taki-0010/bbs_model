@@ -7,19 +7,22 @@ part of 'forum.dart';
 // **************************************************************************
 
 abstract class _$ForumSettingsDataCWProxy {
+  ForumSettingsData userId(String userId);
+
   ForumSettingsData forum(Communities forum);
 
   ForumSettingsData theme(ThemeList theme);
 
-  ForumSettingsData cacheExpire(CacheExpire cacheExpire);
+  ForumSettingsData retentionPeriod(CacheExpire retentionPeriod);
 
   ForumSettingsData threadsOrder(ThreadsOrder threadsOrder);
 
   ForumSettingsData positionToGet(PositionToGet positionToGet);
 
-  ForumSettingsData visibleResCountThreshold(int visibleResCountThreshold);
+  ForumSettingsData commentCountDisplayThreshold(
+      int commentCountDisplayThreshold);
 
-  ForumSettingsData openLinkByWebview(bool openLinkByWebview);
+  ForumSettingsData openLink(bool openLink);
 
   ForumSettingsData useFavoritesBoards(bool useFavoritesBoards);
 
@@ -27,11 +30,9 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData searchWordList(List<String?> searchWordList);
 
-  ForumSettingsData sortHistoryByExpire(bool sortHistoryByExpire);
+  ForumSettingsData sortHistoryByRetention(bool sortHistoryByRetention);
 
   ForumSettingsData viewByBoardInHistory(bool viewByBoardInHistory);
-
-  ForumSettingsData viewByBoardInFavorites(bool viewByBoardInFavorites);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -40,19 +41,19 @@ abstract class _$ForumSettingsDataCWProxy {
   /// ForumSettingsData(...).copyWith(id: 12, name: "My name")
   /// ````
   ForumSettingsData call({
+    String? userId,
     Communities? forum,
     ThemeList? theme,
-    CacheExpire? cacheExpire,
+    CacheExpire? retentionPeriod,
     ThreadsOrder? threadsOrder,
     PositionToGet? positionToGet,
-    int? visibleResCountThreshold,
-    bool? openLinkByWebview,
+    int? commentCountDisplayThreshold,
+    bool? openLink,
     bool? useFavoritesBoards,
     List<String?>? favoritesBoardList,
     List<String?>? searchWordList,
-    bool? sortHistoryByExpire,
+    bool? sortHistoryByRetention,
     bool? viewByBoardInHistory,
-    bool? viewByBoardInFavorites,
   });
 }
 
@@ -63,14 +64,17 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
   final ForumSettingsData _value;
 
   @override
+  ForumSettingsData userId(String userId) => this(userId: userId);
+
+  @override
   ForumSettingsData forum(Communities forum) => this(forum: forum);
 
   @override
   ForumSettingsData theme(ThemeList theme) => this(theme: theme);
 
   @override
-  ForumSettingsData cacheExpire(CacheExpire cacheExpire) =>
-      this(cacheExpire: cacheExpire);
+  ForumSettingsData retentionPeriod(CacheExpire retentionPeriod) =>
+      this(retentionPeriod: retentionPeriod);
 
   @override
   ForumSettingsData threadsOrder(ThreadsOrder threadsOrder) =>
@@ -81,12 +85,12 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(positionToGet: positionToGet);
 
   @override
-  ForumSettingsData visibleResCountThreshold(int visibleResCountThreshold) =>
-      this(visibleResCountThreshold: visibleResCountThreshold);
+  ForumSettingsData commentCountDisplayThreshold(
+          int commentCountDisplayThreshold) =>
+      this(commentCountDisplayThreshold: commentCountDisplayThreshold);
 
   @override
-  ForumSettingsData openLinkByWebview(bool openLinkByWebview) =>
-      this(openLinkByWebview: openLinkByWebview);
+  ForumSettingsData openLink(bool openLink) => this(openLink: openLink);
 
   @override
   ForumSettingsData useFavoritesBoards(bool useFavoritesBoards) =>
@@ -101,16 +105,12 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(searchWordList: searchWordList);
 
   @override
-  ForumSettingsData sortHistoryByExpire(bool sortHistoryByExpire) =>
-      this(sortHistoryByExpire: sortHistoryByExpire);
+  ForumSettingsData sortHistoryByRetention(bool sortHistoryByRetention) =>
+      this(sortHistoryByRetention: sortHistoryByRetention);
 
   @override
   ForumSettingsData viewByBoardInHistory(bool viewByBoardInHistory) =>
       this(viewByBoardInHistory: viewByBoardInHistory);
-
-  @override
-  ForumSettingsData viewByBoardInFavorites(bool viewByBoardInFavorites) =>
-      this(viewByBoardInFavorites: viewByBoardInFavorites);
 
   @override
 
@@ -121,21 +121,25 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
   /// ForumSettingsData(...).copyWith(id: 12, name: "My name")
   /// ````
   ForumSettingsData call({
+    Object? userId = const $CopyWithPlaceholder(),
     Object? forum = const $CopyWithPlaceholder(),
     Object? theme = const $CopyWithPlaceholder(),
-    Object? cacheExpire = const $CopyWithPlaceholder(),
+    Object? retentionPeriod = const $CopyWithPlaceholder(),
     Object? threadsOrder = const $CopyWithPlaceholder(),
     Object? positionToGet = const $CopyWithPlaceholder(),
-    Object? visibleResCountThreshold = const $CopyWithPlaceholder(),
-    Object? openLinkByWebview = const $CopyWithPlaceholder(),
+    Object? commentCountDisplayThreshold = const $CopyWithPlaceholder(),
+    Object? openLink = const $CopyWithPlaceholder(),
     Object? useFavoritesBoards = const $CopyWithPlaceholder(),
     Object? favoritesBoardList = const $CopyWithPlaceholder(),
     Object? searchWordList = const $CopyWithPlaceholder(),
-    Object? sortHistoryByExpire = const $CopyWithPlaceholder(),
+    Object? sortHistoryByRetention = const $CopyWithPlaceholder(),
     Object? viewByBoardInHistory = const $CopyWithPlaceholder(),
-    Object? viewByBoardInFavorites = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
+      userId: userId == const $CopyWithPlaceholder() || userId == null
+          ? _value.userId
+          // ignore: cast_nullable_to_non_nullable
+          : userId as String,
       forum: forum == const $CopyWithPlaceholder() || forum == null
           ? _value.forum
           // ignore: cast_nullable_to_non_nullable
@@ -144,11 +148,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.theme
           // ignore: cast_nullable_to_non_nullable
           : theme as ThemeList,
-      cacheExpire:
-          cacheExpire == const $CopyWithPlaceholder() || cacheExpire == null
-              ? _value.cacheExpire
-              // ignore: cast_nullable_to_non_nullable
-              : cacheExpire as CacheExpire,
+      retentionPeriod: retentionPeriod == const $CopyWithPlaceholder() ||
+              retentionPeriod == null
+          ? _value.retentionPeriod
+          // ignore: cast_nullable_to_non_nullable
+          : retentionPeriod as CacheExpire,
       threadsOrder:
           threadsOrder == const $CopyWithPlaceholder() || threadsOrder == null
               ? _value.threadsOrder
@@ -159,17 +163,16 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
               ? _value.positionToGet
               // ignore: cast_nullable_to_non_nullable
               : positionToGet as PositionToGet,
-      visibleResCountThreshold:
-          visibleResCountThreshold == const $CopyWithPlaceholder() ||
-                  visibleResCountThreshold == null
-              ? _value.visibleResCountThreshold
+      commentCountDisplayThreshold:
+          commentCountDisplayThreshold == const $CopyWithPlaceholder() ||
+                  commentCountDisplayThreshold == null
+              ? _value.commentCountDisplayThreshold
               // ignore: cast_nullable_to_non_nullable
-              : visibleResCountThreshold as int,
-      openLinkByWebview: openLinkByWebview == const $CopyWithPlaceholder() ||
-              openLinkByWebview == null
-          ? _value.openLinkByWebview
+              : commentCountDisplayThreshold as int,
+      openLink: openLink == const $CopyWithPlaceholder() || openLink == null
+          ? _value.openLink
           // ignore: cast_nullable_to_non_nullable
-          : openLinkByWebview as bool,
+          : openLink as bool,
       useFavoritesBoards: useFavoritesBoards == const $CopyWithPlaceholder() ||
               useFavoritesBoards == null
           ? _value.useFavoritesBoards
@@ -185,24 +188,18 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.searchWordList
           // ignore: cast_nullable_to_non_nullable
           : searchWordList as List<String?>,
-      sortHistoryByExpire:
-          sortHistoryByExpire == const $CopyWithPlaceholder() ||
-                  sortHistoryByExpire == null
-              ? _value.sortHistoryByExpire
+      sortHistoryByRetention:
+          sortHistoryByRetention == const $CopyWithPlaceholder() ||
+                  sortHistoryByRetention == null
+              ? _value.sortHistoryByRetention
               // ignore: cast_nullable_to_non_nullable
-              : sortHistoryByExpire as bool,
+              : sortHistoryByRetention as bool,
       viewByBoardInHistory:
           viewByBoardInHistory == const $CopyWithPlaceholder() ||
                   viewByBoardInHistory == null
               ? _value.viewByBoardInHistory
               // ignore: cast_nullable_to_non_nullable
               : viewByBoardInHistory as bool,
-      viewByBoardInFavorites:
-          viewByBoardInFavorites == const $CopyWithPlaceholder() ||
-                  viewByBoardInFavorites == null
-              ? _value.viewByBoardInFavorites
-              // ignore: cast_nullable_to_non_nullable
-              : viewByBoardInFavorites as bool,
     );
   }
 }
@@ -342,17 +339,20 @@ extension $SrcDataForStorageCopyWith on SrcDataForStorage {
 
 ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
     ForumSettingsData(
+      userId: json['userId'] as String,
       forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
       theme: $enumDecode(_$ThemeListEnumMap, json['theme']),
-      cacheExpire: $enumDecode(_$CacheExpireEnumMap, json['cacheExpire']),
+      retentionPeriod:
+          $enumDecode(_$CacheExpireEnumMap, json['retentionPeriod']),
       threadsOrder:
           $enumDecodeNullable(_$ThreadsOrderEnumMap, json['threadsOrder']) ??
               ThreadsOrder.ikioi,
       positionToGet:
           $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
               PositionToGet.first,
-      visibleResCountThreshold: json['visibleResCountThreshold'] as int? ?? 5,
-      openLinkByWebview: json['openLinkByWebview'] as bool? ?? true,
+      commentCountDisplayThreshold:
+          json['commentCountDisplayThreshold'] as int? ?? 5,
+      openLink: json['openLink'] as bool? ?? true,
       useFavoritesBoards: json['useFavoritesBoards'] as bool? ?? false,
       favoritesBoardList: (json['favoritesBoardList'] as List<dynamic>?)
               ?.map((e) => e as String?)
@@ -362,26 +362,25 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String?)
               .toList() ??
           const [],
-      sortHistoryByExpire: json['sortHistoryByExpire'] as bool? ?? false,
+      sortHistoryByRetention: json['sortHistoryByRetention'] as bool? ?? false,
       viewByBoardInHistory: json['viewByBoardInHistory'] as bool? ?? false,
-      viewByBoardInFavorites: json['viewByBoardInFavorites'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
     <String, dynamic>{
+      'userId': instance.userId,
       'forum': _$CommunitiesEnumMap[instance.forum]!,
       'theme': _$ThemeListEnumMap[instance.theme]!,
-      'cacheExpire': _$CacheExpireEnumMap[instance.cacheExpire]!,
+      'retentionPeriod': _$CacheExpireEnumMap[instance.retentionPeriod]!,
       'threadsOrder': _$ThreadsOrderEnumMap[instance.threadsOrder]!,
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
-      'visibleResCountThreshold': instance.visibleResCountThreshold,
-      'openLinkByWebview': instance.openLinkByWebview,
+      'commentCountDisplayThreshold': instance.commentCountDisplayThreshold,
+      'openLink': instance.openLink,
       'useFavoritesBoards': instance.useFavoritesBoards,
       'favoritesBoardList': instance.favoritesBoardList,
       'searchWordList': instance.searchWordList,
-      'sortHistoryByExpire': instance.sortHistoryByExpire,
+      'sortHistoryByRetention': instance.sortHistoryByRetention,
       'viewByBoardInHistory': instance.viewByBoardInHistory,
-      'viewByBoardInFavorites': instance.viewByBoardInFavorites,
     };
 
 const _$CommunitiesEnumMap = {

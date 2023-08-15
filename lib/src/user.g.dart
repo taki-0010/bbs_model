@@ -6,66 +6,100 @@ part of 'user.dart';
 // CopyWithGenerator
 // **************************************************************************
 
-abstract class _$UserSettingsDataCWProxy {
-  UserSettingsData forums(List<ForumSettingsData?> forums);
+abstract class _$UserDataCWProxy {
+  UserData id(String id);
 
-  UserSettingsData lastOpenedForum(Communities? lastOpenedForum);
+  UserData forums(List<Communities> forums);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `UserSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  UserData randomAvatar(String randomAvatar);
+
+  UserData lastOpenedForum(Communities? lastOpenedForum);
+
+  UserData language(LangList language);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `UserData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// UserSettingsData(...).copyWith(id: 12, name: "My name")
+  /// UserData(...).copyWith(id: 12, name: "My name")
   /// ````
-  UserSettingsData call({
-    List<ForumSettingsData?>? forums,
+  UserData call({
+    String? id,
+    List<Communities>? forums,
+    String? randomAvatar,
     Communities? lastOpenedForum,
+    LangList? language,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfUserSettingsData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfUserSettingsData.copyWith.fieldName(...)`
-class _$UserSettingsDataCWProxyImpl implements _$UserSettingsDataCWProxy {
-  const _$UserSettingsDataCWProxyImpl(this._value);
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfUserData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfUserData.copyWith.fieldName(...)`
+class _$UserDataCWProxyImpl implements _$UserDataCWProxy {
+  const _$UserDataCWProxyImpl(this._value);
 
-  final UserSettingsData _value;
-
-  @override
-  UserSettingsData forums(List<ForumSettingsData?> forums) =>
-      this(forums: forums);
+  final UserData _value;
 
   @override
-  UserSettingsData lastOpenedForum(Communities? lastOpenedForum) =>
+  UserData id(String id) => this(id: id);
+
+  @override
+  UserData forums(List<Communities> forums) => this(forums: forums);
+
+  @override
+  UserData randomAvatar(String randomAvatar) =>
+      this(randomAvatar: randomAvatar);
+
+  @override
+  UserData lastOpenedForum(Communities? lastOpenedForum) =>
       this(lastOpenedForum: lastOpenedForum);
 
   @override
+  UserData language(LangList language) => this(language: language);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `UserSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `UserData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// UserSettingsData(...).copyWith(id: 12, name: "My name")
+  /// UserData(...).copyWith(id: 12, name: "My name")
   /// ````
-  UserSettingsData call({
+  UserData call({
+    Object? id = const $CopyWithPlaceholder(),
     Object? forums = const $CopyWithPlaceholder(),
+    Object? randomAvatar = const $CopyWithPlaceholder(),
     Object? lastOpenedForum = const $CopyWithPlaceholder(),
+    Object? language = const $CopyWithPlaceholder(),
   }) {
-    return UserSettingsData(
+    return UserData(
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as String,
       forums: forums == const $CopyWithPlaceholder() || forums == null
           ? _value.forums
           // ignore: cast_nullable_to_non_nullable
-          : forums as List<ForumSettingsData?>,
+          : forums as List<Communities>,
+      randomAvatar:
+          randomAvatar == const $CopyWithPlaceholder() || randomAvatar == null
+              ? _value.randomAvatar
+              // ignore: cast_nullable_to_non_nullable
+              : randomAvatar as String,
       lastOpenedForum: lastOpenedForum == const $CopyWithPlaceholder()
           ? _value.lastOpenedForum
           // ignore: cast_nullable_to_non_nullable
           : lastOpenedForum as Communities?,
+      language: language == const $CopyWithPlaceholder() || language == null
+          ? _value.language
+          // ignore: cast_nullable_to_non_nullable
+          : language as LangList,
     );
   }
 }
 
-extension $UserSettingsDataCopyWith on UserSettingsData {
-  /// Returns a callable class that can be used as follows: `instanceOfUserSettingsData.copyWith(...)` or like so:`instanceOfUserSettingsData.copyWith.fieldName(...)`.
+extension $UserDataCopyWith on UserData {
+  /// Returns a callable class that can be used as follows: `instanceOfUserData.copyWith(...)` or like so:`instanceOfUserData.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$UserSettingsDataCWProxy get copyWith => _$UserSettingsDataCWProxyImpl(this);
+  _$UserDataCWProxy get copyWith => _$UserDataCWProxyImpl(this);
 }
 
 abstract class _$CommentDataCWProxy {
@@ -188,27 +222,35 @@ extension $CommentDataCopyWith on CommentData {
 // JsonSerializableGenerator
 // **************************************************************************
 
-UserSettingsData _$UserSettingsDataFromJson(Map<String, dynamic> json) =>
-    UserSettingsData(
+UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
+      id: json['id'] as String,
       forums: (json['forums'] as List<dynamic>)
-          .map((e) => e == null
-              ? null
-              : ForumSettingsData.fromJson(e as Map<String, dynamic>))
+          .map((e) => $enumDecode(_$CommunitiesEnumMap, e))
           .toList(),
+      randomAvatar: json['randomAvatar'] as String,
       lastOpenedForum:
           $enumDecodeNullable(_$CommunitiesEnumMap, json['lastOpenedForum']),
+      language: $enumDecode(_$LangListEnumMap, json['language']),
     );
 
-Map<String, dynamic> _$UserSettingsDataToJson(UserSettingsData instance) =>
-    <String, dynamic>{
-      'forums': instance.forums,
+Map<String, dynamic> _$UserDataToJson(UserData instance) => <String, dynamic>{
+      'id': instance.id,
+      'forums': instance.forums.map((e) => _$CommunitiesEnumMap[e]!).toList(),
+      'randomAvatar': instance.randomAvatar,
       'lastOpenedForum': _$CommunitiesEnumMap[instance.lastOpenedForum],
+      'language': _$LangListEnumMap[instance.language]!,
     };
 
 const _$CommunitiesEnumMap = {
   Communities.fiveCh: 'fiveCh',
   Communities.girlsCh: 'girlsCh',
   Communities.futabaCh: 'futabaCh',
+};
+
+const _$LangListEnumMap = {
+  LangList.ja: 'ja',
+  LangList.en: 'en',
+  LangList.zhCN: 'zhCN',
 };
 
 CommentData _$CommentDataFromJson(Map<String, dynamic> json) => CommentData(

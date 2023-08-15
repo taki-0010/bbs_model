@@ -15,6 +15,8 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData resCount(int resCount);
 
+  ThreadMarkData favorite(bool favorite);
+
   ThreadMarkData thumbnail(SrcData? thumbnail);
 
   ThreadMarkData url(String url);
@@ -50,6 +52,7 @@ abstract class _$ThreadMarkDataCWProxy {
     Communities? type,
     String? gotAt,
     int? resCount,
+    bool? favorite,
     SrcData? thumbnail,
     String? url,
     String? boardId,
@@ -82,6 +85,9 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
 
   @override
   ThreadMarkData resCount(int resCount) => this(resCount: resCount);
+
+  @override
+  ThreadMarkData favorite(bool favorite) => this(favorite: favorite);
 
   @override
   ThreadMarkData thumbnail(SrcData? thumbnail) => this(thumbnail: thumbnail);
@@ -136,6 +142,7 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? type = const $CopyWithPlaceholder(),
     Object? gotAt = const $CopyWithPlaceholder(),
     Object? resCount = const $CopyWithPlaceholder(),
+    Object? favorite = const $CopyWithPlaceholder(),
     Object? thumbnail = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
@@ -166,6 +173,10 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.resCount
           // ignore: cast_nullable_to_non_nullable
           : resCount as int,
+      favorite: favorite == const $CopyWithPlaceholder() || favorite == null
+          ? _value.favorite
+          // ignore: cast_nullable_to_non_nullable
+          : favorite as bool,
       thumbnail: thumbnail == const $CopyWithPlaceholder()
           ? _value.thumbnail
           // ignore: cast_nullable_to_non_nullable
@@ -432,6 +443,7 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       type: $enumDecode(_$CommunitiesEnumMap, json['type']),
       gotAt: json['gotAt'] as String,
       resCount: json['resCount'] as int,
+      favorite: json['favorite'] as bool? ?? false,
       thumbnail: json['thumbnail'] == null
           ? null
           : SrcData.fromJson(json['thumbnail'] as Map<String, dynamic>),
@@ -475,6 +487,7 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'gotAt': instance.gotAt,
       'startIndex': instance.startIndex,
       'endIndex': instance.endIndex,
+      'favorite': instance.favorite,
       'retentionPeriod': instance.retentionPeriod,
       'marks': instance.marks.toList(),
       'mutePosterIds': instance.mutePosterIds.toList(),

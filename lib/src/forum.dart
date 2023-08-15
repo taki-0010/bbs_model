@@ -6,39 +6,41 @@ part 'forum.g.dart';
 @CopyWith()
 @immutable
 class ForumSettingsData {
-  const ForumSettingsData(
-      {required this.forum,
-      required this.theme,
-      required this.cacheExpire,
-      this.threadsOrder = ThreadsOrder.ikioi,
-      this.positionToGet = PositionToGet.first,
-      this.visibleResCountThreshold = 5,
-      this.openLinkByWebview = true,
-      this.useFavoritesBoards = false,
-      this.favoritesBoardList = const [],
-      this.searchWordList = const [],
-      this.sortHistoryByExpire = false,
-      this.viewByBoardInHistory = false,
-      this.viewByBoardInFavorites = false,
-      });
+  const ForumSettingsData({
+    required this.userId,
+    required this.forum,
+    required this.theme,
+    required this.retentionPeriod,
+    this.threadsOrder = ThreadsOrder.ikioi,
+    this.positionToGet = PositionToGet.first,
+    this.commentCountDisplayThreshold = 5,
+    this.openLink = true,
+    this.useFavoritesBoards = false,
+    this.favoritesBoardList = const [],
+    this.searchWordList = const [],
+    this.sortHistoryByRetention = false,
+    this.viewByBoardInHistory = false,
+    // this.viewByBoardInFavorites = false,
+  });
 
+  final String userId;
   final Communities forum;
   final ThemeList theme;
-  final CacheExpire cacheExpire;
+  final CacheExpire retentionPeriod;
   final ThreadsOrder threadsOrder;
   final PositionToGet positionToGet;
-  final int visibleResCountThreshold;
-  final bool openLinkByWebview;
+  final int commentCountDisplayThreshold;
+  final bool openLink;
   final bool useFavoritesBoards;
   final List<String?> favoritesBoardList;
   final List<String?> searchWordList;
-  final bool sortHistoryByExpire;
+  final bool sortHistoryByRetention;
   final bool viewByBoardInHistory;
-  final bool viewByBoardInFavorites;
+  // final bool viewByBoardInFavorites;
 
   factory ForumSettingsData.fromJson(Map<String, dynamic> json) =>
       _$ForumSettingsDataFromJson(json);
-  Map<String, dynamic> toJson() => _$ForumSettingsDataToJson(this);
+  Map<dynamic, dynamic> toJson() => _$ForumSettingsDataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)

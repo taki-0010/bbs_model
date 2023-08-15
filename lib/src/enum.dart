@@ -9,6 +9,12 @@ enum Communities {
 
 enum ThemeList { m3Purple, rosewood, sanJuanBlue, espresso }
 
+enum LangList {
+  ja,
+  en,
+  zhCN;
+}
+
 enum CacheExpire {
   oneDay(days: 1),
   oneWeek(days: 7),
