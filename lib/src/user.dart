@@ -10,14 +10,14 @@ class UserData {
     required this.id,
     required this.forums,
     required this.randomAvatar,
-    this.lastOpenedForum,
+    required this.lastOpenedForum,
     required this.language,
   });
 
   final String id;
   final List<Communities> forums;
   final String randomAvatar;
-  final Communities? lastOpenedForum;
+  final Communities lastOpenedForum;
   final LangList language;
 
   factory UserData.fromJson(Map<String, dynamic> json) =>

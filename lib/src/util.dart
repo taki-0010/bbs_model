@@ -29,7 +29,7 @@ class StringMethodData {
 
   static String convert(final String value) => escape.convert(value);
 
-  static String stlipHtml(final String value) => value;
+  // static String stlipHtml(final String value) => value;
 
   static String firstAndEllipsis(final String value) {
     int count = 0;

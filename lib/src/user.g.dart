@@ -13,7 +13,7 @@ abstract class _$UserDataCWProxy {
 
   UserData randomAvatar(String randomAvatar);
 
-  UserData lastOpenedForum(Communities? lastOpenedForum);
+  UserData lastOpenedForum(Communities lastOpenedForum);
 
   UserData language(LangList language);
 
@@ -49,7 +49,7 @@ class _$UserDataCWProxyImpl implements _$UserDataCWProxy {
       this(randomAvatar: randomAvatar);
 
   @override
-  UserData lastOpenedForum(Communities? lastOpenedForum) =>
+  UserData lastOpenedForum(Communities lastOpenedForum) =>
       this(lastOpenedForum: lastOpenedForum);
 
   @override
@@ -84,10 +84,11 @@ class _$UserDataCWProxyImpl implements _$UserDataCWProxy {
               ? _value.randomAvatar
               // ignore: cast_nullable_to_non_nullable
               : randomAvatar as String,
-      lastOpenedForum: lastOpenedForum == const $CopyWithPlaceholder()
+      lastOpenedForum: lastOpenedForum == const $CopyWithPlaceholder() ||
+              lastOpenedForum == null
           ? _value.lastOpenedForum
           // ignore: cast_nullable_to_non_nullable
-          : lastOpenedForum as Communities?,
+          : lastOpenedForum as Communities,
       language: language == const $CopyWithPlaceholder() || language == null
           ? _value.language
           // ignore: cast_nullable_to_non_nullable
@@ -229,7 +230,7 @@ UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
           .toList(),
       randomAvatar: json['randomAvatar'] as String,
       lastOpenedForum:
-          $enumDecodeNullable(_$CommunitiesEnumMap, json['lastOpenedForum']),
+          $enumDecode(_$CommunitiesEnumMap, json['lastOpenedForum']),
       language: $enumDecode(_$LangListEnumMap, json['language']),
     );
 
@@ -237,7 +238,7 @@ Map<String, dynamic> _$UserDataToJson(UserData instance) => <String, dynamic>{
       'id': instance.id,
       'forums': instance.forums.map((e) => _$CommunitiesEnumMap[e]!).toList(),
       'randomAvatar': instance.randomAvatar,
-      'lastOpenedForum': _$CommunitiesEnumMap[instance.lastOpenedForum],
+      'lastOpenedForum': _$CommunitiesEnumMap[instance.lastOpenedForum]!,
       'language': _$LangListEnumMap[instance.language]!,
     };
 
