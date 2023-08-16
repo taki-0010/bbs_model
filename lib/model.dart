@@ -1,7 +1,7 @@
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
-library;
+// library;
 
 export 'src/model_base.dart';
 export 'src/five_ch.dart';

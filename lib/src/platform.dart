@@ -1,4 +1,4 @@
-final class PlatformData {
+class PlatformData {
   // PlatformData(
   //     {required this.isIOS,
   //     required this.isAndroid,

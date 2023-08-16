@@ -1,8 +1,8 @@
-import 'package:string_extensions/string_extensions.dart';
+// import 'package:string_extensions/string_extensions.dart';
 
 import 'importer.dart';
 
-final class StringMethodData {
+class StringMethodData {
   static final escape = HtmlUnescape();
   static String replaceSpecialNum(final String value) {
     final existNum = RegExp(r'&#[0-9]+;').firstMatch(value);
@@ -29,7 +29,7 @@ final class StringMethodData {
 
   static String convert(final String value) => escape.convert(value);
 
-  static String stlipHtml(final String value) => value.stripHtml ?? '';
+  static String stlipHtml(final String value) => value;
 
   static String firstAndEllipsis(final String value) {
     int count = 0;
@@ -42,7 +42,7 @@ final class StringMethodData {
       strLength += 1;
       count += bytes;
       if (count >= 26) {
-        result = value.first(n: strLength);
+        result = value.substring(0, strLength);
         break;
       }
     }

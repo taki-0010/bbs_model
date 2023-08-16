@@ -118,7 +118,7 @@ class ThreadMarkData extends ThreadBase {
 @JsonSerializable()
 @CopyWith()
 @immutable
-final class ResMarkData {
+ class ResMarkData {
   const ResMarkData({
     required this.index,
     required this.icon,
@@ -135,7 +135,7 @@ final class ResMarkData {
 @JsonSerializable()
 @CopyWith()
 @immutable
-final class LastOpenedIndex {
+class LastOpenedIndex {
   const LastOpenedIndex({this.boards, this.threads, this.contents});
   final int? boards;
   final int? threads;
@@ -149,7 +149,7 @@ final class LastOpenedIndex {
 @JsonSerializable()
 @CopyWith()
 @immutable
-final class LastOpenedContentIndex {
+ class LastOpenedContentIndex {
   const LastOpenedContentIndex({required this.id, required this.index});
   final String id;
   final int index;
@@ -194,7 +194,7 @@ abstract class ContentData {
   String? get getUserId => null;
 }
 
-mixin class WithDateTime {
+mixin  WithDateTime {
   String getTimeago(final DateTime value) {
     return ta.format(value);
   }
@@ -230,7 +230,7 @@ mixin class WithDateTime {
 }
 
 @immutable
-final class GroupData {
+ class GroupData {
   const GroupData({required this.date, required this.firstIndex});
   final String date;
   final int firstIndex;

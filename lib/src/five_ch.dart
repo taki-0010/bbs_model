@@ -39,7 +39,7 @@ class FiveChBoardCategoryJsonData {
 @JsonSerializable(fieldRename: FieldRename.snake, createToJson: false)
 @CopyWith()
 @immutable
-final class FiveChBoardJsonData {
+class FiveChBoardJsonData {
   const FiveChBoardJsonData(
       {required this.categoryOrder,
       required this.directoryName,
