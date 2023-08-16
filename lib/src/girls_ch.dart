@@ -46,8 +46,8 @@ class GirlsChThread extends ThreadData with WithDateTime {
       return 0.0;
     }
     final splited = updateAtStr!.split(' ');
-    final datetime = splited.firstOrNull;
-    final daytime = splited.lastOrNull;
+    final datetime = splited.isNotEmpty ? splited.first : null;
+    final daytime =  splited.isNotEmpty ? splited.last : null;
     if (datetime == null || daytime == null) {
       return 0.0;
     }

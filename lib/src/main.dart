@@ -201,7 +201,7 @@ mixin class WithDateTime {
 
   DateTime getDateTime(final String datetime, final String time) {
     final date = datetime.split('/');
-    final yearData = date.firstOrNull ?? '0';
+    final yearData = date.isNotEmpty ? date.first : '0';
     final yaerStr = yearData.length == 2 ? '20$yearData' : yearData;
     final year = int.tryParse(yaerStr) ?? 0;
     final month = int.tryParse(date[1]) ?? 0;
