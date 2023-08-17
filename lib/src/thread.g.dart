@@ -15,7 +15,7 @@ abstract class _$ThreadDataCWProxy {
 
   ThreadData type(Communities type);
 
-  ThreadData thumbnail(SrcData? thumbnail);
+  ThreadData thumbnailStr(String? thumbnailStr);
 
   ThreadData url(String url);
 
@@ -42,7 +42,7 @@ abstract class _$ThreadDataCWProxy {
     String? title,
     int? resCount,
     Communities? type,
-    SrcData? thumbnail,
+    String? thumbnailStr,
     String? url,
     String? updateAtStr,
     String? boardId,
@@ -72,7 +72,8 @@ class _$ThreadDataCWProxyImpl implements _$ThreadDataCWProxy {
   ThreadData type(Communities type) => this(type: type);
 
   @override
-  ThreadData thumbnail(SrcData? thumbnail) => this(thumbnail: thumbnail);
+  ThreadData thumbnailStr(String? thumbnailStr) =>
+      this(thumbnailStr: thumbnailStr);
 
   @override
   ThreadData url(String url) => this(url: url);
@@ -109,7 +110,7 @@ class _$ThreadDataCWProxyImpl implements _$ThreadDataCWProxy {
     Object? title = const $CopyWithPlaceholder(),
     Object? resCount = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
-    Object? thumbnail = const $CopyWithPlaceholder(),
+    Object? thumbnailStr = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
     Object? updateAtStr = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
@@ -135,10 +136,10 @@ class _$ThreadDataCWProxyImpl implements _$ThreadDataCWProxy {
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as Communities,
-      thumbnail: thumbnail == const $CopyWithPlaceholder()
-          ? _value.thumbnail
+      thumbnailStr: thumbnailStr == const $CopyWithPlaceholder()
+          ? _value.thumbnailStr
           // ignore: cast_nullable_to_non_nullable
-          : thumbnail as SrcData?,
+          : thumbnailStr as String?,
       url: url == const $CopyWithPlaceholder() || url == null
           ? _value.url
           // ignore: cast_nullable_to_non_nullable

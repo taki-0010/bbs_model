@@ -13,18 +13,20 @@ abstract class ThreadBase {
       required this.url,
       this.boardName,
       required this.positionToGet,
-      this.thumbnail});
+      // this.thumbnail,
+      this.thumbnailStr});
   final String id;
   final Communities type;
   final String title;
   final int resCount;
   // final int lastIndex;
   final String boardId;
-  final SrcData? thumbnail;
+  // final SrcData? thumbnail;
   // final int? difference;
   final String? boardName;
   final String url;
   final PositionToGet positionToGet;
+  final String? thumbnailStr;
 
   int get getResCount => resCount;
 
@@ -54,7 +56,8 @@ class ThreadData extends ThreadBase {
       required super.resCount,
       // required super.lastIndex,
       required super.type,
-      super.thumbnail,
+      // super.thumbnail,
+      super.thumbnailStr,
       required super.url,
       // this.positionToGet = PositionToGet.first,
       // this.img,

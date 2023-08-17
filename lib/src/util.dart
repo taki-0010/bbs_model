@@ -1,6 +1,44 @@
 // import 'package:string_extensions/string_extensions.dart';
 
+import 'dart:convert';
+
 import 'importer.dart';
+
+String jsonToString(final Map<String, dynamic> value) {
+  return value.toString();
+}
+
+Map<String, dynamic> stringToJson(final String value) {
+  // logger.e('stringToJson: $value');
+  return json.decode(value);
+}
+
+class FutabaParser {
+  static const catalog = '?mode=cat';
+  static const sort = '&sort=';
+  static String getBoardPath(
+      {required final String directory,
+      required final String boardId,
+      required final ThreadsOrder order}) {
+    final path = '$directory.2chan.net/$boardId';
+    // String get url => '$path/futaba.htm';
+    // String get catalogUrl => '$path/futaba.php$catalog';
+    // String get newListUrl => '$path/futaba.php$catalog${sort}1';
+    // String get oldListUrl => '$path/futaba.php$catalog${sort}2';
+    // String get hugListUrl => '$path/futaba.php$catalog${sort}3';
+    // String get ikioiListUrl => '$path/futaba.php$catalog${sort}6';
+    switch (order) {
+      case ThreadsOrder.catalog:
+        return '$path/futaba.php$catalog';
+      case ThreadsOrder.biggerResCount:
+        return '$path/futaba.php$catalog${sort}3';
+      case ThreadsOrder.newOrder:
+        return '$path/futaba.php$catalog${sort}1';
+      default:
+    }
+    return '';
+  }
+}
 
 class StringMethodData {
   static final escape = HtmlUnescape();

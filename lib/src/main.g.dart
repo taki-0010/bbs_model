@@ -17,7 +17,7 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData favorite(bool favorite);
 
-  ThreadMarkData thumbnail(SrcData? thumbnail);
+  ThreadMarkData thumbnailStr(String? thumbnailStr);
 
   ThreadMarkData url(String url);
 
@@ -29,17 +29,13 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData positionToGet(PositionToGet positionToGet);
 
-  ThreadMarkData startIndex(int? startIndex);
+  ThreadMarkData lastOpendIndex(int? lastOpendIndex);
 
-  ThreadMarkData endIndex(int? endIndex);
+  ThreadMarkData sessionId(String sessionId);
+
+  ThreadMarkData userId(String userId);
 
   ThreadMarkData retentionPeriod(String retentionPeriod);
-
-  ThreadMarkData marks(Set<ResMarkData?> marks);
-
-  ThreadMarkData mutePosterIds(Set<String?> mutePosterIds);
-
-  ThreadMarkData muteUserIds(Set<String?> muteUserIds);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -53,18 +49,16 @@ abstract class _$ThreadMarkDataCWProxy {
     String? gotAt,
     int? resCount,
     bool? favorite,
-    SrcData? thumbnail,
+    String? thumbnailStr,
     String? url,
     String? boardId,
     String? title,
     String? boardName,
     PositionToGet? positionToGet,
-    int? startIndex,
-    int? endIndex,
+    int? lastOpendIndex,
+    String? sessionId,
+    String? userId,
     String? retentionPeriod,
-    Set<ResMarkData?>? marks,
-    Set<String?>? mutePosterIds,
-    Set<String?>? muteUserIds,
   });
 }
 
@@ -90,7 +84,8 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
   ThreadMarkData favorite(bool favorite) => this(favorite: favorite);
 
   @override
-  ThreadMarkData thumbnail(SrcData? thumbnail) => this(thumbnail: thumbnail);
+  ThreadMarkData thumbnailStr(String? thumbnailStr) =>
+      this(thumbnailStr: thumbnailStr);
 
   @override
   ThreadMarkData url(String url) => this(url: url);
@@ -109,25 +104,18 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
       this(positionToGet: positionToGet);
 
   @override
-  ThreadMarkData startIndex(int? startIndex) => this(startIndex: startIndex);
+  ThreadMarkData lastOpendIndex(int? lastOpendIndex) =>
+      this(lastOpendIndex: lastOpendIndex);
 
   @override
-  ThreadMarkData endIndex(int? endIndex) => this(endIndex: endIndex);
+  ThreadMarkData sessionId(String sessionId) => this(sessionId: sessionId);
+
+  @override
+  ThreadMarkData userId(String userId) => this(userId: userId);
 
   @override
   ThreadMarkData retentionPeriod(String retentionPeriod) =>
       this(retentionPeriod: retentionPeriod);
-
-  @override
-  ThreadMarkData marks(Set<ResMarkData?> marks) => this(marks: marks);
-
-  @override
-  ThreadMarkData mutePosterIds(Set<String?> mutePosterIds) =>
-      this(mutePosterIds: mutePosterIds);
-
-  @override
-  ThreadMarkData muteUserIds(Set<String?> muteUserIds) =>
-      this(muteUserIds: muteUserIds);
 
   @override
 
@@ -143,18 +131,16 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? gotAt = const $CopyWithPlaceholder(),
     Object? resCount = const $CopyWithPlaceholder(),
     Object? favorite = const $CopyWithPlaceholder(),
-    Object? thumbnail = const $CopyWithPlaceholder(),
+    Object? thumbnailStr = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? boardName = const $CopyWithPlaceholder(),
     Object? positionToGet = const $CopyWithPlaceholder(),
-    Object? startIndex = const $CopyWithPlaceholder(),
-    Object? endIndex = const $CopyWithPlaceholder(),
+    Object? lastOpendIndex = const $CopyWithPlaceholder(),
+    Object? sessionId = const $CopyWithPlaceholder(),
+    Object? userId = const $CopyWithPlaceholder(),
     Object? retentionPeriod = const $CopyWithPlaceholder(),
-    Object? marks = const $CopyWithPlaceholder(),
-    Object? mutePosterIds = const $CopyWithPlaceholder(),
-    Object? muteUserIds = const $CopyWithPlaceholder(),
   }) {
     return ThreadMarkData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -177,10 +163,10 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.favorite
           // ignore: cast_nullable_to_non_nullable
           : favorite as bool,
-      thumbnail: thumbnail == const $CopyWithPlaceholder()
-          ? _value.thumbnail
+      thumbnailStr: thumbnailStr == const $CopyWithPlaceholder()
+          ? _value.thumbnailStr
           // ignore: cast_nullable_to_non_nullable
-          : thumbnail as SrcData?,
+          : thumbnailStr as String?,
       url: url == const $CopyWithPlaceholder() || url == null
           ? _value.url
           // ignore: cast_nullable_to_non_nullable
@@ -202,33 +188,23 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
               ? _value.positionToGet
               // ignore: cast_nullable_to_non_nullable
               : positionToGet as PositionToGet,
-      startIndex: startIndex == const $CopyWithPlaceholder()
-          ? _value.startIndex
+      lastOpendIndex: lastOpendIndex == const $CopyWithPlaceholder()
+          ? _value.lastOpendIndex
           // ignore: cast_nullable_to_non_nullable
-          : startIndex as int?,
-      endIndex: endIndex == const $CopyWithPlaceholder()
-          ? _value.endIndex
+          : lastOpendIndex as int?,
+      sessionId: sessionId == const $CopyWithPlaceholder() || sessionId == null
+          ? _value.sessionId
           // ignore: cast_nullable_to_non_nullable
-          : endIndex as int?,
+          : sessionId as String,
+      userId: userId == const $CopyWithPlaceholder() || userId == null
+          ? _value.userId
+          // ignore: cast_nullable_to_non_nullable
+          : userId as String,
       retentionPeriod: retentionPeriod == const $CopyWithPlaceholder() ||
               retentionPeriod == null
           ? _value.retentionPeriod
           // ignore: cast_nullable_to_non_nullable
           : retentionPeriod as String,
-      marks: marks == const $CopyWithPlaceholder() || marks == null
-          ? _value.marks
-          // ignore: cast_nullable_to_non_nullable
-          : marks as Set<ResMarkData?>,
-      mutePosterIds:
-          mutePosterIds == const $CopyWithPlaceholder() || mutePosterIds == null
-              ? _value.mutePosterIds
-              // ignore: cast_nullable_to_non_nullable
-              : mutePosterIds as Set<String?>,
-      muteUserIds:
-          muteUserIds == const $CopyWithPlaceholder() || muteUserIds == null
-              ? _value.muteUserIds
-              // ignore: cast_nullable_to_non_nullable
-              : muteUserIds as Set<String?>,
     );
   }
 }
@@ -444,9 +420,7 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       gotAt: json['gotAt'] as String,
       resCount: json['resCount'] as int,
       favorite: json['favorite'] as bool? ?? false,
-      thumbnail: json['thumbnail'] == null
-          ? null
-          : SrcData.fromJson(json['thumbnail'] as Map<String, dynamic>),
+      thumbnailStr: json['thumbnailStr'] as String?,
       url: json['url'] as String,
       boardId: json['boardId'] as String,
       title: json['title'] as String,
@@ -454,23 +428,10 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       positionToGet:
           $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
               PositionToGet.first,
-      startIndex: json['startIndex'] as int?,
-      endIndex: json['endIndex'] as int?,
+      lastOpendIndex: json['lastOpendIndex'] as int?,
+      sessionId: json['sessionId'] as String,
+      userId: json['userId'] as String,
       retentionPeriod: json['retentionPeriod'] as String,
-      marks: (json['marks'] as List<dynamic>?)
-              ?.map((e) => e == null
-                  ? null
-                  : ResMarkData.fromJson(e as Map<String, dynamic>))
-              .toSet() ??
-          const {},
-      mutePosterIds: (json['mutePosterIds'] as List<dynamic>?)
-              ?.map((e) => e as String?)
-              .toSet() ??
-          const {},
-      muteUserIds: (json['muteUserIds'] as List<dynamic>?)
-              ?.map((e) => e as String?)
-              .toSet() ??
-          const {},
     );
 
 Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
@@ -480,18 +441,16 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'title': instance.title,
       'resCount': instance.resCount,
       'boardId': instance.boardId,
-      'thumbnail': instance.thumbnail,
       'boardName': instance.boardName,
       'url': instance.url,
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
+      'thumbnailStr': instance.thumbnailStr,
+      'userId': instance.userId,
       'gotAt': instance.gotAt,
-      'startIndex': instance.startIndex,
-      'endIndex': instance.endIndex,
+      'lastOpendIndex': instance.lastOpendIndex,
+      'sessionId': instance.sessionId,
       'favorite': instance.favorite,
       'retentionPeriod': instance.retentionPeriod,
-      'marks': instance.marks.toList(),
-      'mutePosterIds': instance.mutePosterIds.toList(),
-      'muteUserIds': instance.muteUserIds.toList(),
     };
 
 const _$CommunitiesEnumMap = {

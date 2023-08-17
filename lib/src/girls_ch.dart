@@ -30,12 +30,17 @@ class GirlsChThread extends ThreadData with WithDateTime {
       required super.url,
       // super.difference,
       super.isNewPost,
-      super.thumbnail,
+      // super.thumbnail,
+      super.thumbnailStr,
       required super.updateAtStr});
   // final String? img;
   // final String categoryId;
 
   // String get url => '/topics/$id/';
+
+  SrcData? get thumbnail => thumbnailStr != null
+      ? SrcData.fromJson(stringToJson(thumbnailStr!))
+      : null;
 
   @override
   String? get thumbnailUrl => thumbnail?.thumbnailUri;

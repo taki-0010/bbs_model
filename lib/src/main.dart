@@ -6,109 +6,65 @@ part 'main.g.dart';
 @CopyWith()
 @immutable
 class ThreadMarkData extends ThreadBase {
-  const ThreadMarkData(
-      {required super.id,
-      required super.type,
-      // required this.cacheId,
-      required this.gotAt,
-      // this.favorite = false,
-      required super.resCount,
-      this.favorite = false,
-      // required super.lastIndex,
-      super.thumbnail,
-      // this.archived = false,
-      required super.url,
-      // this.thumbnailUrl,
-      required super.boardId,
-      required super.title,
-      super.boardName,
-      super.positionToGet = PositionToGet.first,
-      // super.difference,
+  const ThreadMarkData({
+    required super.id,
+    required super.type,
+    // required this.cacheId,
+    required this.gotAt,
+    // this.favorite = false,
+    required super.resCount,
+    this.favorite = false,
+    // required super.lastIndex,
+    // super.thumbnail,
+    super.thumbnailStr,
+    // this.archived = false,
+    required super.url,
+    // this.thumbnailUrl,
+    required super.boardId,
+    required super.title,
+    super.boardName,
+    super.positionToGet = PositionToGet.first,
+    // super.difference,
+    this.lastOpendIndex,
+    required this.sessionId,
+    required this.userId,
 
-      this.startIndex,
-      this.endIndex,
-      required this.retentionPeriod,
-      this.marks = const {},
-      this.mutePosterIds = const {},
-      this.muteUserIds = const {}
-      // this.fiveCh,
-      // this.girlsCh,
-      // this.futabaCh
-      });
-  // final String id;
+    // this.startIndex,
+    // this.endIndex,
+    required this.retentionPeriod,
+    // this.marks = const {},
+    // this.mutePosterIds = const {},
+    // this.muteUserIds = const {}
+    // this.fiveCh,
+    // this.girlsCh,
+    // this.futabaCh
+  });
+  final String userId;
   // final int cacheId;
   final String gotAt;
-  
+
   // final bool archived;
-  final int? startIndex;
-  final int? endIndex;
-  // final String url;
-  // final int lastResCount;
-  // final String? thumbnailUrl;
-  // final String boardId;
-  // final String? title;
-  // final PositionToGet positionToGet;
+  // final int? startIndex;
+  // final int? endIndex;
+
+  final int? lastOpendIndex;
+  final String sessionId;
+
   final bool favorite;
   final String retentionPeriod;
-  final Set<ResMarkData?> marks;
-  final Set<String?> mutePosterIds;
-  final Set<String?> muteUserIds;
-  // final int startIndex;
-  // final int endIndex;
-  // final int? lastPositionedIndex;
-  // final List<FiveChThreadContentData?>? fiveCh;
-  // final List<GirlsChContent?>? girlsCh;
-  // final List<FutabaChContent?>? futabaCh;
+  // final Set<ResMarkData?> marks;
+  // final Set<String?> mutePosterIds;
+  // final Set<String?> muteUserIds;
 
-  @override
-  int get getResCount => endIndex ?? 0;
+  SrcData? get thumbnail => thumbnailStr != null
+      ? SrcData.fromJson(stringToJson(thumbnailStr!))
+      : null;
+
+  // @override
+  // int get getResCount => endIndex ?? 0;
 
   @override
   String? get thumbnailUrl => thumbnail?.thumbnailUri;
-
-  // String get futabaDirectory {
-  //   final origin = uri.origin;
-  //   final index = origin.indexOf('.');
-  //   return origin.substring(0, index);
-  // }
-
-  // bool get empty => fiveCh == null && girlsCh == null && futabaCh == null;
-  // List<ContentData?>? get content {
-  //   switch (type) {
-  //     case Communities.fiveCh:
-  //       return fiveCh;
-  //     case Communities.girlsCh:
-  //       return girlsCh;
-  //     case Communities.futabaCh:
-  //       return futabaCh;
-  //     default:
-  //       return null;
-  //   }
-  // }
-
-  // Communities? get type {
-  //   if (fiveCh != null) {
-  //     return Communities.fiveCh;
-  //   } else if (girlsCh != null) {
-  //     return Communities.girlsCh;
-  //   } else if (futabaCh != null) {
-  //     return Communities.futabaCh;
-  //   }
-  //   return null;
-  // }
-
-  // String? get title {
-  //   switch (type) {
-  //     case Communities.fiveCh:
-  //       return fiveCh?.firstOrNull?.title;
-  //     case Communities.girlsCh:
-  //       return girlsCh?.firstOrNull?.title;
-  //     case Communities.futabaCh:
-  //       return futabaCh?.firstOrNull?.title;
-  //     default:
-  //       return null;
-  //   }
-  // }
 
   factory ThreadMarkData.fromJson(Map<String, dynamic> json) =>
       _$ThreadMarkDataFromJson(json);
@@ -118,7 +74,7 @@ class ThreadMarkData extends ThreadBase {
 @JsonSerializable()
 @CopyWith()
 @immutable
- class ResMarkData {
+class ResMarkData {
   const ResMarkData({
     required this.index,
     required this.icon,
@@ -149,7 +105,7 @@ class LastOpenedIndex {
 @JsonSerializable()
 @CopyWith()
 @immutable
- class LastOpenedContentIndex {
+class LastOpenedContentIndex {
   const LastOpenedContentIndex({required this.id, required this.index});
   final String id;
   final int index;
@@ -194,7 +150,7 @@ abstract class ContentData {
   String? get getUserId => null;
 }
 
-mixin  WithDateTime {
+mixin WithDateTime {
   String getTimeago(final DateTime value) {
     return ta.format(value);
   }
@@ -230,7 +186,7 @@ mixin  WithDateTime {
 }
 
 @immutable
- class GroupData {
+class GroupData {
   const GroupData({required this.date, required this.firstIndex});
   final String date;
   final int firstIndex;

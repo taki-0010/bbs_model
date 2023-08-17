@@ -34,7 +34,8 @@ class FutabaChThread extends ThreadData with WithDateTime {
     required super.title,
     required super.resCount,
     // required super.lastIndex,
-    super.thumbnail,
+    super.thumbnailStr,
+    // super.thumbnail,
     required this.directory,
     required super.boardId,
     required super.type,
@@ -46,6 +47,10 @@ class FutabaChThread extends ThreadData with WithDateTime {
   });
   // final String boardId;
   final String directory;
+
+    SrcData? get thumbnail => thumbnailStr != null
+      ? SrcData.fromJson(stringToJson(thumbnailStr!))
+      : null;
 
   // String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override

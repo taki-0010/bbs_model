@@ -70,7 +70,7 @@ abstract class _$GirlsChThreadCWProxy {
 
   GirlsChThread isNewPost(bool isNewPost);
 
-  GirlsChThread thumbnail(SrcData? thumbnail);
+  GirlsChThread thumbnailStr(String? thumbnailStr);
 
   GirlsChThread updateAtStr(String? updateAtStr);
 
@@ -88,7 +88,7 @@ abstract class _$GirlsChThreadCWProxy {
     Communities? type,
     String? url,
     bool? isNewPost,
-    SrcData? thumbnail,
+    String? thumbnailStr,
     String? updateAtStr,
   });
 }
@@ -121,7 +121,8 @@ class _$GirlsChThreadCWProxyImpl implements _$GirlsChThreadCWProxy {
   GirlsChThread isNewPost(bool isNewPost) => this(isNewPost: isNewPost);
 
   @override
-  GirlsChThread thumbnail(SrcData? thumbnail) => this(thumbnail: thumbnail);
+  GirlsChThread thumbnailStr(String? thumbnailStr) =>
+      this(thumbnailStr: thumbnailStr);
 
   @override
   GirlsChThread updateAtStr(String? updateAtStr) =>
@@ -143,7 +144,7 @@ class _$GirlsChThreadCWProxyImpl implements _$GirlsChThreadCWProxy {
     Object? type = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
     Object? isNewPost = const $CopyWithPlaceholder(),
-    Object? thumbnail = const $CopyWithPlaceholder(),
+    Object? thumbnailStr = const $CopyWithPlaceholder(),
     Object? updateAtStr = const $CopyWithPlaceholder(),
   }) {
     return GirlsChThread(
@@ -175,10 +176,10 @@ class _$GirlsChThreadCWProxyImpl implements _$GirlsChThreadCWProxy {
           ? _value.isNewPost
           // ignore: cast_nullable_to_non_nullable
           : isNewPost as bool,
-      thumbnail: thumbnail == const $CopyWithPlaceholder()
-          ? _value.thumbnail
+      thumbnailStr: thumbnailStr == const $CopyWithPlaceholder()
+          ? _value.thumbnailStr
           // ignore: cast_nullable_to_non_nullable
-          : thumbnail as SrcData?,
+          : thumbnailStr as String?,
       updateAtStr: updateAtStr == const $CopyWithPlaceholder()
           ? _value.updateAtStr
           // ignore: cast_nullable_to_non_nullable

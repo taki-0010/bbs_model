@@ -73,7 +73,7 @@ abstract class _$FutabaChThreadCWProxy {
 
   FutabaChThread resCount(int resCount);
 
-  FutabaChThread thumbnail(SrcData? thumbnail);
+  FutabaChThread thumbnailStr(String? thumbnailStr);
 
   FutabaChThread directory(String directory);
 
@@ -99,7 +99,7 @@ abstract class _$FutabaChThreadCWProxy {
     String? id,
     String? title,
     int? resCount,
-    SrcData? thumbnail,
+    String? thumbnailStr,
     String? directory,
     String? boardId,
     Communities? type,
@@ -126,7 +126,8 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
   FutabaChThread resCount(int resCount) => this(resCount: resCount);
 
   @override
-  FutabaChThread thumbnail(SrcData? thumbnail) => this(thumbnail: thumbnail);
+  FutabaChThread thumbnailStr(String? thumbnailStr) =>
+      this(thumbnailStr: thumbnailStr);
 
   @override
   FutabaChThread directory(String directory) => this(directory: directory);
@@ -162,7 +163,7 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
     Object? id = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? resCount = const $CopyWithPlaceholder(),
-    Object? thumbnail = const $CopyWithPlaceholder(),
+    Object? thumbnailStr = const $CopyWithPlaceholder(),
     Object? directory = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
@@ -184,10 +185,10 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
           ? _value.resCount
           // ignore: cast_nullable_to_non_nullable
           : resCount as int,
-      thumbnail: thumbnail == const $CopyWithPlaceholder()
-          ? _value.thumbnail
+      thumbnailStr: thumbnailStr == const $CopyWithPlaceholder()
+          ? _value.thumbnailStr
           // ignore: cast_nullable_to_non_nullable
-          : thumbnail as SrcData?,
+          : thumbnailStr as String?,
       directory: directory == const $CopyWithPlaceholder() || directory == null
           ? _value.directory
           // ignore: cast_nullable_to_non_nullable
