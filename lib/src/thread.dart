@@ -40,7 +40,7 @@ abstract class ThreadBase {
   Uri get uri => Uri.parse(getFullUrl);
 
   String get futabaDirectory {
-    final origin = uri.origin;
+    final origin = uri.host;
     final index = origin.indexOf('.');
     return origin.substring(0, index);
   }

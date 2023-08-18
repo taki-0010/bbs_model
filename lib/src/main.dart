@@ -32,6 +32,7 @@ class ThreadMarkData extends ThreadBase {
     // this.startIndex,
     // this.endIndex,
     required this.retentionPeriod,
+    this.retentionPeriodSeconds = 0,
     // this.marks = const {},
     // this.mutePosterIds = const {},
     // this.muteUserIds = const {}
@@ -52,6 +53,7 @@ class ThreadMarkData extends ThreadBase {
 
   final bool favorite;
   final String retentionPeriod;
+  final int retentionPeriodSeconds;
   // final Set<ResMarkData?> marks;
   // final Set<String?> mutePosterIds;
   // final Set<String?> muteUserIds;

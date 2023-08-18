@@ -37,6 +37,8 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData retentionPeriod(String retentionPeriod);
 
+  ThreadMarkData retentionPeriodSeconds(int retentionPeriodSeconds);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -59,6 +61,7 @@ abstract class _$ThreadMarkDataCWProxy {
     String? sessionId,
     String? userId,
     String? retentionPeriod,
+    int? retentionPeriodSeconds,
   });
 }
 
@@ -118,6 +121,10 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
       this(retentionPeriod: retentionPeriod);
 
   @override
+  ThreadMarkData retentionPeriodSeconds(int retentionPeriodSeconds) =>
+      this(retentionPeriodSeconds: retentionPeriodSeconds);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -141,6 +148,7 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? sessionId = const $CopyWithPlaceholder(),
     Object? userId = const $CopyWithPlaceholder(),
     Object? retentionPeriod = const $CopyWithPlaceholder(),
+    Object? retentionPeriodSeconds = const $CopyWithPlaceholder(),
   }) {
     return ThreadMarkData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -205,6 +213,12 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.retentionPeriod
           // ignore: cast_nullable_to_non_nullable
           : retentionPeriod as String,
+      retentionPeriodSeconds:
+          retentionPeriodSeconds == const $CopyWithPlaceholder() ||
+                  retentionPeriodSeconds == null
+              ? _value.retentionPeriodSeconds
+              // ignore: cast_nullable_to_non_nullable
+              : retentionPeriodSeconds as int,
     );
   }
 }
@@ -432,6 +446,7 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       sessionId: json['sessionId'] as String,
       userId: json['userId'] as String,
       retentionPeriod: json['retentionPeriod'] as String,
+      retentionPeriodSeconds: json['retentionPeriodSeconds'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
@@ -451,6 +466,7 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'sessionId': instance.sessionId,
       'favorite': instance.favorite,
       'retentionPeriod': instance.retentionPeriod,
+      'retentionPeriodSeconds': instance.retentionPeriodSeconds,
     };
 
 const _$CommunitiesEnumMap = {

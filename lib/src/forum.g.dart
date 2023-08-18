@@ -30,6 +30,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData searchWordList(List<String?> searchWordList);
 
+  ForumSettingsData searchBoardIdForFutaba(String searchBoardIdForFutaba);
+
   ForumSettingsData sortHistoryByRetention(bool sortHistoryByRetention);
 
   ForumSettingsData viewByBoardInHistory(bool viewByBoardInHistory);
@@ -52,6 +54,7 @@ abstract class _$ForumSettingsDataCWProxy {
     bool? useFavoritesBoards,
     List<String?>? favoritesBoardList,
     List<String?>? searchWordList,
+    String? searchBoardIdForFutaba,
     bool? sortHistoryByRetention,
     bool? viewByBoardInHistory,
   });
@@ -105,6 +108,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(searchWordList: searchWordList);
 
   @override
+  ForumSettingsData searchBoardIdForFutaba(String searchBoardIdForFutaba) =>
+      this(searchBoardIdForFutaba: searchBoardIdForFutaba);
+
+  @override
   ForumSettingsData sortHistoryByRetention(bool sortHistoryByRetention) =>
       this(sortHistoryByRetention: sortHistoryByRetention);
 
@@ -132,6 +139,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? useFavoritesBoards = const $CopyWithPlaceholder(),
     Object? favoritesBoardList = const $CopyWithPlaceholder(),
     Object? searchWordList = const $CopyWithPlaceholder(),
+    Object? searchBoardIdForFutaba = const $CopyWithPlaceholder(),
     Object? sortHistoryByRetention = const $CopyWithPlaceholder(),
     Object? viewByBoardInHistory = const $CopyWithPlaceholder(),
   }) {
@@ -188,6 +196,12 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.searchWordList
           // ignore: cast_nullable_to_non_nullable
           : searchWordList as List<String?>,
+      searchBoardIdForFutaba:
+          searchBoardIdForFutaba == const $CopyWithPlaceholder() ||
+                  searchBoardIdForFutaba == null
+              ? _value.searchBoardIdForFutaba
+              // ignore: cast_nullable_to_non_nullable
+              : searchBoardIdForFutaba as String,
       sortHistoryByRetention:
           sortHistoryByRetention == const $CopyWithPlaceholder() ||
                   sortHistoryByRetention == null
@@ -362,6 +376,7 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String?)
               .toList() ??
           const [],
+      searchBoardIdForFutaba: json['searchBoardIdForFutaba'] as String? ?? 'b',
       sortHistoryByRetention: json['sortHistoryByRetention'] as bool? ?? false,
       viewByBoardInHistory: json['viewByBoardInHistory'] as bool? ?? false,
     );
@@ -379,6 +394,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'useFavoritesBoards': instance.useFavoritesBoards,
       'favoritesBoardList': instance.favoritesBoardList,
       'searchWordList': instance.searchWordList,
+      'searchBoardIdForFutaba': instance.searchBoardIdForFutaba,
       'sortHistoryByRetention': instance.sortHistoryByRetention,
       'viewByBoardInHistory': instance.viewByBoardInHistory,
     };

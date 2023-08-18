@@ -18,6 +18,7 @@ class ForumSettingsData {
     this.useFavoritesBoards = false,
     this.favoritesBoardList = const [],
     this.searchWordList = const [],
+    this.searchBoardIdForFutaba = 'b',
     this.sortHistoryByRetention = false,
     this.viewByBoardInHistory = false,
     // this.viewByBoardInFavorites = false,
@@ -34,6 +35,7 @@ class ForumSettingsData {
   final bool useFavoritesBoards;
   final List<String?> favoritesBoardList;
   final List<String?> searchWordList;
+  final String searchBoardIdForFutaba;
   final bool sortHistoryByRetention;
   final bool viewByBoardInHistory;
   // final bool viewByBoardInFavorites;
