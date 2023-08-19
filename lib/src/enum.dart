@@ -16,6 +16,7 @@ enum LangList {
 }
 
 enum CacheExpire {
+  byPostPace(days: 0),
   oneDay(days: 1),
   oneWeek(days: 7),
   twoWeeks(days: 14),

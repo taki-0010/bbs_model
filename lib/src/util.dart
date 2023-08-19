@@ -1,6 +1,7 @@
 // import 'package:string_extensions/string_extensions.dart';
 
 import 'dart:convert';
+import 'dart:math';
 
 import 'importer.dart';
 
@@ -96,5 +97,15 @@ class StringMethodData {
     // textcode.firstOrNull?.asy
     final bool isTwo = RegExp(r'[^\x01-\x7E]').hasMatch(value);
     return isTwo ? 2 : 1;
+  }
+
+  static String generateRandomString([int length = 25]) {
+    const charset =
+        '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz';
+    final random = Random.secure();
+    final randomStr =
+        List.generate(length, (_) => charset[random.nextInt(charset.length)])
+            .join();
+    return randomStr;
   }
 }

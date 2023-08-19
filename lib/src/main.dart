@@ -9,9 +9,6 @@ class ThreadMarkData extends ThreadBase {
   const ThreadMarkData({
     required super.id,
     required super.type,
-    // required this.cacheId,
-    required this.gotAt,
-    // this.favorite = false,
     required super.resCount,
     this.favorite = false,
     // required super.lastIndex,
@@ -26,12 +23,10 @@ class ThreadMarkData extends ThreadBase {
     super.positionToGet = PositionToGet.first,
     // super.difference,
     this.lastOpendIndex,
+    this.lastReadAt,
     required this.sessionId,
     required this.userId,
-
-    // this.startIndex,
-    // this.endIndex,
-    required this.retentionPeriod,
+    required this.documentId,
     this.retentionPeriodSeconds = 0,
     // this.marks = const {},
     // this.mutePosterIds = const {},
@@ -41,18 +36,13 @@ class ThreadMarkData extends ThreadBase {
     // this.futabaCh
   });
   final String userId;
-  // final int cacheId;
-  final String gotAt;
-
-  // final bool archived;
-  // final int? startIndex;
-  // final int? endIndex;
+  final String documentId;
 
   final int? lastOpendIndex;
+  final int? lastReadAt;
   final String sessionId;
-
   final bool favorite;
-  final String retentionPeriod;
+  // final String retentionPeriod;
   final int retentionPeriodSeconds;
   // final Set<ResMarkData?> marks;
   // final Set<String?> mutePosterIds;

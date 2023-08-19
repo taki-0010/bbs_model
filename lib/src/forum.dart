@@ -21,6 +21,7 @@ class ForumSettingsData {
     this.searchBoardIdForFutaba = 'b',
     this.sortHistoryByRetention = false,
     this.viewByBoardInHistory = false,
+    this.viewByBoardInSearch = false,
     // this.viewByBoardInFavorites = false,
   });
 
@@ -38,6 +39,7 @@ class ForumSettingsData {
   final String searchBoardIdForFutaba;
   final bool sortHistoryByRetention;
   final bool viewByBoardInHistory;
+  final bool viewByBoardInSearch;
   // final bool viewByBoardInFavorites;
 
   factory ForumSettingsData.fromJson(Map<String, dynamic> json) =>

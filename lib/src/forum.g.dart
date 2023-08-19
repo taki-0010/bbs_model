@@ -36,6 +36,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData viewByBoardInHistory(bool viewByBoardInHistory);
 
+  ForumSettingsData viewByBoardInSearch(bool viewByBoardInSearch);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -57,6 +59,7 @@ abstract class _$ForumSettingsDataCWProxy {
     String? searchBoardIdForFutaba,
     bool? sortHistoryByRetention,
     bool? viewByBoardInHistory,
+    bool? viewByBoardInSearch,
   });
 }
 
@@ -120,6 +123,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(viewByBoardInHistory: viewByBoardInHistory);
 
   @override
+  ForumSettingsData viewByBoardInSearch(bool viewByBoardInSearch) =>
+      this(viewByBoardInSearch: viewByBoardInSearch);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -142,6 +149,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? searchBoardIdForFutaba = const $CopyWithPlaceholder(),
     Object? sortHistoryByRetention = const $CopyWithPlaceholder(),
     Object? viewByBoardInHistory = const $CopyWithPlaceholder(),
+    Object? viewByBoardInSearch = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       userId: userId == const $CopyWithPlaceholder() || userId == null
@@ -214,6 +222,12 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
               ? _value.viewByBoardInHistory
               // ignore: cast_nullable_to_non_nullable
               : viewByBoardInHistory as bool,
+      viewByBoardInSearch:
+          viewByBoardInSearch == const $CopyWithPlaceholder() ||
+                  viewByBoardInSearch == null
+              ? _value.viewByBoardInSearch
+              // ignore: cast_nullable_to_non_nullable
+              : viewByBoardInSearch as bool,
     );
   }
 }
@@ -379,6 +393,7 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
       searchBoardIdForFutaba: json['searchBoardIdForFutaba'] as String? ?? 'b',
       sortHistoryByRetention: json['sortHistoryByRetention'] as bool? ?? false,
       viewByBoardInHistory: json['viewByBoardInHistory'] as bool? ?? false,
+      viewByBoardInSearch: json['viewByBoardInSearch'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -397,6 +412,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'searchBoardIdForFutaba': instance.searchBoardIdForFutaba,
       'sortHistoryByRetention': instance.sortHistoryByRetention,
       'viewByBoardInHistory': instance.viewByBoardInHistory,
+      'viewByBoardInSearch': instance.viewByBoardInSearch,
     };
 
 const _$CommunitiesEnumMap = {
@@ -413,6 +429,7 @@ const _$ThemeListEnumMap = {
 };
 
 const _$CacheExpireEnumMap = {
+  CacheExpire.byPostPace: 'byPostPace',
   CacheExpire.oneDay: 'oneDay',
   CacheExpire.oneWeek: 'oneWeek',
   CacheExpire.twoWeeks: 'twoWeeks',
