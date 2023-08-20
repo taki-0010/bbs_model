@@ -48,14 +48,16 @@ class FutabaChThread extends ThreadData with WithDateTime {
   // final String boardId;
   final String directory;
 
-    SrcData? get thumbnail => thumbnailStr != null
+  SrcData? get thumbnail => thumbnailStr != null
       ? SrcData.fromJson(stringToJson(thumbnailStr!))
       : null;
 
   // String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override
-  String get thumbnailUrl => 'https://$directory.2chan.net${thumbnail?.thumbnailUri}';
-   @override
+  String get thumbnailUrl =>
+      thumbnail?.thumbnailUri ?? '';
+      // 'https://$directory.2chan.net${thumbnail?.thumbnailUri}';
+  @override
   double get ikioi {
     // final current = DateTime.now().millisecondsSinceEpoch * 0.001;
     // // final createdNum = datId.substring(0, datId.length - 4);
@@ -84,7 +86,6 @@ class FutabaChContent extends ContentData with WithDateTime {
       required super.name,
       required this.directory,
       this.title,
-      
       this.quotes = const []});
   // final String? thumbnail;
   // final String? src;
