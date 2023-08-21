@@ -39,6 +39,15 @@ abstract class ThreadBase {
 
   Uri get uri => Uri.parse(getFullUrl);
 
+  String? get fiveChUrlForHtml {
+    if (url.contains('5ch.net')) {
+      final sub = url.substring(0, url.indexOf('.'));
+      final path = '$sub.5ch.net/test/read.cgi/$boardId/$id';
+      return 'https://$path';
+    }
+    return null;
+  }
+
   String get futabaDirectory {
     final origin = uri.host;
     final index = origin.indexOf('.');
