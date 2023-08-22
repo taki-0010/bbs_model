@@ -130,8 +130,6 @@ class FiveChThreadTitleData extends ThreadData with WithDateTime {
   //   return '$id.dat';
   // }
 
-
-
   @override
   String? get thumbnailUrl => null;
 
@@ -174,15 +172,20 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
   // final List<String?>? urlSet;
 
   @override
-  DateTime get createdAt {
-    final splited = dateAndId.split(' ');
-    return getDateTime(splited[0], splited[1]);
+  DateTime? get createdAt {
+    try {
+      final splited = dateAndId.split(' ');
+      return getDateTime(splited[0], splited[1]);
+    } catch (e) {
+      logger.e('5ch: createdAt: $e');
+    }
+    return null;
   }
 
   @override
   String get getId {
     final splited = dateAndId.split(' ');
-    if (splited.isNotEmpty) {
+    if (splited.length > 2) {
       final id = splited[2];
       final subtring = id.length > 3 ? id.substring(3) : '';
       // if(subtring.endsWith('●'))

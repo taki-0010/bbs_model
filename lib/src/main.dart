@@ -136,7 +136,7 @@ abstract class ContentData {
   String? get srcThumbnail => null;
   String? get srcContent => null;
 
-  DateTime get createdAt => DateTime.now();
+  DateTime? get createdAt => null;
   String get getId => '';
   Set<String?> get anchorList => {};
   String? get getUserId => null;
