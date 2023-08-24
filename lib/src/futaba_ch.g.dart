@@ -246,6 +246,8 @@ abstract class _$FutabaChContentCWProxy {
 
   FutabaChContent title(String? title);
 
+  FutabaChContent threadThumbnail(String? threadThumbnail);
+
   FutabaChContent quotes(List<String?> quotes);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChContent(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -264,6 +266,7 @@ abstract class _$FutabaChContentCWProxy {
     String? name,
     String? directory,
     String? title,
+    String? threadThumbnail,
     List<String?>? quotes,
   });
 }
@@ -302,6 +305,10 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
   FutabaChContent title(String? title) => this(title: title);
 
   @override
+  FutabaChContent threadThumbnail(String? threadThumbnail) =>
+      this(threadThumbnail: threadThumbnail);
+
+  @override
   FutabaChContent quotes(List<String?> quotes) => this(quotes: quotes);
 
   @override
@@ -322,6 +329,7 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
     Object? name = const $CopyWithPlaceholder(),
     Object? directory = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
+    Object? threadThumbnail = const $CopyWithPlaceholder(),
     Object? quotes = const $CopyWithPlaceholder(),
   }) {
     return FutabaChContent(
@@ -361,6 +369,10 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
           ? _value.title
           // ignore: cast_nullable_to_non_nullable
           : title as String?,
+      threadThumbnail: threadThumbnail == const $CopyWithPlaceholder()
+          ? _value.threadThumbnail
+          // ignore: cast_nullable_to_non_nullable
+          : threadThumbnail as String?,
       quotes: quotes == const $CopyWithPlaceholder() || quotes == null
           ? _value.quotes
           // ignore: cast_nullable_to_non_nullable
@@ -404,6 +416,7 @@ FutabaChContent _$FutabaChContentFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       directory: json['directory'] as String,
       title: json['title'] as String?,
+      threadThumbnail: json['threadThumbnail'] as String?,
       quotes: (json['quotes'] as List<dynamic>?)
               ?.map((e) => e as String?)
               .toList() ??
@@ -416,10 +429,11 @@ Map<String, dynamic> _$FutabaChContentToJson(FutabaChContent instance) =>
       'body': instance.body,
       'src': instance.src,
       'name': instance.name,
+      'title': instance.title,
+      'threadThumbnail': instance.threadThumbnail,
       'number': instance.number,
       'created': instance.created,
       'agree': instance.agree,
-      'title': instance.title,
       'directory': instance.directory,
       'quotes': instance.quotes,
     };

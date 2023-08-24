@@ -157,7 +157,7 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
       this.email,
       required this.dateAndId,
       required super.body,
-      this.title,
+      super.title,
       super.urlSet,
       required this.domain,
       required this.directoryName,
@@ -165,7 +165,7 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
   // final String name;
   final String? email;
   final String dateAndId;
-  final String? title;
+  // final String? title;
   final String domain;
   final String directoryName;
   final String? userId;

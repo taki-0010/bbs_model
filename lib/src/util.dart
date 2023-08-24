@@ -14,32 +14,57 @@ Map<String, dynamic> stringToJson(final String value) {
   return json.decode(value);
 }
 
-class FutabaParser {
-  static const catalog = '?mode=cat';
-  static const sort = '&sort=';
-  static String getBoardPath(
-      {required final String directory,
-      required final String boardId,
-      required final ThreadsOrder order}) {
-    final path = '$directory.2chan.net/$boardId';
-    // String get url => '$path/futaba.htm';
-    // String get catalogUrl => '$path/futaba.php$catalog';
-    // String get newListUrl => '$path/futaba.php$catalog${sort}1';
-    // String get oldListUrl => '$path/futaba.php$catalog${sort}2';
-    // String get hugListUrl => '$path/futaba.php$catalog${sort}3';
-    // String get ikioiListUrl => '$path/futaba.php$catalog${sort}6';
-    switch (order) {
-      case ThreadsOrder.catalog:
-        return '$path/futaba.php$catalog';
-      case ThreadsOrder.biggerResCount:
-        return '$path/futaba.php$catalog${sort}3';
-      case ThreadsOrder.newOrder:
-        return '$path/futaba.php$catalog${sort}1';
-      default:
+class FiveChParser {
+  static final idReg = RegExp(r'[0-9]{5,}');
+  // https://egg.5ch.net/test/read.cgi/software/1690261572/l50
+  // https://egg.5ch.net/software/dat/1690261572.dat
+  static String? toDatUrl(final String value) {
+    String? result;
+    try {
+      if (value.contains('test/read.cgi/')) {
+        result = value.replaceAll('test/read.cgi/', '');
+      } else {
+        return null;
+      }
+      final splited = result.split('/');
+      final id = splited.firstWhere(
+        (element) => element.contains(idReg),
+        orElse: () => '',
+      );
+      if (id.isEmpty) {
+        return null;
+      }
+      final path = result.substring(0, result.indexOf(idReg));
+      result = '${path}dat/$id.dat';
+      return result;
+    } catch (e) {
+      logger.e(e);
     }
-    return '';
+    return null;
+  }
+
+  static String? getId(final String value) {
+    try {
+      final id = idReg.allMatches(value);
+      final data = id.first.group(0);
+      return data;
+    } catch (e) {
+      logger.e(e);
+    }
+    return null;
+  }
+
+  static String? getBoardIdFromDat(final String value) {
+    try {
+      final uri = Uri.parse(value);
+      return uri.pathSegments[0];
+    } catch (e) {
+      logger.e(e);
+    }
+    return null;
   }
 }
+
 
 class StringMethodData {
   static final escape = HtmlUnescape();

@@ -1,10 +1,11 @@
 enum Communities {
-  fiveCh(label: '5ch'),
-  girlsCh(label: 'Girls Ch'),
-  futabaCh(label: 'Futaba Ch');
+  fiveCh(label: '5ch', host: '5ch.net'),
+  girlsCh(label: 'Girls Ch', host: 'girlschannel.net'),
+  futabaCh(label: 'Futaba Ch', host: '2chan.net');
 
-  const Communities({required this.label});
+  const Communities({required this.label, required this.host});
   final String label;
+  final String host;
 }
 
 enum ThemeList { m3Purple, rosewood, sanJuanBlue, espresso }
@@ -47,4 +48,15 @@ enum MarkIcon {
   self,
   edit,
   hot;
+}
+
+enum CommentLevel {
+  one(level:'veryUnimportant'),
+  two(level:'unimportant'),
+  three(level:'medium'),
+  four(level:'important'),
+  five(level:'veryImportant');
+
+  const CommentLevel({required this.level});
+  final String level;
 }

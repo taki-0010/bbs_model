@@ -2,6 +2,55 @@ import 'importer.dart';
 
 part 'futaba_ch.g.dart';
 
+class FutabaParser {
+  static const catalog = '?mode=cat';
+  static const sort = '&sort=';
+  static String getBoardPath(
+      {required final String directory,
+      required final String boardId,
+      required final ThreadsOrder order}) {
+    final path = '$directory.2chan.net/$boardId';
+    // String get url => '$path/futaba.htm';
+    // String get catalogUrl => '$path/futaba.php$catalog';
+    // String get newListUrl => '$path/futaba.php$catalog${sort}1';
+    // String get oldListUrl => '$path/futaba.php$catalog${sort}2';
+    // String get hugListUrl => '$path/futaba.php$catalog${sort}3';
+    // String get ikioiListUrl => '$path/futaba.php$catalog${sort}6';
+    switch (order) {
+      case ThreadsOrder.catalog:
+        return '$path/futaba.php$catalog';
+      case ThreadsOrder.biggerResCount:
+        return '$path/futaba.php$catalog${sort}3';
+      case ThreadsOrder.newOrder:
+        return '$path/futaba.php$catalog${sort}1';
+      default:
+    }
+    return '';
+  }
+
+  static String? getIdFromUrl(final String value) {
+    final data = value.substring(value.lastIndexOf('/')+1);
+    return data.replaceAll('.htm', '');
+  }
+
+  static String? getDirectory(final Uri value) {
+    final origin = value.host;
+    final index = origin.indexOf('.');
+    return origin.substring(0, index);
+  }
+
+  static String? getBoardIdFromUrl(final String value) {
+    try {
+      final uri = Uri.parse(value);
+      final seg = uri.pathSegments[0];
+      return seg;
+    } catch (e) {
+      logger.e(e);
+    }
+    return null;
+  }
+}
+
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
@@ -54,9 +103,8 @@ class FutabaChThread extends ThreadData with WithDateTime {
 
   // String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override
-  String get thumbnailUrl =>
-      thumbnail?.thumbnailUri ?? '';
-      // 'https://$directory.2chan.net${thumbnail?.thumbnailUri}';
+  String get thumbnailUrl => thumbnail?.thumbnailUri ?? '';
+  // 'https://$directory.2chan.net${thumbnail?.thumbnailUri}';
   @override
   double get ikioi {
     // final current = DateTime.now().millisecondsSinceEpoch * 0.001;
@@ -85,14 +133,15 @@ class FutabaChContent extends ContentData with WithDateTime {
       required this.agree,
       required super.name,
       required this.directory,
-      this.title,
+      super.title,
+      super.threadThumbnail,
       this.quotes = const []});
   // final String? thumbnail;
   // final String? src;
   final int number;
   final String created;
   final int? agree;
-  final String? title;
+  // final String? title;
   // final String name;
   final String directory;
   final List<String?> quotes;

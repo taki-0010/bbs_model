@@ -215,6 +215,8 @@ abstract class _$GirlsChContentCWProxy {
 
   GirlsChContent id(String? id);
 
+  GirlsChContent threadThumbnail(String? threadThumbnail);
+
   GirlsChContent urlSet(List<String?>? urlSet);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GirlsChContent(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -234,6 +236,7 @@ abstract class _$GirlsChContentCWProxy {
     String? title,
     String? categoryId,
     String? id,
+    String? threadThumbnail,
     List<String?>? urlSet,
   });
 }
@@ -275,6 +278,10 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
   GirlsChContent id(String? id) => this(id: id);
 
   @override
+  GirlsChContent threadThumbnail(String? threadThumbnail) =>
+      this(threadThumbnail: threadThumbnail);
+
+  @override
   GirlsChContent urlSet(List<String?>? urlSet) => this(urlSet: urlSet);
 
   @override
@@ -296,6 +303,7 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
     Object? title = const $CopyWithPlaceholder(),
     Object? categoryId = const $CopyWithPlaceholder(),
     Object? id = const $CopyWithPlaceholder(),
+    Object? threadThumbnail = const $CopyWithPlaceholder(),
     Object? urlSet = const $CopyWithPlaceholder(),
   }) {
     return GirlsChContent(
@@ -340,6 +348,10 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as String?,
+      threadThumbnail: threadThumbnail == const $CopyWithPlaceholder()
+          ? _value.threadThumbnail
+          // ignore: cast_nullable_to_non_nullable
+          : threadThumbnail as String?,
       urlSet: urlSet == const $CopyWithPlaceholder()
           ? _value.urlSet
           // ignore: cast_nullable_to_non_nullable
@@ -382,6 +394,7 @@ GirlsChContent _$GirlsChContentFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String?,
       categoryId: json['categoryId'] as String,
       id: json['id'] as String?,
+      threadThumbnail: json['threadThumbnail'] as String?,
       urlSet:
           (json['urlSet'] as List<dynamic>?)?.map((e) => e as String?).toList(),
     );
@@ -393,10 +406,11 @@ Map<String, dynamic> _$GirlsChContentToJson(GirlsChContent instance) =>
       'urlSet': instance.urlSet,
       'src': instance.src,
       'name': instance.name,
+      'title': instance.title,
+      'threadThumbnail': instance.threadThumbnail,
       'plus': instance.plus,
       'minus': instance.minus,
       'postAt': instance.postAt,
-      'title': instance.title,
       'id': instance.id,
       'categoryId': instance.categoryId,
     };

@@ -39,6 +39,10 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData retentionPeriodSeconds(int retentionPeriodSeconds);
 
+  ThreadMarkData mutePosterIds(Set<String?> mutePosterIds);
+
+  ThreadMarkData muteUserIds(Set<String?> muteUserIds);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -62,6 +66,8 @@ abstract class _$ThreadMarkDataCWProxy {
     String? userId,
     String? documentId,
     int? retentionPeriodSeconds,
+    Set<String?>? mutePosterIds,
+    Set<String?>? muteUserIds,
   });
 }
 
@@ -124,6 +130,14 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
       this(retentionPeriodSeconds: retentionPeriodSeconds);
 
   @override
+  ThreadMarkData mutePosterIds(Set<String?> mutePosterIds) =>
+      this(mutePosterIds: mutePosterIds);
+
+  @override
+  ThreadMarkData muteUserIds(Set<String?> muteUserIds) =>
+      this(muteUserIds: muteUserIds);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -148,6 +162,8 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? userId = const $CopyWithPlaceholder(),
     Object? documentId = const $CopyWithPlaceholder(),
     Object? retentionPeriodSeconds = const $CopyWithPlaceholder(),
+    Object? mutePosterIds = const $CopyWithPlaceholder(),
+    Object? muteUserIds = const $CopyWithPlaceholder(),
   }) {
     return ThreadMarkData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -218,6 +234,16 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
               ? _value.retentionPeriodSeconds
               // ignore: cast_nullable_to_non_nullable
               : retentionPeriodSeconds as int,
+      mutePosterIds:
+          mutePosterIds == const $CopyWithPlaceholder() || mutePosterIds == null
+              ? _value.mutePosterIds
+              // ignore: cast_nullable_to_non_nullable
+              : mutePosterIds as Set<String?>,
+      muteUserIds:
+          muteUserIds == const $CopyWithPlaceholder() || muteUserIds == null
+              ? _value.muteUserIds
+              // ignore: cast_nullable_to_non_nullable
+              : muteUserIds as Set<String?>,
     );
   }
 }
@@ -288,140 +314,6 @@ extension $ResMarkDataCopyWith on ResMarkData {
   _$ResMarkDataCWProxy get copyWith => _$ResMarkDataCWProxyImpl(this);
 }
 
-abstract class _$LastOpenedIndexCWProxy {
-  LastOpenedIndex boards(int? boards);
-
-  LastOpenedIndex threads(int? threads);
-
-  LastOpenedIndex contents(Set<LastOpenedContentIndex?>? contents);
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `LastOpenedIndex(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// LastOpenedIndex(...).copyWith(id: 12, name: "My name")
-  /// ````
-  LastOpenedIndex call({
-    int? boards,
-    int? threads,
-    Set<LastOpenedContentIndex?>? contents,
-  });
-}
-
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfLastOpenedIndex.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfLastOpenedIndex.copyWith.fieldName(...)`
-class _$LastOpenedIndexCWProxyImpl implements _$LastOpenedIndexCWProxy {
-  const _$LastOpenedIndexCWProxyImpl(this._value);
-
-  final LastOpenedIndex _value;
-
-  @override
-  LastOpenedIndex boards(int? boards) => this(boards: boards);
-
-  @override
-  LastOpenedIndex threads(int? threads) => this(threads: threads);
-
-  @override
-  LastOpenedIndex contents(Set<LastOpenedContentIndex?>? contents) =>
-      this(contents: contents);
-
-  @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `LastOpenedIndex(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// LastOpenedIndex(...).copyWith(id: 12, name: "My name")
-  /// ````
-  LastOpenedIndex call({
-    Object? boards = const $CopyWithPlaceholder(),
-    Object? threads = const $CopyWithPlaceholder(),
-    Object? contents = const $CopyWithPlaceholder(),
-  }) {
-    return LastOpenedIndex(
-      boards: boards == const $CopyWithPlaceholder()
-          ? _value.boards
-          // ignore: cast_nullable_to_non_nullable
-          : boards as int?,
-      threads: threads == const $CopyWithPlaceholder()
-          ? _value.threads
-          // ignore: cast_nullable_to_non_nullable
-          : threads as int?,
-      contents: contents == const $CopyWithPlaceholder()
-          ? _value.contents
-          // ignore: cast_nullable_to_non_nullable
-          : contents as Set<LastOpenedContentIndex?>?,
-    );
-  }
-}
-
-extension $LastOpenedIndexCopyWith on LastOpenedIndex {
-  /// Returns a callable class that can be used as follows: `instanceOfLastOpenedIndex.copyWith(...)` or like so:`instanceOfLastOpenedIndex.copyWith.fieldName(...)`.
-  // ignore: library_private_types_in_public_api
-  _$LastOpenedIndexCWProxy get copyWith => _$LastOpenedIndexCWProxyImpl(this);
-}
-
-abstract class _$LastOpenedContentIndexCWProxy {
-  LastOpenedContentIndex id(String id);
-
-  LastOpenedContentIndex index(int index);
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `LastOpenedContentIndex(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// LastOpenedContentIndex(...).copyWith(id: 12, name: "My name")
-  /// ````
-  LastOpenedContentIndex call({
-    String? id,
-    int? index,
-  });
-}
-
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfLastOpenedContentIndex.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfLastOpenedContentIndex.copyWith.fieldName(...)`
-class _$LastOpenedContentIndexCWProxyImpl
-    implements _$LastOpenedContentIndexCWProxy {
-  const _$LastOpenedContentIndexCWProxyImpl(this._value);
-
-  final LastOpenedContentIndex _value;
-
-  @override
-  LastOpenedContentIndex id(String id) => this(id: id);
-
-  @override
-  LastOpenedContentIndex index(int index) => this(index: index);
-
-  @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `LastOpenedContentIndex(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// LastOpenedContentIndex(...).copyWith(id: 12, name: "My name")
-  /// ````
-  LastOpenedContentIndex call({
-    Object? id = const $CopyWithPlaceholder(),
-    Object? index = const $CopyWithPlaceholder(),
-  }) {
-    return LastOpenedContentIndex(
-      id: id == const $CopyWithPlaceholder() || id == null
-          ? _value.id
-          // ignore: cast_nullable_to_non_nullable
-          : id as String,
-      index: index == const $CopyWithPlaceholder() || index == null
-          ? _value.index
-          // ignore: cast_nullable_to_non_nullable
-          : index as int,
-    );
-  }
-}
-
-extension $LastOpenedContentIndexCopyWith on LastOpenedContentIndex {
-  /// Returns a callable class that can be used as follows: `instanceOfLastOpenedContentIndex.copyWith(...)` or like so:`instanceOfLastOpenedContentIndex.copyWith.fieldName(...)`.
-  // ignore: library_private_types_in_public_api
-  _$LastOpenedContentIndexCWProxy get copyWith =>
-      _$LastOpenedContentIndexCWProxyImpl(this);
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -446,6 +338,14 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       userId: json['userId'] as String,
       documentId: json['documentId'] as String,
       retentionPeriodSeconds: json['retentionPeriodSeconds'] as int? ?? 0,
+      mutePosterIds: (json['mutePosterIds'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toSet() ??
+          const {},
+      muteUserIds: (json['muteUserIds'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toSet() ??
+          const {},
     );
 
 Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
@@ -466,6 +366,8 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'sessionId': instance.sessionId,
       'favorite': instance.favorite,
       'retentionPeriodSeconds': instance.retentionPeriodSeconds,
+      'mutePosterIds': instance.mutePosterIds.toList(),
+      'muteUserIds': instance.muteUserIds.toList(),
     };
 
 const _$CommunitiesEnumMap = {
@@ -495,35 +397,3 @@ const _$MarkIconEnumMap = {
   MarkIcon.edit: 'edit',
   MarkIcon.hot: 'hot',
 };
-
-LastOpenedIndex _$LastOpenedIndexFromJson(Map<String, dynamic> json) =>
-    LastOpenedIndex(
-      boards: json['boards'] as int?,
-      threads: json['threads'] as int?,
-      contents: (json['contents'] as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : LastOpenedContentIndex.fromJson(e as Map<String, dynamic>))
-          .toSet(),
-    );
-
-Map<String, dynamic> _$LastOpenedIndexToJson(LastOpenedIndex instance) =>
-    <String, dynamic>{
-      'boards': instance.boards,
-      'threads': instance.threads,
-      'contents': instance.contents?.toList(),
-    };
-
-LastOpenedContentIndex _$LastOpenedContentIndexFromJson(
-        Map<String, dynamic> json) =>
-    LastOpenedContentIndex(
-      id: json['id'] as String,
-      index: json['index'] as int,
-    );
-
-Map<String, dynamic> _$LastOpenedContentIndexToJson(
-        LastOpenedContentIndex instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'index': instance.index,
-    };

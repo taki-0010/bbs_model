@@ -2,6 +2,20 @@ import 'package:model/src/importer.dart';
 
 part 'girls_ch.g.dart';
 
+class GirlsChParser {
+  static final idReg = RegExp(r'[0-9]{5,}');
+  static String? getIdFromUrl(final String value) {
+    try {
+      final id = idReg.allMatches(value);
+      final data = id.first.group(0);
+      return data;
+    } catch (e) {
+      logger.e(e);
+    }
+    return null;
+  }
+}
+
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
@@ -10,11 +24,10 @@ class GirlsChCategory {
   final String url;
   // final String name;
   // String get url => '/topics/category/$id/';
-      factory GirlsChCategory.fromJson(Map<String, dynamic> json) =>
+  factory GirlsChCategory.fromJson(Map<String, dynamic> json) =>
       _$GirlsChCategoryFromJson(json);
 
   Map<String, dynamic> toJson() => _$GirlsChCategoryToJson(this);
-
 }
 
 @CopyWith()
@@ -52,7 +65,7 @@ class GirlsChThread extends ThreadData with WithDateTime {
     }
     final splited = updateAtStr!.split(' ');
     final datetime = splited.isNotEmpty ? splited.first : null;
-    final daytime =  splited.isNotEmpty ? splited.last : null;
+    final daytime = splited.isNotEmpty ? splited.last : null;
     if (datetime == null || daytime == null) {
       return 0.0;
     }
@@ -74,9 +87,10 @@ class GirlsChContent extends ContentData with WithDateTime {
       required this.plus,
       required this.minus,
       required this.postAt,
-      this.title,
+      super.title,
       required this.categoryId,
       this.id,
+      super.threadThumbnail,
       super.urlSet});
   // final int index;
   // final String name;
@@ -85,7 +99,7 @@ class GirlsChContent extends ContentData with WithDateTime {
   final int plus;
   final int minus;
   final String postAt;
-  final String? title;
+  // final String? title;
   final String? id;
   final String categoryId;
 
