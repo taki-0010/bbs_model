@@ -2,6 +2,63 @@ import 'package:model/src/importer.dart';
 
 part 'girls_ch.g.dart';
 
+class GirlsChBoardNames {
+  static String? getById(final String? id) {
+    switch (id) {
+      case 'animal':
+        return '犬・猫・動物';
+      case 'life':
+        return '生活';
+      case 'talk':
+        return '質問・雑談';
+      case 'news':
+        return 'ニュース';
+      case 'politics':
+        return '政治・経済';
+      case 'comic':
+        return 'マンガ・アニメ・本';
+      case 'work':
+        return '仕事';
+      case 'diet':
+        return 'ダイエット';
+      case 'hair':
+        return '髪型';
+      case 'movie':
+        return 'ドラマ・映画';
+      case 'cook':
+        return '料理・食べ物';
+      case 'fashion':
+        return 'ファッション';
+      case 'tech':
+        return 'IT・インターネット';
+      case 'images':
+        return '画像';
+      case 'tv':
+        return 'テレビ・CM';
+      case 'health':
+        return '医療・健康';
+      case 'gossip':
+        return '芸能人';
+      case 'cosme':
+        return '美容・コスメ';
+      case 'sports':
+        return 'スポーツ';
+      case 'music':
+        return '音楽';
+      case 'realtime':
+        return '実況';
+      case 'family':
+        return '家族・子育て';
+      case 'otona':
+        return '大人';
+      case 'love':
+        return '恋愛・結婚';
+      default:
+        return '';
+    }
+  }
+}
+
 class GirlsChParser {
   static final idReg = RegExp(r'[0-9]{5,}');
   static String? getIdFromUrl(final String value) {
@@ -103,6 +160,8 @@ class GirlsChContent extends ContentData with WithDateTime {
   final String? id;
   final String categoryId;
 
+  // 2023/08/25(金) 16:35:32
+
   @override
   DateTime get createdAt {
     final splited = postAt.split(' ');
@@ -115,7 +174,10 @@ class GirlsChContent extends ContentData with WithDateTime {
   String? get srcContent => src?.srcUri;
 
   @override
-  String get getId => id ?? '';
+  String? get getId => id;
+
+  @override
+  String? get getUserName => name;
 
   @override
   Set<String?> get anchorList {

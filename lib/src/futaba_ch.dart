@@ -2,6 +2,211 @@ import 'importer.dart';
 
 part 'futaba_ch.g.dart';
 
+class FutabaChBoardNames {
+  static String? getById(final String? id) {
+    switch (id) {
+      case 'dec':
+        return '二次元裏(dec)';
+      case 'jun':
+        return '二次元裏(jun)';
+      case 'b':
+        return '二次元裏(b)';
+      case '58':
+        return '転載不可';
+      case '59':
+        return '転載可';
+      case 'id':
+        return '二次元ID';
+      case '23':
+        return 'スピグラ';
+      case '16':
+        return '二次元ネタ';
+      case '43':
+        return '二次元業界';
+      case '74':
+        return 'FGO';
+      case '75':
+        return 'アイマス';
+      case '86':
+        return 'ZOIDS';
+      case '78':
+        return 'ウメハラ総合';
+      case '31':
+        return 'ゲーム';
+      case '28':
+        return 'ネトゲ';
+      case '56':
+        return 'ソシャゲ';
+      case '60':
+        return '艦これ';
+      case '69':
+        return 'モアイ';
+      case '65':
+        return '刀剣乱舞';
+      case '64':
+        return '占い';
+      case '66':
+        return 'ファッション';
+      case '67':
+        return '旅行';
+      case '68':
+        return '子育て';
+      case 'webm':
+        return 'webm';
+      case '71':
+        return 'そうだね';
+      case '82':
+        return '任天堂';
+      case '61':
+        return 'ソニー';
+      case '10':
+        return 'ネットキャラ';
+      case '34':
+        return 'なりきり';
+      case '11':
+        return '自作絵';
+      case '14':
+        return '自作絵裏';
+      case '32':
+        return '女装';
+      case '15':
+        return 'ばら';
+      case '7':
+        return 'ゆり';
+      case '8':
+        return 'やおい';
+      case '3':
+        return '自作PC';
+      case 'g':
+        return '特撮';
+      case '2':
+        return 'ろぼ';
+      case '63':
+        return '映画';
+      case '44':
+        return 'おもちゃ';
+      case 'v':
+        return '模型';
+      case 'y':
+        return '模型裏';
+      case '47':
+        return '模型裏';
+      case '73':
+        return 'VTuber';
+      case '84':
+        return 'ホロライブ';
+      case '81':
+        return '合成音声';
+      case 'x':
+        return '3DCG';
+      case '85':
+        return '人工知能';
+      case '35':
+        return '政治';
+      case '36':
+        return '経済';
+      case '38':
+        return '尹錫悦';
+      case '80':
+        return '岸田文雄';
+      case '79':
+        return '宗教';
+      case '50':
+        return '三次実況';
+      case 'f':
+        return '軍';
+      case '39':
+        return '軍事';
+      case 'm':
+        return '数学';
+      case 'i':
+        return 'flash';
+      case 'k':
+        return '壁紙';
+      case 'l':
+        return '壁紙二';
+      case '40':
+        return '東方';
+      case '55':
+        return '東方裏';
+      case 'p':
+        return 'お絵かき';
+      case 'q':
+        return '落書き';
+      case 'u':
+        return '落書き裏';
+      case 'oe':
+        return 'お絵sql';
+      case '72':
+        return 'お絵sqlip';
+      case '6':
+        return 'ニュース表';
+      case '76':
+        return '昭和';
+      case '77':
+        return '平成';
+      case '53':
+        return '発電';
+      case '52':
+        return '自然災害';
+      case '83':
+        return 'コロナ';
+      case '9':
+        return '雑談';
+      case '70':
+        return '新板提案';
+      case '54':
+        return 'IPv6';
+      case 'layout':
+        return 'レイアウト';
+      case 't':
+        return '料理';
+      case '20':
+        return '甘味';
+      case '21':
+        return 'ラーメン';
+      case 'e':
+        return 'のりもの';
+      case 'j':
+        return '二輪';
+      case '37':
+        return '自転車';
+      case '45':
+        return 'カメラ';
+      case '48':
+        return '家電';
+      case 'r':
+        return '鉄道';
+      case 'img2':
+        return '二次元';
+      case 'hinan':
+        return '避難所';
+      case '1':
+        return '野球';
+      case '12':
+        return 'サッカー';
+      case '25':
+        return '麻雀';
+      case '26':
+        return 'うま';
+      case '27':
+        return 'ねこ';
+      case 'd':
+        return 'どうぶつ';
+      case 'z':
+        return 'しょくぶつ';
+      case 'w':
+        return '虫';
+      case '49':
+        return 'アクア';
+      case '62':
+        return 'アウトドア';
+      default:
+        return '';
+    }
+  }
+}
+
 class FutabaParser {
   static const catalog = '?mode=cat';
   static const sort = '&sort=';
@@ -29,7 +234,7 @@ class FutabaParser {
   }
 
   static String? getIdFromUrl(final String value) {
-    final data = value.substring(value.lastIndexOf('/')+1);
+    final data = value.substring(value.lastIndexOf('/') + 1);
     return data.replaceAll('.htm', '');
   }
 
@@ -169,15 +374,21 @@ class FutabaChContent extends ContentData with WithDateTime {
   }
 
   @override
-  String get getId {
+  String? get getUserName => name;
+
+  @override
+  String? get getId {
     final idIndex = created.indexOf('ID:');
-    return idIndex == -1 ? '' : created.substring(idIndex + 3);
+    return idIndex == -1 ? null : created.substring(idIndex + 3);
   }
 
-  String get getIp {
+  String? get getIp {
     final ipIndex = created.indexOf('IP:');
-    return ipIndex == -1 ? '' : created.substring(ipIndex + 3);
+    return ipIndex == -1 ? null : created.substring(ipIndex + 3);
   }
+
+  @override
+  String? get getUserId => getIp;
 
   @override
   Set<String?> get anchorList {

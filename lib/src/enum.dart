@@ -16,7 +16,7 @@ enum LangList {
   zhCN;
 }
 
-enum CacheExpire {
+enum RetentionPeriodList {
   byPostPace(days: 0),
   oneDay(days: 1),
   oneWeek(days: 7),
@@ -24,14 +24,14 @@ enum CacheExpire {
   oneMonth(days: 30);
   // indefinite(days: null);
 
-  const CacheExpire({this.days});
+  const RetentionPeriodList({this.days});
   final int? days;
 }
 
 enum ThreadsOrder {
   newOrder,
   oldOrder,
-  ikioi,
+  hot,
   biggerResCount,
   catalog;
 }
@@ -50,13 +50,33 @@ enum MarkIcon {
   hot;
 }
 
-enum CommentLevel {
-  one(level:'veryUnimportant'),
-  two(level:'unimportant'),
-  three(level:'medium'),
-  four(level:'important'),
-  five(level:'veryImportant');
+enum ImportanceList {
+  veryImportant(level: 'veryImportant'),
+  important(level: 'important'),
+  // three(level: 'medium'),
+  unimportant(level: 'unimportant'),
+  veryUnimportant(level: 'veryUnimportant');
 
-  const CommentLevel({required this.level});
+  const ImportanceList({required this.level});
   final String level;
 }
+
+enum ImportanceTarget {
+  userName,
+  userId,
+  postId,
+  title,
+  body;
+}
+
+// enum GoogleFontsList {
+//   kosugi(label: 'Kosugi'),
+//   shipporiMincho(label: 'Shippori Mincho'),
+//   zenMaruGothic(label: 'Zen Maru Gothic'),
+//   zenKurenaido(label: 'Zen Kurenaido'),
+//   kaiseiDecol(label: 'Kaisei Decol'),
+//   dotGothic16(label: 'DotGothic16');
+
+//   const GoogleFontsList({required this.label});
+//   final String label;
+// }

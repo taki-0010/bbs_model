@@ -6,29 +6,29 @@ part 'forum.g.dart';
 @CopyWith()
 @immutable
 class ForumSettingsData {
-  const ForumSettingsData({
-    required this.userId,
-    required this.forum,
-    required this.theme,
-    required this.retentionPeriod,
-    this.threadsOrder = ThreadsOrder.ikioi,
-    this.positionToGet = PositionToGet.first,
-    this.commentCountDisplayThreshold = 5,
-    this.openLink = true,
-    this.useFavoritesBoards = false,
-    this.favoritesBoardList = const [],
-    this.searchWordList = const [],
-    this.searchBoardIdForFutaba = 'b',
-    this.sortHistoryByRetention = false,
-    this.viewByBoardInHistory = false,
-    this.viewByBoardInSearch = false,
-    // this.viewByBoardInFavorites = false,
-  });
+  const ForumSettingsData(
+      {required this.userId,
+      required this.forum,
+      required this.theme,
+      required this.retentionPeriod,
+      this.threadsOrder = ThreadsOrder.hot,
+      this.positionToGet = PositionToGet.first,
+      this.commentCountDisplayThreshold = 5,
+      this.openLink = true,
+      this.useFavoritesBoards = false,
+      this.favoritesBoardList = const [],
+      this.searchWordList = const [],
+      this.searchBoardIdForFutaba = 'b',
+      this.sortHistoryByRetention = false,
+      this.googleFonts,
+      this.addedFonts = const [],
+      this.boardImportance = const [],
+      this.threadsImportance = const []});
 
   final String userId;
   final Communities forum;
   final ThemeList theme;
-  final CacheExpire retentionPeriod;
+  final RetentionPeriodList retentionPeriod;
   final ThreadsOrder threadsOrder;
   final PositionToGet positionToGet;
   final int commentCountDisplayThreshold;
@@ -38,9 +38,18 @@ class ForumSettingsData {
   final List<String?> searchWordList;
   final String searchBoardIdForFutaba;
   final bool sortHistoryByRetention;
-  final bool viewByBoardInHistory;
-  final bool viewByBoardInSearch;
-  // final bool viewByBoardInFavorites;
+  final String? googleFonts;
+  final List<String?> addedFonts;
+  final List<String?> boardImportance;
+  final List<String?> threadsImportance;
+
+  List<ImportanceData?> get boardImportanceList => boardImportance
+      .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
+      .toList();
+
+  List<ImportanceData?> get threadsImportanceList => threadsImportance
+      .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
+      .toList();
 
   factory ForumSettingsData.fromJson(Map<String, dynamic> json) =>
       _$ForumSettingsDataFromJson(json);

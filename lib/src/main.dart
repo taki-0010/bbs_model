@@ -19,7 +19,7 @@ class ThreadMarkData extends ThreadBase {
     // this.thumbnailUrl,
     required super.boardId,
     required super.title,
-    super.boardName,
+    // super.boardName,
     super.positionToGet = PositionToGet.first,
     // super.difference,
     this.lastOpendIndex,
@@ -28,10 +28,11 @@ class ThreadMarkData extends ThreadBase {
     required this.userId,
     required this.documentId,
     this.retentionPeriodSeconds = 0,
-    // this.marks = const {},
-    this.mutePosterIds = const {},
-    this.muteUserIds = const {}
-    
+    required this.createdAtBySeconds,
+    this.marks = const {},
+    this.importance = const [],
+    // this.mutePosterIds = const {},
+    // this.muteUserIds = const {}
   });
   final String userId;
   final String documentId;
@@ -42,13 +43,23 @@ class ThreadMarkData extends ThreadBase {
   final bool favorite;
   // final String retentionPeriod;
   final int retentionPeriodSeconds;
-  // final Set<ResMarkData?> marks;
-  final Set<String?> mutePosterIds;
-  final Set<String?> muteUserIds;
+  final int createdAtBySeconds;
+  final Set<String?> marks;
+  // final Set<String?> mutePosterIds;
+  // final Set<String?> muteUserIds;
+  final List<String?> importance;
 
   SrcData? get thumbnail => thumbnailStr != null
       ? SrcData.fromJson(stringToJson(thumbnailStr!))
       : null;
+
+  List<ImportanceData?> get importanceList => importance
+      .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
+      .toList();
+
+  Set<ResMarkData?> get markList => marks
+      .map((e) => e != null ? ResMarkData.fromJson(stringToJson(e)) : null)
+      .toSet();
 
   // @override
   // int get getResCount => endIndex ?? 0;
@@ -76,6 +87,25 @@ class ResMarkData {
   factory ResMarkData.fromJson(Map<String, dynamic> json) =>
       _$ResMarkDataFromJson(json);
   Map<String, dynamic> toJson() => _$ResMarkDataToJson(this);
+}
+
+@JsonSerializable()
+@CopyWith()
+@immutable
+class ImportanceData {
+  const ImportanceData(
+      {required this.id,
+      required this.target,
+      required this.strValue,
+      required this.level});
+  final int id;
+  final ImportanceTarget target;
+  final String strValue;
+  final ImportanceList level;
+
+  factory ImportanceData.fromJson(Map<String, dynamic> json) =>
+      _$ImportanceDataFromJson(json);
+  Map<String, dynamic> toJson() => _$ImportanceDataToJson(this);
 }
 
 // @JsonSerializable()
@@ -125,6 +155,7 @@ abstract class ContentData {
       this.urlSet,
       this.src,
       this.title,
+      this.userId,
       this.threadThumbnail,
       required this.name});
   final int index;
@@ -132,6 +163,7 @@ abstract class ContentData {
   final List<String?>? urlSet;
   final SrcData? src;
   final String name;
+  final String? userId;
   final String? title;
   final String? threadThumbnail;
 
@@ -139,9 +171,10 @@ abstract class ContentData {
   String? get srcContent => null;
 
   DateTime? get createdAt => null;
-  String get getId => '';
+  String? get getId => null;
   Set<String?> get anchorList => {};
   String? get getUserId => null;
+  String? get getUserName => null;
 }
 
 mixin WithDateTime {

@@ -885,10 +885,10 @@ Map<String, dynamic> _$FiveChThreadContentDataToJson(
       'body': instance.body,
       'urlSet': instance.urlSet,
       'name': instance.name,
+      'userId': instance.userId,
       'title': instance.title,
       'email': instance.email,
       'dateAndId': instance.dateAndId,
       'domain': instance.domain,
       'directoryName': instance.directoryName,
-      'userId': instance.userId,
     };

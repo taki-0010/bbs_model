@@ -12,6 +12,7 @@ class UserData {
     required this.randomAvatar,
     required this.lastOpenedForum,
     required this.language,
+    // this.addedFonts = const [],
   });
 
   final String id;
@@ -19,6 +20,7 @@ class UserData {
   final String randomAvatar;
   final Communities lastOpenedForum;
   final LangList language;
+  // final List<String?> addedFonts;
 
   factory UserData.fromJson(Map<String, dynamic> json) =>
       _$UserDataFromJson(json);

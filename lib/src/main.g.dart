@@ -23,8 +23,6 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData title(String title);
 
-  ThreadMarkData boardName(String? boardName);
-
   ThreadMarkData positionToGet(PositionToGet positionToGet);
 
   ThreadMarkData lastOpendIndex(int? lastOpendIndex);
@@ -39,9 +37,11 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData retentionPeriodSeconds(int retentionPeriodSeconds);
 
-  ThreadMarkData mutePosterIds(Set<String?> mutePosterIds);
+  ThreadMarkData createdAtBySeconds(int createdAtBySeconds);
 
-  ThreadMarkData muteUserIds(Set<String?> muteUserIds);
+  ThreadMarkData marks(Set<String?> marks);
+
+  ThreadMarkData importance(List<String?> importance);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -58,7 +58,6 @@ abstract class _$ThreadMarkDataCWProxy {
     String? url,
     String? boardId,
     String? title,
-    String? boardName,
     PositionToGet? positionToGet,
     int? lastOpendIndex,
     int? lastReadAt,
@@ -66,8 +65,9 @@ abstract class _$ThreadMarkDataCWProxy {
     String? userId,
     String? documentId,
     int? retentionPeriodSeconds,
-    Set<String?>? mutePosterIds,
-    Set<String?>? muteUserIds,
+    int? createdAtBySeconds,
+    Set<String?>? marks,
+    List<String?>? importance,
   });
 }
 
@@ -103,9 +103,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
   ThreadMarkData title(String title) => this(title: title);
 
   @override
-  ThreadMarkData boardName(String? boardName) => this(boardName: boardName);
-
-  @override
   ThreadMarkData positionToGet(PositionToGet positionToGet) =>
       this(positionToGet: positionToGet);
 
@@ -130,12 +127,15 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
       this(retentionPeriodSeconds: retentionPeriodSeconds);
 
   @override
-  ThreadMarkData mutePosterIds(Set<String?> mutePosterIds) =>
-      this(mutePosterIds: mutePosterIds);
+  ThreadMarkData createdAtBySeconds(int createdAtBySeconds) =>
+      this(createdAtBySeconds: createdAtBySeconds);
 
   @override
-  ThreadMarkData muteUserIds(Set<String?> muteUserIds) =>
-      this(muteUserIds: muteUserIds);
+  ThreadMarkData marks(Set<String?> marks) => this(marks: marks);
+
+  @override
+  ThreadMarkData importance(List<String?> importance) =>
+      this(importance: importance);
 
   @override
 
@@ -154,7 +154,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? url = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
-    Object? boardName = const $CopyWithPlaceholder(),
     Object? positionToGet = const $CopyWithPlaceholder(),
     Object? lastOpendIndex = const $CopyWithPlaceholder(),
     Object? lastReadAt = const $CopyWithPlaceholder(),
@@ -162,8 +161,9 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? userId = const $CopyWithPlaceholder(),
     Object? documentId = const $CopyWithPlaceholder(),
     Object? retentionPeriodSeconds = const $CopyWithPlaceholder(),
-    Object? mutePosterIds = const $CopyWithPlaceholder(),
-    Object? muteUserIds = const $CopyWithPlaceholder(),
+    Object? createdAtBySeconds = const $CopyWithPlaceholder(),
+    Object? marks = const $CopyWithPlaceholder(),
+    Object? importance = const $CopyWithPlaceholder(),
   }) {
     return ThreadMarkData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -198,10 +198,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.title
           // ignore: cast_nullable_to_non_nullable
           : title as String,
-      boardName: boardName == const $CopyWithPlaceholder()
-          ? _value.boardName
-          // ignore: cast_nullable_to_non_nullable
-          : boardName as String?,
       positionToGet:
           positionToGet == const $CopyWithPlaceholder() || positionToGet == null
               ? _value.positionToGet
@@ -234,16 +230,20 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
               ? _value.retentionPeriodSeconds
               // ignore: cast_nullable_to_non_nullable
               : retentionPeriodSeconds as int,
-      mutePosterIds:
-          mutePosterIds == const $CopyWithPlaceholder() || mutePosterIds == null
-              ? _value.mutePosterIds
+      createdAtBySeconds: createdAtBySeconds == const $CopyWithPlaceholder() ||
+              createdAtBySeconds == null
+          ? _value.createdAtBySeconds
+          // ignore: cast_nullable_to_non_nullable
+          : createdAtBySeconds as int,
+      marks: marks == const $CopyWithPlaceholder() || marks == null
+          ? _value.marks
+          // ignore: cast_nullable_to_non_nullable
+          : marks as Set<String?>,
+      importance:
+          importance == const $CopyWithPlaceholder() || importance == null
+              ? _value.importance
               // ignore: cast_nullable_to_non_nullable
-              : mutePosterIds as Set<String?>,
-      muteUserIds:
-          muteUserIds == const $CopyWithPlaceholder() || muteUserIds == null
-              ? _value.muteUserIds
-              // ignore: cast_nullable_to_non_nullable
-              : muteUserIds as Set<String?>,
+              : importance as List<String?>,
     );
   }
 }
@@ -314,6 +314,88 @@ extension $ResMarkDataCopyWith on ResMarkData {
   _$ResMarkDataCWProxy get copyWith => _$ResMarkDataCWProxyImpl(this);
 }
 
+abstract class _$ImportanceDataCWProxy {
+  ImportanceData id(int id);
+
+  ImportanceData target(ImportanceTarget target);
+
+  ImportanceData strValue(String strValue);
+
+  ImportanceData level(ImportanceList level);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ImportanceData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// ImportanceData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  ImportanceData call({
+    int? id,
+    ImportanceTarget? target,
+    String? strValue,
+    ImportanceList? level,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfImportanceData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfImportanceData.copyWith.fieldName(...)`
+class _$ImportanceDataCWProxyImpl implements _$ImportanceDataCWProxy {
+  const _$ImportanceDataCWProxyImpl(this._value);
+
+  final ImportanceData _value;
+
+  @override
+  ImportanceData id(int id) => this(id: id);
+
+  @override
+  ImportanceData target(ImportanceTarget target) => this(target: target);
+
+  @override
+  ImportanceData strValue(String strValue) => this(strValue: strValue);
+
+  @override
+  ImportanceData level(ImportanceList level) => this(level: level);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ImportanceData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// ImportanceData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  ImportanceData call({
+    Object? id = const $CopyWithPlaceholder(),
+    Object? target = const $CopyWithPlaceholder(),
+    Object? strValue = const $CopyWithPlaceholder(),
+    Object? level = const $CopyWithPlaceholder(),
+  }) {
+    return ImportanceData(
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as int,
+      target: target == const $CopyWithPlaceholder() || target == null
+          ? _value.target
+          // ignore: cast_nullable_to_non_nullable
+          : target as ImportanceTarget,
+      strValue: strValue == const $CopyWithPlaceholder() || strValue == null
+          ? _value.strValue
+          // ignore: cast_nullable_to_non_nullable
+          : strValue as String,
+      level: level == const $CopyWithPlaceholder() || level == null
+          ? _value.level
+          // ignore: cast_nullable_to_non_nullable
+          : level as ImportanceList,
+    );
+  }
+}
+
+extension $ImportanceDataCopyWith on ImportanceData {
+  /// Returns a callable class that can be used as follows: `instanceOfImportanceData.copyWith(...)` or like so:`instanceOfImportanceData.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$ImportanceDataCWProxy get copyWith => _$ImportanceDataCWProxyImpl(this);
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -328,7 +410,6 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String,
       boardId: json['boardId'] as String,
       title: json['title'] as String,
-      boardName: json['boardName'] as String?,
       positionToGet:
           $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
               PositionToGet.first,
@@ -338,14 +419,14 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       userId: json['userId'] as String,
       documentId: json['documentId'] as String,
       retentionPeriodSeconds: json['retentionPeriodSeconds'] as int? ?? 0,
-      mutePosterIds: (json['mutePosterIds'] as List<dynamic>?)
+      createdAtBySeconds: json['createdAtBySeconds'] as int,
+      marks:
+          (json['marks'] as List<dynamic>?)?.map((e) => e as String?).toSet() ??
+              const {},
+      importance: (json['importance'] as List<dynamic>?)
               ?.map((e) => e as String?)
-              .toSet() ??
-          const {},
-      muteUserIds: (json['muteUserIds'] as List<dynamic>?)
-              ?.map((e) => e as String?)
-              .toSet() ??
-          const {},
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
@@ -355,7 +436,6 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'title': instance.title,
       'resCount': instance.resCount,
       'boardId': instance.boardId,
-      'boardName': instance.boardName,
       'url': instance.url,
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
       'thumbnailStr': instance.thumbnailStr,
@@ -366,8 +446,9 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'sessionId': instance.sessionId,
       'favorite': instance.favorite,
       'retentionPeriodSeconds': instance.retentionPeriodSeconds,
-      'mutePosterIds': instance.mutePosterIds.toList(),
-      'muteUserIds': instance.muteUserIds.toList(),
+      'createdAtBySeconds': instance.createdAtBySeconds,
+      'marks': instance.marks.toList(),
+      'importance': instance.importance,
     };
 
 const _$CommunitiesEnumMap = {
@@ -396,4 +477,35 @@ const _$MarkIconEnumMap = {
   MarkIcon.self: 'self',
   MarkIcon.edit: 'edit',
   MarkIcon.hot: 'hot',
+};
+
+ImportanceData _$ImportanceDataFromJson(Map<String, dynamic> json) =>
+    ImportanceData(
+      id: json['id'] as int,
+      target: $enumDecode(_$ImportanceTargetEnumMap, json['target']),
+      strValue: json['strValue'] as String,
+      level: $enumDecode(_$ImportanceListEnumMap, json['level']),
+    );
+
+Map<String, dynamic> _$ImportanceDataToJson(ImportanceData instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'target': _$ImportanceTargetEnumMap[instance.target]!,
+      'strValue': instance.strValue,
+      'level': _$ImportanceListEnumMap[instance.level]!,
+    };
+
+const _$ImportanceTargetEnumMap = {
+  ImportanceTarget.userName: 'userName',
+  ImportanceTarget.userId: 'userId',
+  ImportanceTarget.postId: 'postId',
+  ImportanceTarget.title: 'title',
+  ImportanceTarget.body: 'body',
+};
+
+const _$ImportanceListEnumMap = {
+  ImportanceList.veryImportant: 'veryImportant',
+  ImportanceList.important: 'important',
+  ImportanceList.unimportant: 'unimportant',
+  ImportanceList.veryUnimportant: 'veryUnimportant',
 };

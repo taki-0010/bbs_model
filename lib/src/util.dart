@@ -5,6 +5,31 @@ import 'dart:math';
 
 import 'importer.dart';
 
+class GoogleFontsList {
+  // static const _default = '(Default)';
+  static const _kosugi = 'Kosugi';
+  static const _shipporiMincho = 'Shippori Mincho';
+  static const _zenMaruGothic = 'Zen Maru Gothic';
+  static const _zenKurenaido = 'Zen Kurenaido';
+  static const _kaiseiDecol = 'Kaisei Decol';
+  static const _dotGothic16 = 'DotGothic16';
+  // static const _add = 'Add';
+  final list = [
+    _kosugi,
+    _shipporiMincho,
+    _zenMaruGothic,
+    _zenKurenaido,
+    _kaiseiDecol,
+    _dotGothic16,
+    // _add
+  ];
+  String get kosugi => _kosugi;
+}
+
+int randomInt() {
+  return Random().nextInt(999);
+}
+
 String jsonToString(final Map<String, dynamic> value) {
   return value.toString();
 }
@@ -64,7 +89,6 @@ class FiveChParser {
     return null;
   }
 }
-
 
 class StringMethodData {
   static final escape = HtmlUnescape();
@@ -133,4 +157,6 @@ class StringMethodData {
             .join();
     return randomStr;
   }
+
+  static String toTitleCase(final String value) => ReCase(value).titleCase;
 }

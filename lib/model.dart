@@ -15,6 +15,7 @@ export 'src/thread.dart';
 export 'src/enum.dart';
 export 'src/platform.dart';
 export 'src/util.dart';
+export 'src/constants.dart';
 export 'logger.dart';
 
 // TODO: Export any libraries intended for clients of this package.

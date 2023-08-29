@@ -35,7 +35,7 @@ abstract class ThreadBase {
   bool get useWebview =>
       type == Communities.girlsCh || type == Communities.futabaCh;
 
-  String get getFullUrl => 'https://$url';
+  String get getFullUrl => 'https://${url.replaceAll('https://', '')}';
 
   Uri get uri => Uri.parse(getFullUrl);
 
@@ -125,12 +125,16 @@ class ThreadContentData {
       {required this.id,
       required this.boardId,
       required this.type,
+      this.archived = false,
       this.content = const []});
   final String id;
   final String boardId;
   final Communities type;
+  final bool archived;
   // final String title;
   final List<ContentData?> content;
+
+
 
   // factory ThreadContentData.fromJson(Map<String, dynamic> json) =>
   //     _$ThreadContentDataFromJson(json);

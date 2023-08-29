@@ -13,7 +13,7 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData theme(ThemeList theme);
 
-  ForumSettingsData retentionPeriod(CacheExpire retentionPeriod);
+  ForumSettingsData retentionPeriod(RetentionPeriodList retentionPeriod);
 
   ForumSettingsData threadsOrder(ThreadsOrder threadsOrder);
 
@@ -34,9 +34,13 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData sortHistoryByRetention(bool sortHistoryByRetention);
 
-  ForumSettingsData viewByBoardInHistory(bool viewByBoardInHistory);
+  ForumSettingsData googleFonts(String? googleFonts);
 
-  ForumSettingsData viewByBoardInSearch(bool viewByBoardInSearch);
+  ForumSettingsData addedFonts(List<String?> addedFonts);
+
+  ForumSettingsData boardImportance(List<String?> boardImportance);
+
+  ForumSettingsData threadsImportance(List<String?> threadsImportance);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -48,7 +52,7 @@ abstract class _$ForumSettingsDataCWProxy {
     String? userId,
     Communities? forum,
     ThemeList? theme,
-    CacheExpire? retentionPeriod,
+    RetentionPeriodList? retentionPeriod,
     ThreadsOrder? threadsOrder,
     PositionToGet? positionToGet,
     int? commentCountDisplayThreshold,
@@ -58,8 +62,10 @@ abstract class _$ForumSettingsDataCWProxy {
     List<String?>? searchWordList,
     String? searchBoardIdForFutaba,
     bool? sortHistoryByRetention,
-    bool? viewByBoardInHistory,
-    bool? viewByBoardInSearch,
+    String? googleFonts,
+    List<String?>? addedFonts,
+    List<String?>? boardImportance,
+    List<String?>? threadsImportance,
   });
 }
 
@@ -79,7 +85,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
   ForumSettingsData theme(ThemeList theme) => this(theme: theme);
 
   @override
-  ForumSettingsData retentionPeriod(CacheExpire retentionPeriod) =>
+  ForumSettingsData retentionPeriod(RetentionPeriodList retentionPeriod) =>
       this(retentionPeriod: retentionPeriod);
 
   @override
@@ -119,12 +125,20 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(sortHistoryByRetention: sortHistoryByRetention);
 
   @override
-  ForumSettingsData viewByBoardInHistory(bool viewByBoardInHistory) =>
-      this(viewByBoardInHistory: viewByBoardInHistory);
+  ForumSettingsData googleFonts(String? googleFonts) =>
+      this(googleFonts: googleFonts);
 
   @override
-  ForumSettingsData viewByBoardInSearch(bool viewByBoardInSearch) =>
-      this(viewByBoardInSearch: viewByBoardInSearch);
+  ForumSettingsData addedFonts(List<String?> addedFonts) =>
+      this(addedFonts: addedFonts);
+
+  @override
+  ForumSettingsData boardImportance(List<String?> boardImportance) =>
+      this(boardImportance: boardImportance);
+
+  @override
+  ForumSettingsData threadsImportance(List<String?> threadsImportance) =>
+      this(threadsImportance: threadsImportance);
 
   @override
 
@@ -148,8 +162,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? searchWordList = const $CopyWithPlaceholder(),
     Object? searchBoardIdForFutaba = const $CopyWithPlaceholder(),
     Object? sortHistoryByRetention = const $CopyWithPlaceholder(),
-    Object? viewByBoardInHistory = const $CopyWithPlaceholder(),
-    Object? viewByBoardInSearch = const $CopyWithPlaceholder(),
+    Object? googleFonts = const $CopyWithPlaceholder(),
+    Object? addedFonts = const $CopyWithPlaceholder(),
+    Object? boardImportance = const $CopyWithPlaceholder(),
+    Object? threadsImportance = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       userId: userId == const $CopyWithPlaceholder() || userId == null
@@ -168,7 +184,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
               retentionPeriod == null
           ? _value.retentionPeriod
           // ignore: cast_nullable_to_non_nullable
-          : retentionPeriod as CacheExpire,
+          : retentionPeriod as RetentionPeriodList,
       threadsOrder:
           threadsOrder == const $CopyWithPlaceholder() || threadsOrder == null
               ? _value.threadsOrder
@@ -216,18 +232,25 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
               ? _value.sortHistoryByRetention
               // ignore: cast_nullable_to_non_nullable
               : sortHistoryByRetention as bool,
-      viewByBoardInHistory:
-          viewByBoardInHistory == const $CopyWithPlaceholder() ||
-                  viewByBoardInHistory == null
-              ? _value.viewByBoardInHistory
+      googleFonts: googleFonts == const $CopyWithPlaceholder()
+          ? _value.googleFonts
+          // ignore: cast_nullable_to_non_nullable
+          : googleFonts as String?,
+      addedFonts:
+          addedFonts == const $CopyWithPlaceholder() || addedFonts == null
+              ? _value.addedFonts
               // ignore: cast_nullable_to_non_nullable
-              : viewByBoardInHistory as bool,
-      viewByBoardInSearch:
-          viewByBoardInSearch == const $CopyWithPlaceholder() ||
-                  viewByBoardInSearch == null
-              ? _value.viewByBoardInSearch
-              // ignore: cast_nullable_to_non_nullable
-              : viewByBoardInSearch as bool,
+              : addedFonts as List<String?>,
+      boardImportance: boardImportance == const $CopyWithPlaceholder() ||
+              boardImportance == null
+          ? _value.boardImportance
+          // ignore: cast_nullable_to_non_nullable
+          : boardImportance as List<String?>,
+      threadsImportance: threadsImportance == const $CopyWithPlaceholder() ||
+              threadsImportance == null
+          ? _value.threadsImportance
+          // ignore: cast_nullable_to_non_nullable
+          : threadsImportance as List<String?>,
     );
   }
 }
@@ -371,10 +394,10 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
       forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
       theme: $enumDecode(_$ThemeListEnumMap, json['theme']),
       retentionPeriod:
-          $enumDecode(_$CacheExpireEnumMap, json['retentionPeriod']),
+          $enumDecode(_$RetentionPeriodListEnumMap, json['retentionPeriod']),
       threadsOrder:
           $enumDecodeNullable(_$ThreadsOrderEnumMap, json['threadsOrder']) ??
-              ThreadsOrder.ikioi,
+              ThreadsOrder.hot,
       positionToGet:
           $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
               PositionToGet.first,
@@ -392,8 +415,19 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
           const [],
       searchBoardIdForFutaba: json['searchBoardIdForFutaba'] as String? ?? 'b',
       sortHistoryByRetention: json['sortHistoryByRetention'] as bool? ?? false,
-      viewByBoardInHistory: json['viewByBoardInHistory'] as bool? ?? false,
-      viewByBoardInSearch: json['viewByBoardInSearch'] as bool? ?? false,
+      googleFonts: json['googleFonts'] as String?,
+      addedFonts: (json['addedFonts'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
+      boardImportance: (json['boardImportance'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
+      threadsImportance: (json['threadsImportance'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -401,7 +435,8 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'userId': instance.userId,
       'forum': _$CommunitiesEnumMap[instance.forum]!,
       'theme': _$ThemeListEnumMap[instance.theme]!,
-      'retentionPeriod': _$CacheExpireEnumMap[instance.retentionPeriod]!,
+      'retentionPeriod':
+          _$RetentionPeriodListEnumMap[instance.retentionPeriod]!,
       'threadsOrder': _$ThreadsOrderEnumMap[instance.threadsOrder]!,
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
       'commentCountDisplayThreshold': instance.commentCountDisplayThreshold,
@@ -411,8 +446,10 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'searchWordList': instance.searchWordList,
       'searchBoardIdForFutaba': instance.searchBoardIdForFutaba,
       'sortHistoryByRetention': instance.sortHistoryByRetention,
-      'viewByBoardInHistory': instance.viewByBoardInHistory,
-      'viewByBoardInSearch': instance.viewByBoardInSearch,
+      'googleFonts': instance.googleFonts,
+      'addedFonts': instance.addedFonts,
+      'boardImportance': instance.boardImportance,
+      'threadsImportance': instance.threadsImportance,
     };
 
 const _$CommunitiesEnumMap = {
@@ -428,18 +465,18 @@ const _$ThemeListEnumMap = {
   ThemeList.espresso: 'espresso',
 };
 
-const _$CacheExpireEnumMap = {
-  CacheExpire.byPostPace: 'byPostPace',
-  CacheExpire.oneDay: 'oneDay',
-  CacheExpire.oneWeek: 'oneWeek',
-  CacheExpire.twoWeeks: 'twoWeeks',
-  CacheExpire.oneMonth: 'oneMonth',
+const _$RetentionPeriodListEnumMap = {
+  RetentionPeriodList.byPostPace: 'byPostPace',
+  RetentionPeriodList.oneDay: 'oneDay',
+  RetentionPeriodList.oneWeek: 'oneWeek',
+  RetentionPeriodList.twoWeeks: 'twoWeeks',
+  RetentionPeriodList.oneMonth: 'oneMonth',
 };
 
 const _$ThreadsOrderEnumMap = {
   ThreadsOrder.newOrder: 'newOrder',
   ThreadsOrder.oldOrder: 'oldOrder',
-  ThreadsOrder.ikioi: 'ikioi',
+  ThreadsOrder.hot: 'hot',
   ThreadsOrder.biggerResCount: 'biggerResCount',
   ThreadsOrder.catalog: 'catalog',
 };
