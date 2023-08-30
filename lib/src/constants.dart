@@ -10,5 +10,6 @@ class AppwriteData {
 
   static const funcIdCreateUser = 'createUser';
   static const funcIdRemoveUser = 'removeUser';
+  static const funcIdDeleteUserAccount = 'deleteUserAccount';
   static const funcIddeleteThreadAutomatically = 'deleteThreadAutomatically';
 }
