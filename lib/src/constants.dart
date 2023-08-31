@@ -13,3 +13,9 @@ class AppwriteData {
   static const funcIdDeleteUserAccount = 'deleteUserAccount';
   static const funcIddeleteThreadAutomatically = 'deleteThreadAutomatically';
 }
+
+class OfficialSite {
+  static const host = 'forumbook-f883e.web.app';
+  static const privacy = 'about/privacy';
+  static const terms = 'about/terms';
+}
