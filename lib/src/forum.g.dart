@@ -24,6 +24,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData openLink(bool openLink);
 
+  ForumSettingsData blurThumbnail(bool blurThumbnail);
+
   ForumSettingsData useFavoritesBoards(bool useFavoritesBoards);
 
   ForumSettingsData favoritesBoardList(List<String?> favoritesBoardList);
@@ -57,6 +59,7 @@ abstract class _$ForumSettingsDataCWProxy {
     PositionToGet? positionToGet,
     int? commentCountDisplayThreshold,
     bool? openLink,
+    bool? blurThumbnail,
     bool? useFavoritesBoards,
     List<String?>? favoritesBoardList,
     List<String?>? searchWordList,
@@ -103,6 +106,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
 
   @override
   ForumSettingsData openLink(bool openLink) => this(openLink: openLink);
+
+  @override
+  ForumSettingsData blurThumbnail(bool blurThumbnail) =>
+      this(blurThumbnail: blurThumbnail);
 
   @override
   ForumSettingsData useFavoritesBoards(bool useFavoritesBoards) =>
@@ -157,6 +164,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? positionToGet = const $CopyWithPlaceholder(),
     Object? commentCountDisplayThreshold = const $CopyWithPlaceholder(),
     Object? openLink = const $CopyWithPlaceholder(),
+    Object? blurThumbnail = const $CopyWithPlaceholder(),
     Object? useFavoritesBoards = const $CopyWithPlaceholder(),
     Object? favoritesBoardList = const $CopyWithPlaceholder(),
     Object? searchWordList = const $CopyWithPlaceholder(),
@@ -205,6 +213,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.openLink
           // ignore: cast_nullable_to_non_nullable
           : openLink as bool,
+      blurThumbnail:
+          blurThumbnail == const $CopyWithPlaceholder() || blurThumbnail == null
+              ? _value.blurThumbnail
+              // ignore: cast_nullable_to_non_nullable
+              : blurThumbnail as bool,
       useFavoritesBoards: useFavoritesBoards == const $CopyWithPlaceholder() ||
               useFavoritesBoards == null
           ? _value.useFavoritesBoards
@@ -404,6 +417,7 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
       commentCountDisplayThreshold:
           json['commentCountDisplayThreshold'] as int? ?? 5,
       openLink: json['openLink'] as bool? ?? true,
+      blurThumbnail: json['blurThumbnail'] as bool? ?? false,
       useFavoritesBoards: json['useFavoritesBoards'] as bool? ?? false,
       favoritesBoardList: (json['favoritesBoardList'] as List<dynamic>?)
               ?.map((e) => e as String?)
@@ -441,6 +455,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
       'commentCountDisplayThreshold': instance.commentCountDisplayThreshold,
       'openLink': instance.openLink,
+      'blurThumbnail': instance.blurThumbnail,
       'useFavoritesBoards': instance.useFavoritesBoards,
       'favoritesBoardList': instance.favoritesBoardList,
       'searchWordList': instance.searchWordList,
@@ -456,6 +471,7 @@ const _$CommunitiesEnumMap = {
   Communities.fiveCh: 'fiveCh',
   Communities.girlsCh: 'girlsCh',
   Communities.futabaCh: 'futabaCh',
+  Communities.pinkCh: 'pinkCh',
 };
 
 const _$ThemeListEnumMap = {

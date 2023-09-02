@@ -159,4 +159,5 @@ const _$CommunitiesEnumMap = {
   Communities.fiveCh: 'fiveCh',
   Communities.girlsCh: 'girlsCh',
   Communities.futabaCh: 'futabaCh',
+  Communities.pinkCh: 'pinkCh',
 };

@@ -19,3 +19,4 @@ class OfficialSite {
   static const privacy = 'about/privacy';
   static const terms = 'about/terms';
 }
+

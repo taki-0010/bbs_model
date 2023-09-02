@@ -15,6 +15,7 @@ class ForumSettingsData {
       this.positionToGet = PositionToGet.first,
       this.commentCountDisplayThreshold = 5,
       this.openLink = true,
+      this.blurThumbnail = false,
       this.useFavoritesBoards = false,
       this.favoritesBoardList = const [],
       this.searchWordList = const [],
@@ -33,6 +34,7 @@ class ForumSettingsData {
   final PositionToGet positionToGet;
   final int commentCountDisplayThreshold;
   final bool openLink;
+  final bool blurThumbnail;
   final bool useFavoritesBoards;
   final List<String?> favoritesBoardList;
   final List<String?> searchWordList;
@@ -53,7 +55,7 @@ class ForumSettingsData {
 
   factory ForumSettingsData.fromJson(Map<String, dynamic> json) =>
       _$ForumSettingsDataFromJson(json);
-  Map<dynamic, dynamic> toJson() => _$ForumSettingsDataToJson(this);
+  Map<String, dynamic> toJson() => _$ForumSettingsDataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -83,4 +85,42 @@ class SrcDataForStorage {
   factory SrcDataForStorage.fromJson(Map<String, dynamic> json) =>
       _$SrcDataForStorageFromJson(json);
   Map<String, dynamic> toJson() => _$SrcDataForStorageToJson(this);
+}
+
+class InitialForumData {
+  static const searchWords = ['ニュース', 'スポーツ', '天気'];
+  static ForumSettingsData? getInitialSettings(
+      final Communities value, final String userId) {
+    // final userId = user?.$id;
+    // logger.i('userId: $userId');
+    // if (userId == null) return null;
+    final base = ForumSettingsData(
+        userId: userId,
+        forum: value,
+        theme: ThemeList.m3Purple,
+        threadsOrder: ThreadsOrder.hot,
+        commentCountDisplayThreshold: 2,
+        useFavoritesBoards: false,
+        searchWordList: searchWords,
+        retentionPeriod: RetentionPeriodList.oneWeek);
+    switch (value) {
+      case Communities.fiveCh:
+        return base.copyWith(
+            theme: ThemeList.m3Purple,
+            retentionPeriod: RetentionPeriodList.byPostPace);
+      case Communities.girlsCh:
+        return base.copyWith(theme: ThemeList.rosewood);
+      case Communities.futabaCh:
+        return base.copyWith(
+            theme: ThemeList.sanJuanBlue,
+            threadsOrder: ThreadsOrder.catalog,
+            retentionPeriod: RetentionPeriodList.oneDay);
+      case Communities.pinkCh:
+        return base.copyWith(
+            theme: ThemeList.espresso,
+            retentionPeriod: RetentionPeriodList.byPostPace);
+      default:
+    }
+    return null;
+  }
 }
