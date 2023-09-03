@@ -46,8 +46,9 @@ enum PositionToGet {
 }
 
 enum MarkIcon {
-  self,
   edit,
+  star,
+  exclamation,
   hot;
 }
 

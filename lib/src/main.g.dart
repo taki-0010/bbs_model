@@ -475,8 +475,9 @@ Map<String, dynamic> _$ResMarkDataToJson(ResMarkData instance) =>
     };
 
 const _$MarkIconEnumMap = {
-  MarkIcon.self: 'self',
   MarkIcon.edit: 'edit',
+  MarkIcon.star: 'star',
+  MarkIcon.exclamation: 'exclamation',
   MarkIcon.hot: 'hot',
 };
 

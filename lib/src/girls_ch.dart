@@ -60,6 +60,8 @@ class GirlsChBoardNames {
 }
 
 class GirlsChParser {
+  static const createThreadUrl = 'https://girlschannel.net/topics/make_topic/';
+  static const responseParam = '#form';
   static final idReg = RegExp(r'[0-9]{5,}');
   static String? getIdFromUrl(final String value) {
     try {

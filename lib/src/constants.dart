@@ -20,3 +20,6 @@ class OfficialSite {
   static const terms = 'about/terms';
 }
 
+class ParamsData{
+  static const fiveChNewThread = '#new_thread';
+}
