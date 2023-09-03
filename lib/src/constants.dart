@@ -18,8 +18,10 @@ class OfficialSite {
   static const host = 'forumbook-f883e.web.app';
   static const privacy = 'about/privacy';
   static const terms = 'about/terms';
+  static const help = 'guides/faq';
 }
 
-class ParamsData{
+class ParamsData {
   static const fiveChNewThread = '#new_thread';
+  static const girlsChResponse = '#form';
 }
