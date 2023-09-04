@@ -25,8 +25,8 @@ enum RetentionPeriodList {
   oneMonth(days: 30);
   // indefinite(days: null);
 
-  const RetentionPeriodList({this.days});
-  final int? days;
+  const RetentionPeriodList({required this.days});
+  final int days;
 }
 
 enum ThreadsOrder {
