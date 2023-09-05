@@ -479,6 +479,10 @@ const _$ThemeListEnumMap = {
   ThemeList.rosewood: 'rosewood',
   ThemeList.sanJuanBlue: 'sanJuanBlue',
   ThemeList.espresso: 'espresso',
+  ThemeList.greenForest: 'greenForest',
+  ThemeList.goldSunset: 'goldSunset',
+  ThemeList.barossa: 'barossa',
+  ThemeList.pinkSakura: 'pinkSakura',
 };
 
 const _$RetentionPeriodListEnumMap = {

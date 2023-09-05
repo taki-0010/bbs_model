@@ -178,3 +178,98 @@ extension $ThreadDataCopyWith on ThreadData {
   // ignore: library_private_types_in_public_api
   _$ThreadDataCWProxy get copyWith => _$ThreadDataCWProxyImpl(this);
 }
+
+abstract class _$ThreadContentDataCWProxy {
+  ThreadContentData id(String id);
+
+  ThreadContentData boardId(String boardId);
+
+  ThreadContentData type(Communities type);
+
+  ThreadContentData archived(bool archived);
+
+  ThreadContentData content(List<ContentData?> content);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadContentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// ThreadContentData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  ThreadContentData call({
+    String? id,
+    String? boardId,
+    Communities? type,
+    bool? archived,
+    List<ContentData?>? content,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfThreadContentData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfThreadContentData.copyWith.fieldName(...)`
+class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
+  const _$ThreadContentDataCWProxyImpl(this._value);
+
+  final ThreadContentData _value;
+
+  @override
+  ThreadContentData id(String id) => this(id: id);
+
+  @override
+  ThreadContentData boardId(String boardId) => this(boardId: boardId);
+
+  @override
+  ThreadContentData type(Communities type) => this(type: type);
+
+  @override
+  ThreadContentData archived(bool archived) => this(archived: archived);
+
+  @override
+  ThreadContentData content(List<ContentData?> content) =>
+      this(content: content);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadContentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// ThreadContentData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  ThreadContentData call({
+    Object? id = const $CopyWithPlaceholder(),
+    Object? boardId = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
+    Object? archived = const $CopyWithPlaceholder(),
+    Object? content = const $CopyWithPlaceholder(),
+  }) {
+    return ThreadContentData(
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as String,
+      boardId: boardId == const $CopyWithPlaceholder() || boardId == null
+          ? _value.boardId
+          // ignore: cast_nullable_to_non_nullable
+          : boardId as String,
+      type: type == const $CopyWithPlaceholder() || type == null
+          ? _value.type
+          // ignore: cast_nullable_to_non_nullable
+          : type as Communities,
+      archived: archived == const $CopyWithPlaceholder() || archived == null
+          ? _value.archived
+          // ignore: cast_nullable_to_non_nullable
+          : archived as bool,
+      content: content == const $CopyWithPlaceholder() || content == null
+          ? _value.content
+          // ignore: cast_nullable_to_non_nullable
+          : content as List<ContentData?>,
+    );
+  }
+}
+
+extension $ThreadContentDataCopyWith on ThreadContentData {
+  /// Returns a callable class that can be used as follows: `instanceOfThreadContentData.copyWith(...)` or like so:`instanceOfThreadContentData.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$ThreadContentDataCWProxy get copyWith =>
+      _$ThreadContentDataCWProxyImpl(this);
+}

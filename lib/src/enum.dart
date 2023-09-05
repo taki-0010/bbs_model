@@ -9,7 +9,7 @@ enum Communities {
   final String host;
 }
 
-enum ThemeList { m3Purple, rosewood, sanJuanBlue, espresso }
+enum ThemeList { m3Purple, rosewood, sanJuanBlue, espresso, greenForest, goldSunset, barossa, pinkSakura }
 
 enum LangList {
   ja,

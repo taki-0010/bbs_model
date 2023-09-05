@@ -31,6 +31,7 @@ class ThreadMarkData extends ThreadBase {
     required this.createdAtBySeconds,
     this.marks = const {},
     this.importance = const [],
+    this.agreedIndexSet = const{}
     // this.mutePosterIds = const {},
     // this.muteUserIds = const {}
   });
@@ -48,6 +49,7 @@ class ThreadMarkData extends ThreadBase {
   // final Set<String?> mutePosterIds;
   // final Set<String?> muteUserIds;
   final List<String?> importance;
+  final Set<int?> agreedIndexSet;
 
   SrcData? get thumbnail => thumbnailStr != null
       ? SrcData.fromJson(stringToJson(thumbnailStr!))

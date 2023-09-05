@@ -118,7 +118,7 @@ class ThreadData extends ThreadBase {
 }
 
 // @JsonSerializable(explicitToJson: true)
-// @CopyWith()
+@CopyWith()
 @immutable
 class ThreadContentData {
   const ThreadContentData(

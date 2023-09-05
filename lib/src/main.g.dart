@@ -43,6 +43,8 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData importance(List<String?> importance);
 
+  ThreadMarkData agreedIndexSet(Set<int?> agreedIndexSet);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -68,6 +70,7 @@ abstract class _$ThreadMarkDataCWProxy {
     int? createdAtBySeconds,
     Set<String?>? marks,
     List<String?>? importance,
+    Set<int?>? agreedIndexSet,
   });
 }
 
@@ -138,6 +141,10 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
       this(importance: importance);
 
   @override
+  ThreadMarkData agreedIndexSet(Set<int?> agreedIndexSet) =>
+      this(agreedIndexSet: agreedIndexSet);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -164,6 +171,7 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? createdAtBySeconds = const $CopyWithPlaceholder(),
     Object? marks = const $CopyWithPlaceholder(),
     Object? importance = const $CopyWithPlaceholder(),
+    Object? agreedIndexSet = const $CopyWithPlaceholder(),
   }) {
     return ThreadMarkData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -244,6 +252,11 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
               ? _value.importance
               // ignore: cast_nullable_to_non_nullable
               : importance as List<String?>,
+      agreedIndexSet: agreedIndexSet == const $CopyWithPlaceholder() ||
+              agreedIndexSet == null
+          ? _value.agreedIndexSet
+          // ignore: cast_nullable_to_non_nullable
+          : agreedIndexSet as Set<int?>,
     );
   }
 }
@@ -427,6 +440,10 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String?)
               .toList() ??
           const [],
+      agreedIndexSet: (json['agreedIndexSet'] as List<dynamic>?)
+              ?.map((e) => e as int?)
+              .toSet() ??
+          const {},
     );
 
 Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
@@ -449,6 +466,7 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'createdAtBySeconds': instance.createdAtBySeconds,
       'marks': instance.marks.toList(),
       'importance': instance.importance,
+      'agreedIndexSet': instance.agreedIndexSet.toList(),
     };
 
 const _$CommunitiesEnumMap = {

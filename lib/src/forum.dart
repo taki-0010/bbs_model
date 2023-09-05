@@ -109,7 +109,7 @@ class InitialForumData {
             theme: ThemeList.m3Purple,
             retentionPeriod: RetentionPeriodList.byPostPace);
       case Communities.girlsCh:
-        return base.copyWith(theme: ThemeList.rosewood);
+        return base.copyWith(theme: ThemeList.pinkSakura);
       case Communities.futabaCh:
         return base.copyWith(
             theme: ThemeList.sanJuanBlue,
