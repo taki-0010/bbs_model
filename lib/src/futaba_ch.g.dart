@@ -6,6 +6,361 @@ part of 'futaba_ch.dart';
 // CopyWithGenerator
 // **************************************************************************
 
+abstract class _$FutabaBoardFromJsonCWProxy {
+  FutabaBoardFromJson old(int old);
+
+  FutabaBoardFromJson dispname(int dispname);
+
+  FutabaBoardFromJson dispsod(int dispsod);
+
+  FutabaBoardFromJson die(String die);
+
+  FutabaBoardFromJson dielong(String dielong);
+
+  FutabaBoardFromJson nowtime(int nowtime);
+
+  FutabaBoardFromJson maxres(String maxres);
+
+  FutabaBoardFromJson res(Map<String, FutabaThreadFromJson?> res);
+
+  FutabaBoardFromJson sd(List<dynamic> sd);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaBoardFromJson(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaBoardFromJson(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaBoardFromJson call({
+    int? old,
+    int? dispname,
+    int? dispsod,
+    String? die,
+    String? dielong,
+    int? nowtime,
+    String? maxres,
+    Map<String, FutabaThreadFromJson?>? res,
+    List<dynamic>? sd,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfFutabaBoardFromJson.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfFutabaBoardFromJson.copyWith.fieldName(...)`
+class _$FutabaBoardFromJsonCWProxyImpl implements _$FutabaBoardFromJsonCWProxy {
+  const _$FutabaBoardFromJsonCWProxyImpl(this._value);
+
+  final FutabaBoardFromJson _value;
+
+  @override
+  FutabaBoardFromJson old(int old) => this(old: old);
+
+  @override
+  FutabaBoardFromJson dispname(int dispname) => this(dispname: dispname);
+
+  @override
+  FutabaBoardFromJson dispsod(int dispsod) => this(dispsod: dispsod);
+
+  @override
+  FutabaBoardFromJson die(String die) => this(die: die);
+
+  @override
+  FutabaBoardFromJson dielong(String dielong) => this(dielong: dielong);
+
+  @override
+  FutabaBoardFromJson nowtime(int nowtime) => this(nowtime: nowtime);
+
+  @override
+  FutabaBoardFromJson maxres(String maxres) => this(maxres: maxres);
+
+  @override
+  FutabaBoardFromJson res(Map<String, FutabaThreadFromJson?> res) =>
+      this(res: res);
+
+  @override
+  FutabaBoardFromJson sd(List<dynamic> sd) => this(sd: sd);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaBoardFromJson(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaBoardFromJson(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaBoardFromJson call({
+    Object? old = const $CopyWithPlaceholder(),
+    Object? dispname = const $CopyWithPlaceholder(),
+    Object? dispsod = const $CopyWithPlaceholder(),
+    Object? die = const $CopyWithPlaceholder(),
+    Object? dielong = const $CopyWithPlaceholder(),
+    Object? nowtime = const $CopyWithPlaceholder(),
+    Object? maxres = const $CopyWithPlaceholder(),
+    Object? res = const $CopyWithPlaceholder(),
+    Object? sd = const $CopyWithPlaceholder(),
+  }) {
+    return FutabaBoardFromJson(
+      old: old == const $CopyWithPlaceholder() || old == null
+          ? _value.old
+          // ignore: cast_nullable_to_non_nullable
+          : old as int,
+      dispname: dispname == const $CopyWithPlaceholder() || dispname == null
+          ? _value.dispname
+          // ignore: cast_nullable_to_non_nullable
+          : dispname as int,
+      dispsod: dispsod == const $CopyWithPlaceholder() || dispsod == null
+          ? _value.dispsod
+          // ignore: cast_nullable_to_non_nullable
+          : dispsod as int,
+      die: die == const $CopyWithPlaceholder() || die == null
+          ? _value.die
+          // ignore: cast_nullable_to_non_nullable
+          : die as String,
+      dielong: dielong == const $CopyWithPlaceholder() || dielong == null
+          ? _value.dielong
+          // ignore: cast_nullable_to_non_nullable
+          : dielong as String,
+      nowtime: nowtime == const $CopyWithPlaceholder() || nowtime == null
+          ? _value.nowtime
+          // ignore: cast_nullable_to_non_nullable
+          : nowtime as int,
+      maxres: maxres == const $CopyWithPlaceholder() || maxres == null
+          ? _value.maxres
+          // ignore: cast_nullable_to_non_nullable
+          : maxres as String,
+      res: res == const $CopyWithPlaceholder() || res == null
+          ? _value.res
+          // ignore: cast_nullable_to_non_nullable
+          : res as Map<String, FutabaThreadFromJson?>,
+      sd: sd == const $CopyWithPlaceholder() || sd == null
+          ? _value.sd
+          // ignore: cast_nullable_to_non_nullable
+          : sd as List<dynamic>,
+    );
+  }
+}
+
+extension $FutabaBoardFromJsonCopyWith on FutabaBoardFromJson {
+  /// Returns a callable class that can be used as follows: `instanceOfFutabaBoardFromJson.copyWith(...)` or like so:`instanceOfFutabaBoardFromJson.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$FutabaBoardFromJsonCWProxy get copyWith =>
+      _$FutabaBoardFromJsonCWProxyImpl(this);
+}
+
+abstract class _$FutabaThreadFromJsonCWProxy {
+  FutabaThreadFromJson now(String now);
+
+  FutabaThreadFromJson name(String name);
+
+  FutabaThreadFromJson email(String email);
+
+  FutabaThreadFromJson sub(String sub);
+
+  FutabaThreadFromJson com(String com);
+
+  FutabaThreadFromJson ext(String ext);
+
+  FutabaThreadFromJson w(int w);
+
+  FutabaThreadFromJson h(int h);
+
+  FutabaThreadFromJson tim(String tim);
+
+  FutabaThreadFromJson fsize(int fsize);
+
+  FutabaThreadFromJson del(String del);
+
+  FutabaThreadFromJson host(String host);
+
+  FutabaThreadFromJson id(String id);
+
+  FutabaThreadFromJson rsc(int rsc);
+
+  FutabaThreadFromJson src(String src);
+
+  FutabaThreadFromJson thumb(String thumb);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaThreadFromJson(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaThreadFromJson(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaThreadFromJson call({
+    String? now,
+    String? name,
+    String? email,
+    String? sub,
+    String? com,
+    String? ext,
+    int? w,
+    int? h,
+    String? tim,
+    int? fsize,
+    String? del,
+    String? host,
+    String? id,
+    int? rsc,
+    String? src,
+    String? thumb,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfFutabaThreadFromJson.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfFutabaThreadFromJson.copyWith.fieldName(...)`
+class _$FutabaThreadFromJsonCWProxyImpl
+    implements _$FutabaThreadFromJsonCWProxy {
+  const _$FutabaThreadFromJsonCWProxyImpl(this._value);
+
+  final FutabaThreadFromJson _value;
+
+  @override
+  FutabaThreadFromJson now(String now) => this(now: now);
+
+  @override
+  FutabaThreadFromJson name(String name) => this(name: name);
+
+  @override
+  FutabaThreadFromJson email(String email) => this(email: email);
+
+  @override
+  FutabaThreadFromJson sub(String sub) => this(sub: sub);
+
+  @override
+  FutabaThreadFromJson com(String com) => this(com: com);
+
+  @override
+  FutabaThreadFromJson ext(String ext) => this(ext: ext);
+
+  @override
+  FutabaThreadFromJson w(int w) => this(w: w);
+
+  @override
+  FutabaThreadFromJson h(int h) => this(h: h);
+
+  @override
+  FutabaThreadFromJson tim(String tim) => this(tim: tim);
+
+  @override
+  FutabaThreadFromJson fsize(int fsize) => this(fsize: fsize);
+
+  @override
+  FutabaThreadFromJson del(String del) => this(del: del);
+
+  @override
+  FutabaThreadFromJson host(String host) => this(host: host);
+
+  @override
+  FutabaThreadFromJson id(String id) => this(id: id);
+
+  @override
+  FutabaThreadFromJson rsc(int rsc) => this(rsc: rsc);
+
+  @override
+  FutabaThreadFromJson src(String src) => this(src: src);
+
+  @override
+  FutabaThreadFromJson thumb(String thumb) => this(thumb: thumb);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaThreadFromJson(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaThreadFromJson(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaThreadFromJson call({
+    Object? now = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+    Object? email = const $CopyWithPlaceholder(),
+    Object? sub = const $CopyWithPlaceholder(),
+    Object? com = const $CopyWithPlaceholder(),
+    Object? ext = const $CopyWithPlaceholder(),
+    Object? w = const $CopyWithPlaceholder(),
+    Object? h = const $CopyWithPlaceholder(),
+    Object? tim = const $CopyWithPlaceholder(),
+    Object? fsize = const $CopyWithPlaceholder(),
+    Object? del = const $CopyWithPlaceholder(),
+    Object? host = const $CopyWithPlaceholder(),
+    Object? id = const $CopyWithPlaceholder(),
+    Object? rsc = const $CopyWithPlaceholder(),
+    Object? src = const $CopyWithPlaceholder(),
+    Object? thumb = const $CopyWithPlaceholder(),
+  }) {
+    return FutabaThreadFromJson(
+      now: now == const $CopyWithPlaceholder() || now == null
+          ? _value.now
+          // ignore: cast_nullable_to_non_nullable
+          : now as String,
+      name: name == const $CopyWithPlaceholder() || name == null
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String,
+      email: email == const $CopyWithPlaceholder() || email == null
+          ? _value.email
+          // ignore: cast_nullable_to_non_nullable
+          : email as String,
+      sub: sub == const $CopyWithPlaceholder() || sub == null
+          ? _value.sub
+          // ignore: cast_nullable_to_non_nullable
+          : sub as String,
+      com: com == const $CopyWithPlaceholder() || com == null
+          ? _value.com
+          // ignore: cast_nullable_to_non_nullable
+          : com as String,
+      ext: ext == const $CopyWithPlaceholder() || ext == null
+          ? _value.ext
+          // ignore: cast_nullable_to_non_nullable
+          : ext as String,
+      w: w == const $CopyWithPlaceholder() || w == null
+          ? _value.w
+          // ignore: cast_nullable_to_non_nullable
+          : w as int,
+      h: h == const $CopyWithPlaceholder() || h == null
+          ? _value.h
+          // ignore: cast_nullable_to_non_nullable
+          : h as int,
+      tim: tim == const $CopyWithPlaceholder() || tim == null
+          ? _value.tim
+          // ignore: cast_nullable_to_non_nullable
+          : tim as String,
+      fsize: fsize == const $CopyWithPlaceholder() || fsize == null
+          ? _value.fsize
+          // ignore: cast_nullable_to_non_nullable
+          : fsize as int,
+      del: del == const $CopyWithPlaceholder() || del == null
+          ? _value.del
+          // ignore: cast_nullable_to_non_nullable
+          : del as String,
+      host: host == const $CopyWithPlaceholder() || host == null
+          ? _value.host
+          // ignore: cast_nullable_to_non_nullable
+          : host as String,
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as String,
+      rsc: rsc == const $CopyWithPlaceholder() || rsc == null
+          ? _value.rsc
+          // ignore: cast_nullable_to_non_nullable
+          : rsc as int,
+      src: src == const $CopyWithPlaceholder() || src == null
+          ? _value.src
+          // ignore: cast_nullable_to_non_nullable
+          : src as String,
+      thumb: thumb == const $CopyWithPlaceholder() || thumb == null
+          ? _value.thumb
+          // ignore: cast_nullable_to_non_nullable
+          : thumb as String,
+    );
+  }
+}
+
+extension $FutabaThreadFromJsonCopyWith on FutabaThreadFromJson {
+  /// Returns a callable class that can be used as follows: `instanceOfFutabaThreadFromJson.copyWith(...)` or like so:`instanceOfFutabaThreadFromJson.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$FutabaThreadFromJsonCWProxy get copyWith =>
+      _$FutabaThreadFromJsonCWProxyImpl(this);
+}
+
 abstract class _$FutabaChBoardCWProxy {
   FutabaChBoard directory(String directory);
 
@@ -390,6 +745,81 @@ extension $FutabaChContentCopyWith on FutabaChContent {
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
+
+FutabaBoardFromJson _$FutabaBoardFromJsonFromJson(Map<String, dynamic> json) =>
+    FutabaBoardFromJson(
+      old: json['old'] as int,
+      dispname: json['dispname'] as int,
+      dispsod: json['dispsod'] as int,
+      die: json['die'] as String,
+      dielong: json['dielong'] as String,
+      nowtime: json['nowtime'] as int,
+      maxres: json['maxres'] as String,
+      res: (json['res'] as Map<String, dynamic>).map(
+        (k, e) => MapEntry(
+            k,
+            e == null
+                ? null
+                : FutabaThreadFromJson.fromJson(e as Map<String, dynamic>)),
+      ),
+      sd: json['sd'] as List<dynamic>? ?? const [],
+    );
+
+Map<String, dynamic> _$FutabaBoardFromJsonToJson(
+        FutabaBoardFromJson instance) =>
+    <String, dynamic>{
+      'old': instance.old,
+      'dispname': instance.dispname,
+      'dispsod': instance.dispsod,
+      'die': instance.die,
+      'dielong': instance.dielong,
+      'nowtime': instance.nowtime,
+      'maxres': instance.maxres,
+      'res': instance.res.map((k, e) => MapEntry(k, e?.toJson())),
+      'sd': instance.sd,
+    };
+
+FutabaThreadFromJson _$FutabaThreadFromJsonFromJson(
+        Map<String, dynamic> json) =>
+    FutabaThreadFromJson(
+      now: json['now'] as String,
+      name: json['name'] as String,
+      email: json['email'] as String,
+      sub: json['sub'] as String,
+      com: json['com'] as String,
+      ext: json['ext'] as String,
+      w: json['w'] as int,
+      h: json['h'] as int,
+      tim: json['tim'] as String,
+      fsize: json['fsize'] as int,
+      del: json['del'] as String,
+      host: json['host'] as String,
+      id: json['id'] as String,
+      rsc: json['rsc'] as int,
+      src: json['src'] as String,
+      thumb: json['thumb'] as String,
+    );
+
+Map<String, dynamic> _$FutabaThreadFromJsonToJson(
+        FutabaThreadFromJson instance) =>
+    <String, dynamic>{
+      'now': instance.now,
+      'name': instance.name,
+      'email': instance.email,
+      'sub': instance.sub,
+      'com': instance.com,
+      'ext': instance.ext,
+      'w': instance.w,
+      'h': instance.h,
+      'tim': instance.tim,
+      'fsize': instance.fsize,
+      'del': instance.del,
+      'host': instance.host,
+      'id': instance.id,
+      'rsc': instance.rsc,
+      'src': instance.src,
+      'thumb': instance.thumb,
+    };
 
 FutabaChBoard _$FutabaChBoardFromJson(Map<String, dynamic> json) =>
     FutabaChBoard(

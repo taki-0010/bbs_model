@@ -259,6 +259,81 @@ class FutabaParser {
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
+class FutabaBoardFromJson {
+  const FutabaBoardFromJson(
+      {required this.old,
+      required this.dispname,
+      required this.dispsod,
+      required this.die,
+      required this.dielong,
+      required this.nowtime,
+      required this.maxres,
+      required this.res,
+      this.sd =const[]
+      });
+  final int old;
+  final int dispname;
+  final int dispsod;
+  final String die;
+  final String dielong;
+  final int nowtime;
+  final String maxres;
+  final Map<String, FutabaThreadFromJson?> res;
+  final List<dynamic> sd;
+
+  factory FutabaBoardFromJson.fromJson(Map<String, dynamic> json) =>
+      _$FutabaBoardFromJsonFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FutabaBoardFromJsonToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+@CopyWith()
+@immutable
+class FutabaThreadFromJson {
+  const FutabaThreadFromJson(
+      {required this.now,
+      required this.name,
+      required this.email,
+      required this.sub,
+      required this.com,
+      required this.ext,
+      required this.w,
+      required this.h,
+      required this.tim,
+      required this.fsize,
+      required this.del,
+      required this.host,
+      required this.id,
+      required this.rsc,
+      required this.src,
+      required this.thumb});
+  final String now;
+  final String name;
+  final String email;
+  final String sub;
+  final String com;
+  final String ext;
+  final int w;
+  final int h;
+  final String tim;
+  final int fsize;
+  final String del;
+  final String host;
+  final String id;
+  final int rsc;
+  final String src;
+  final String thumb;
+
+  factory FutabaThreadFromJson.fromJson(Map<String, dynamic> json) =>
+      _$FutabaThreadFromJsonFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FutabaThreadFromJsonToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+@CopyWith()
+@immutable
 class FutabaChBoard {
   const FutabaChBoard({required this.directory, required this.path});
   final String directory;
@@ -320,7 +395,7 @@ class FutabaChThread extends ThreadData with WithDateTime {
     // // logger.d(
     // //     'ikioi: $result, resCount:$resCount, current:$current, datId:$datId, created:$createdNum, diviDay:$diviDay');
     // return double.tryParse(result.toStringAsFixed(2)) ?? 0;
-    return getIkioi(int.tryParse(id) ?? 0, resCount);
+    return getIkioi(int.tryParse(updateAtStr ?? '0') ?? 0, resCount);
   }
 }
 
