@@ -224,7 +224,7 @@ class FutabaParser {
     switch (order) {
       case ThreadsOrder.catalog:
         return '$path/futaba.php$catalog';
-      case ThreadsOrder.biggerResCount:
+      case ThreadsOrder.resCountDesc:
         return '$path/futaba.php$catalog${sort}3';
       case ThreadsOrder.newOrder:
         return '$path/futaba.php$catalog${sort}1';

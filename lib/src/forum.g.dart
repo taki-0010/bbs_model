@@ -497,7 +497,8 @@ const _$ThreadsOrderEnumMap = {
   ThreadsOrder.newOrder: 'newOrder',
   ThreadsOrder.oldOrder: 'oldOrder',
   ThreadsOrder.hot: 'hot',
-  ThreadsOrder.biggerResCount: 'biggerResCount',
+  ThreadsOrder.resCountAsc: 'resCountAsc',
+  ThreadsOrder.resCountDesc: 'resCountDesc',
   ThreadsOrder.catalog: 'catalog',
 };
 

@@ -33,8 +33,12 @@ enum ThreadsOrder {
   newOrder,
   oldOrder,
   hot,
-  biggerResCount,
+  // biggerResCount,
+  resCountAsc,
+  resCountDesc,
   catalog;
+
+
 }
 
 enum PositionToGet {
