@@ -269,8 +269,7 @@ class FutabaBoardFromJson {
       required this.nowtime,
       required this.maxres,
       required this.res,
-      this.sd =const[]
-      });
+      this.sd = const []});
   final int old;
   final int dispname;
   final int dispsod;
@@ -385,16 +384,16 @@ class FutabaChThread extends ThreadData with WithDateTime {
   @override
   String get thumbnailUrl => thumbnail?.thumbnailUri ?? '';
   // 'https://$directory.2chan.net${thumbnail?.thumbnailUri}';
+
+  @override
+  DateTime? get dateTime => DateTime.fromMillisecondsSinceEpoch(
+      int.tryParse(updateAtStr ?? '0') ?? 0);
+
   @override
   double get ikioi {
-    // final current = DateTime.now().millisecondsSinceEpoch * 0.001;
-    // // final createdNum = datId.substring(0, datId.length - 4);
-    // final created = int.tryParse(id) ?? 0;
-    // final diviDay = ((current - created) / 86400);
-    // final result = resCount / diviDay;
-    // // logger.d(
-    // //     'ikioi: $result, resCount:$resCount, current:$current, datId:$datId, created:$createdNum, diviDay:$diviDay');
-    // return double.tryParse(result.toStringAsFixed(2)) ?? 0;
+    if (resCount == -1) {
+      return -1.0;
+    }
     return getIkioi(int.tryParse(updateAtStr ?? '0') ?? 0, resCount);
   }
 }
@@ -452,7 +451,7 @@ class FutabaChContent extends ContentData with WithDateTime {
   String? get getUserName => name;
 
   @override
-  String? get getId {
+  String? get getPostId {
     final idIndex = created.indexOf('ID:');
     return idIndex == -1 ? null : created.substring(idIndex + 3);
   }

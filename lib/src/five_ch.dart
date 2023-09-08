@@ -134,6 +134,10 @@ class FiveChThreadTitleData extends ThreadData with WithDateTime {
   String? get thumbnailUrl => null;
 
   @override
+  DateTime? get dateTime =>
+      DateTime.fromMillisecondsSinceEpoch(int.tryParse(id) ?? 0);
+
+  @override
   double get ikioi {
     // final current = DateTime.now().millisecondsSinceEpoch * 0.001;
     // // final createdNum = datId.substring(0, datId.length - 4);
@@ -183,7 +187,7 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
   }
 
   @override
-  String? get getId {
+  String? get getPostId {
     final splited = dateAndId.split(' ');
     if (splited.length > 2) {
       final id = splited[2];

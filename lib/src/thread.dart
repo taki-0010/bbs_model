@@ -90,27 +90,11 @@ class ThreadData extends ThreadBase {
   // final List<ContentData?> content;
   // final String boardId;
 
-  // String? get thumbnailUrl {
-  //   return null;
-  // }
-
-  // int get lastIndex {
-  //   final lastItem = content.lastOrNull;
-  //   switch (lastItem) {
-  //     case FiveChThreadContentData():
-  //       return lastItem.index;
-  //     case GirlsChContent():
-  //       return lastItem.index;
-  //     case FutabaChContent():
-  //       return lastItem.index;
-  //     default:
-  //   }
-  //   return 0;
-  // }
-
   double get ikioi {
     return 0.0;
   }
+
+  DateTime? get dateTime => DateTime.now();
 
   // factory ThreadData.fromJson(Map<String, dynamic> json) =>
   //     _$ThreadDataFromJson(json);
@@ -133,8 +117,6 @@ class ThreadContentData {
   final bool archived;
   // final String title;
   final List<ContentData?> content;
-
-
 
   // factory ThreadContentData.fromJson(Map<String, dynamic> json) =>
   //     _$ThreadContentDataFromJson(json);

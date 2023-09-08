@@ -54,7 +54,7 @@ class GirlsChBoardNames {
       case 'love':
         return '恋愛・結婚';
       default:
-        return '';
+        return null;
     }
   }
 }
@@ -117,18 +117,32 @@ class GirlsChThread extends ThreadData with WithDateTime {
   String? get thumbnailUrl => thumbnail?.thumbnailUri;
 
   @override
-  double get ikioi {
+  DateTime? get dateTime {
     if (updateAtStr == null) {
-      return 0.0;
+      return null;
     }
     final splited = updateAtStr!.split(' ');
     final datetime = splited.isNotEmpty ? splited.first : null;
     final daytime = splited.isNotEmpty ? splited.last : null;
     if (datetime == null || daytime == null) {
+      return null;
+    }
+    return getDateTime(datetime, '$daytime:00');
+  }
+
+  @override
+  double get ikioi {
+    if (dateTime == null) {
       return 0.0;
     }
-    final dateTime = getDateTime(datetime, '$daytime:00');
-    final createdAt = dateTime.toUtc().millisecondsSinceEpoch * 0.001;
+    // final splited = updateAtStr!.split(' ');
+    // final datetime = splited.isNotEmpty ? splited.first : null;
+    // final daytime = splited.isNotEmpty ? splited.last : null;
+    // if (datetime == null || daytime == null) {
+    //   return 0.0;
+    // }
+    // final dateTime = getDateTime(datetime, '$daytime:00');
+    final createdAt = dateTime!.toUtc().millisecondsSinceEpoch * 0.001;
     return getIkioi(createdAt.toInt(), resCount);
   }
 }
@@ -175,7 +189,7 @@ class GirlsChContent extends ContentData with WithDateTime {
   String? get srcContent => src?.srcUri;
 
   @override
-  String? get getId => id;
+  String? get getPostId => id;
 
   @override
   String? get getUserName => name;
