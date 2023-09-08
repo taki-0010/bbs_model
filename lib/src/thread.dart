@@ -118,6 +118,8 @@ class ThreadContentData {
   // final String title;
   final List<ContentData?> content;
 
+  int? get lastIndex => content.isNotEmpty ? content.last?.index : null;
+
   // factory ThreadContentData.fromJson(Map<String, dynamic> json) =>
   //     _$ThreadContentDataFromJson(json);
   // Map<String, dynamic> toJson() => _$ThreadContentDataToJson(this);
