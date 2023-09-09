@@ -48,6 +48,17 @@ abstract class ThreadBase {
     return null;
   }
 
+  String? get pinkChUrlForHtml {
+    if (url.contains(Communities.pinkCh.host)) {
+      final sub = url.substring(0, url.indexOf('.'));
+      final path = '$sub.${Communities.pinkCh.host}/test/read.cgi/$boardId/$id';
+      return 'https://$path';
+    }
+    return null;
+  }
+
+  String? get compatibleUrl => fiveChUrlForHtml ?? pinkChUrlForHtml;
+
   String get futabaDirectory {
     final origin = uri.host;
     final index = origin.indexOf('.');

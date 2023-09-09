@@ -39,56 +39,6 @@ Map<String, dynamic> stringToJson(final String value) {
   return json.decode(value);
 }
 
-class FiveChParser {
-  static final idReg = RegExp(r'[0-9]{5,}');
-  // https://egg.5ch.net/test/read.cgi/software/1690261572/l50
-  // https://egg.5ch.net/software/dat/1690261572.dat
-  static String? toDatUrl(final String value) {
-    String? result;
-    try {
-      if (value.contains('test/read.cgi/')) {
-        result = value.replaceAll('test/read.cgi/', '');
-      } else {
-        return null;
-      }
-      final splited = result.split('/');
-      final id = splited.firstWhere(
-        (element) => element.contains(idReg),
-        orElse: () => '',
-      );
-      if (id.isEmpty) {
-        return null;
-      }
-      final path = result.substring(0, result.indexOf(idReg));
-      result = '${path}dat/$id.dat';
-      return result;
-    } catch (e) {
-      logger.e(e);
-    }
-    return null;
-  }
-
-  static String? getId(final String value) {
-    try {
-      final id = idReg.allMatches(value);
-      final data = id.first.group(0);
-      return data;
-    } catch (e) {
-      logger.e(e);
-    }
-    return null;
-  }
-
-  static String? getBoardIdFromDat(final String value) {
-    try {
-      final uri = Uri.parse(value);
-      return uri.pathSegments[0];
-    } catch (e) {
-      logger.e(e);
-    }
-    return null;
-  }
-}
 
 class StringMethodData {
   static final escape = HtmlUnescape();
