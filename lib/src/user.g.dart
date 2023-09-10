@@ -252,7 +252,6 @@ const _$CommunitiesEnumMap = {
 const _$LangListEnumMap = {
   LangList.ja: 'ja',
   LangList.en: 'en',
-  LangList.zhCN: 'zhCN',
 };
 
 CommentData _$CommentDataFromJson(Map<String, dynamic> json) => CommentData(

@@ -9,12 +9,24 @@ enum Communities {
   final String host;
 }
 
-enum ThemeList { m3Purple, rosewood, sanJuanBlue, espresso, greenForest, goldSunset, barossa, pinkSakura }
+enum ThemeList {
+  m3Purple,
+  rosewood,
+  sanJuanBlue,
+  espresso,
+  greenForest,
+  goldSunset,
+  barossa,
+  pinkSakura
+}
 
 enum LangList {
-  ja,
-  en,
-  zhCN;
+  ja(label: '日本語'),
+  en(label: 'English');
+
+  // zhCN;
+  const LangList({required this.label});
+  final String label;
 }
 
 enum RetentionPeriodList {
@@ -37,8 +49,6 @@ enum ThreadsOrder {
   resCountAsc,
   resCountDesc,
   catalog;
-
-
 }
 
 enum PositionToGet {
