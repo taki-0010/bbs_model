@@ -180,8 +180,10 @@ abstract class ContentData {
 }
 
 mixin WithDateTime {
-  String getTimeago(final DateTime value) {
-    return ta.format(value);
+  void initialLoad() => ta.setLocaleMessages('ja', ta.JaMessages());
+  String getTimeago(final DateTime value, final String locale) {
+    // ta.setLocaleMessages('ja', ta.JaMessages());
+    return ta.format(value, locale: locale);
   }
 
   DateTime getDateTime(final String datetime, final String time) {
