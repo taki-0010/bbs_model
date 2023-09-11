@@ -89,6 +89,7 @@ class SrcDataForStorage {
 
 class InitialForumData {
   static const searchWords = ['ニュース', 'スポーツ', '天気'];
+  static const searchWordsFutaba = ['雑談', '画像', '天気'];
   static ForumSettingsData? getInitialSettings(
       final Communities value, final String userId) {
     // final userId = user?.$id;
@@ -112,6 +113,7 @@ class InitialForumData {
         return base.copyWith(theme: ThemeList.pinkSakura);
       case Communities.futabaCh:
         return base.copyWith(
+            searchWordList: searchWordsFutaba,
             theme: ThemeList.sanJuanBlue,
             threadsOrder: ThreadsOrder.catalog,
             retentionPeriod: RetentionPeriodList.oneDay);

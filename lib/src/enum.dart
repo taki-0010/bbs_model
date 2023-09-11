@@ -48,6 +48,10 @@ enum ThreadsOrder {
   // biggerResCount,
   resCountAsc,
   resCountDesc,
+  newerThread,
+  olderThread,
+  newerResponce,
+
   catalog;
 }
 
