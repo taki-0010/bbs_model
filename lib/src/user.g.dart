@@ -116,6 +116,8 @@ abstract class _$CommentDataCWProxy {
 
   CommentData threadTitle(String threadTitle);
 
+  CommentData sage(bool sage);
+
   CommentData resnum(String? resnum);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CommentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -131,6 +133,7 @@ abstract class _$CommentDataCWProxy {
     Communities? forum,
     String? threadId,
     String? threadTitle,
+    bool? sage,
     String? resnum,
   });
 }
@@ -160,6 +163,9 @@ class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
   CommentData threadTitle(String threadTitle) => this(threadTitle: threadTitle);
 
   @override
+  CommentData sage(bool sage) => this(sage: sage);
+
+  @override
   CommentData resnum(String? resnum) => this(resnum: resnum);
 
   @override
@@ -177,6 +183,7 @@ class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
     Object? forum = const $CopyWithPlaceholder(),
     Object? threadId = const $CopyWithPlaceholder(),
     Object? threadTitle = const $CopyWithPlaceholder(),
+    Object? sage = const $CopyWithPlaceholder(),
     Object? resnum = const $CopyWithPlaceholder(),
   }) {
     return CommentData(
@@ -205,6 +212,10 @@ class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
               ? _value.threadTitle
               // ignore: cast_nullable_to_non_nullable
               : threadTitle as String,
+      sage: sage == const $CopyWithPlaceholder() || sage == null
+          ? _value.sage
+          // ignore: cast_nullable_to_non_nullable
+          : sage as bool,
       resnum: resnum == const $CopyWithPlaceholder()
           ? _value.resnum
           // ignore: cast_nullable_to_non_nullable
@@ -261,6 +272,7 @@ CommentData _$CommentDataFromJson(Map<String, dynamic> json) => CommentData(
       forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
       threadId: json['threadId'] as String,
       threadTitle: json['threadTitle'] as String,
+      sage: json['sage'] as bool,
       resnum: json['resnum'] as String?,
     );
 
@@ -273,4 +285,5 @@ Map<String, dynamic> _$CommentDataToJson(CommentData instance) =>
       'threadId': instance.threadId,
       'threadTitle': instance.threadTitle,
       'resnum': instance.resnum,
+      'sage': instance.sage,
     };

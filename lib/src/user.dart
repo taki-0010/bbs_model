@@ -55,6 +55,7 @@ class CommentData {
       required this.forum,
       required this.threadId,
       required this.threadTitle,
+      required this.sage,
       this.resnum});
 
   final String body;
@@ -64,6 +65,7 @@ class CommentData {
   final String threadId;
   final String threadTitle;
   final String? resnum;
+  final bool sage;
 
   int? get index => int.tryParse(resnum ?? '0');
 
