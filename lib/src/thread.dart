@@ -110,6 +110,18 @@ class ThreadData extends ThreadBase {
   // factory ThreadData.fromJson(Map<String, dynamic> json) =>
   //     _$ThreadDataFromJson(json);
   // Map<String, dynamic> toJson() => _$ThreadDataToJson(this);
+  int? get createdAt {
+    switch (type) {
+      case Communities.fiveCh:
+        return int.tryParse(id);
+      case Communities.pinkCh:
+        return int.tryParse(id);
+      case Communities.futabaCh:
+        return int.tryParse(updateAtStr ?? '0');
+      default:
+    }
+    return null;
+  }
 }
 
 // @JsonSerializable(explicitToJson: true)

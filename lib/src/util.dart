@@ -39,7 +39,6 @@ Map<String, dynamic> stringToJson(final String value) {
   return json.decode(value);
 }
 
-
 class StringMethodData {
   static final escape = HtmlUnescape();
   static String replaceSpecialNum(final String value) {
@@ -60,9 +59,14 @@ class StringMethodData {
     return value;
   }
 
-  static String replaceText(final String value) {
+  static String _replaceText(final String value) {
     final replacedNum = replaceSpecialNum(value);
     return replaceSpecialStr(replacedNum);
+  }
+
+  static String replaceText(final String value) {
+    final result = _replaceText(value);
+    return result.isEmpty ? '' : result;
   }
 
   static String convert(final String value) => escape.convert(value);
