@@ -6,35 +6,35 @@ part 'main.g.dart';
 @CopyWith()
 @immutable
 class ThreadMarkData extends ThreadBase {
-  const ThreadMarkData({
-    required super.id,
-    required super.type,
-    required super.resCount,
-    this.favorite = false,
-    // required super.lastIndex,
-    // super.thumbnail,
-    super.thumbnailStr,
-    // this.archived = false,
-    required super.url,
-    // this.thumbnailUrl,
-    required super.boardId,
-    required super.title,
-    // super.boardName,
-    super.positionToGet = PositionToGet.first,
-    // super.difference,
-    this.lastOpendIndex,
-    this.lastReadAt,
-    required this.sessionId,
-    required this.userId,
-    required this.documentId,
-    this.retentionPeriodSeconds = 0,
-    required this.createdAtBySeconds,
-    this.marks = const {},
-    this.importance = const [],
-    this.agreedIndexSet = const{}
-    // this.mutePosterIds = const {},
-    // this.muteUserIds = const {}
-  });
+  const ThreadMarkData(
+      {required super.id,
+      required super.type,
+      required super.resCount,
+      this.favorite = false,
+      // required super.lastIndex,
+      // super.thumbnail,
+      super.thumbnailStr,
+      // this.archived = false,
+      required super.url,
+      // this.thumbnailUrl,
+      required super.boardId,
+      required super.title,
+      // super.boardName,
+      super.positionToGet = PositionToGet.first,
+      // super.difference,
+      this.lastOpendIndex,
+      this.lastReadAt,
+      required this.sessionId,
+      required this.userId,
+      required this.documentId,
+      this.retentionPeriodSeconds = 0,
+      required this.createdAtBySeconds,
+      this.marks = const {},
+      this.importance = const [],
+      this.agreedIndexSet = const {}
+      // this.mutePosterIds = const {},
+      // this.muteUserIds = const {}
+      });
   final String userId;
   final String documentId;
 
@@ -181,6 +181,8 @@ abstract class ContentData {
 
 mixin WithDateTime {
   void initialLoad() => ta.setLocaleMessages('ja', ta.JaMessages());
+  DateTime epochToDateTime(final int value) =>
+      DateTime.fromMillisecondsSinceEpoch(value);
   String getTimeago(final DateTime value, final String locale) {
     // ta.setLocaleMessages('ja', ta.JaMessages());
     return ta.format(value, locale: locale);

@@ -51,6 +51,7 @@ enum ThreadsOrder {
   newerThread,
   olderThread,
   newerResponce,
+  importance,
 
   catalog;
 }

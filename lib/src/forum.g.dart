@@ -502,6 +502,7 @@ const _$ThreadsOrderEnumMap = {
   ThreadsOrder.newerThread: 'newerThread',
   ThreadsOrder.olderThread: 'olderThread',
   ThreadsOrder.newerResponce: 'newerResponce',
+  ThreadsOrder.importance: 'importance',
   ThreadsOrder.catalog: 'catalog',
 };
 
