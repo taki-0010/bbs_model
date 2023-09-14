@@ -187,6 +187,10 @@ mixin WithDateTime {
     // ta.setLocaleMessages('ja', ta.JaMessages());
     return ta.format(value, locale: locale);
   }
+  
+  DateTime fomatedDateTime(final String value){
+    return DateFormat('EEE, d MMM y H:m:s').parseUtc(value);
+  }
 
   DateTime getDateTime(final String datetime, final String time) {
     final date = datetime.split('/');

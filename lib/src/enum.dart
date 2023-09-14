@@ -101,3 +101,15 @@ enum ImportanceTarget {
 //   const GoogleFontsList({required this.label});
 //   final String label;
 // }
+
+enum OpenLinkList{
+  dialog,
+  browser,
+  embed,
+  copy
+}
+
+enum EmbedSite{
+  xCom,
+  youtube
+}

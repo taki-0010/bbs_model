@@ -3,6 +3,8 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:youtube_parser/youtube_parser.dart';
+
 import 'importer.dart';
 
 class GoogleFontsList {
@@ -41,6 +43,7 @@ Map<String, dynamic> stringToJson(final String value) {
 
 class StringMethodData {
   static final escape = HtmlUnescape();
+  static String? getYoutubeStr(final String value) => getIdFromUrl(value);
   static String replaceSpecialNum(final String value) {
     final existNum = RegExp(r'&#[0-9]+;').firstMatch(value);
     if (existNum?.group(0) == null) {

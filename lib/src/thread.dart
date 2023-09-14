@@ -1,3 +1,5 @@
+import 'package:youtube_parser/youtube_parser.dart';
+
 import 'importer.dart';
 part 'thread.g.dart';
 
@@ -146,4 +148,79 @@ class ThreadContentData {
   // factory ThreadContentData.fromJson(Map<String, dynamic> json) =>
   //     _$ThreadContentDataFromJson(json);
   // Map<String, dynamic> toJson() => _$ThreadContentDataToJson(this);
+}
+
+@immutable
+class LinkData {
+  const LinkData({required this.url, required this.type, this.embed});
+  final String url;
+  final OpenLinkList type;
+  final EmbedSite? embed;
+
+  final youtubeCss = '''
+style= "position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow:auto; 
+  -webkit-overflow-scrolling:touch;"
+''';
+
+  final youtubeEmbeStr = '''
+<iframe style="position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border:none;
+    display:block;" src="https://www.youtube.com/embed/{{str}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+''';
+  String youtubeEmbed() {
+    final id = getIdFromUrl(url);
+    if (id != null) {
+      return youtubeEmbeStr.replaceAll('{{str}}', id);
+    }
+    return '';
+  }
+
+  final xEmbeStr = '''
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr"><a href="https://twitter.com/{{name}}/status/{{str}}?ref_src=twsrc%5Etfw"></a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+''';
+
+  String? xComEmbed() {
+    final index = url.indexOf('.com/') + 5;
+    final subed = url.substring(index);
+    final slash = subed.indexOf('/');
+    final userName = subed.substring(0, slash);
+    final id = RegExp(r'\d+').allMatches(url);
+    final data = id.isNotEmpty ? id.first : null;
+    final idStr = data?.group(0);
+    if (idStr == null) {
+      return null;
+    }
+    final replacedName = xEmbeStr.replaceAll('{{name}}', userName);
+    return replacedName.replaceAll('{{str}}', idStr);
+  }
+
+  String embedHtml() {
+    String body = '';
+    switch (embed) {
+      case EmbedSite.youtube:
+        body = youtubeEmbed();
+        break;
+      case EmbedSite.xCom:
+        body = xComEmbed() ?? '';
+        break;
+      default:
+    }
+    final html = '''
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div ${embed == EmbedSite.youtube ? youtubeCss : ''}>$body</div>
+</body>
+
+''';
+    return html;
+  }
 }
