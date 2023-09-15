@@ -188,6 +188,8 @@ abstract class _$ThreadContentDataCWProxy {
 
   ThreadContentData archived(bool archived);
 
+  ThreadContentData threadLength(int threadLength);
+
   ThreadContentData content(List<ContentData?> content);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadContentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -201,6 +203,7 @@ abstract class _$ThreadContentDataCWProxy {
     String? boardId,
     Communities? type,
     bool? archived,
+    int? threadLength,
     List<ContentData?>? content,
   });
 }
@@ -224,6 +227,10 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
   ThreadContentData archived(bool archived) => this(archived: archived);
 
   @override
+  ThreadContentData threadLength(int threadLength) =>
+      this(threadLength: threadLength);
+
+  @override
   ThreadContentData content(List<ContentData?> content) =>
       this(content: content);
 
@@ -240,6 +247,7 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
     Object? boardId = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
     Object? archived = const $CopyWithPlaceholder(),
+    Object? threadLength = const $CopyWithPlaceholder(),
     Object? content = const $CopyWithPlaceholder(),
   }) {
     return ThreadContentData(
@@ -259,6 +267,11 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
           ? _value.archived
           // ignore: cast_nullable_to_non_nullable
           : archived as bool,
+      threadLength:
+          threadLength == const $CopyWithPlaceholder() || threadLength == null
+              ? _value.threadLength
+              // ignore: cast_nullable_to_non_nullable
+              : threadLength as int,
       content: content == const $CopyWithPlaceholder() || content == null
           ? _value.content
           // ignore: cast_nullable_to_non_nullable

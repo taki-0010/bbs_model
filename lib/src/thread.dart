@@ -15,6 +15,7 @@ abstract class ThreadBase {
       required this.url,
       this.boardName,
       required this.positionToGet,
+      // this.threadLength,
       // this.thumbnail,
       this.thumbnailStr});
   final String id;
@@ -29,6 +30,11 @@ abstract class ThreadBase {
   final String url;
   final PositionToGet positionToGet;
   final String? thumbnailStr;
+  // final int? threadLength;
+
+  double get ikioi {
+    return 0.0;
+  }
 
   int get getResCount => resCount;
 
@@ -81,6 +87,7 @@ class ThreadData extends ThreadBase {
       // super.thumbnail,
       super.thumbnailStr,
       required super.url,
+      // super.threadLength,
       // this.positionToGet = PositionToGet.first,
       // this.img,
       this.updateAtStr,
@@ -91,11 +98,7 @@ class ThreadData extends ThreadBase {
       this.catalog = false,
       // this.content = const [],
       this.isNewPost = false});
-  // final PositionToGet positionToGet;
-  // final String id;
-  // final String title;
-  // final int resCount;
-  // final SrcData? img;
+
   final String? updateAtStr;
   // final int? difference;
   final bool isNewPost;
@@ -103,9 +106,9 @@ class ThreadData extends ThreadBase {
   // final List<ContentData?> content;
   // final String boardId;
 
-  double get ikioi {
-    return 0.0;
-  }
+  // double get ikioi {
+  //   return 0.0;
+  // }
 
   DateTime? get dateTime => DateTime.now();
 
@@ -135,11 +138,13 @@ class ThreadContentData {
       required this.boardId,
       required this.type,
       this.archived = false,
+      this.threadLength = 1,
       this.content = const []});
   final String id;
   final String boardId;
   final Communities type;
   final bool archived;
+  final int threadLength;
   // final String title;
   final List<ContentData?> content;
 

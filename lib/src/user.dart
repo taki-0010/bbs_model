@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:model/src/importer.dart';
 
 part 'user.g.dart';
@@ -44,7 +46,7 @@ class UserData {
 //   Map<String, dynamic> toJson() => _$UserSettingsDataToJson(this);
 // }
 
-@JsonSerializable()
+// @JsonSerializable()
 @CopyWith()
 @immutable
 class CommentData {
@@ -56,6 +58,8 @@ class CommentData {
       required this.threadId,
       required this.threadTitle,
       required this.sage,
+      this.media,
+      this.filename,
       this.resnum});
 
   final String body;
@@ -65,11 +69,13 @@ class CommentData {
   final String threadId;
   final String threadTitle;
   final String? resnum;
+  final Uint8List? media;
+  final String? filename;
   final bool sage;
 
   int? get index => int.tryParse(resnum ?? '0');
 
-  factory CommentData.fromJson(Map<String, dynamic> json) =>
-      _$CommentDataFromJson(json);
-  Map<String, dynamic> toJson() => _$CommentDataToJson(this);
+  // factory CommentData.fromJson(Map<String, dynamic> json) =>
+  //     _$CommentDataFromJson(json);
+  // Map<String, dynamic> toJson() => _$CommentDataToJson(this);
 }

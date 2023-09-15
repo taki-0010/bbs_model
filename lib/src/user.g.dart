@@ -118,6 +118,10 @@ abstract class _$CommentDataCWProxy {
 
   CommentData sage(bool sage);
 
+  CommentData media(Uint8List? media);
+
+  CommentData filename(String? filename);
+
   CommentData resnum(String? resnum);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CommentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -134,6 +138,8 @@ abstract class _$CommentDataCWProxy {
     String? threadId,
     String? threadTitle,
     bool? sage,
+    Uint8List? media,
+    String? filename,
     String? resnum,
   });
 }
@@ -166,6 +172,12 @@ class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
   CommentData sage(bool sage) => this(sage: sage);
 
   @override
+  CommentData media(Uint8List? media) => this(media: media);
+
+  @override
+  CommentData filename(String? filename) => this(filename: filename);
+
+  @override
   CommentData resnum(String? resnum) => this(resnum: resnum);
 
   @override
@@ -184,6 +196,8 @@ class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
     Object? threadId = const $CopyWithPlaceholder(),
     Object? threadTitle = const $CopyWithPlaceholder(),
     Object? sage = const $CopyWithPlaceholder(),
+    Object? media = const $CopyWithPlaceholder(),
+    Object? filename = const $CopyWithPlaceholder(),
     Object? resnum = const $CopyWithPlaceholder(),
   }) {
     return CommentData(
@@ -216,6 +230,14 @@ class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
           ? _value.sage
           // ignore: cast_nullable_to_non_nullable
           : sage as bool,
+      media: media == const $CopyWithPlaceholder()
+          ? _value.media
+          // ignore: cast_nullable_to_non_nullable
+          : media as Uint8List?,
+      filename: filename == const $CopyWithPlaceholder()
+          ? _value.filename
+          // ignore: cast_nullable_to_non_nullable
+          : filename as String?,
       resnum: resnum == const $CopyWithPlaceholder()
           ? _value.resnum
           // ignore: cast_nullable_to_non_nullable
@@ -264,26 +286,3 @@ const _$LangListEnumMap = {
   LangList.ja: 'ja',
   LangList.en: 'en',
 };
-
-CommentData _$CommentDataFromJson(Map<String, dynamic> json) => CommentData(
-      body: json['body'] as String,
-      name: json['name'] as String,
-      postAt: json['postAt'] as String,
-      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
-      threadId: json['threadId'] as String,
-      threadTitle: json['threadTitle'] as String,
-      sage: json['sage'] as bool,
-      resnum: json['resnum'] as String?,
-    );
-
-Map<String, dynamic> _$CommentDataToJson(CommentData instance) =>
-    <String, dynamic>{
-      'body': instance.body,
-      'name': instance.name,
-      'postAt': instance.postAt,
-      'forum': _$CommunitiesEnumMap[instance.forum]!,
-      'threadId': instance.threadId,
-      'threadTitle': instance.threadTitle,
-      'resnum': instance.resnum,
-      'sage': instance.sage,
-    };

@@ -36,6 +36,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData sortHistoryByRetention(bool sortHistoryByRetention);
 
+  ForumSettingsData sortHistory(SortHistory sortHistory);
+
   ForumSettingsData googleFonts(String? googleFonts);
 
   ForumSettingsData addedFonts(List<String?> addedFonts);
@@ -65,6 +67,7 @@ abstract class _$ForumSettingsDataCWProxy {
     List<String?>? searchWordList,
     String? searchBoardIdForFutaba,
     bool? sortHistoryByRetention,
+    SortHistory? sortHistory,
     String? googleFonts,
     List<String?>? addedFonts,
     List<String?>? boardImportance,
@@ -132,6 +135,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(sortHistoryByRetention: sortHistoryByRetention);
 
   @override
+  ForumSettingsData sortHistory(SortHistory sortHistory) =>
+      this(sortHistory: sortHistory);
+
+  @override
   ForumSettingsData googleFonts(String? googleFonts) =>
       this(googleFonts: googleFonts);
 
@@ -170,6 +177,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? searchWordList = const $CopyWithPlaceholder(),
     Object? searchBoardIdForFutaba = const $CopyWithPlaceholder(),
     Object? sortHistoryByRetention = const $CopyWithPlaceholder(),
+    Object? sortHistory = const $CopyWithPlaceholder(),
     Object? googleFonts = const $CopyWithPlaceholder(),
     Object? addedFonts = const $CopyWithPlaceholder(),
     Object? boardImportance = const $CopyWithPlaceholder(),
@@ -245,6 +253,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
               ? _value.sortHistoryByRetention
               // ignore: cast_nullable_to_non_nullable
               : sortHistoryByRetention as bool,
+      sortHistory:
+          sortHistory == const $CopyWithPlaceholder() || sortHistory == null
+              ? _value.sortHistory
+              // ignore: cast_nullable_to_non_nullable
+              : sortHistory as SortHistory,
       googleFonts: googleFonts == const $CopyWithPlaceholder()
           ? _value.googleFonts
           // ignore: cast_nullable_to_non_nullable
@@ -429,6 +442,9 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
           const [],
       searchBoardIdForFutaba: json['searchBoardIdForFutaba'] as String? ?? 'b',
       sortHistoryByRetention: json['sortHistoryByRetention'] as bool? ?? false,
+      sortHistory:
+          $enumDecodeNullable(_$SortHistoryEnumMap, json['sortHistory']) ??
+              SortHistory.hot,
       googleFonts: json['googleFonts'] as String?,
       addedFonts: (json['addedFonts'] as List<dynamic>?)
               ?.map((e) => e as String?)
@@ -461,6 +477,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'searchWordList': instance.searchWordList,
       'searchBoardIdForFutaba': instance.searchBoardIdForFutaba,
       'sortHistoryByRetention': instance.sortHistoryByRetention,
+      'sortHistory': _$SortHistoryEnumMap[instance.sortHistory]!,
       'googleFonts': instance.googleFonts,
       'addedFonts': instance.addedFonts,
       'boardImportance': instance.boardImportance,
@@ -509,6 +526,12 @@ const _$ThreadsOrderEnumMap = {
 const _$PositionToGetEnumMap = {
   PositionToGet.first: 'first',
   PositionToGet.last: 'last',
+};
+
+const _$SortHistoryEnumMap = {
+  SortHistory.hot: 'hot',
+  SortHistory.history: 'history',
+  SortHistory.deletionDate: 'deletionDate',
 };
 
 SrcData _$SrcDataFromJson(Map<String, dynamic> json) => SrcData(

@@ -5,7 +5,7 @@ part 'main.g.dart';
 @JsonSerializable()
 @CopyWith()
 @immutable
-class ThreadMarkData extends ThreadBase {
+class ThreadMarkData extends ThreadBase with WithDateTime {
   const ThreadMarkData(
       {required super.id,
       required super.type,
@@ -62,6 +62,11 @@ class ThreadMarkData extends ThreadBase {
   Set<ResMarkData?> get markList => marks
       .map((e) => e != null ? ResMarkData.fromJson(stringToJson(e)) : null)
       .toSet();
+
+  @override
+  double get ikioi {
+    return getIkioi(createdAtBySeconds, resCount);
+  }
 
   // @override
   // int get getResCount => endIndex ?? 0;
@@ -187,8 +192,8 @@ mixin WithDateTime {
     // ta.setLocaleMessages('ja', ta.JaMessages());
     return ta.format(value, locale: locale);
   }
-  
-  DateTime fomatedDateTime(final String value){
+
+  DateTime fomatedDateTime(final String value) {
     return DateFormat('EEE, d MMM y H:m:s').parseUtc(value);
   }
 
@@ -218,7 +223,7 @@ mixin WithDateTime {
     final result = resCount / diviDay;
     // logger.d(
     //     'ikioi: $result, resCount:$resCount, current:$current, datId:$datId, created:$createdNum, diviDay:$diviDay');
-    return double.tryParse(result.toStringAsFixed(2)) ?? 0;
+    return double.tryParse(result.toStringAsFixed(1)) ?? 0;
   }
 }
 

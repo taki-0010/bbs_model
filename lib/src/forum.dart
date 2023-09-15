@@ -21,6 +21,7 @@ class ForumSettingsData {
       this.searchWordList = const [],
       this.searchBoardIdForFutaba = 'b',
       this.sortHistoryByRetention = false,
+      this.sortHistory = SortHistory.hot,
       this.googleFonts,
       this.addedFonts = const [],
       this.boardImportance = const [],
@@ -40,6 +41,7 @@ class ForumSettingsData {
   final List<String?> searchWordList;
   final String searchBoardIdForFutaba;
   final bool sortHistoryByRetention;
+  final SortHistory sortHistory;
   final String? googleFonts;
   final List<String?> addedFonts;
   final List<String?> boardImportance;

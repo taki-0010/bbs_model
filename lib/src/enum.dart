@@ -113,3 +113,9 @@ enum EmbedSite{
   xCom,
   youtube
 }
+
+enum SortHistory{
+  hot,
+  history,
+  deletionDate
+}
