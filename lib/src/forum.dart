@@ -105,6 +105,7 @@ class InitialForumData {
         commentCountDisplayThreshold: 2,
         useFavoritesBoards: false,
         searchWordList: searchWords,
+        sortHistory: SortHistory.history,
         retentionPeriod: RetentionPeriodList.oneWeek);
     switch (value) {
       case Communities.fiveCh:
