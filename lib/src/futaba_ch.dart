@@ -414,6 +414,8 @@ class FutabaChContent extends ContentData with WithDateTime {
       required this.directory,
       super.title,
       super.threadThumbnail,
+      this.resto,
+      this.hash,
       this.quotes = const []});
   // final String? thumbnail;
   // final String? src;
@@ -424,6 +426,8 @@ class FutabaChContent extends ContentData with WithDateTime {
   // final String name;
   final String directory;
   final List<String?> quotes;
+  final String? resto;
+  final String? hash;
 
   @override
   String? get srcThumbnail => src?.thumbnailUri != null

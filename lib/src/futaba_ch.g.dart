@@ -603,6 +603,10 @@ abstract class _$FutabaChContentCWProxy {
 
   FutabaChContent threadThumbnail(String? threadThumbnail);
 
+  FutabaChContent resto(String? resto);
+
+  FutabaChContent hash(String? hash);
+
   FutabaChContent quotes(List<String?> quotes);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChContent(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -622,6 +626,8 @@ abstract class _$FutabaChContentCWProxy {
     String? directory,
     String? title,
     String? threadThumbnail,
+    String? resto,
+    String? hash,
     List<String?>? quotes,
   });
 }
@@ -664,6 +670,12 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
       this(threadThumbnail: threadThumbnail);
 
   @override
+  FutabaChContent resto(String? resto) => this(resto: resto);
+
+  @override
+  FutabaChContent hash(String? hash) => this(hash: hash);
+
+  @override
   FutabaChContent quotes(List<String?> quotes) => this(quotes: quotes);
 
   @override
@@ -685,6 +697,8 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
     Object? directory = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? threadThumbnail = const $CopyWithPlaceholder(),
+    Object? resto = const $CopyWithPlaceholder(),
+    Object? hash = const $CopyWithPlaceholder(),
     Object? quotes = const $CopyWithPlaceholder(),
   }) {
     return FutabaChContent(
@@ -728,6 +742,14 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
           ? _value.threadThumbnail
           // ignore: cast_nullable_to_non_nullable
           : threadThumbnail as String?,
+      resto: resto == const $CopyWithPlaceholder()
+          ? _value.resto
+          // ignore: cast_nullable_to_non_nullable
+          : resto as String?,
+      hash: hash == const $CopyWithPlaceholder()
+          ? _value.hash
+          // ignore: cast_nullable_to_non_nullable
+          : hash as String?,
       quotes: quotes == const $CopyWithPlaceholder() || quotes == null
           ? _value.quotes
           // ignore: cast_nullable_to_non_nullable
@@ -847,6 +869,8 @@ FutabaChContent _$FutabaChContentFromJson(Map<String, dynamic> json) =>
       directory: json['directory'] as String,
       title: json['title'] as String?,
       threadThumbnail: json['threadThumbnail'] as String?,
+      resto: json['resto'] as String?,
+      hash: json['hash'] as String?,
       quotes: (json['quotes'] as List<dynamic>?)
               ?.map((e) => e as String?)
               .toList() ??
@@ -866,4 +890,6 @@ Map<String, dynamic> _$FutabaChContentToJson(FutabaChContent instance) =>
       'agree': instance.agree,
       'directory': instance.directory,
       'quotes': instance.quotes,
+      'resto': instance.resto,
+      'hash': instance.hash,
     };

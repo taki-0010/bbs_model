@@ -72,6 +72,13 @@ abstract class ThreadBase {
     final index = origin.indexOf('.');
     return origin.substring(0, index);
   }
+
+  String get futabaId {
+    final seg = uri.pathSegments;
+    final idStr = seg.last;
+    final result = idStr.substring(0, idStr.indexOf('.'));
+    return result;
+  }
 }
 
 // @JsonSerializable(explicitToJson: true)
@@ -186,8 +193,6 @@ style= "position: relative;
     }
     return '';
   }
-
-
 
   final xEmbeStr = '''
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr"><a href="https://twitter.com/{{name}}/status/{{str}}?ref_src=twsrc%5Etfw"></a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

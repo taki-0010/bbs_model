@@ -116,4 +116,9 @@ class StringMethodData {
   }
 
   static String toTitleCase(final String value) => ReCase(value).titleCase;
+
+  static String addArrowToAllLines(final String value) {
+    final splited = value.trim().split('\n');
+    return splited.map((e) => '>$e\n').join();
+  }
 }
