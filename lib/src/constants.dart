@@ -7,6 +7,7 @@ class AppwriteData {
       'databases.$mainDbId.collections.$threadDbCollectionId.documents';
   static const usersDbCollectionId = 'users';
   static const forumSettingsDbCollectionId = 'forumSettings';
+  static const postDraftDbCollectionId = 'postDrafts';
 
   static const funcIdCreateUser = 'createUser';
   static const funcIdRemoveUser = 'removeUser';

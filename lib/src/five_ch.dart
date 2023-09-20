@@ -151,8 +151,9 @@ class FiveChBoardData {
   final String url;
   final int category;
   final String categoryName;
-
+  
   String? get domain {
+    // return Uri.parse(url).host;
     final replaced = url.replaceFirst('https://', '');
     final domain = replaced.substring(0, replaced.indexOf('/'));
     return domain;

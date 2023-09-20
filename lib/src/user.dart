@@ -29,22 +29,23 @@ class UserData {
   Map<String, dynamic> toJson() => _$UserDataToJson(this);
 }
 
-// @JsonSerializable()
-// @CopyWith()
-// @immutable
-// class UserSettingsData {
-//   const UserSettingsData({
-//     required this.forums,
-//     this.lastOpenedForum,
-//   });
 
-//   final List<ForumSettingsData?> forums;
-//   final Communities? lastOpenedForum;
-
-//   factory UserSettingsData.fromJson(Map<String, dynamic> json) =>
-//       _$UserSettingsDataFromJson(json);
-//   Map<String, dynamic> toJson() => _$UserSettingsDataToJson(this);
-// }
+@immutable
+class PostData {
+  const PostData(
+      {required this.body,
+      required this.name,
+      required this.title,
+      this.media,
+      this.filename,
+      required this.sage});
+  final String body;
+  final String name;
+  final String title;
+  final Uint8List? media;
+  final String? filename;
+  final bool sage;
+}
 
 // @JsonSerializable()
 @CopyWith()
@@ -54,9 +55,9 @@ class CommentData {
       {required this.body,
       required this.name,
       required this.postAt,
-      required this.forum,
-      required this.threadId,
-      required this.threadTitle,
+      // required this.forum,
+      // required this.threadId,
+      // required this.threadTitle,
       required this.sage,
       this.media,
       this.filename,
@@ -65,9 +66,9 @@ class CommentData {
   final String body;
   final String name;
   final String postAt;
-  final Communities forum;
-  final String threadId;
-  final String threadTitle;
+  // final Communities forum;
+  // final String threadId;
+  // final String threadTitle;
   final String? resnum;
   final Uint8List? media;
   final String? filename;

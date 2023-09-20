@@ -31,7 +31,8 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
       required this.createdAtBySeconds,
       this.marks = const {},
       this.importance = const [],
-      this.agreedIndexSet = const {}
+      this.agreedIndexSet = const {},
+      // this.postDraft
       // this.mutePosterIds = const {},
       // this.muteUserIds = const {}
       });
@@ -46,10 +47,10 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
   final int retentionPeriodSeconds;
   final int createdAtBySeconds;
   final Set<String?> marks;
-  // final Set<String?> mutePosterIds;
-  // final Set<String?> muteUserIds;
+  
   final List<String?> importance;
   final Set<int?> agreedIndexSet;
+  // final String? postDraft;
 
   SrcData? get thumbnail => thumbnailStr != null
       ? SrcData.fromJson(stringToJson(thumbnailStr!))
@@ -62,6 +63,8 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
   Set<ResMarkData?> get markList => marks
       .map((e) => e != null ? ResMarkData.fromJson(stringToJson(e)) : null)
       .toSet();
+
+
 
   @override
   double get ikioi {
@@ -115,45 +118,6 @@ class ImportanceData {
   Map<String, dynamic> toJson() => _$ImportanceDataToJson(this);
 }
 
-// @JsonSerializable()
-// @CopyWith()
-// @immutable
-// class LastOpenedIndex {
-//   const LastOpenedIndex({this.boards, this.threads, this.contents});
-//   final int? boards;
-//   final int? threads;
-//   final Set<LastOpenedContentIndex?>? contents;
-
-//   factory LastOpenedIndex.fromJson(Map<String, dynamic> json) =>
-//       _$LastOpenedIndexFromJson(json);
-//   Map<String, dynamic> toJson() => _$LastOpenedIndexToJson(this);
-// }
-
-// @JsonSerializable()
-// @CopyWith()
-// @immutable
-// class LastOpenedContentIndex {
-//   const LastOpenedContentIndex({required this.id, required this.index});
-//   final String id;
-//   final int index;
-
-//   factory LastOpenedContentIndex.fromJson(Map<String, dynamic> json) =>
-//       _$LastOpenedContentIndexFromJson(json);
-//   Map<String, dynamic> toJson() => _$LastOpenedContentIndexToJson(this);
-// }
-
-// @JsonSerializable(explicitToJson: true)
-// @CopyWith()
-// @immutable
-// final class BoardDataForStorage {
-//   const BoardDataForStorage({required this.board, required this.threads});
-//   final BoardData board;
-//   final List<ThreadData?> threads;
-
-//   factory BoardDataForStorage.fromJson(Map<String, dynamic> json) =>
-//       _$BoardDataForStorageFromJson(json);
-//   Map<String, dynamic> toJson() => _$BoardDataForStorageToJson(this);
-// }
 
 abstract class ContentData {
   const ContentData(

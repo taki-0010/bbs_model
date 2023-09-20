@@ -122,6 +122,135 @@ extension $BoardDataCopyWith on BoardData {
   _$BoardDataCWProxy get copyWith => _$BoardDataCWProxyImpl(this);
 }
 
+abstract class _$PostDraftDataCWProxy {
+  PostDraftData documentId(String documentId);
+
+  PostDraftData forum(Communities forum);
+
+  PostDraftData target(PostDraftTarget target);
+
+  PostDraftData targetId(String targetId);
+
+  PostDraftData body(String body);
+
+  PostDraftData title(String title);
+
+  PostDraftData name(String name);
+
+  PostDraftData retentionPeriodSeconds(int? retentionPeriodSeconds);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PostDraftData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// PostDraftData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  PostDraftData call({
+    String? documentId,
+    Communities? forum,
+    PostDraftTarget? target,
+    String? targetId,
+    String? body,
+    String? title,
+    String? name,
+    int? retentionPeriodSeconds,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfPostDraftData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfPostDraftData.copyWith.fieldName(...)`
+class _$PostDraftDataCWProxyImpl implements _$PostDraftDataCWProxy {
+  const _$PostDraftDataCWProxyImpl(this._value);
+
+  final PostDraftData _value;
+
+  @override
+  PostDraftData documentId(String documentId) => this(documentId: documentId);
+
+  @override
+  PostDraftData forum(Communities forum) => this(forum: forum);
+
+  @override
+  PostDraftData target(PostDraftTarget target) => this(target: target);
+
+  @override
+  PostDraftData targetId(String targetId) => this(targetId: targetId);
+
+  @override
+  PostDraftData body(String body) => this(body: body);
+
+  @override
+  PostDraftData title(String title) => this(title: title);
+
+  @override
+  PostDraftData name(String name) => this(name: name);
+
+  @override
+  PostDraftData retentionPeriodSeconds(int? retentionPeriodSeconds) =>
+      this(retentionPeriodSeconds: retentionPeriodSeconds);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PostDraftData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// PostDraftData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  PostDraftData call({
+    Object? documentId = const $CopyWithPlaceholder(),
+    Object? forum = const $CopyWithPlaceholder(),
+    Object? target = const $CopyWithPlaceholder(),
+    Object? targetId = const $CopyWithPlaceholder(),
+    Object? body = const $CopyWithPlaceholder(),
+    Object? title = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+    Object? retentionPeriodSeconds = const $CopyWithPlaceholder(),
+  }) {
+    return PostDraftData(
+      documentId:
+          documentId == const $CopyWithPlaceholder() || documentId == null
+              ? _value.documentId
+              // ignore: cast_nullable_to_non_nullable
+              : documentId as String,
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
+      target: target == const $CopyWithPlaceholder() || target == null
+          ? _value.target
+          // ignore: cast_nullable_to_non_nullable
+          : target as PostDraftTarget,
+      targetId: targetId == const $CopyWithPlaceholder() || targetId == null
+          ? _value.targetId
+          // ignore: cast_nullable_to_non_nullable
+          : targetId as String,
+      body: body == const $CopyWithPlaceholder() || body == null
+          ? _value.body
+          // ignore: cast_nullable_to_non_nullable
+          : body as String,
+      title: title == const $CopyWithPlaceholder() || title == null
+          ? _value.title
+          // ignore: cast_nullable_to_non_nullable
+          : title as String,
+      name: name == const $CopyWithPlaceholder() || name == null
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String,
+      retentionPeriodSeconds:
+          retentionPeriodSeconds == const $CopyWithPlaceholder()
+              ? _value.retentionPeriodSeconds
+              // ignore: cast_nullable_to_non_nullable
+              : retentionPeriodSeconds as int?,
+    );
+  }
+}
+
+extension $PostDraftDataCopyWith on PostDraftData {
+  /// Returns a callable class that can be used as follows: `instanceOfPostDraftData.copyWith(...)` or like so:`instanceOfPostDraftData.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$PostDraftDataCWProxy get copyWith => _$PostDraftDataCWProxyImpl(this);
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -160,4 +289,33 @@ const _$CommunitiesEnumMap = {
   Communities.girlsCh: 'girlsCh',
   Communities.futabaCh: 'futabaCh',
   Communities.pinkCh: 'pinkCh',
+};
+
+PostDraftData _$PostDraftDataFromJson(Map<String, dynamic> json) =>
+    PostDraftData(
+      documentId: json['documentId'] as String,
+      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
+      target: $enumDecode(_$PostDraftTargetEnumMap, json['target']),
+      targetId: json['targetId'] as String,
+      body: json['body'] as String,
+      title: json['title'] as String,
+      name: json['name'] as String,
+      retentionPeriodSeconds: json['retentionPeriodSeconds'] as int?,
+    );
+
+Map<String, dynamic> _$PostDraftDataToJson(PostDraftData instance) =>
+    <String, dynamic>{
+      'documentId': instance.documentId,
+      'forum': _$CommunitiesEnumMap[instance.forum]!,
+      'target': _$PostDraftTargetEnumMap[instance.target]!,
+      'targetId': instance.targetId,
+      'body': instance.body,
+      'title': instance.title,
+      'name': instance.name,
+      'retentionPeriodSeconds': instance.retentionPeriodSeconds,
+    };
+
+const _$PostDraftTargetEnumMap = {
+  PostDraftTarget.thread: 'thread',
+  PostDraftTarget.comment: 'comment',
 };

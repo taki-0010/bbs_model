@@ -110,12 +110,6 @@ abstract class _$CommentDataCWProxy {
 
   CommentData postAt(String postAt);
 
-  CommentData forum(Communities forum);
-
-  CommentData threadId(String threadId);
-
-  CommentData threadTitle(String threadTitle);
-
   CommentData sage(bool sage);
 
   CommentData media(Uint8List? media);
@@ -134,9 +128,6 @@ abstract class _$CommentDataCWProxy {
     String? body,
     String? name,
     String? postAt,
-    Communities? forum,
-    String? threadId,
-    String? threadTitle,
     bool? sage,
     Uint8List? media,
     String? filename,
@@ -158,15 +149,6 @@ class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
 
   @override
   CommentData postAt(String postAt) => this(postAt: postAt);
-
-  @override
-  CommentData forum(Communities forum) => this(forum: forum);
-
-  @override
-  CommentData threadId(String threadId) => this(threadId: threadId);
-
-  @override
-  CommentData threadTitle(String threadTitle) => this(threadTitle: threadTitle);
 
   @override
   CommentData sage(bool sage) => this(sage: sage);
@@ -192,9 +174,6 @@ class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
     Object? body = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? postAt = const $CopyWithPlaceholder(),
-    Object? forum = const $CopyWithPlaceholder(),
-    Object? threadId = const $CopyWithPlaceholder(),
-    Object? threadTitle = const $CopyWithPlaceholder(),
     Object? sage = const $CopyWithPlaceholder(),
     Object? media = const $CopyWithPlaceholder(),
     Object? filename = const $CopyWithPlaceholder(),
@@ -213,19 +192,6 @@ class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
           ? _value.postAt
           // ignore: cast_nullable_to_non_nullable
           : postAt as String,
-      forum: forum == const $CopyWithPlaceholder() || forum == null
-          ? _value.forum
-          // ignore: cast_nullable_to_non_nullable
-          : forum as Communities,
-      threadId: threadId == const $CopyWithPlaceholder() || threadId == null
-          ? _value.threadId
-          // ignore: cast_nullable_to_non_nullable
-          : threadId as String,
-      threadTitle:
-          threadTitle == const $CopyWithPlaceholder() || threadTitle == null
-              ? _value.threadTitle
-              // ignore: cast_nullable_to_non_nullable
-              : threadTitle as String,
       sage: sage == const $CopyWithPlaceholder() || sage == null
           ? _value.sage
           // ignore: cast_nullable_to_non_nullable

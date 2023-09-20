@@ -102,20 +102,13 @@ enum ImportanceTarget {
 //   final String label;
 // }
 
-enum OpenLinkList{
-  dialog,
-  browser,
-  embed,
-  copy
-}
+enum OpenLinkList { dialog, browser, embed, copy }
 
-enum EmbedSite{
-  xCom,
-  youtube
-}
+enum EmbedSite { xCom, youtube }
 
-enum SortHistory{
-  hot,
-  history,
-  deletionDate
+enum SortHistory { hot, history, deletionDate }
+
+enum PostDraftTarget {
+  thread,
+  comment;
 }
