@@ -607,6 +607,8 @@ abstract class _$FutabaChContentCWProxy {
 
   FutabaChContent hash(String? hash);
 
+  FutabaChContent limit(String? limit);
+
   FutabaChContent quotes(List<String?> quotes);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaChContent(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -628,6 +630,7 @@ abstract class _$FutabaChContentCWProxy {
     String? threadThumbnail,
     String? resto,
     String? hash,
+    String? limit,
     List<String?>? quotes,
   });
 }
@@ -676,6 +679,9 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
   FutabaChContent hash(String? hash) => this(hash: hash);
 
   @override
+  FutabaChContent limit(String? limit) => this(limit: limit);
+
+  @override
   FutabaChContent quotes(List<String?> quotes) => this(quotes: quotes);
 
   @override
@@ -699,6 +705,7 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
     Object? threadThumbnail = const $CopyWithPlaceholder(),
     Object? resto = const $CopyWithPlaceholder(),
     Object? hash = const $CopyWithPlaceholder(),
+    Object? limit = const $CopyWithPlaceholder(),
     Object? quotes = const $CopyWithPlaceholder(),
   }) {
     return FutabaChContent(
@@ -750,6 +757,10 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
           ? _value.hash
           // ignore: cast_nullable_to_non_nullable
           : hash as String?,
+      limit: limit == const $CopyWithPlaceholder()
+          ? _value.limit
+          // ignore: cast_nullable_to_non_nullable
+          : limit as String?,
       quotes: quotes == const $CopyWithPlaceholder() || quotes == null
           ? _value.quotes
           // ignore: cast_nullable_to_non_nullable
@@ -871,6 +882,7 @@ FutabaChContent _$FutabaChContentFromJson(Map<String, dynamic> json) =>
       threadThumbnail: json['threadThumbnail'] as String?,
       resto: json['resto'] as String?,
       hash: json['hash'] as String?,
+      limit: json['limit'] as String?,
       quotes: (json['quotes'] as List<dynamic>?)
               ?.map((e) => e as String?)
               .toList() ??
@@ -892,4 +904,5 @@ Map<String, dynamic> _$FutabaChContentToJson(FutabaChContent instance) =>
       'quotes': instance.quotes,
       'resto': instance.resto,
       'hash': instance.hash,
+      'limit': instance.limit,
     };

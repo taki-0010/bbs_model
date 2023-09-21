@@ -29,7 +29,7 @@ class UserData {
   Map<String, dynamic> toJson() => _$UserDataToJson(this);
 }
 
-
+@CopyWith()
 @immutable
 class PostData {
   const PostData(
@@ -38,45 +38,49 @@ class PostData {
       required this.title,
       this.media,
       this.filename,
-      required this.sage});
+      required this.sage,
+      this.postThread = false,
+      this.resnum});
   final String body;
   final String name;
   final String title;
   final Uint8List? media;
   final String? filename;
   final bool sage;
+  final bool postThread;
+  final int? resnum;
 }
 
 // @JsonSerializable()
-@CopyWith()
-@immutable
-class CommentData {
-  const CommentData(
-      {required this.body,
-      required this.name,
-      required this.postAt,
-      // required this.forum,
-      // required this.threadId,
-      // required this.threadTitle,
-      required this.sage,
-      this.media,
-      this.filename,
-      this.resnum});
+// @CopyWith()
+// @immutable
+// class CommentData {
+//   const CommentData(
+//       {required this.body,
+//       required this.name,
+//       required this.postAt,
+//       // required this.forum,
+//       // required this.threadId,
+//       // required this.threadTitle,
+//       required this.sage,
+//       this.media,
+//       this.filename,
+//       this.resnum});
 
-  final String body;
-  final String name;
-  final String postAt;
-  // final Communities forum;
-  // final String threadId;
-  // final String threadTitle;
-  final String? resnum;
-  final Uint8List? media;
-  final String? filename;
-  final bool sage;
+//   final String body;
+//   final String name;
+//   final String postAt;
+//   // final Communities forum;
+//   // final String threadId;
+//   // final String threadTitle;
+//   final String? resnum;
+//   final Uint8List? media;
+//   final String? filename;
+//   final bool sage;
 
-  int? get index => int.tryParse(resnum ?? '0');
+//   int? get index => int.tryParse(resnum ?? '0');
 
-  // factory CommentData.fromJson(Map<String, dynamic> json) =>
-  //     _$CommentDataFromJson(json);
-  // Map<String, dynamic> toJson() => _$CommentDataToJson(this);
-}
+//   // factory CommentData.fromJson(Map<String, dynamic> json) =>
+//   //     _$CommentDataFromJson(json);
+//   // Map<String, dynamic> toJson() => _$CommentDataToJson(this);
+// }

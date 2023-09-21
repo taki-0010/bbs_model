@@ -6,36 +6,36 @@ part 'main.g.dart';
 @CopyWith()
 @immutable
 class ThreadMarkData extends ThreadBase with WithDateTime {
-  const ThreadMarkData(
-      {required super.id,
-      required super.type,
-      required super.resCount,
-      this.favorite = false,
-      // required super.lastIndex,
-      // super.thumbnail,
-      super.thumbnailStr,
-      // this.archived = false,
-      required super.url,
-      // this.thumbnailUrl,
-      required super.boardId,
-      required super.title,
-      // super.boardName,
-      super.positionToGet = PositionToGet.first,
-      // super.difference,
-      this.lastOpendIndex,
-      this.lastReadAt,
-      required this.sessionId,
-      required this.userId,
-      required this.documentId,
-      this.retentionPeriodSeconds = 0,
-      required this.createdAtBySeconds,
-      this.marks = const {},
-      this.importance = const [],
-      this.agreedIndexSet = const {},
-      // this.postDraft
-      // this.mutePosterIds = const {},
-      // this.muteUserIds = const {}
-      });
+  const ThreadMarkData({
+    required super.id,
+    required super.type,
+    required super.resCount,
+    this.favorite = false,
+    // required super.lastIndex,
+    // super.thumbnail,
+    super.thumbnailStr,
+    // this.archived = false,
+    required super.url,
+    // this.thumbnailUrl,
+    required super.boardId,
+    required super.title,
+    // super.boardName,
+    super.positionToGet = PositionToGet.first,
+    // super.difference,
+    this.lastOpendIndex,
+    this.lastReadAt,
+    required this.sessionId,
+    required this.userId,
+    required this.documentId,
+    this.retentionPeriodSeconds = 0,
+    required this.createdAtBySeconds,
+    this.marks = const {},
+    this.importance = const [],
+    this.agreedIndexSet = const {},
+    // this.postDraft
+    // this.mutePosterIds = const {},
+    // this.muteUserIds = const {}
+  });
   final String userId;
   final String documentId;
 
@@ -47,7 +47,7 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
   final int retentionPeriodSeconds;
   final int createdAtBySeconds;
   final Set<String?> marks;
-  
+
   final List<String?> importance;
   final Set<int?> agreedIndexSet;
   // final String? postDraft;
@@ -63,8 +63,6 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
   Set<ResMarkData?> get markList => marks
       .map((e) => e != null ? ResMarkData.fromJson(stringToJson(e)) : null)
       .toSet();
-
-
 
   @override
   double get ikioi {
@@ -118,7 +116,6 @@ class ImportanceData {
   Map<String, dynamic> toJson() => _$ImportanceDataToJson(this);
 }
 
-
 abstract class ContentData {
   const ContentData(
       {required this.index,
@@ -149,7 +146,7 @@ abstract class ContentData {
 }
 
 mixin WithDateTime {
-  void initialLoad() => ta.setLocaleMessages('ja', ta.JaMessages());
+  void initialLocaleLoad() => ta.setLocaleMessages('ja', ta.JaMessages());
   DateTime epochToDateTime(final int value) =>
       DateTime.fromMillisecondsSinceEpoch(value);
   String getTimeago(final DateTime value, final String locale) {
@@ -187,7 +184,8 @@ mixin WithDateTime {
     final result = resCount / diviDay;
     // logger.d(
     //     'ikioi: $result, resCount:$resCount, current:$current, datId:$datId, created:$createdNum, diviDay:$diviDay');
-    return double.tryParse(result.toStringAsFixed(1)) ?? 0;
+    final data = double.tryParse(result.toStringAsFixed(1)) ?? 0;
+    return data == 0 ? 0.1 : data;
   }
 }
 

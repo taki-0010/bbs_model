@@ -416,6 +416,7 @@ class FutabaChContent extends ContentData with WithDateTime {
       super.threadThumbnail,
       this.resto,
       this.hash,
+      this.limit,
       this.quotes = const []});
   // final String? thumbnail;
   // final String? src;
@@ -428,6 +429,7 @@ class FutabaChContent extends ContentData with WithDateTime {
   final List<String?> quotes;
   final String? resto;
   final String? hash;
+  final String? limit;
 
   @override
   String? get srcThumbnail => src?.thumbnailUri != null

@@ -199,22 +199,26 @@ style= "position: relative;
 ''';
 
   String? xComEmbed() {
-    final index = url.indexOf('.com/') + 5;
-    final subed = url.substring(index);
-    final slash = subed.indexOf('/');
-    final userName = subed.substring(0, slash);
-    final statusIndex = url.indexOf('status/') + 7;
-    final idData = url.substring(statusIndex);
+    return UrlParser.xComEmbed(url);
+    // if (!url.contains('status/')) {
+    //   return null;
+    // }
+    // final index = url.indexOf('.com/') + 5;
+    // final subed = url.substring(index);
+    // final slash = subed.indexOf('/');
+    // final userName = subed.substring(0, slash);
+    // final statusIndex = url.indexOf('status/') + 7;
+    // final idData = url.substring(statusIndex);
 
-    final id = RegExp(r'\d+').firstMatch(idData);
-    // final data = id.isNotEmpty ? id.first : null;
-    final idStr = id?.group(0);
-    if (idStr == null) {
-      return null;
-    }
-    // logger.d('x.com: user: $userName, id: $idStr');
-    final replacedName = xEmbeStr.replaceAll('{{name}}', userName);
-    return replacedName.replaceAll('{{str}}', idStr);
+    // final id = RegExp(r'\d+').firstMatch(idData);
+    // // final data = id.isNotEmpty ? id.first : null;
+    // final idStr = id?.group(0);
+    // if (idStr == null) {
+    //   return null;
+    // }
+    // // logger.d('x.com: user: $userName, id: $idStr');
+    // final replacedName = xEmbeStr.replaceAll('{{name}}', userName);
+    // return replacedName.replaceAll('{{str}}', idStr);
   }
 
   String embedHtml() {

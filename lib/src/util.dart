@@ -7,6 +7,35 @@ import 'package:youtube_parser/youtube_parser.dart';
 
 import 'importer.dart';
 
+class UrlParser {
+  static final xEmbeStr = '''
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr"><a href="https://twitter.com/{{name}}/status/{{str}}?ref_src=twsrc%5Etfw"></a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+''';
+
+  static String? xComEmbed(final String url) {
+
+    if (!url.contains('status/')) {
+      return null;
+    }
+    final index = url.indexOf('.com/') + 5;
+    final subed = url.substring(index);
+    final slash = subed.indexOf('/');
+    final userName = subed.substring(0, slash);
+    final statusIndex = url.indexOf('status/') + 7;
+    final idData = url.substring(statusIndex);
+
+    final id = RegExp(r'\d+').firstMatch(idData);
+    // final data = id.isNotEmpty ? id.first : null;
+    final idStr = id?.group(0);
+    if (idStr == null) {
+      return null;
+    }
+    // logger.d('x.com: user: $userName, id: $idStr');
+    final replacedName = xEmbeStr.replaceAll('{{name}}', userName);
+    return replacedName.replaceAll('{{str}}', idStr);
+  }
+}
+
 class GoogleFontsList {
   // static const _default = '(Default)';
   static const _kosugi = 'Kosugi';

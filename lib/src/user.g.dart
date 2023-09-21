@@ -103,83 +103,90 @@ extension $UserDataCopyWith on UserData {
   _$UserDataCWProxy get copyWith => _$UserDataCWProxyImpl(this);
 }
 
-abstract class _$CommentDataCWProxy {
-  CommentData body(String body);
+abstract class _$PostDataCWProxy {
+  PostData body(String body);
 
-  CommentData name(String name);
+  PostData name(String name);
 
-  CommentData postAt(String postAt);
+  PostData title(String title);
 
-  CommentData sage(bool sage);
+  PostData media(Uint8List? media);
 
-  CommentData media(Uint8List? media);
+  PostData filename(String? filename);
 
-  CommentData filename(String? filename);
+  PostData sage(bool sage);
 
-  CommentData resnum(String? resnum);
+  PostData postThread(bool postThread);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CommentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  PostData resnum(int? resnum);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PostData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// CommentData(...).copyWith(id: 12, name: "My name")
+  /// PostData(...).copyWith(id: 12, name: "My name")
   /// ````
-  CommentData call({
+  PostData call({
     String? body,
     String? name,
-    String? postAt,
-    bool? sage,
+    String? title,
     Uint8List? media,
     String? filename,
-    String? resnum,
+    bool? sage,
+    bool? postThread,
+    int? resnum,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfCommentData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfCommentData.copyWith.fieldName(...)`
-class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
-  const _$CommentDataCWProxyImpl(this._value);
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfPostData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfPostData.copyWith.fieldName(...)`
+class _$PostDataCWProxyImpl implements _$PostDataCWProxy {
+  const _$PostDataCWProxyImpl(this._value);
 
-  final CommentData _value;
-
-  @override
-  CommentData body(String body) => this(body: body);
+  final PostData _value;
 
   @override
-  CommentData name(String name) => this(name: name);
+  PostData body(String body) => this(body: body);
 
   @override
-  CommentData postAt(String postAt) => this(postAt: postAt);
+  PostData name(String name) => this(name: name);
 
   @override
-  CommentData sage(bool sage) => this(sage: sage);
+  PostData title(String title) => this(title: title);
 
   @override
-  CommentData media(Uint8List? media) => this(media: media);
+  PostData media(Uint8List? media) => this(media: media);
 
   @override
-  CommentData filename(String? filename) => this(filename: filename);
+  PostData filename(String? filename) => this(filename: filename);
 
   @override
-  CommentData resnum(String? resnum) => this(resnum: resnum);
+  PostData sage(bool sage) => this(sage: sage);
+
+  @override
+  PostData postThread(bool postThread) => this(postThread: postThread);
+
+  @override
+  PostData resnum(int? resnum) => this(resnum: resnum);
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CommentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PostData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// CommentData(...).copyWith(id: 12, name: "My name")
+  /// PostData(...).copyWith(id: 12, name: "My name")
   /// ````
-  CommentData call({
+  PostData call({
     Object? body = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
-    Object? postAt = const $CopyWithPlaceholder(),
-    Object? sage = const $CopyWithPlaceholder(),
+    Object? title = const $CopyWithPlaceholder(),
     Object? media = const $CopyWithPlaceholder(),
     Object? filename = const $CopyWithPlaceholder(),
+    Object? sage = const $CopyWithPlaceholder(),
+    Object? postThread = const $CopyWithPlaceholder(),
     Object? resnum = const $CopyWithPlaceholder(),
   }) {
-    return CommentData(
+    return PostData(
       body: body == const $CopyWithPlaceholder() || body == null
           ? _value.body
           // ignore: cast_nullable_to_non_nullable
@@ -188,14 +195,10 @@ class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String,
-      postAt: postAt == const $CopyWithPlaceholder() || postAt == null
-          ? _value.postAt
+      title: title == const $CopyWithPlaceholder() || title == null
+          ? _value.title
           // ignore: cast_nullable_to_non_nullable
-          : postAt as String,
-      sage: sage == const $CopyWithPlaceholder() || sage == null
-          ? _value.sage
-          // ignore: cast_nullable_to_non_nullable
-          : sage as bool,
+          : title as String,
       media: media == const $CopyWithPlaceholder()
           ? _value.media
           // ignore: cast_nullable_to_non_nullable
@@ -204,18 +207,27 @@ class _$CommentDataCWProxyImpl implements _$CommentDataCWProxy {
           ? _value.filename
           // ignore: cast_nullable_to_non_nullable
           : filename as String?,
+      sage: sage == const $CopyWithPlaceholder() || sage == null
+          ? _value.sage
+          // ignore: cast_nullable_to_non_nullable
+          : sage as bool,
+      postThread:
+          postThread == const $CopyWithPlaceholder() || postThread == null
+              ? _value.postThread
+              // ignore: cast_nullable_to_non_nullable
+              : postThread as bool,
       resnum: resnum == const $CopyWithPlaceholder()
           ? _value.resnum
           // ignore: cast_nullable_to_non_nullable
-          : resnum as String?,
+          : resnum as int?,
     );
   }
 }
 
-extension $CommentDataCopyWith on CommentData {
-  /// Returns a callable class that can be used as follows: `instanceOfCommentData.copyWith(...)` or like so:`instanceOfCommentData.copyWith.fieldName(...)`.
+extension $PostDataCopyWith on PostData {
+  /// Returns a callable class that can be used as follows: `instanceOfPostData.copyWith(...)` or like so:`instanceOfPostData.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$CommentDataCWProxy get copyWith => _$CommentDataCWProxyImpl(this);
+  _$PostDataCWProxy get copyWith => _$PostDataCWProxyImpl(this);
 }
 
 // **************************************************************************
