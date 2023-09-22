@@ -34,6 +34,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData searchBoardIdForFutaba(String searchBoardIdForFutaba);
 
+  ForumSettingsData deleteKeyForFutaba(String deleteKeyForFutaba);
+
   ForumSettingsData sortHistoryByRetention(bool sortHistoryByRetention);
 
   ForumSettingsData sortHistory(SortHistory sortHistory);
@@ -66,6 +68,7 @@ abstract class _$ForumSettingsDataCWProxy {
     List<String?>? favoritesBoardList,
     List<String?>? searchWordList,
     String? searchBoardIdForFutaba,
+    String? deleteKeyForFutaba,
     bool? sortHistoryByRetention,
     SortHistory? sortHistory,
     String? googleFonts,
@@ -131,6 +134,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(searchBoardIdForFutaba: searchBoardIdForFutaba);
 
   @override
+  ForumSettingsData deleteKeyForFutaba(String deleteKeyForFutaba) =>
+      this(deleteKeyForFutaba: deleteKeyForFutaba);
+
+  @override
   ForumSettingsData sortHistoryByRetention(bool sortHistoryByRetention) =>
       this(sortHistoryByRetention: sortHistoryByRetention);
 
@@ -176,6 +183,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? favoritesBoardList = const $CopyWithPlaceholder(),
     Object? searchWordList = const $CopyWithPlaceholder(),
     Object? searchBoardIdForFutaba = const $CopyWithPlaceholder(),
+    Object? deleteKeyForFutaba = const $CopyWithPlaceholder(),
     Object? sortHistoryByRetention = const $CopyWithPlaceholder(),
     Object? sortHistory = const $CopyWithPlaceholder(),
     Object? googleFonts = const $CopyWithPlaceholder(),
@@ -247,6 +255,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
               ? _value.searchBoardIdForFutaba
               // ignore: cast_nullable_to_non_nullable
               : searchBoardIdForFutaba as String,
+      deleteKeyForFutaba: deleteKeyForFutaba == const $CopyWithPlaceholder() ||
+              deleteKeyForFutaba == null
+          ? _value.deleteKeyForFutaba
+          // ignore: cast_nullable_to_non_nullable
+          : deleteKeyForFutaba as String,
       sortHistoryByRetention:
           sortHistoryByRetention == const $CopyWithPlaceholder() ||
                   sortHistoryByRetention == null
@@ -441,6 +454,7 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       searchBoardIdForFutaba: json['searchBoardIdForFutaba'] as String? ?? 'b',
+      deleteKeyForFutaba: json['deleteKeyForFutaba'] as String? ?? '48009',
       sortHistoryByRetention: json['sortHistoryByRetention'] as bool? ?? false,
       sortHistory:
           $enumDecodeNullable(_$SortHistoryEnumMap, json['sortHistory']) ??
@@ -476,6 +490,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'favoritesBoardList': instance.favoritesBoardList,
       'searchWordList': instance.searchWordList,
       'searchBoardIdForFutaba': instance.searchBoardIdForFutaba,
+      'deleteKeyForFutaba': instance.deleteKeyForFutaba,
       'sortHistoryByRetention': instance.sortHistoryByRetention,
       'sortHistory': _$SortHistoryEnumMap[instance.sortHistory]!,
       'googleFonts': instance.googleFonts,

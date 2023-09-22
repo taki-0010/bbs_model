@@ -20,6 +20,7 @@ class ForumSettingsData {
       this.favoritesBoardList = const [],
       this.searchWordList = const [],
       this.searchBoardIdForFutaba = 'b',
+      this.deleteKeyForFutaba = '48009',
       this.sortHistoryByRetention = false,
       this.sortHistory = SortHistory.hot,
       this.googleFonts,
@@ -40,6 +41,7 @@ class ForumSettingsData {
   final List<String?> favoritesBoardList;
   final List<String?> searchWordList;
   final String searchBoardIdForFutaba;
+  final String deleteKeyForFutaba;
   final bool sortHistoryByRetention;
   final SortHistory sortHistory;
   final String? googleFonts;
@@ -119,6 +121,7 @@ class InitialForumData {
             searchWordList: searchWordsFutaba,
             theme: ThemeList.sanJuanBlue,
             threadsOrder: ThreadsOrder.catalog,
+            deleteKeyForFutaba: randomInt().toString(),
             retentionPeriod: RetentionPeriodList.oneDay);
       case Communities.pinkCh:
         return base.copyWith(
