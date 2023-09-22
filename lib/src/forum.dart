@@ -26,7 +26,8 @@ class ForumSettingsData {
       this.googleFonts,
       this.addedFonts = const [],
       this.boardImportance = const [],
-      this.threadsImportance = const []});
+      this.threadsImportance = const [],
+      this.listViewStyle = ListViewStyle.list});
 
   final String userId;
   final Communities forum;
@@ -48,6 +49,7 @@ class ForumSettingsData {
   final List<String?> addedFonts;
   final List<String?> boardImportance;
   final List<String?> threadsImportance;
+  final ListViewStyle listViewStyle;
 
   List<ImportanceData?> get boardImportanceList => boardImportance
       .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)

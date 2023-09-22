@@ -48,6 +48,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData threadsImportance(List<String?> threadsImportance);
 
+  ForumSettingsData listViewStyle(ListViewStyle listViewStyle);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -75,6 +77,7 @@ abstract class _$ForumSettingsDataCWProxy {
     List<String?>? addedFonts,
     List<String?>? boardImportance,
     List<String?>? threadsImportance,
+    ListViewStyle? listViewStyle,
   });
 }
 
@@ -162,6 +165,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(threadsImportance: threadsImportance);
 
   @override
+  ForumSettingsData listViewStyle(ListViewStyle listViewStyle) =>
+      this(listViewStyle: listViewStyle);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -190,6 +197,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? addedFonts = const $CopyWithPlaceholder(),
     Object? boardImportance = const $CopyWithPlaceholder(),
     Object? threadsImportance = const $CopyWithPlaceholder(),
+    Object? listViewStyle = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       userId: userId == const $CopyWithPlaceholder() || userId == null
@@ -290,6 +298,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.threadsImportance
           // ignore: cast_nullable_to_non_nullable
           : threadsImportance as List<String?>,
+      listViewStyle:
+          listViewStyle == const $CopyWithPlaceholder() || listViewStyle == null
+              ? _value.listViewStyle
+              // ignore: cast_nullable_to_non_nullable
+              : listViewStyle as ListViewStyle,
     );
   }
 }
@@ -472,6 +485,9 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String?)
               .toList() ??
           const [],
+      listViewStyle:
+          $enumDecodeNullable(_$ListViewStyleEnumMap, json['listViewStyle']) ??
+              ListViewStyle.list,
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -497,6 +513,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'addedFonts': instance.addedFonts,
       'boardImportance': instance.boardImportance,
       'threadsImportance': instance.threadsImportance,
+      'listViewStyle': _$ListViewStyleEnumMap[instance.listViewStyle]!,
     };
 
 const _$CommunitiesEnumMap = {
@@ -515,6 +532,8 @@ const _$ThemeListEnumMap = {
   ThemeList.goldSunset: 'goldSunset',
   ThemeList.barossa: 'barossa',
   ThemeList.pinkSakura: 'pinkSakura',
+  ThemeList.indigoNights: 'indigoNights',
+  ThemeList.verdunLime: 'verdunLime',
 };
 
 const _$RetentionPeriodListEnumMap = {
@@ -547,6 +566,11 @@ const _$SortHistoryEnumMap = {
   SortHistory.hot: 'hot',
   SortHistory.history: 'history',
   SortHistory.deletionDate: 'deletionDate',
+};
+
+const _$ListViewStyleEnumMap = {
+  ListViewStyle.list: 'list',
+  ListViewStyle.grid: 'grid',
 };
 
 SrcData _$SrcDataFromJson(Map<String, dynamic> json) => SrcData(

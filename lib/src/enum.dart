@@ -17,7 +17,9 @@ enum ThemeList {
   greenForest,
   goldSunset,
   barossa,
-  pinkSakura
+  pinkSakura,
+  indigoNights,
+  verdunLime
 }
 
 enum LangList {
@@ -111,4 +113,9 @@ enum SortHistory { hot, history, deletionDate }
 enum PostDraftTarget {
   thread,
   comment;
+}
+
+enum ListViewStyle{
+  list,
+  grid
 }

@@ -57,8 +57,8 @@ class GoogleFontsList {
   String get kosugi => _kosugi;
 }
 
-int randomInt() {
-  return Random().nextInt(999);
+int randomInt({int count = 999}) {
+  return Random().nextInt(count);
 }
 
 String jsonToString(final Map<String, dynamic> value) {
