@@ -117,12 +117,13 @@ class InitialForumData {
             theme: ThemeList.m3Purple,
             retentionPeriod: RetentionPeriodList.byPostPace);
       case Communities.girlsCh:
-        return base.copyWith(theme: ThemeList.pinkSakura);
+        return base.copyWith(theme: ThemeList.pinkSakura, listViewStyle: ListViewStyle.gridMedium);
       case Communities.futabaCh:
         return base.copyWith(
             searchWordList: searchWordsFutaba,
             theme: ThemeList.sanJuanBlue,
             threadsOrder: ThreadsOrder.catalog,
+            listViewStyle: ListViewStyle.gridSmall,
             deleteKeyForFutaba: randomInt().toString(),
             retentionPeriod: RetentionPeriodList.oneDay);
       case Communities.pinkCh:

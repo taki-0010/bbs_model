@@ -570,7 +570,9 @@ const _$SortHistoryEnumMap = {
 
 const _$ListViewStyleEnumMap = {
   ListViewStyle.list: 'list',
-  ListViewStyle.grid: 'grid',
+  ListViewStyle.gridSmall: 'gridSmall',
+  ListViewStyle.gridMedium: 'gridMedium',
+  ListViewStyle.gridLarge: 'gridLarge',
 };
 
 SrcData _$SrcDataFromJson(Map<String, dynamic> json) => SrcData(
