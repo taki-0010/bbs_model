@@ -186,8 +186,6 @@ abstract class _$ThreadContentDataCWProxy {
 
   ThreadContentData type(Communities type);
 
-  ThreadContentData archived(bool archived);
-
   ThreadContentData threadLength(int threadLength);
 
   ThreadContentData content(List<ContentData?> content);
@@ -202,7 +200,6 @@ abstract class _$ThreadContentDataCWProxy {
     String? id,
     String? boardId,
     Communities? type,
-    bool? archived,
     int? threadLength,
     List<ContentData?>? content,
   });
@@ -224,9 +221,6 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
   ThreadContentData type(Communities type) => this(type: type);
 
   @override
-  ThreadContentData archived(bool archived) => this(archived: archived);
-
-  @override
   ThreadContentData threadLength(int threadLength) =>
       this(threadLength: threadLength);
 
@@ -246,7 +240,6 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
     Object? id = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
-    Object? archived = const $CopyWithPlaceholder(),
     Object? threadLength = const $CopyWithPlaceholder(),
     Object? content = const $CopyWithPlaceholder(),
   }) {
@@ -263,10 +256,6 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as Communities,
-      archived: archived == const $CopyWithPlaceholder() || archived == null
-          ? _value.archived
-          // ignore: cast_nullable_to_non_nullable
-          : archived as bool,
       threadLength:
           threadLength == const $CopyWithPlaceholder() || threadLength == null
               ? _value.threadLength

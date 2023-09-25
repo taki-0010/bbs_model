@@ -67,6 +67,17 @@ abstract class ThreadBase {
 
   String? get compatibleUrl => fiveChUrlForHtml ?? pinkChUrlForHtml;
 
+  String? get htmlUrl {
+    switch (type) {
+      case Communities.fiveCh:
+        return fiveChUrlForHtml;
+      case Communities.pinkCh:
+        return pinkChUrlForHtml;
+      default:
+        return getFullUrl;
+    }
+  }
+
   String get futabaDirectory {
     final origin = uri.host;
     final index = origin.indexOf('.');
@@ -144,13 +155,13 @@ class ThreadContentData {
       {required this.id,
       required this.boardId,
       required this.type,
-      this.archived = false,
+      // this.archived = false,
       this.threadLength = 1,
       this.content = const []});
   final String id;
   final String boardId;
   final Communities type;
-  final bool archived;
+  // final bool archived;
   final int threadLength;
   // final String title;
   final List<ContentData?> content;
@@ -242,5 +253,48 @@ style= "position: relative;
 
 ''';
     return html;
+  }
+}
+
+// @immutable
+// class FetchThreadResultData {
+//   const FetchThreadResultData({
+//     this.statusCode = 200,
+//     this.deleted,
+//     this.archived,
+//   });
+//   final int statusCode;
+//   final bool? deleted;
+//   final bool? archived;
+// }
+
+@immutable
+class FetchContentResultData {
+  const FetchContentResultData(
+      {this.contentList,
+      this.statusCode = 200,
+      this.deleted,
+      this.archived,
+      this.threadLength});
+  final List<ContentData?>? contentList;
+  final int statusCode;
+  final bool? deleted;
+  final bool? archived;
+  final int? threadLength;
+
+  FetchResult get result {
+    if (statusCode != 200) {
+      return FetchResult.networkError;
+    }
+    if (deleted != null && deleted!) {
+      return FetchResult.deleted;
+    }
+    // if (archived != null && archived!) {
+    //   return FetchResult.archived;
+    // }
+    if (contentList == null) {
+      return FetchResult.error;
+    }
+    return FetchResult.success;
   }
 }

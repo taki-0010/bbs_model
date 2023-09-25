@@ -118,10 +118,19 @@ enum PostDraftTarget {
 enum ListViewStyle {
   list(maxCrossAxisExtent: 0, maxLines: 4),
   gridSmall(maxCrossAxisExtent: 90, maxLines: 1),
-  gridMedium(maxCrossAxisExtent: 140, maxLines:2),
-  gridLarge(maxCrossAxisExtent: 190, maxLines:3);
+  gridMedium(maxCrossAxisExtent: 140, maxLines: 2),
+  gridLarge(maxCrossAxisExtent: 190, maxLines: 3);
 
-  const ListViewStyle({required this.maxCrossAxisExtent, required this.maxLines});
+  const ListViewStyle(
+      {required this.maxCrossAxisExtent, required this.maxLines});
   final double maxCrossAxisExtent;
   final int maxLines;
+}
+
+enum FetchResult {
+  error,
+  networkError,
+  deleted,
+  archived,
+  success;
 }

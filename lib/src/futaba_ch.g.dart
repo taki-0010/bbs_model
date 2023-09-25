@@ -361,6 +361,351 @@ extension $FutabaThreadFromJsonCopyWith on FutabaThreadFromJson {
       _$FutabaThreadFromJsonCWProxyImpl(this);
 }
 
+abstract class _$FutabaContentBaseFromJsonCWProxy {
+  FutabaContentBaseFromJson old(int old);
+
+  FutabaContentBaseFromJson dispname(int dispname);
+
+  FutabaContentBaseFromJson dispsod(int dispsod);
+
+  FutabaContentBaseFromJson die(String die);
+
+  FutabaContentBaseFromJson dielong(String dielong);
+
+  FutabaContentBaseFromJson nowtime(int nowtime);
+
+  FutabaContentBaseFromJson maxres(String maxres);
+
+  FutabaContentBaseFromJson res(Map<String, FutabaContentFromJson> res);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaContentBaseFromJson(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaContentBaseFromJson(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaContentBaseFromJson call({
+    int? old,
+    int? dispname,
+    int? dispsod,
+    String? die,
+    String? dielong,
+    int? nowtime,
+    String? maxres,
+    Map<String, FutabaContentFromJson>? res,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfFutabaContentBaseFromJson.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfFutabaContentBaseFromJson.copyWith.fieldName(...)`
+class _$FutabaContentBaseFromJsonCWProxyImpl
+    implements _$FutabaContentBaseFromJsonCWProxy {
+  const _$FutabaContentBaseFromJsonCWProxyImpl(this._value);
+
+  final FutabaContentBaseFromJson _value;
+
+  @override
+  FutabaContentBaseFromJson old(int old) => this(old: old);
+
+  @override
+  FutabaContentBaseFromJson dispname(int dispname) => this(dispname: dispname);
+
+  @override
+  FutabaContentBaseFromJson dispsod(int dispsod) => this(dispsod: dispsod);
+
+  @override
+  FutabaContentBaseFromJson die(String die) => this(die: die);
+
+  @override
+  FutabaContentBaseFromJson dielong(String dielong) => this(dielong: dielong);
+
+  @override
+  FutabaContentBaseFromJson nowtime(int nowtime) => this(nowtime: nowtime);
+
+  @override
+  FutabaContentBaseFromJson maxres(String maxres) => this(maxres: maxres);
+
+  @override
+  FutabaContentBaseFromJson res(Map<String, FutabaContentFromJson> res) =>
+      this(res: res);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaContentBaseFromJson(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaContentBaseFromJson(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaContentBaseFromJson call({
+    Object? old = const $CopyWithPlaceholder(),
+    Object? dispname = const $CopyWithPlaceholder(),
+    Object? dispsod = const $CopyWithPlaceholder(),
+    Object? die = const $CopyWithPlaceholder(),
+    Object? dielong = const $CopyWithPlaceholder(),
+    Object? nowtime = const $CopyWithPlaceholder(),
+    Object? maxres = const $CopyWithPlaceholder(),
+    Object? res = const $CopyWithPlaceholder(),
+  }) {
+    return FutabaContentBaseFromJson(
+      old: old == const $CopyWithPlaceholder() || old == null
+          ? _value.old
+          // ignore: cast_nullable_to_non_nullable
+          : old as int,
+      dispname: dispname == const $CopyWithPlaceholder() || dispname == null
+          ? _value.dispname
+          // ignore: cast_nullable_to_non_nullable
+          : dispname as int,
+      dispsod: dispsod == const $CopyWithPlaceholder() || dispsod == null
+          ? _value.dispsod
+          // ignore: cast_nullable_to_non_nullable
+          : dispsod as int,
+      die: die == const $CopyWithPlaceholder() || die == null
+          ? _value.die
+          // ignore: cast_nullable_to_non_nullable
+          : die as String,
+      dielong: dielong == const $CopyWithPlaceholder() || dielong == null
+          ? _value.dielong
+          // ignore: cast_nullable_to_non_nullable
+          : dielong as String,
+      nowtime: nowtime == const $CopyWithPlaceholder() || nowtime == null
+          ? _value.nowtime
+          // ignore: cast_nullable_to_non_nullable
+          : nowtime as int,
+      maxres: maxres == const $CopyWithPlaceholder() || maxres == null
+          ? _value.maxres
+          // ignore: cast_nullable_to_non_nullable
+          : maxres as String,
+      res: res == const $CopyWithPlaceholder() || res == null
+          ? _value.res
+          // ignore: cast_nullable_to_non_nullable
+          : res as Map<String, FutabaContentFromJson>,
+    );
+  }
+}
+
+extension $FutabaContentBaseFromJsonCopyWith on FutabaContentBaseFromJson {
+  /// Returns a callable class that can be used as follows: `instanceOfFutabaContentBaseFromJson.copyWith(...)` or like so:`instanceOfFutabaContentBaseFromJson.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$FutabaContentBaseFromJsonCWProxy get copyWith =>
+      _$FutabaContentBaseFromJsonCWProxyImpl(this);
+}
+
+abstract class _$FutabaContentFromJsonCWProxy {
+  FutabaContentFromJson now(String now);
+
+  FutabaContentFromJson name(String name);
+
+  FutabaContentFromJson email(String email);
+
+  FutabaContentFromJson sub(String sub);
+
+  FutabaContentFromJson com(String com);
+
+  FutabaContentFromJson ext(String ext);
+
+  FutabaContentFromJson w(int w);
+
+  FutabaContentFromJson h(int h);
+
+  FutabaContentFromJson tim(String tim);
+
+  FutabaContentFromJson fsize(int fsize);
+
+  FutabaContentFromJson del(String del);
+
+  FutabaContentFromJson host(String host);
+
+  FutabaContentFromJson id(String id);
+
+  FutabaContentFromJson rsc(int rsc);
+
+  FutabaContentFromJson src(String src);
+
+  FutabaContentFromJson thumb(String thumb);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaContentFromJson(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaContentFromJson(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaContentFromJson call({
+    String? now,
+    String? name,
+    String? email,
+    String? sub,
+    String? com,
+    String? ext,
+    int? w,
+    int? h,
+    String? tim,
+    int? fsize,
+    String? del,
+    String? host,
+    String? id,
+    int? rsc,
+    String? src,
+    String? thumb,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfFutabaContentFromJson.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfFutabaContentFromJson.copyWith.fieldName(...)`
+class _$FutabaContentFromJsonCWProxyImpl
+    implements _$FutabaContentFromJsonCWProxy {
+  const _$FutabaContentFromJsonCWProxyImpl(this._value);
+
+  final FutabaContentFromJson _value;
+
+  @override
+  FutabaContentFromJson now(String now) => this(now: now);
+
+  @override
+  FutabaContentFromJson name(String name) => this(name: name);
+
+  @override
+  FutabaContentFromJson email(String email) => this(email: email);
+
+  @override
+  FutabaContentFromJson sub(String sub) => this(sub: sub);
+
+  @override
+  FutabaContentFromJson com(String com) => this(com: com);
+
+  @override
+  FutabaContentFromJson ext(String ext) => this(ext: ext);
+
+  @override
+  FutabaContentFromJson w(int w) => this(w: w);
+
+  @override
+  FutabaContentFromJson h(int h) => this(h: h);
+
+  @override
+  FutabaContentFromJson tim(String tim) => this(tim: tim);
+
+  @override
+  FutabaContentFromJson fsize(int fsize) => this(fsize: fsize);
+
+  @override
+  FutabaContentFromJson del(String del) => this(del: del);
+
+  @override
+  FutabaContentFromJson host(String host) => this(host: host);
+
+  @override
+  FutabaContentFromJson id(String id) => this(id: id);
+
+  @override
+  FutabaContentFromJson rsc(int rsc) => this(rsc: rsc);
+
+  @override
+  FutabaContentFromJson src(String src) => this(src: src);
+
+  @override
+  FutabaContentFromJson thumb(String thumb) => this(thumb: thumb);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FutabaContentFromJson(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FutabaContentFromJson(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FutabaContentFromJson call({
+    Object? now = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+    Object? email = const $CopyWithPlaceholder(),
+    Object? sub = const $CopyWithPlaceholder(),
+    Object? com = const $CopyWithPlaceholder(),
+    Object? ext = const $CopyWithPlaceholder(),
+    Object? w = const $CopyWithPlaceholder(),
+    Object? h = const $CopyWithPlaceholder(),
+    Object? tim = const $CopyWithPlaceholder(),
+    Object? fsize = const $CopyWithPlaceholder(),
+    Object? del = const $CopyWithPlaceholder(),
+    Object? host = const $CopyWithPlaceholder(),
+    Object? id = const $CopyWithPlaceholder(),
+    Object? rsc = const $CopyWithPlaceholder(),
+    Object? src = const $CopyWithPlaceholder(),
+    Object? thumb = const $CopyWithPlaceholder(),
+  }) {
+    return FutabaContentFromJson(
+      now: now == const $CopyWithPlaceholder() || now == null
+          ? _value.now
+          // ignore: cast_nullable_to_non_nullable
+          : now as String,
+      name: name == const $CopyWithPlaceholder() || name == null
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String,
+      email: email == const $CopyWithPlaceholder() || email == null
+          ? _value.email
+          // ignore: cast_nullable_to_non_nullable
+          : email as String,
+      sub: sub == const $CopyWithPlaceholder() || sub == null
+          ? _value.sub
+          // ignore: cast_nullable_to_non_nullable
+          : sub as String,
+      com: com == const $CopyWithPlaceholder() || com == null
+          ? _value.com
+          // ignore: cast_nullable_to_non_nullable
+          : com as String,
+      ext: ext == const $CopyWithPlaceholder() || ext == null
+          ? _value.ext
+          // ignore: cast_nullable_to_non_nullable
+          : ext as String,
+      w: w == const $CopyWithPlaceholder() || w == null
+          ? _value.w
+          // ignore: cast_nullable_to_non_nullable
+          : w as int,
+      h: h == const $CopyWithPlaceholder() || h == null
+          ? _value.h
+          // ignore: cast_nullable_to_non_nullable
+          : h as int,
+      tim: tim == const $CopyWithPlaceholder() || tim == null
+          ? _value.tim
+          // ignore: cast_nullable_to_non_nullable
+          : tim as String,
+      fsize: fsize == const $CopyWithPlaceholder() || fsize == null
+          ? _value.fsize
+          // ignore: cast_nullable_to_non_nullable
+          : fsize as int,
+      del: del == const $CopyWithPlaceholder() || del == null
+          ? _value.del
+          // ignore: cast_nullable_to_non_nullable
+          : del as String,
+      host: host == const $CopyWithPlaceholder() || host == null
+          ? _value.host
+          // ignore: cast_nullable_to_non_nullable
+          : host as String,
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as String,
+      rsc: rsc == const $CopyWithPlaceholder() || rsc == null
+          ? _value.rsc
+          // ignore: cast_nullable_to_non_nullable
+          : rsc as int,
+      src: src == const $CopyWithPlaceholder() || src == null
+          ? _value.src
+          // ignore: cast_nullable_to_non_nullable
+          : src as String,
+      thumb: thumb == const $CopyWithPlaceholder() || thumb == null
+          ? _value.thumb
+          // ignore: cast_nullable_to_non_nullable
+          : thumb as String,
+    );
+  }
+}
+
+extension $FutabaContentFromJsonCopyWith on FutabaContentFromJson {
+  /// Returns a callable class that can be used as follows: `instanceOfFutabaContentFromJson.copyWith(...)` or like so:`instanceOfFutabaContentFromJson.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$FutabaContentFromJsonCWProxy get copyWith =>
+      _$FutabaContentFromJsonCWProxyImpl(this);
+}
+
 abstract class _$FutabaChBoardCWProxy {
   FutabaChBoard directory(String directory);
 
@@ -835,6 +1180,77 @@ FutabaThreadFromJson _$FutabaThreadFromJsonFromJson(
 
 Map<String, dynamic> _$FutabaThreadFromJsonToJson(
         FutabaThreadFromJson instance) =>
+    <String, dynamic>{
+      'now': instance.now,
+      'name': instance.name,
+      'email': instance.email,
+      'sub': instance.sub,
+      'com': instance.com,
+      'ext': instance.ext,
+      'w': instance.w,
+      'h': instance.h,
+      'tim': instance.tim,
+      'fsize': instance.fsize,
+      'del': instance.del,
+      'host': instance.host,
+      'id': instance.id,
+      'rsc': instance.rsc,
+      'src': instance.src,
+      'thumb': instance.thumb,
+    };
+
+FutabaContentBaseFromJson _$FutabaContentBaseFromJsonFromJson(
+        Map<String, dynamic> json) =>
+    FutabaContentBaseFromJson(
+      old: json['old'] as int,
+      dispname: json['dispname'] as int,
+      dispsod: json['dispsod'] as int,
+      die: json['die'] as String,
+      dielong: json['dielong'] as String,
+      nowtime: json['nowtime'] as int,
+      maxres: json['maxres'] as String,
+      res: (json['res'] as Map<String, dynamic>).map(
+        (k, e) => MapEntry(
+            k, FutabaContentFromJson.fromJson(e as Map<String, dynamic>)),
+      ),
+    );
+
+Map<String, dynamic> _$FutabaContentBaseFromJsonToJson(
+        FutabaContentBaseFromJson instance) =>
+    <String, dynamic>{
+      'old': instance.old,
+      'dispname': instance.dispname,
+      'dispsod': instance.dispsod,
+      'die': instance.die,
+      'dielong': instance.dielong,
+      'nowtime': instance.nowtime,
+      'maxres': instance.maxres,
+      'res': instance.res.map((k, e) => MapEntry(k, e.toJson())),
+    };
+
+FutabaContentFromJson _$FutabaContentFromJsonFromJson(
+        Map<String, dynamic> json) =>
+    FutabaContentFromJson(
+      now: json['now'] as String,
+      name: json['name'] as String,
+      email: json['email'] as String,
+      sub: json['sub'] as String,
+      com: json['com'] as String,
+      ext: json['ext'] as String,
+      w: json['w'] as int,
+      h: json['h'] as int,
+      tim: json['tim'] as String,
+      fsize: json['fsize'] as int,
+      del: json['del'] as String,
+      host: json['host'] as String,
+      id: json['id'] as String,
+      rsc: json['rsc'] as int,
+      src: json['src'] as String,
+      thumb: json['thumb'] as String,
+    );
+
+Map<String, dynamic> _$FutabaContentFromJsonToJson(
+        FutabaContentFromJson instance) =>
     <String, dynamic>{
       'now': instance.now,
       'name': instance.name,

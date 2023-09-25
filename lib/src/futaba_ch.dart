@@ -254,6 +254,23 @@ class FutabaParser {
     }
     return null;
   }
+
+  static String getUrlByPath(
+      final String directory, final String boardId, final String threadId) {
+    return '$directory.2chan.net/$boardId/res/$threadId.htm';
+  }
+
+  static FutabaChThread? parseFromJson(
+      final int resCount, final ThreadMarkData markData) {
+    return FutabaChThread(
+        id: markData.id,
+        title: markData.title,
+        resCount: resCount,
+        directory: markData.futabaDirectory,
+        boardId: markData.boardId,
+        type: markData.type,
+        url: markData.url);
+  }
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -328,6 +345,81 @@ class FutabaThreadFromJson {
       _$FutabaThreadFromJsonFromJson(json);
 
   Map<String, dynamic> toJson() => _$FutabaThreadFromJsonToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+@CopyWith()
+@immutable
+class FutabaContentBaseFromJson {
+  const FutabaContentBaseFromJson(
+      {required this.old,
+      required this.dispname,
+      required this.dispsod,
+      required this.die,
+      required this.dielong,
+      required this.nowtime,
+      required this.maxres,
+      required this.res});
+  final int old;
+  final int dispname;
+  final int dispsod;
+  final String die;
+  final String dielong;
+  final int nowtime;
+  final String maxres;
+  final Map<String, FutabaContentFromJson> res;
+
+  int get resCount => res.entries.length + 1;
+
+  factory FutabaContentBaseFromJson.fromJson(Map<String, dynamic> json) =>
+      _$FutabaContentBaseFromJsonFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FutabaContentBaseFromJsonToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+@CopyWith()
+@immutable
+class FutabaContentFromJson {
+  const FutabaContentFromJson({
+    required this.now,
+    required this.name,
+    required this.email,
+    required this.sub,
+    required this.com,
+    required this.ext,
+    required this.w,
+    required this.h,
+    required this.tim,
+    required this.fsize,
+    required this.del,
+    required this.host,
+    required this.id,
+    required this.rsc,
+    required this.src,
+    required this.thumb,
+  });
+  final String now;
+  final String name;
+  final String email;
+  final String sub;
+  final String com;
+  final String ext;
+  final int w;
+  final int h;
+  final String tim;
+  final int fsize;
+  final String del;
+  final String host;
+  final String id;
+  final int rsc;
+  final String src;
+  final String thumb;
+
+  factory FutabaContentFromJson.fromJson(Map<String, dynamic> json) =>
+      _$FutabaContentFromJsonFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FutabaContentFromJsonToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)

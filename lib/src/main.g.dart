@@ -45,6 +45,8 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData agreedIndexSet(Set<int?> agreedIndexSet);
 
+  ThreadMarkData archived(bool archived);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -71,6 +73,7 @@ abstract class _$ThreadMarkDataCWProxy {
     Set<String?>? marks,
     List<String?>? importance,
     Set<int?>? agreedIndexSet,
+    bool? archived,
   });
 }
 
@@ -145,6 +148,9 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
       this(agreedIndexSet: agreedIndexSet);
 
   @override
+  ThreadMarkData archived(bool archived) => this(archived: archived);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -172,6 +178,7 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? marks = const $CopyWithPlaceholder(),
     Object? importance = const $CopyWithPlaceholder(),
     Object? agreedIndexSet = const $CopyWithPlaceholder(),
+    Object? archived = const $CopyWithPlaceholder(),
   }) {
     return ThreadMarkData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -257,6 +264,10 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.agreedIndexSet
           // ignore: cast_nullable_to_non_nullable
           : agreedIndexSet as Set<int?>,
+      archived: archived == const $CopyWithPlaceholder() || archived == null
+          ? _value.archived
+          // ignore: cast_nullable_to_non_nullable
+          : archived as bool,
     );
   }
 }
@@ -444,6 +455,7 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as int?)
               .toSet() ??
           const {},
+      archived: json['archived'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
@@ -467,6 +479,7 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'marks': instance.marks.toList(),
       'importance': instance.importance,
       'agreedIndexSet': instance.agreedIndexSet.toList(),
+      'archived': instance.archived,
     };
 
 const _$CommunitiesEnumMap = {

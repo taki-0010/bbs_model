@@ -32,6 +32,7 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
     this.marks = const {},
     this.importance = const [],
     this.agreedIndexSet = const {},
+    this.archived =false
     // this.postDraft
     // this.mutePosterIds = const {},
     // this.muteUserIds = const {}
@@ -50,6 +51,7 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
 
   final List<String?> importance;
   final Set<int?> agreedIndexSet;
+  final bool archived;
   // final String? postDraft;
 
   SrcData? get thumbnail => thumbnailStr != null
