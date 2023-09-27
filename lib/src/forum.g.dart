@@ -38,7 +38,7 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData sortHistoryByRetention(bool sortHistoryByRetention);
 
-  ForumSettingsData sortHistory(SortHistory sortHistory);
+  ForumSettingsData sortHistoryList(SortHistoryList sortHistoryList);
 
   ForumSettingsData googleFonts(String? googleFonts);
 
@@ -72,7 +72,7 @@ abstract class _$ForumSettingsDataCWProxy {
     String? searchBoardIdForFutaba,
     String? deleteKeyForFutaba,
     bool? sortHistoryByRetention,
-    SortHistory? sortHistory,
+    SortHistoryList? sortHistoryList,
     String? googleFonts,
     List<String?>? addedFonts,
     List<String?>? boardImportance,
@@ -145,8 +145,8 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(sortHistoryByRetention: sortHistoryByRetention);
 
   @override
-  ForumSettingsData sortHistory(SortHistory sortHistory) =>
-      this(sortHistory: sortHistory);
+  ForumSettingsData sortHistoryList(SortHistoryList sortHistoryList) =>
+      this(sortHistoryList: sortHistoryList);
 
   @override
   ForumSettingsData googleFonts(String? googleFonts) =>
@@ -192,7 +192,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? searchBoardIdForFutaba = const $CopyWithPlaceholder(),
     Object? deleteKeyForFutaba = const $CopyWithPlaceholder(),
     Object? sortHistoryByRetention = const $CopyWithPlaceholder(),
-    Object? sortHistory = const $CopyWithPlaceholder(),
+    Object? sortHistoryList = const $CopyWithPlaceholder(),
     Object? googleFonts = const $CopyWithPlaceholder(),
     Object? addedFonts = const $CopyWithPlaceholder(),
     Object? boardImportance = const $CopyWithPlaceholder(),
@@ -274,11 +274,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
               ? _value.sortHistoryByRetention
               // ignore: cast_nullable_to_non_nullable
               : sortHistoryByRetention as bool,
-      sortHistory:
-          sortHistory == const $CopyWithPlaceholder() || sortHistory == null
-              ? _value.sortHistory
-              // ignore: cast_nullable_to_non_nullable
-              : sortHistory as SortHistory,
+      sortHistoryList: sortHistoryList == const $CopyWithPlaceholder() ||
+              sortHistoryList == null
+          ? _value.sortHistoryList
+          // ignore: cast_nullable_to_non_nullable
+          : sortHistoryList as SortHistoryList,
       googleFonts: googleFonts == const $CopyWithPlaceholder()
           ? _value.googleFonts
           // ignore: cast_nullable_to_non_nullable
@@ -469,9 +469,9 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
       searchBoardIdForFutaba: json['searchBoardIdForFutaba'] as String? ?? 'b',
       deleteKeyForFutaba: json['deleteKeyForFutaba'] as String? ?? '48009',
       sortHistoryByRetention: json['sortHistoryByRetention'] as bool? ?? false,
-      sortHistory:
-          $enumDecodeNullable(_$SortHistoryEnumMap, json['sortHistory']) ??
-              SortHistory.hot,
+      sortHistoryList: $enumDecodeNullable(
+              _$SortHistoryListEnumMap, json['sortHistoryList']) ??
+          SortHistoryList.boards,
       googleFonts: json['googleFonts'] as String?,
       addedFonts: (json['addedFonts'] as List<dynamic>?)
               ?.map((e) => e as String?)
@@ -508,7 +508,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'searchBoardIdForFutaba': instance.searchBoardIdForFutaba,
       'deleteKeyForFutaba': instance.deleteKeyForFutaba,
       'sortHistoryByRetention': instance.sortHistoryByRetention,
-      'sortHistory': _$SortHistoryEnumMap[instance.sortHistory]!,
+      'sortHistoryList': _$SortHistoryListEnumMap[instance.sortHistoryList]!,
       'googleFonts': instance.googleFonts,
       'addedFonts': instance.addedFonts,
       'boardImportance': instance.boardImportance,
@@ -562,10 +562,9 @@ const _$PositionToGetEnumMap = {
   PositionToGet.last: 'last',
 };
 
-const _$SortHistoryEnumMap = {
-  SortHistory.hot: 'hot',
-  SortHistory.history: 'history',
-  SortHistory.deletionDate: 'deletionDate',
+const _$SortHistoryListEnumMap = {
+  SortHistoryList.history: 'history',
+  SortHistoryList.boards: 'boards',
 };
 
 const _$ListViewStyleEnumMap = {

@@ -22,7 +22,8 @@ class ForumSettingsData {
       this.searchBoardIdForFutaba = 'b',
       this.deleteKeyForFutaba = '48009',
       this.sortHistoryByRetention = false,
-      this.sortHistory = SortHistory.hot,
+      // this.sortHistory = SortHistory.hot,
+      this.sortHistoryList = SortHistoryList.boards,
       this.googleFonts,
       this.addedFonts = const [],
       this.boardImportance = const [],
@@ -44,7 +45,8 @@ class ForumSettingsData {
   final String searchBoardIdForFutaba;
   final String deleteKeyForFutaba;
   final bool sortHistoryByRetention;
-  final SortHistory sortHistory;
+  // final SortHistory sortHistory;
+  final SortHistoryList sortHistoryList;
   final String? googleFonts;
   final List<String?> addedFonts;
   final List<String?> boardImportance;
@@ -109,7 +111,8 @@ class InitialForumData {
         commentCountDisplayThreshold: 2,
         useFavoritesBoards: false,
         searchWordList: searchWords,
-        sortHistory: SortHistory.history,
+        // sortHistory: SortHistory.boards,
+        sortHistoryList: SortHistoryList.boards,
         retentionPeriod: RetentionPeriodList.oneWeek);
     switch (value) {
       case Communities.fiveCh:

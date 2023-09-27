@@ -108,7 +108,8 @@ enum OpenLinkList { dialog, browser, embed, copy }
 
 enum EmbedSite { xCom, youtube }
 
-enum SortHistory { hot, history, deletionDate }
+// enum SortHistory { hot, history, deletionDate, boards }
+enum SortHistoryList { history, boards }
 
 enum PostDraftTarget {
   thread,
