@@ -26,4 +26,8 @@ class OfficialSite {
 class ParamsData {
   static const fiveChNewThread = '#new_thread';
   static const girlsChResponse = '#form';
+  static const google = 'www.google.co.jp';
+  static Uri searchGoogle(final String value) {
+    return Uri.https(google, 'search', {'q': value});
+  }
 }
