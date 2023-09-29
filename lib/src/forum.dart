@@ -20,6 +20,7 @@ class ForumSettingsData {
       this.favoritesBoardList = const [],
       this.searchWordList = const [],
       this.searchBoardIdForFutaba = 'b',
+      this.searchBoardIdForMachi = 'tokyo',
       this.deleteKeyForFutaba = '48009',
       this.sortHistoryByRetention = false,
       // this.sortHistory = SortHistory.hot,
@@ -43,6 +44,7 @@ class ForumSettingsData {
   final List<String?> favoritesBoardList;
   final List<String?> searchWordList;
   final String searchBoardIdForFutaba;
+  final String searchBoardIdForMachi;
   final String deleteKeyForFutaba;
   final bool sortHistoryByRetention;
   // final SortHistory sortHistory;
@@ -120,11 +122,13 @@ class InitialForumData {
             theme: ThemeList.m3Purple,
             retentionPeriod: RetentionPeriodList.byPostPace);
       case Communities.girlsCh:
-        return base.copyWith(theme: ThemeList.pinkSakura, listViewStyle: ListViewStyle.gridMedium);
+        return base.copyWith(
+            theme: ThemeList.pinkSakura,
+            listViewStyle: ListViewStyle.gridMedium);
       case Communities.futabaCh:
         return base.copyWith(
             searchWordList: searchWordsFutaba,
-            theme: ThemeList.sanJuanBlue,
+            theme: ThemeList.verdunLime,
             threadsOrder: ThreadsOrder.catalog,
             listViewStyle: ListViewStyle.gridSmall,
             deleteKeyForFutaba: randomInt().toString(),
@@ -133,6 +137,11 @@ class InitialForumData {
         return base.copyWith(
             theme: ThemeList.espresso,
             retentionPeriod: RetentionPeriodList.byPostPace);
+      case Communities.machi:
+        return base.copyWith(
+            theme: ThemeList.indigoNights,
+            sortHistoryList: SortHistoryList.history,
+            retentionPeriod: RetentionPeriodList.oneMonth);
       default:
     }
     return null;

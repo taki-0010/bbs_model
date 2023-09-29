@@ -1,0 +1,271 @@
+import 'package:model/src/importer.dart';
+
+part 'machi.g.dart';
+
+class MachiData {
+  static final host = Communities.machi.host;
+  static const threads = 'bbs/json.cgi';
+  static String? getThreadIdFromUrl(final String url) {
+    return '';
+  }
+  static String? getBoardIdFromUrl(final String url) {
+    return '';
+  }
+
+  static String getBoardNameById(final String? id) {
+    switch (id) {
+      case 'hokkaidou':
+        return '北海道';
+      case 'touhoku':
+        return '東北';
+      case 'kousinetu':
+        return '北陸・甲信越';
+      case 'kanto':
+        return '関東';
+      case 'tokyo':
+        return '東京';
+      case 'tama':
+        return '多摩';
+      case 'kana':
+        return '神奈川';
+      case 'toukai':
+        return '東海';
+      case 'kinki':
+        return '近畿';
+      case 'osaka':
+        return '大阪';
+      case 'cyugoku':
+        return '中国';
+      case 'sikoku':
+        return '四国';
+      case 'kyusyu':
+        return '九州';
+      case 'okinawa':
+        return '沖縄';
+      case 'tawara':
+        return '会議室';
+      default:
+        return '';
+    }
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+@CopyWith()
+@immutable
+class MachiBoardData {
+  const MachiBoardData({
+    required this.id,
+  });
+  final String id;
+  // final String url;
+
+  factory MachiBoardData.fromJson(Map<String, dynamic> json) =>
+      _$MachiBoardDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MachiBoardDataToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+@CopyWith()
+@immutable
+class MachiThreadsBaseData {
+  const MachiThreadsBaseData(
+      {this.thread = const [], required this.status, required this.bbs});
+  final List<MachiThreadDataFromJson?> thread;
+  final String status;
+  final String bbs;
+
+  factory MachiThreadsBaseData.fromJson(Map<String, dynamic> json) =>
+      _$MachiThreadsBaseDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MachiThreadsBaseDataToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+@CopyWith()
+@immutable
+class MachiThreadDataFromJson {
+  const MachiThreadDataFromJson(
+      {required this.subject,
+      required this.no,
+      required this.res,
+      required this.key});
+
+  final String subject;
+  final int no;
+  final String res;
+  final String key;
+
+  String getUrl(final String boardId) =>
+      '${MachiData.host}/${MachiData.threads}/$boardId/$key';
+
+  factory MachiThreadDataFromJson.fromJson(Map<String, dynamic> json) =>
+      _$MachiThreadDataFromJsonFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MachiThreadDataFromJsonToJson(this);
+}
+
+@CopyWith()
+@immutable
+class MachiThreadData extends ThreadData with WithDateTime {
+  const MachiThreadData(
+      {required super.id,
+      required super.title,
+      required super.resCount,
+      required super.boardId,
+      required super.type,
+      required super.url,
+      // super.difference,
+      super.boardName,
+      super.isNewPost,
+      required super.updateAtStr});
+
+  @override
+  String? get thumbnailUrl => null;
+
+  @override
+  DateTime? get dateTime =>
+      DateTime.fromMillisecondsSinceEpoch(int.tryParse(id) ?? 0);
+
+  @override
+  double get ikioi {
+    return getIkioi(int.tryParse(id) ?? 0, resCount);
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+@CopyWith()
+@immutable
+class MachiContentBaseData {
+  const MachiContentBaseData(
+      {this.log = const [],
+      required this.status,
+      required this.bbs,
+      required this.subject,
+      required this.key});
+  final List<MachiContentDataFromJson?> log;
+  final String status;
+  final String bbs;
+  final String key;
+  final String subject;
+
+  factory MachiContentBaseData.fromJson(Map<String, dynamic> json) =>
+      _$MachiContentBaseDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MachiContentBaseDataToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+@CopyWith()
+@immutable
+class MachiContentDataFromJson {
+  const MachiContentDataFromJson(
+      {required this.time,
+      required this.no,
+      required this.status,
+      required this.mail,
+      required this.host,
+      required this.message,
+      required this.name});
+
+  final int no;
+  final String time;
+  final String status;
+  final String name;
+  final String mail;
+  final String host;
+  final String message;
+
+  // String getUrl(final String boardId) =>
+  //     '${MachiData.host}/${MachiData.threads}/$boardId/$key';
+
+  factory MachiContentDataFromJson.fromJson(Map<String, dynamic> json) =>
+      _$MachiContentDataFromJsonFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MachiContentDataFromJsonToJson(this);
+}
+
+@JsonSerializable()
+@CopyWith()
+@immutable
+class MachiContentData extends ContentData with WithDateTime {
+  const MachiContentData(
+      {required super.index,
+      required super.name,
+      required this.email,
+      required this.dateAndId,
+      required super.body,
+      super.title,
+      super.urlSet,
+      // required this.domain,
+      // required this.directoryName,
+      super.userId});
+  // final String name;
+  final String email;
+  final String dateAndId;
+  // final String? title;
+  // final String domain;
+  // final String directoryName;
+  // final String? userId;
+  // final List<String?>? urlSet;
+
+  @override
+  DateTime? get createdAt {
+    try {
+      final splited = dateAndId.split(' ');
+      return getDateTime(splited[0], splited[1]);
+    } catch (e) {
+      logger.e('5ch: createdAt: $e');
+    }
+    return null;
+  }
+
+  @override
+  String? get getPostId {
+    final splited = dateAndId.split(' ');
+    if (splited.length > 2) {
+      final id = splited[2];
+      final subtring = id.length > 3 ? id.substring(3) : '';
+      // if(subtring.endsWith('●'))
+      // logger.d('getId: splited: $splited, id:$id, sub:$subtring');
+
+      return subtring == '???' ? null : subtring;
+    }
+    return null;
+  }
+
+  String? get getUserTrip {
+    if (name.contains('◆') && name.contains('<b>')) {
+      return name.substring(name.indexOf('◆'), name.lastIndexOf('<b>'));
+    }
+    return null;
+  }
+
+  @override
+  String? get getUserName {
+    String result = name;
+    if (name.contains('<b>')) {
+      final replaceTrip = name.replaceAll('$getUserTrip', '');
+      final rep = replaceTrip.replaceAll('</b>', '');
+      final re = rep.replaceAll('<b>', '');
+      final r = re.trim();
+      result = '$r $getUserTrip';
+    }
+    return result;
+  }
+
+  @override
+  String? get getUserId => userId;
+
+  @override
+  Set<String?> get anchorList {
+    final list = RegExp(r'>>[0-9]+').allMatches(body).toSet();
+    // logger.d('anchor: ${list}');
+    return list.map((e) => e.group(0)).toSet();
+  }
+
+  factory MachiContentData.fromJson(Map<String, dynamic> json) =>
+      _$MachiContentDataFromJson(json);
+  Map<String, dynamic> toJson() => _$MachiContentDataToJson(this);
+}

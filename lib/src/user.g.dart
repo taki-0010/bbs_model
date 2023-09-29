@@ -258,6 +258,7 @@ const _$CommunitiesEnumMap = {
   Communities.girlsCh: 'girlsCh',
   Communities.futabaCh: 'futabaCh',
   Communities.pinkCh: 'pinkCh',
+  Communities.machi: 'machi',
 };
 
 const _$LangListEnumMap = {

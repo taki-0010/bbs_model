@@ -21,6 +21,8 @@ abstract class _$BoardDataCWProxy {
 
   BoardData futabaCh(FutabaChBoard? futabaCh);
 
+  BoardData machi(MachiBoardData? machi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BoardData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -35,6 +37,7 @@ abstract class _$BoardDataCWProxy {
     FiveChBoardData? fiveCh,
     GirlsChCategory? girlsCh,
     FutabaChBoard? futabaCh,
+    MachiBoardData? machi,
   });
 }
 
@@ -67,6 +70,9 @@ class _$BoardDataCWProxyImpl implements _$BoardDataCWProxy {
   BoardData futabaCh(FutabaChBoard? futabaCh) => this(futabaCh: futabaCh);
 
   @override
+  BoardData machi(MachiBoardData? machi) => this(machi: machi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BoardData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -82,6 +88,7 @@ class _$BoardDataCWProxyImpl implements _$BoardDataCWProxy {
     Object? fiveCh = const $CopyWithPlaceholder(),
     Object? girlsCh = const $CopyWithPlaceholder(),
     Object? futabaCh = const $CopyWithPlaceholder(),
+    Object? machi = const $CopyWithPlaceholder(),
   }) {
     return BoardData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -112,6 +119,10 @@ class _$BoardDataCWProxyImpl implements _$BoardDataCWProxy {
           ? _value.futabaCh
           // ignore: cast_nullable_to_non_nullable
           : futabaCh as FutabaChBoard?,
+      machi: machi == const $CopyWithPlaceholder()
+          ? _value.machi
+          // ignore: cast_nullable_to_non_nullable
+          : machi as MachiBoardData?,
     );
   }
 }
@@ -272,6 +283,9 @@ BoardData _$BoardDataFromJson(Map<String, dynamic> json) => BoardData(
       futabaCh: json['futabaCh'] == null
           ? null
           : FutabaChBoard.fromJson(json['futabaCh'] as Map<String, dynamic>),
+      machi: json['machi'] == null
+          ? null
+          : MachiBoardData.fromJson(json['machi'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$BoardDataToJson(BoardData instance) => <String, dynamic>{
@@ -282,6 +296,7 @@ Map<String, dynamic> _$BoardDataToJson(BoardData instance) => <String, dynamic>{
       'fiveCh': instance.fiveCh?.toJson(),
       'girlsCh': instance.girlsCh?.toJson(),
       'futabaCh': instance.futabaCh?.toJson(),
+      'machi': instance.machi?.toJson(),
     };
 
 const _$CommunitiesEnumMap = {
@@ -289,6 +304,7 @@ const _$CommunitiesEnumMap = {
   Communities.girlsCh: 'girlsCh',
   Communities.futabaCh: 'futabaCh',
   Communities.pinkCh: 'pinkCh',
+  Communities.machi: 'machi',
 };
 
 PostDraftData _$PostDraftDataFromJson(Map<String, dynamic> json) =>
