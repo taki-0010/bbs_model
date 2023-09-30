@@ -8,6 +8,7 @@ class MachiData {
   static String? getThreadIdFromUrl(final String url) {
     return '';
   }
+
   static String? getBoardIdFromUrl(final String url) {
     return '';
   }
@@ -125,11 +126,17 @@ class MachiThreadData extends ThreadData with WithDateTime {
   String? get thumbnailUrl => null;
 
   @override
-  DateTime? get dateTime =>
-      DateTime.fromMillisecondsSinceEpoch(int.tryParse(id) ?? 0);
+  DateTime? get dateTime {
+    final datetime = int.tryParse(id) ?? 0;
+    // logger.d('datetime: machi: $datetime, id: $id');
+    return DateTime.fromMillisecondsSinceEpoch(datetime * 1000);
+  }
 
   @override
   double get ikioi {
+    if (resCount == -1) {
+      return -1.0;
+    }
     return getIkioi(int.tryParse(id) ?? 0, resCount);
   }
 }

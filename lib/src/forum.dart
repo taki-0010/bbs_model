@@ -29,7 +29,8 @@ class ForumSettingsData {
       this.addedFonts = const [],
       this.boardImportance = const [],
       this.threadsImportance = const [],
-      this.listViewStyle = ListViewStyle.list});
+      this.listViewStyle = ListViewStyle.list,
+      this.movedToLastThreads = MovedToLastThreads.none});
 
   final String userId;
   final Communities forum;
@@ -54,6 +55,7 @@ class ForumSettingsData {
   final List<String?> boardImportance;
   final List<String?> threadsImportance;
   final ListViewStyle listViewStyle;
+  final MovedToLastThreads movedToLastThreads;
 
   List<ImportanceData?> get boardImportanceList => boardImportance
       .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
@@ -120,6 +122,7 @@ class InitialForumData {
       case Communities.fiveCh:
         return base.copyWith(
             theme: ThemeList.m3Purple,
+            sortHistoryList: SortHistoryList.history,
             retentionPeriod: RetentionPeriodList.byPostPace);
       case Communities.girlsCh:
         return base.copyWith(
@@ -130,6 +133,7 @@ class InitialForumData {
             searchWordList: searchWordsFutaba,
             theme: ThemeList.verdunLime,
             threadsOrder: ThreadsOrder.catalog,
+            sortHistoryList: SortHistoryList.history,
             listViewStyle: ListViewStyle.gridSmall,
             deleteKeyForFutaba: randomInt().toString(),
             retentionPeriod: RetentionPeriodList.oneDay);
@@ -141,6 +145,7 @@ class InitialForumData {
         return base.copyWith(
             theme: ThemeList.indigoNights,
             sortHistoryList: SortHistoryList.history,
+            movedToLastThreads: MovedToLastThreads.over1000,
             retentionPeriod: RetentionPeriodList.oneMonth);
       default:
     }

@@ -65,7 +65,15 @@ abstract class ThreadBase {
     return null;
   }
 
-  String? get compatibleUrl => fiveChUrlForHtml ?? pinkChUrlForHtml;
+  String? get machiUrlForHtml {
+    if (url.contains(Communities.machi.host)) {
+      final path = '${Communities.machi.host}/bbs/read.cgi/$boardId/$id';
+      return 'https://$path';
+    }
+    return null;
+  }
+
+  String? get compatibleUrl => fiveChUrlForHtml ?? pinkChUrlForHtml ?? machiUrlForHtml;
 
   String? get htmlUrl {
     switch (type) {
@@ -73,6 +81,8 @@ abstract class ThreadBase {
         return fiveChUrlForHtml;
       case Communities.pinkCh:
         return pinkChUrlForHtml;
+      case Communities.machi:
+        return machiUrlForHtml;
       default:
         return getFullUrl;
     }

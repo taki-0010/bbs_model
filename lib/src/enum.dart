@@ -136,3 +136,8 @@ enum FetchResult {
   archived,
   success;
 }
+
+enum MovedToLastThreads {
+  none,
+  over1000;
+}

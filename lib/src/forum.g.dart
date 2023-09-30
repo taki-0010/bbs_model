@@ -52,6 +52,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData listViewStyle(ListViewStyle listViewStyle);
 
+  ForumSettingsData movedToLastThreads(MovedToLastThreads movedToLastThreads);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -81,6 +83,7 @@ abstract class _$ForumSettingsDataCWProxy {
     List<String?>? boardImportance,
     List<String?>? threadsImportance,
     ListViewStyle? listViewStyle,
+    MovedToLastThreads? movedToLastThreads,
   });
 }
 
@@ -176,6 +179,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(listViewStyle: listViewStyle);
 
   @override
+  ForumSettingsData movedToLastThreads(MovedToLastThreads movedToLastThreads) =>
+      this(movedToLastThreads: movedToLastThreads);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -206,6 +213,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? boardImportance = const $CopyWithPlaceholder(),
     Object? threadsImportance = const $CopyWithPlaceholder(),
     Object? listViewStyle = const $CopyWithPlaceholder(),
+    Object? movedToLastThreads = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       userId: userId == const $CopyWithPlaceholder() || userId == null
@@ -317,6 +325,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
               ? _value.listViewStyle
               // ignore: cast_nullable_to_non_nullable
               : listViewStyle as ListViewStyle,
+      movedToLastThreads: movedToLastThreads == const $CopyWithPlaceholder() ||
+              movedToLastThreads == null
+          ? _value.movedToLastThreads
+          // ignore: cast_nullable_to_non_nullable
+          : movedToLastThreads as MovedToLastThreads,
     );
   }
 }
@@ -504,6 +517,9 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
       listViewStyle:
           $enumDecodeNullable(_$ListViewStyleEnumMap, json['listViewStyle']) ??
               ListViewStyle.list,
+      movedToLastThreads: $enumDecodeNullable(
+              _$MovedToLastThreadsEnumMap, json['movedToLastThreads']) ??
+          MovedToLastThreads.none,
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -531,6 +547,8 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'boardImportance': instance.boardImportance,
       'threadsImportance': instance.threadsImportance,
       'listViewStyle': _$ListViewStyleEnumMap[instance.listViewStyle]!,
+      'movedToLastThreads':
+          _$MovedToLastThreadsEnumMap[instance.movedToLastThreads]!,
     };
 
 const _$CommunitiesEnumMap = {
@@ -590,6 +608,11 @@ const _$ListViewStyleEnumMap = {
   ListViewStyle.gridSmall: 'gridSmall',
   ListViewStyle.gridMedium: 'gridMedium',
   ListViewStyle.gridLarge: 'gridLarge',
+};
+
+const _$MovedToLastThreadsEnumMap = {
+  MovedToLastThreads.none: 'none',
+  MovedToLastThreads.over1000: 'over1000',
 };
 
 SrcData _$SrcDataFromJson(Map<String, dynamic> json) => SrcData(
