@@ -9,8 +9,13 @@ class MachiData {
     return '';
   }
 
-  static String? getBoardIdFromUrl(final String url) {
-    return '';
+  static String? getBoardIdFromUrl(final String? url) {
+    final replacedHttps = url?.replaceAll(RegExp(r'''https?://'''), '');
+    final replacedSlash = replacedHttps?.replaceAll('//', '');
+    final replacedWWW = replacedSlash?.replaceAll('www.', '');
+    final replaced = replacedWWW?.replaceAll('machi.to/bbs/read.cgi/', '');
+    final boardId = replaced?.substring(0, replaced.indexOf('/'));
+    return boardId;
   }
 
   static String getBoardNameById(final String? id) {
