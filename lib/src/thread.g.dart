@@ -275,3 +275,67 @@ extension $ThreadContentDataCopyWith on ThreadContentData {
   _$ThreadContentDataCWProxy get copyWith =>
       _$ThreadContentDataCWProxyImpl(this);
 }
+
+abstract class _$FetchThreadsResultDataCWProxy {
+  FetchThreadsResultData threads(List<ThreadData?>? threads);
+
+  FetchThreadsResultData statusCode(int? statusCode);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FetchThreadsResultData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FetchThreadsResultData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FetchThreadsResultData call({
+    List<ThreadData?>? threads,
+    int? statusCode,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfFetchThreadsResultData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfFetchThreadsResultData.copyWith.fieldName(...)`
+class _$FetchThreadsResultDataCWProxyImpl
+    implements _$FetchThreadsResultDataCWProxy {
+  const _$FetchThreadsResultDataCWProxyImpl(this._value);
+
+  final FetchThreadsResultData _value;
+
+  @override
+  FetchThreadsResultData threads(List<ThreadData?>? threads) =>
+      this(threads: threads);
+
+  @override
+  FetchThreadsResultData statusCode(int? statusCode) =>
+      this(statusCode: statusCode);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FetchThreadsResultData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// FetchThreadsResultData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  FetchThreadsResultData call({
+    Object? threads = const $CopyWithPlaceholder(),
+    Object? statusCode = const $CopyWithPlaceholder(),
+  }) {
+    return FetchThreadsResultData(
+      threads: threads == const $CopyWithPlaceholder()
+          ? _value.threads
+          // ignore: cast_nullable_to_non_nullable
+          : threads as List<ThreadData?>?,
+      statusCode: statusCode == const $CopyWithPlaceholder()
+          ? _value.statusCode
+          // ignore: cast_nullable_to_non_nullable
+          : statusCode as int?,
+    );
+  }
+}
+
+extension $FetchThreadsResultDataCopyWith on FetchThreadsResultData {
+  /// Returns a callable class that can be used as follows: `instanceOfFetchThreadsResultData.copyWith(...)` or like so:`instanceOfFetchThreadsResultData.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$FetchThreadsResultDataCWProxy get copyWith =>
+      _$FetchThreadsResultDataCWProxyImpl(this);
+}

@@ -29,6 +29,27 @@ class BoardData {
   Map<String, dynamic> toJson() => _$BoardDataToJson(this);
 }
 
+@immutable
+class FetchBoardsResultData {
+  const FetchBoardsResultData({
+    this.boards,
+    this.statusCode = 200,
+  });
+  final List<BoardData?>? boards;
+  final int statusCode;
+
+  FetchResult get result {
+    if (boards != null && boards!.isNotEmpty) {
+      return FetchResult.success;
+    }
+    if (statusCode >= 400) {
+      return FetchResult.networkError;
+    }
+
+    return FetchResult.error;
+  }
+}
+
 @JsonSerializable()
 @CopyWith()
 @immutable

@@ -73,7 +73,8 @@ abstract class ThreadBase {
     return null;
   }
 
-  String? get compatibleUrl => fiveChUrlForHtml ?? pinkChUrlForHtml ?? machiUrlForHtml;
+  String? get compatibleUrl =>
+      fiveChUrlForHtml ?? pinkChUrlForHtml ?? machiUrlForHtml;
 
   String? get htmlUrl {
     switch (type) {
@@ -185,6 +186,28 @@ class ThreadContentData {
   // Map<String, dynamic> toJson() => _$ThreadContentDataToJson(this);
 }
 
+@CopyWith()
+@immutable
+class FetchThreadsResultData {
+  const FetchThreadsResultData({
+    this.threads,
+    this.statusCode,
+  });
+  final List<ThreadData?>? threads;
+  final int? statusCode;
+
+  FetchResult get result {
+    if (threads != null && threads!.isNotEmpty) {
+      return FetchResult.success;
+    }
+    if (statusCode != null && statusCode! >= 400) {
+      return FetchResult.networkError;
+    }
+
+    return FetchResult.error;
+  }
+}
+
 @immutable
 class LinkData {
   const LinkData({required this.url, required this.type, this.embed});
@@ -284,29 +307,26 @@ style= "position: relative;
 class FetchContentResultData {
   const FetchContentResultData(
       {this.contentList,
-      this.statusCode = 200,
+      this.statusCode,
       this.deleted,
       this.archived,
       this.threadLength});
   final List<ContentData?>? contentList;
-  final int statusCode;
+  final int? statusCode;
   final bool? deleted;
   final bool? archived;
   final int? threadLength;
 
   FetchResult get result {
-    if (statusCode != 200) {
+    if (contentList != null && contentList!.isNotEmpty) {
+      return FetchResult.success;
+    }
+    if (statusCode != null && statusCode! >= 400) {
       return FetchResult.networkError;
     }
     if (deleted != null && deleted!) {
       return FetchResult.deleted;
     }
-    // if (archived != null && archived!) {
-    //   return FetchResult.archived;
-    // }
-    if (contentList == null) {
-      return FetchResult.error;
-    }
-    return FetchResult.success;
+    return FetchResult.error;
   }
 }
