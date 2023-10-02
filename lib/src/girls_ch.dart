@@ -2,8 +2,12 @@ import 'package:model/src/importer.dart';
 
 part 'girls_ch.g.dart';
 
-class GirlsChBoardNames {
-  static String? getById(final String? id) {
+class GirlsChData {
+  static final host = Communities.girlsCh.host;
+  static const topics = 'topics';
+  static const category = 'category';
+  static final categoryPath = 'https://$host/$topics/$category';
+  static String? getBoardNameById(final String? id) {
     switch (id) {
       case 'animal':
         return '犬・猫・動物';

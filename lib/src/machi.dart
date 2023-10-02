@@ -5,6 +5,8 @@ part 'machi.g.dart';
 class MachiData {
   static final host = Communities.machi.host;
   static const threads = 'bbs/json.cgi';
+  static const bbsMenu = 'bbsmenu.html';
+  static const search = 'bbs/search.cgi';
   static String? getThreadIdFromUrl(final String url) {
     return '';
   }

@@ -207,20 +207,18 @@ class FutabaChBoardNames {
   }
 }
 
-class FutabaParser {
+class FutabaData {
+  static final host = Communities.futabaCh.host;
+  // static final bbemenu = 'www.$host/bbsmenu.html';
+  static final bbsmenuSp = 'www.$host/i.htm';
   static const catalog = '?mode=cat';
   static const sort = '&sort=';
   static String getBoardPath(
       {required final String directory,
       required final String boardId,
       required final ThreadsOrder order}) {
-    final path = '$directory.2chan.net/$boardId';
-    // String get url => '$path/futaba.htm';
-    // String get catalogUrl => '$path/futaba.php$catalog';
-    // String get newListUrl => '$path/futaba.php$catalog${sort}1';
-    // String get oldListUrl => '$path/futaba.php$catalog${sort}2';
-    // String get hugListUrl => '$path/futaba.php$catalog${sort}3';
-    // String get ikioiListUrl => '$path/futaba.php$catalog${sort}6';
+    final path = '$directory.$host/$boardId';
+    
     switch (order) {
       case ThreadsOrder.catalog:
         return '$path/futaba.php$catalog';
@@ -257,7 +255,7 @@ class FutabaParser {
 
   static String getUrlByPath(
       final String directory, final String boardId, final String threadId) {
-    return '$directory.2chan.net/$boardId/res/$threadId.htm';
+    return '$directory.$host/$boardId/res/$threadId.htm';
   }
 
   static FutabaChThread? parseFromJson(

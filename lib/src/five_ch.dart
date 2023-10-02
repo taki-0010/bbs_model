@@ -2,7 +2,9 @@ import 'importer.dart';
 
 part 'five_ch.g.dart';
 
-class FiveChParser {
+class FiveChData {
+  static final host = Communities.fiveCh.host;
+  static const permissionOfficial = '0644';
   static const subdomainForMobile = 'itest';
   static const pathForMobile = 'subback';
   static final idReg = RegExp(r'[0-9]{5,}');
@@ -151,7 +153,7 @@ class FiveChBoardData {
   final String url;
   final int category;
   final String categoryName;
-  
+
   String? get domain {
     // return Uri.parse(url).host;
     final replaced = url.replaceFirst('https://', '');
