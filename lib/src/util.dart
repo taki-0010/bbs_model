@@ -72,6 +72,7 @@ Map<String, dynamic> stringToJson(final String value) {
 
 class StringMethodData {
   static final escape = HtmlUnescape();
+  static const urlReg = r'''https://[\w!\?/\+\-_~=;\.,\*&@#\$%\(\)'\[\]]+''';
   static String? getYoutubeStr(final String value) => getIdFromUrl(value);
   static String replaceSpecialNum(final String value) {
     final existNum = RegExp(r'&#[0-9]+;').firstMatch(value);

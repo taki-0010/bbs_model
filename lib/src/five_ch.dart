@@ -200,8 +200,14 @@ class FiveChThreadTitleData extends ThreadData with WithDateTime {
   String? get thumbnailUrl => null;
 
   @override
-  DateTime? get dateTime =>
-      DateTime.fromMillisecondsSinceEpoch(int.tryParse(id) ?? 0);
+  DateTime? get dateTime {
+    final datetime = int.tryParse(id) ?? 0;
+    // logger.d('datetime: machi: $datetime, id: $id');
+    return DateTime.fromMillisecondsSinceEpoch(datetime * 1000);
+  }
+  // @override
+  // DateTime? get dateTime =>
+  //     DateTime.fromMillisecondsSinceEpoch(int.tryParse(id) ?? 0);
 
   @override
   double get ikioi {
