@@ -44,11 +44,25 @@ enum RetentionPeriodList {
   final int days;
 }
 
-enum ThreadsOrder {
-  newOrder,
-  oldOrder,
+
+
+// enum ThreadsOrder {
+//   newOrder,
+//   oldOrder,
+//   hot,
+//   // biggerResCount,
+//   resCountAsc,
+//   resCountDesc,
+//   newerThread,
+//   olderThread,
+//   newerResponce,
+//   importance,
+
+//   catalog;
+// }
+
+enum ThreadsOrderType {
   hot,
-  // biggerResCount,
   resCountAsc,
   resCountDesc,
   newerThread,

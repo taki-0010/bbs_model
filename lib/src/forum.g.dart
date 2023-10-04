@@ -15,12 +15,7 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData retentionPeriod(RetentionPeriodList retentionPeriod);
 
-  ForumSettingsData threadsOrder(ThreadsOrder threadsOrder);
-
   ForumSettingsData positionToGet(PositionToGet positionToGet);
-
-  ForumSettingsData commentCountDisplayThreshold(
-      int commentCountDisplayThreshold);
 
   ForumSettingsData openLink(bool openLink);
 
@@ -38,8 +33,6 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData deleteKeyForFutaba(String deleteKeyForFutaba);
 
-  ForumSettingsData sortHistoryByRetention(bool sortHistoryByRetention);
-
   ForumSettingsData sortHistoryList(SortHistoryList sortHistoryList);
 
   ForumSettingsData googleFonts(String? googleFonts);
@@ -54,6 +47,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData movedToLastThreads(MovedToLastThreads movedToLastThreads);
 
+  ForumSettingsData threadsOrderType(ThreadsOrderType threadsOrderType);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -65,9 +60,7 @@ abstract class _$ForumSettingsDataCWProxy {
     Communities? forum,
     ThemeList? theme,
     RetentionPeriodList? retentionPeriod,
-    ThreadsOrder? threadsOrder,
     PositionToGet? positionToGet,
-    int? commentCountDisplayThreshold,
     bool? openLink,
     bool? blurThumbnail,
     bool? useFavoritesBoards,
@@ -76,7 +69,6 @@ abstract class _$ForumSettingsDataCWProxy {
     String? searchBoardIdForFutaba,
     String? searchBoardIdForMachi,
     String? deleteKeyForFutaba,
-    bool? sortHistoryByRetention,
     SortHistoryList? sortHistoryList,
     String? googleFonts,
     List<String?>? addedFonts,
@@ -84,6 +76,7 @@ abstract class _$ForumSettingsDataCWProxy {
     List<String?>? threadsImportance,
     ListViewStyle? listViewStyle,
     MovedToLastThreads? movedToLastThreads,
+    ThreadsOrderType? threadsOrderType,
   });
 }
 
@@ -107,17 +100,8 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(retentionPeriod: retentionPeriod);
 
   @override
-  ForumSettingsData threadsOrder(ThreadsOrder threadsOrder) =>
-      this(threadsOrder: threadsOrder);
-
-  @override
   ForumSettingsData positionToGet(PositionToGet positionToGet) =>
       this(positionToGet: positionToGet);
-
-  @override
-  ForumSettingsData commentCountDisplayThreshold(
-          int commentCountDisplayThreshold) =>
-      this(commentCountDisplayThreshold: commentCountDisplayThreshold);
 
   @override
   ForumSettingsData openLink(bool openLink) => this(openLink: openLink);
@@ -151,10 +135,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(deleteKeyForFutaba: deleteKeyForFutaba);
 
   @override
-  ForumSettingsData sortHistoryByRetention(bool sortHistoryByRetention) =>
-      this(sortHistoryByRetention: sortHistoryByRetention);
-
-  @override
   ForumSettingsData sortHistoryList(SortHistoryList sortHistoryList) =>
       this(sortHistoryList: sortHistoryList);
 
@@ -183,6 +163,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(movedToLastThreads: movedToLastThreads);
 
   @override
+  ForumSettingsData threadsOrderType(ThreadsOrderType threadsOrderType) =>
+      this(threadsOrderType: threadsOrderType);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -195,9 +179,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? forum = const $CopyWithPlaceholder(),
     Object? theme = const $CopyWithPlaceholder(),
     Object? retentionPeriod = const $CopyWithPlaceholder(),
-    Object? threadsOrder = const $CopyWithPlaceholder(),
     Object? positionToGet = const $CopyWithPlaceholder(),
-    Object? commentCountDisplayThreshold = const $CopyWithPlaceholder(),
     Object? openLink = const $CopyWithPlaceholder(),
     Object? blurThumbnail = const $CopyWithPlaceholder(),
     Object? useFavoritesBoards = const $CopyWithPlaceholder(),
@@ -206,7 +188,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? searchBoardIdForFutaba = const $CopyWithPlaceholder(),
     Object? searchBoardIdForMachi = const $CopyWithPlaceholder(),
     Object? deleteKeyForFutaba = const $CopyWithPlaceholder(),
-    Object? sortHistoryByRetention = const $CopyWithPlaceholder(),
     Object? sortHistoryList = const $CopyWithPlaceholder(),
     Object? googleFonts = const $CopyWithPlaceholder(),
     Object? addedFonts = const $CopyWithPlaceholder(),
@@ -214,6 +195,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? threadsImportance = const $CopyWithPlaceholder(),
     Object? listViewStyle = const $CopyWithPlaceholder(),
     Object? movedToLastThreads = const $CopyWithPlaceholder(),
+    Object? threadsOrderType = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       userId: userId == const $CopyWithPlaceholder() || userId == null
@@ -233,22 +215,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.retentionPeriod
           // ignore: cast_nullable_to_non_nullable
           : retentionPeriod as RetentionPeriodList,
-      threadsOrder:
-          threadsOrder == const $CopyWithPlaceholder() || threadsOrder == null
-              ? _value.threadsOrder
-              // ignore: cast_nullable_to_non_nullable
-              : threadsOrder as ThreadsOrder,
       positionToGet:
           positionToGet == const $CopyWithPlaceholder() || positionToGet == null
               ? _value.positionToGet
               // ignore: cast_nullable_to_non_nullable
               : positionToGet as PositionToGet,
-      commentCountDisplayThreshold:
-          commentCountDisplayThreshold == const $CopyWithPlaceholder() ||
-                  commentCountDisplayThreshold == null
-              ? _value.commentCountDisplayThreshold
-              // ignore: cast_nullable_to_non_nullable
-              : commentCountDisplayThreshold as int,
       openLink: openLink == const $CopyWithPlaceholder() || openLink == null
           ? _value.openLink
           // ignore: cast_nullable_to_non_nullable
@@ -290,12 +261,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.deleteKeyForFutaba
           // ignore: cast_nullable_to_non_nullable
           : deleteKeyForFutaba as String,
-      sortHistoryByRetention:
-          sortHistoryByRetention == const $CopyWithPlaceholder() ||
-                  sortHistoryByRetention == null
-              ? _value.sortHistoryByRetention
-              // ignore: cast_nullable_to_non_nullable
-              : sortHistoryByRetention as bool,
       sortHistoryList: sortHistoryList == const $CopyWithPlaceholder() ||
               sortHistoryList == null
           ? _value.sortHistoryList
@@ -330,6 +295,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.movedToLastThreads
           // ignore: cast_nullable_to_non_nullable
           : movedToLastThreads as MovedToLastThreads,
+      threadsOrderType: threadsOrderType == const $CopyWithPlaceholder() ||
+              threadsOrderType == null
+          ? _value.threadsOrderType
+          // ignore: cast_nullable_to_non_nullable
+          : threadsOrderType as ThreadsOrderType,
     );
   }
 }
@@ -474,14 +444,9 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
       theme: $enumDecode(_$ThemeListEnumMap, json['theme']),
       retentionPeriod:
           $enumDecode(_$RetentionPeriodListEnumMap, json['retentionPeriod']),
-      threadsOrder:
-          $enumDecodeNullable(_$ThreadsOrderEnumMap, json['threadsOrder']) ??
-              ThreadsOrder.hot,
       positionToGet:
           $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
               PositionToGet.first,
-      commentCountDisplayThreshold:
-          json['commentCountDisplayThreshold'] as int? ?? 5,
       openLink: json['openLink'] as bool? ?? true,
       blurThumbnail: json['blurThumbnail'] as bool? ?? false,
       useFavoritesBoards: json['useFavoritesBoards'] as bool? ?? false,
@@ -497,7 +462,6 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
       searchBoardIdForMachi:
           json['searchBoardIdForMachi'] as String? ?? 'tokyo',
       deleteKeyForFutaba: json['deleteKeyForFutaba'] as String? ?? '48009',
-      sortHistoryByRetention: json['sortHistoryByRetention'] as bool? ?? false,
       sortHistoryList: $enumDecodeNullable(
               _$SortHistoryListEnumMap, json['sortHistoryList']) ??
           SortHistoryList.boards,
@@ -520,6 +484,9 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
       movedToLastThreads: $enumDecodeNullable(
               _$MovedToLastThreadsEnumMap, json['movedToLastThreads']) ??
           MovedToLastThreads.none,
+      threadsOrderType: $enumDecodeNullable(
+              _$ThreadsOrderTypeEnumMap, json['threadsOrderType']) ??
+          ThreadsOrderType.importance,
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -529,9 +496,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'theme': _$ThemeListEnumMap[instance.theme]!,
       'retentionPeriod':
           _$RetentionPeriodListEnumMap[instance.retentionPeriod]!,
-      'threadsOrder': _$ThreadsOrderEnumMap[instance.threadsOrder]!,
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
-      'commentCountDisplayThreshold': instance.commentCountDisplayThreshold,
       'openLink': instance.openLink,
       'blurThumbnail': instance.blurThumbnail,
       'useFavoritesBoards': instance.useFavoritesBoards,
@@ -540,7 +505,6 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'searchBoardIdForFutaba': instance.searchBoardIdForFutaba,
       'searchBoardIdForMachi': instance.searchBoardIdForMachi,
       'deleteKeyForFutaba': instance.deleteKeyForFutaba,
-      'sortHistoryByRetention': instance.sortHistoryByRetention,
       'sortHistoryList': _$SortHistoryListEnumMap[instance.sortHistoryList]!,
       'googleFonts': instance.googleFonts,
       'addedFonts': instance.addedFonts,
@@ -549,6 +513,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'listViewStyle': _$ListViewStyleEnumMap[instance.listViewStyle]!,
       'movedToLastThreads':
           _$MovedToLastThreadsEnumMap[instance.movedToLastThreads]!,
+      'threadsOrderType': _$ThreadsOrderTypeEnumMap[instance.threadsOrderType]!,
     };
 
 const _$CommunitiesEnumMap = {
@@ -580,19 +545,6 @@ const _$RetentionPeriodListEnumMap = {
   RetentionPeriodList.oneMonth: 'oneMonth',
 };
 
-const _$ThreadsOrderEnumMap = {
-  ThreadsOrder.newOrder: 'newOrder',
-  ThreadsOrder.oldOrder: 'oldOrder',
-  ThreadsOrder.hot: 'hot',
-  ThreadsOrder.resCountAsc: 'resCountAsc',
-  ThreadsOrder.resCountDesc: 'resCountDesc',
-  ThreadsOrder.newerThread: 'newerThread',
-  ThreadsOrder.olderThread: 'olderThread',
-  ThreadsOrder.newerResponce: 'newerResponce',
-  ThreadsOrder.importance: 'importance',
-  ThreadsOrder.catalog: 'catalog',
-};
-
 const _$PositionToGetEnumMap = {
   PositionToGet.first: 'first',
   PositionToGet.last: 'last',
@@ -613,6 +565,17 @@ const _$ListViewStyleEnumMap = {
 const _$MovedToLastThreadsEnumMap = {
   MovedToLastThreads.none: 'none',
   MovedToLastThreads.over1000: 'over1000',
+};
+
+const _$ThreadsOrderTypeEnumMap = {
+  ThreadsOrderType.hot: 'hot',
+  ThreadsOrderType.resCountAsc: 'resCountAsc',
+  ThreadsOrderType.resCountDesc: 'resCountDesc',
+  ThreadsOrderType.newerThread: 'newerThread',
+  ThreadsOrderType.olderThread: 'olderThread',
+  ThreadsOrderType.newerResponce: 'newerResponce',
+  ThreadsOrderType.importance: 'importance',
+  ThreadsOrderType.catalog: 'catalog',
 };
 
 SrcData _$SrcDataFromJson(Map<String, dynamic> json) => SrcData(

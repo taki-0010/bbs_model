@@ -13,7 +13,6 @@ class UrlParser {
 ''';
 
   static String? xComEmbed(final String url) {
-
     if (!url.contains('status/')) {
       return null;
     }
@@ -54,7 +53,10 @@ class GoogleFontsList {
     _dotGothic16,
     // _add
   ];
-  String get kosugi => _kosugi;
+  static String get kosugi => _kosugi;
+
+  static const apache = 'APACHE LICENSE v2.0';
+  static const open = 'Open Font License';
 }
 
 int randomInt({int count = 999}) {

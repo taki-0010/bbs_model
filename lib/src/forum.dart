@@ -11,9 +11,9 @@ class ForumSettingsData {
       required this.forum,
       required this.theme,
       required this.retentionPeriod,
-      this.threadsOrder = ThreadsOrder.hot,
+      // this.threadsOrder = ThreadsOrder.hot,
       this.positionToGet = PositionToGet.first,
-      this.commentCountDisplayThreshold = 5,
+      // this.commentCountDisplayThreshold = 5,
       this.openLink = true,
       this.blurThumbnail = false,
       this.useFavoritesBoards = false,
@@ -22,7 +22,7 @@ class ForumSettingsData {
       this.searchBoardIdForFutaba = 'b',
       this.searchBoardIdForMachi = 'tokyo',
       this.deleteKeyForFutaba = '48009',
-      this.sortHistoryByRetention = false,
+      // this.sortHistoryByRetention = false,
       // this.sortHistory = SortHistory.hot,
       this.sortHistoryList = SortHistoryList.boards,
       this.googleFonts,
@@ -30,15 +30,16 @@ class ForumSettingsData {
       this.boardImportance = const [],
       this.threadsImportance = const [],
       this.listViewStyle = ListViewStyle.list,
-      this.movedToLastThreads = MovedToLastThreads.none});
+      this.movedToLastThreads = MovedToLastThreads.none,
+      this.threadsOrderType = ThreadsOrderType.importance});
 
   final String userId;
   final Communities forum;
   final ThemeList theme;
   final RetentionPeriodList retentionPeriod;
-  final ThreadsOrder threadsOrder;
+  // final ThreadsOrder threadsOrder;
   final PositionToGet positionToGet;
-  final int commentCountDisplayThreshold;
+  // final int commentCountDisplayThreshold;
   final bool openLink;
   final bool blurThumbnail;
   final bool useFavoritesBoards;
@@ -47,7 +48,7 @@ class ForumSettingsData {
   final String searchBoardIdForFutaba;
   final String searchBoardIdForMachi;
   final String deleteKeyForFutaba;
-  final bool sortHistoryByRetention;
+  // final bool sortHistoryByRetention;
   // final SortHistory sortHistory;
   final SortHistoryList sortHistoryList;
   final String? googleFonts;
@@ -56,6 +57,7 @@ class ForumSettingsData {
   final List<String?> threadsImportance;
   final ListViewStyle listViewStyle;
   final MovedToLastThreads movedToLastThreads;
+  final ThreadsOrderType threadsOrderType;
 
   List<ImportanceData?> get boardImportanceList => boardImportance
       .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
@@ -111,8 +113,9 @@ class InitialForumData {
         userId: userId,
         forum: value,
         theme: ThemeList.m3Purple,
-        threadsOrder: ThreadsOrder.hot,
-        commentCountDisplayThreshold: 2,
+        // threadsOrder: ThreadsOrder.hot,
+        threadsOrderType: ThreadsOrderType.hot,
+        // commentCountDisplayThreshold: 2,
         useFavoritesBoards: false,
         searchWordList: searchWords,
         // sortHistory: SortHistory.boards,
@@ -127,19 +130,22 @@ class InitialForumData {
       case Communities.girlsCh:
         return base.copyWith(
             theme: ThemeList.pinkSakura,
+            // threadsOrder: ThreadsOrder.newerResponce,
+            threadsOrderType: ThreadsOrderType.newerResponce,
             listViewStyle: ListViewStyle.gridMedium);
       case Communities.futabaCh:
         return base.copyWith(
             searchWordList: searchWordsFutaba,
             theme: ThemeList.verdunLime,
-            threadsOrder: ThreadsOrder.catalog,
+            // threadsOrder: ThreadsOrder.catalog,
+            threadsOrderType: ThreadsOrderType.catalog,
             sortHistoryList: SortHistoryList.history,
             listViewStyle: ListViewStyle.gridSmall,
             deleteKeyForFutaba: randomInt().toString(),
             retentionPeriod: RetentionPeriodList.oneDay);
       case Communities.pinkCh:
         return base.copyWith(
-            theme: ThemeList.espresso,
+            theme: ThemeList.goldSunset,
             retentionPeriod: RetentionPeriodList.byPostPace);
       case Communities.machi:
         return base.copyWith(

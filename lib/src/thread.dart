@@ -152,8 +152,8 @@ class ThreadData extends ThreadBase {
         return int.tryParse(id);
       case Communities.machi:
         return int.tryParse(id);
-      case Communities.futabaCh:
-        return int.tryParse(updateAtStr ?? '0');
+      // case Communities.futabaCh:
+      //   return int.tryParse(updateAtStr ?? '0');
       default:
     }
     return null;

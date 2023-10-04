@@ -216,15 +216,15 @@ class FutabaData {
   static String getBoardPath(
       {required final String directory,
       required final String boardId,
-      required final ThreadsOrder order}) {
+      required final ThreadsOrderType order}) {
     final path = '$directory.$host/$boardId';
     
     switch (order) {
-      case ThreadsOrder.catalog:
+      case ThreadsOrderType.catalog:
         return '$path/futaba.php$catalog';
-      case ThreadsOrder.resCountDesc:
+      case ThreadsOrderType.resCountDesc:
         return '$path/futaba.php$catalog${sort}3';
-      case ThreadsOrder.newOrder:
+      case ThreadsOrderType.newerResponce:
         return '$path/futaba.php$catalog${sort}1';
       default:
     }
