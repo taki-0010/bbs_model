@@ -11,6 +11,7 @@ export 'src/forum.dart';
 export 'src/girls_ch.dart';
 export 'src/futaba_ch.dart';
 export 'src/machi.dart';
+export 'src/shitaraba.dart';
 export 'src/user.dart';
 export 'src/thread.dart';
 export 'src/enum.dart';

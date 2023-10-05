@@ -31,7 +31,8 @@ class ForumSettingsData {
       this.threadsImportance = const [],
       this.listViewStyle = ListViewStyle.list,
       this.movedToLastThreads = MovedToLastThreads.none,
-      this.threadsOrderType = ThreadsOrderType.importance});
+      this.threadsOrderType = ThreadsOrderType.importance,
+      this.autoDownloadableSizeLimit = AutoDownloadableSizeLimit.noLimit});
 
   final String userId;
   final Communities forum;
@@ -58,6 +59,7 @@ class ForumSettingsData {
   final ListViewStyle listViewStyle;
   final MovedToLastThreads movedToLastThreads;
   final ThreadsOrderType threadsOrderType;
+  final AutoDownloadableSizeLimit autoDownloadableSizeLimit;
 
   List<ImportanceData?> get boardImportanceList => boardImportance
       .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)

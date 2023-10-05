@@ -44,8 +44,6 @@ enum RetentionPeriodList {
   final int days;
 }
 
-
-
 // enum ThreadsOrder {
 //   newOrder,
 //   oldOrder,
@@ -154,4 +152,17 @@ enum FetchResult {
 enum MovedToLastThreads {
   none,
   over1000;
+}
+
+enum AutoDownloadableSizeLimit {
+  doNot(label: 'doNot', value: 0),
+  to200000(label: '100kb', value: 100000),
+  to500000(label: '500kb', value: 500000),
+  to1000000(label: '1000kb', value: 1000000),
+  to1500000(label: '1500kb', value: 1500000),
+  noLimit(label: 'noLimit', value: 0);
+
+  const AutoDownloadableSizeLimit({required this.label, required this.value});
+  final String label;
+  final int value;
 }

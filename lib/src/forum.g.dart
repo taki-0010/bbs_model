@@ -49,6 +49,9 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData threadsOrderType(ThreadsOrderType threadsOrderType);
 
+  ForumSettingsData autoDownloadableSizeLimit(
+      AutoDownloadableSizeLimit autoDownloadableSizeLimit);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -77,6 +80,7 @@ abstract class _$ForumSettingsDataCWProxy {
     ListViewStyle? listViewStyle,
     MovedToLastThreads? movedToLastThreads,
     ThreadsOrderType? threadsOrderType,
+    AutoDownloadableSizeLimit? autoDownloadableSizeLimit,
   });
 }
 
@@ -167,6 +171,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(threadsOrderType: threadsOrderType);
 
   @override
+  ForumSettingsData autoDownloadableSizeLimit(
+          AutoDownloadableSizeLimit autoDownloadableSizeLimit) =>
+      this(autoDownloadableSizeLimit: autoDownloadableSizeLimit);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -196,6 +205,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? listViewStyle = const $CopyWithPlaceholder(),
     Object? movedToLastThreads = const $CopyWithPlaceholder(),
     Object? threadsOrderType = const $CopyWithPlaceholder(),
+    Object? autoDownloadableSizeLimit = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       userId: userId == const $CopyWithPlaceholder() || userId == null
@@ -300,6 +310,12 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.threadsOrderType
           // ignore: cast_nullable_to_non_nullable
           : threadsOrderType as ThreadsOrderType,
+      autoDownloadableSizeLimit:
+          autoDownloadableSizeLimit == const $CopyWithPlaceholder() ||
+                  autoDownloadableSizeLimit == null
+              ? _value.autoDownloadableSizeLimit
+              // ignore: cast_nullable_to_non_nullable
+              : autoDownloadableSizeLimit as AutoDownloadableSizeLimit,
     );
   }
 }
@@ -487,6 +503,10 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
       threadsOrderType: $enumDecodeNullable(
               _$ThreadsOrderTypeEnumMap, json['threadsOrderType']) ??
           ThreadsOrderType.importance,
+      autoDownloadableSizeLimit: $enumDecodeNullable(
+              _$AutoDownloadableSizeLimitEnumMap,
+              json['autoDownloadableSizeLimit']) ??
+          AutoDownloadableSizeLimit.noLimit,
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -514,6 +534,8 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'movedToLastThreads':
           _$MovedToLastThreadsEnumMap[instance.movedToLastThreads]!,
       'threadsOrderType': _$ThreadsOrderTypeEnumMap[instance.threadsOrderType]!,
+      'autoDownloadableSizeLimit': _$AutoDownloadableSizeLimitEnumMap[
+          instance.autoDownloadableSizeLimit]!,
     };
 
 const _$CommunitiesEnumMap = {
@@ -576,6 +598,15 @@ const _$ThreadsOrderTypeEnumMap = {
   ThreadsOrderType.newerResponce: 'newerResponce',
   ThreadsOrderType.importance: 'importance',
   ThreadsOrderType.catalog: 'catalog',
+};
+
+const _$AutoDownloadableSizeLimitEnumMap = {
+  AutoDownloadableSizeLimit.doNot: 'doNot',
+  AutoDownloadableSizeLimit.to200000: 'to200000',
+  AutoDownloadableSizeLimit.to500000: 'to500000',
+  AutoDownloadableSizeLimit.to1000000: 'to1000000',
+  AutoDownloadableSizeLimit.to1500000: 'to1500000',
+  AutoDownloadableSizeLimit.noLimit: 'noLimit',
 };
 
 SrcData _$SrcDataFromJson(Map<String, dynamic> json) => SrcData(

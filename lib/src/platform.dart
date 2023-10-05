@@ -42,4 +42,9 @@ class PlatformData {
   bool get isLinux => _isLinux;
   bool get isWeb => _isWeb;
   bool get isDebugMode => _isDebugMode;
+
+  static const windowWidth = 'windowWidth';
+  static const windowHeight = 'windowHeight';
+  static const windowOffsetX = 'windowOffsetX';
+  static const windowOffsetY = 'windowOffsetY';
 }
