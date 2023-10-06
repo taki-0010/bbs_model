@@ -14,7 +14,9 @@ class BoardData {
       this.fiveCh,
       this.girlsCh,
       this.futabaCh,
-      this.machi});
+      this.machi,
+      this.shitarabaCategory,
+      this.shitarabaBoard});
   final String id;
   final String name;
   final Communities forum;
@@ -23,6 +25,10 @@ class BoardData {
   final GirlsChCategory? girlsCh;
   final FutabaChBoard? futabaCh;
   final MachiBoardData? machi;
+  final ShitarabaCategoryData? shitarabaCategory;
+  final ShitarabaBoardData? shitarabaBoard;
+
+  String? get sub => shitarabaBoard?.sub;
 
   factory BoardData.fromJson(Map<String, dynamic> json) =>
       _$BoardDataFromJson(json);

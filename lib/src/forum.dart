@@ -22,6 +22,7 @@ class ForumSettingsData {
       this.searchBoardIdForFutaba = 'b',
       this.searchBoardIdForMachi = 'tokyo',
       this.deleteKeyForFutaba = '48009',
+      this.searchBoardId,
       // this.sortHistoryByRetention = false,
       // this.sortHistory = SortHistory.hot,
       this.sortHistoryList = SortHistoryList.boards,
@@ -49,6 +50,7 @@ class ForumSettingsData {
   final String searchBoardIdForFutaba;
   final String searchBoardIdForMachi;
   final String deleteKeyForFutaba;
+  final String? searchBoardId;
   // final bool sortHistoryByRetention;
   // final SortHistory sortHistory;
   final SortHistoryList sortHistoryList;
@@ -132,14 +134,18 @@ class InitialForumData {
       case Communities.girlsCh:
         return base.copyWith(
             theme: ThemeList.pinkSakura,
-            // threadsOrder: ThreadsOrder.newerResponce,
             threadsOrderType: ThreadsOrderType.newerResponce,
             listViewStyle: ListViewStyle.gridMedium);
+      case Communities.shitaraba:
+        return base.copyWith(
+            theme: ThemeList.espresso,
+            sortHistoryList: SortHistoryList.history,
+            retentionPeriod: RetentionPeriodList.byPostPace);
       case Communities.futabaCh:
         return base.copyWith(
             searchWordList: searchWordsFutaba,
             theme: ThemeList.verdunLime,
-            // threadsOrder: ThreadsOrder.catalog,
+            searchBoardId: 'b',
             threadsOrderType: ThreadsOrderType.catalog,
             sortHistoryList: SortHistoryList.history,
             listViewStyle: ListViewStyle.gridSmall,
@@ -152,6 +158,7 @@ class InitialForumData {
       case Communities.machi:
         return base.copyWith(
             theme: ThemeList.indigoNights,
+            searchBoardId: 'tokyo',
             sortHistoryList: SortHistoryList.history,
             movedToLastThreads: MovedToLastThreads.over1000,
             retentionPeriod: RetentionPeriodList.oneMonth);

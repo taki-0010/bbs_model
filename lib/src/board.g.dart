@@ -23,6 +23,10 @@ abstract class _$BoardDataCWProxy {
 
   BoardData machi(MachiBoardData? machi);
 
+  BoardData shitarabaCategory(ShitarabaCategoryData? shitarabaCategory);
+
+  BoardData shitarabaBoard(ShitarabaBoardData? shitarabaBoard);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BoardData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -38,6 +42,8 @@ abstract class _$BoardDataCWProxy {
     GirlsChCategory? girlsCh,
     FutabaChBoard? futabaCh,
     MachiBoardData? machi,
+    ShitarabaCategoryData? shitarabaCategory,
+    ShitarabaBoardData? shitarabaBoard,
   });
 }
 
@@ -73,6 +79,14 @@ class _$BoardDataCWProxyImpl implements _$BoardDataCWProxy {
   BoardData machi(MachiBoardData? machi) => this(machi: machi);
 
   @override
+  BoardData shitarabaCategory(ShitarabaCategoryData? shitarabaCategory) =>
+      this(shitarabaCategory: shitarabaCategory);
+
+  @override
+  BoardData shitarabaBoard(ShitarabaBoardData? shitarabaBoard) =>
+      this(shitarabaBoard: shitarabaBoard);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BoardData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -89,6 +103,8 @@ class _$BoardDataCWProxyImpl implements _$BoardDataCWProxy {
     Object? girlsCh = const $CopyWithPlaceholder(),
     Object? futabaCh = const $CopyWithPlaceholder(),
     Object? machi = const $CopyWithPlaceholder(),
+    Object? shitarabaCategory = const $CopyWithPlaceholder(),
+    Object? shitarabaBoard = const $CopyWithPlaceholder(),
   }) {
     return BoardData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -123,6 +139,14 @@ class _$BoardDataCWProxyImpl implements _$BoardDataCWProxy {
           ? _value.machi
           // ignore: cast_nullable_to_non_nullable
           : machi as MachiBoardData?,
+      shitarabaCategory: shitarabaCategory == const $CopyWithPlaceholder()
+          ? _value.shitarabaCategory
+          // ignore: cast_nullable_to_non_nullable
+          : shitarabaCategory as ShitarabaCategoryData?,
+      shitarabaBoard: shitarabaBoard == const $CopyWithPlaceholder()
+          ? _value.shitarabaBoard
+          // ignore: cast_nullable_to_non_nullable
+          : shitarabaBoard as ShitarabaBoardData?,
     );
   }
 }
@@ -286,6 +310,14 @@ BoardData _$BoardDataFromJson(Map<String, dynamic> json) => BoardData(
       machi: json['machi'] == null
           ? null
           : MachiBoardData.fromJson(json['machi'] as Map<String, dynamic>),
+      shitarabaCategory: json['shitarabaCategory'] == null
+          ? null
+          : ShitarabaCategoryData.fromJson(
+              json['shitarabaCategory'] as Map<String, dynamic>),
+      shitarabaBoard: json['shitarabaBoard'] == null
+          ? null
+          : ShitarabaBoardData.fromJson(
+              json['shitarabaBoard'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$BoardDataToJson(BoardData instance) => <String, dynamic>{
@@ -297,6 +329,8 @@ Map<String, dynamic> _$BoardDataToJson(BoardData instance) => <String, dynamic>{
       'girlsCh': instance.girlsCh?.toJson(),
       'futabaCh': instance.futabaCh?.toJson(),
       'machi': instance.machi?.toJson(),
+      'shitarabaCategory': instance.shitarabaCategory?.toJson(),
+      'shitarabaBoard': instance.shitarabaBoard?.toJson(),
     };
 
 const _$CommunitiesEnumMap = {
@@ -304,6 +338,7 @@ const _$CommunitiesEnumMap = {
   Communities.girlsCh: 'girlsCh',
   Communities.futabaCh: 'futabaCh',
   Communities.pinkCh: 'pinkCh',
+  Communities.shitaraba: 'shitaraba',
   Communities.machi: 'machi',
 };
 

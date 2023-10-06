@@ -11,17 +11,11 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
     required super.type,
     required super.resCount,
     this.favorite = false,
-    // required super.lastIndex,
-    // super.thumbnail,
     super.thumbnailStr,
-    // this.archived = false,
     required super.url,
-    // this.thumbnailUrl,
     required super.boardId,
     required super.title,
-    // super.boardName,
     super.positionToGet = PositionToGet.first,
-    // super.difference,
     this.lastOpendIndex,
     this.lastReadAt,
     required this.sessionId,
@@ -33,9 +27,6 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
     this.importance = const [],
     this.agreedIndexSet = const {},
     this.archived =false
-    // this.postDraft
-    // this.mutePosterIds = const {},
-    // this.muteUserIds = const {}
   });
   final String userId;
   final String documentId;
@@ -44,7 +35,6 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
   final int? lastReadAt;
   final String sessionId;
   final bool favorite;
-  // final String retentionPeriod;
   final int retentionPeriodSeconds;
   final int createdAtBySeconds;
   final Set<String?> marks;

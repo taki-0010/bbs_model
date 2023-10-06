@@ -9,28 +9,20 @@ abstract class ThreadBase {
       required this.type,
       required this.title,
       required this.resCount,
-      // required this.lastIndex,
       required this.boardId,
-      // this.difference,
       required this.url,
       this.boardName,
       required this.positionToGet,
-      // this.threadLength,
-      // this.thumbnail,
       this.thumbnailStr});
   final String id;
   final Communities type;
   final String title;
   final int resCount;
-  // final int lastIndex;
   final String boardId;
-  // final SrcData? thumbnail;
-  // final int? difference;
   final String? boardName;
   final String url;
   final PositionToGet positionToGet;
   final String? thumbnailStr;
-  // final int? threadLength;
 
   double get ikioi {
     return 0.0;
@@ -101,6 +93,11 @@ abstract class ThreadBase {
     final result = idStr.substring(0, idStr.indexOf('.'));
     return result;
   }
+
+  String get shitarabaCategory {
+    final seg = uri.pathSegments;
+    return seg[2];
+  }
 }
 
 // @JsonSerializable(explicitToJson: true)
@@ -111,21 +108,14 @@ class ThreadData extends ThreadBase {
       {required super.id,
       required super.title,
       required super.resCount,
-      // required super.lastIndex,
       required super.type,
-      // super.thumbnail,
       super.thumbnailStr,
       required super.url,
-      // super.threadLength,
-      // this.positionToGet = PositionToGet.first,
-      // this.img,
       this.updateAtStr,
-      // super.difference,
       required super.boardId,
       super.boardName,
       super.positionToGet = PositionToGet.first,
       this.catalog = false,
-      // this.content = const [],
       this.isNewPost = false});
 
   final String? updateAtStr;

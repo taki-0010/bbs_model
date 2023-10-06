@@ -487,6 +487,7 @@ const _$CommunitiesEnumMap = {
   Communities.girlsCh: 'girlsCh',
   Communities.futabaCh: 'futabaCh',
   Communities.pinkCh: 'pinkCh',
+  Communities.shitaraba: 'shitaraba',
   Communities.machi: 'machi',
 };
 

@@ -3,6 +3,7 @@ enum Communities {
   girlsCh(label: 'Girls Ch', host: 'girlschannel.net'),
   futabaCh(label: 'Futaba Ch', host: '2chan.net'),
   pinkCh(label: 'Pink Ch', host: 'bbspink.com'),
+  shitaraba(label: 'したらば', host: 'shitaraba.net'),
   machi(label: 'まち BBS', host: 'machi.to');
 
   const Communities({required this.label, required this.host});
