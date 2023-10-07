@@ -7,12 +7,21 @@ class ShitarabaData {
   static const sub = 'jbbs';
   static const threadPath = 'bbs/rawmode.cgi';
   static const htmlPath = 'bbs/read.cgi';
+  static const writePath = 'bbs/write.cgi';
   static final topUrl = 'rentalbbs.shitaraba.com';
+  static final idReg = RegExp(r'[0-9]{8,}');
   static String getThreadUrlPath(
       {required final String category,
       required final String boardId,
       required final String threadId}) {
     return 'bbs/rawmode.cgi/$category/$boardId/$threadId';
+  }
+
+  static String htmlUrl(
+      {required final String category,
+      required final String boardId,
+      required final String threadId}) {
+    return '$sub.$host/$htmlPath/$category/$boardId/$threadId';
   }
 
   static String favoriteBoardStr({
@@ -79,6 +88,19 @@ class ShitarabaData {
       return null;
     }
     return path[1];
+  }
+
+  static String? getThreadIdFromUrl(final String url) {
+    final uri = _validate(url);
+    if (uri == null) {
+      return null;
+    }
+    final id = idReg.allMatches(url);
+    if (id.length >= 2) {
+      return id.elementAt(1).group(0);
+    }
+    final data = id.first.group(0);
+    return data;
   }
 
   static String? getFavoriteStr(final String url) {

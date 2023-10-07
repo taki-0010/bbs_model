@@ -23,6 +23,8 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData title(String title);
 
+  ThreadMarkData boardName(String? boardName);
+
   ThreadMarkData positionToGet(PositionToGet positionToGet);
 
   ThreadMarkData lastOpendIndex(int? lastOpendIndex);
@@ -62,6 +64,7 @@ abstract class _$ThreadMarkDataCWProxy {
     String? url,
     String? boardId,
     String? title,
+    String? boardName,
     PositionToGet? positionToGet,
     int? lastOpendIndex,
     int? lastReadAt,
@@ -107,6 +110,9 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
 
   @override
   ThreadMarkData title(String title) => this(title: title);
+
+  @override
+  ThreadMarkData boardName(String? boardName) => this(boardName: boardName);
 
   @override
   ThreadMarkData positionToGet(PositionToGet positionToGet) =>
@@ -167,6 +173,7 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? url = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
+    Object? boardName = const $CopyWithPlaceholder(),
     Object? positionToGet = const $CopyWithPlaceholder(),
     Object? lastOpendIndex = const $CopyWithPlaceholder(),
     Object? lastReadAt = const $CopyWithPlaceholder(),
@@ -213,6 +220,10 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.title
           // ignore: cast_nullable_to_non_nullable
           : title as String,
+      boardName: boardName == const $CopyWithPlaceholder()
+          ? _value.boardName
+          // ignore: cast_nullable_to_non_nullable
+          : boardName as String?,
       positionToGet:
           positionToGet == const $CopyWithPlaceholder() || positionToGet == null
               ? _value.positionToGet
@@ -434,6 +445,7 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String,
       boardId: json['boardId'] as String,
       title: json['title'] as String,
+      boardName: json['boardName'] as String?,
       positionToGet:
           $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
               PositionToGet.first,
@@ -465,6 +477,7 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'title': instance.title,
       'resCount': instance.resCount,
       'boardId': instance.boardId,
+      'boardName': instance.boardName,
       'url': instance.url,
       'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
       'thumbnailStr': instance.thumbnailStr,

@@ -167,3 +167,11 @@ enum AutoDownloadableSizeLimit {
   final String label;
   final int value;
 }
+
+enum TimeagoList {
+  disable,
+  disableWhenHotIsOver2000,
+  disableSeconds,
+  disableSecondsAndMinutes,
+  enable;
+}

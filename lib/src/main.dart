@@ -6,28 +6,28 @@ part 'main.g.dart';
 @CopyWith()
 @immutable
 class ThreadMarkData extends ThreadBase with WithDateTime {
-  const ThreadMarkData({
-    required super.id,
-    required super.type,
-    required super.resCount,
-    this.favorite = false,
-    super.thumbnailStr,
-    required super.url,
-    required super.boardId,
-    required super.title,
-    super.positionToGet = PositionToGet.first,
-    this.lastOpendIndex,
-    this.lastReadAt,
-    required this.sessionId,
-    required this.userId,
-    required this.documentId,
-    this.retentionPeriodSeconds = 0,
-    required this.createdAtBySeconds,
-    this.marks = const {},
-    this.importance = const [],
-    this.agreedIndexSet = const {},
-    this.archived =false
-  });
+  const ThreadMarkData(
+      {required super.id,
+      required super.type,
+      required super.resCount,
+      this.favorite = false,
+      super.thumbnailStr,
+      required super.url,
+      required super.boardId,
+      required super.title,
+      super.boardName,
+      super.positionToGet = PositionToGet.first,
+      this.lastOpendIndex,
+      this.lastReadAt,
+      required this.sessionId,
+      required this.userId,
+      required this.documentId,
+      this.retentionPeriodSeconds = 0,
+      required this.createdAtBySeconds,
+      this.marks = const {},
+      this.importance = const [],
+      this.agreedIndexSet = const {},
+      this.archived = false});
   final String userId;
   final String documentId;
 
@@ -141,9 +141,44 @@ mixin WithDateTime {
   void initialLocaleLoad() => ta.setLocaleMessages('ja', ta.JaMessages());
   DateTime epochToDateTime(final int value) =>
       DateTime.fromMillisecondsSinceEpoch(value);
-  String getTimeago(final DateTime value, final String locale) {
-    // ta.setLocaleMessages('ja', ta.JaMessages());
-    return ta.format(value, locale: locale);
+  String? getTimeago(final DateTime value, final String locale,
+      {final TimeagoList settings = TimeagoList.enable}) {
+    final result = ta.format(value, locale: locale);
+    switch (settings) {
+      case TimeagoList.disable:
+        return null;
+      case TimeagoList.disableSeconds:
+        return result.contains(_localeSeconds(locale)) ? null : result;
+      case TimeagoList.disableSecondsAndMinutes:
+        return (result.contains(_localeSeconds(locale)) ||
+                result.contains(_localeMinutes(locale)))
+            ? null
+            : result;
+      default:
+    }
+    return result;
+  }
+
+  String _localeSeconds(final String locale) {
+    switch (locale) {
+      case 'ja':
+        return '秒';
+      case 'en':
+        return 'seconds';
+      default:
+        return 'seconds';
+    }
+  }
+
+  String _localeMinutes(final String locale) {
+    switch (locale) {
+      case 'ja':
+        return '分';
+      case 'en':
+        return 'minute';
+      default:
+        return 'minute';
+    }
   }
 
   DateTime fomatedDateTime(final String value) {

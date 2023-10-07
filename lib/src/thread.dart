@@ -65,8 +65,17 @@ abstract class ThreadBase {
     return null;
   }
 
+  String? get shitarabaUrlForHtml {
+    if (url.contains(Communities.shitaraba.host)) {
+      final path = ShitarabaData.htmlUrl(
+          category: shitarabaCategory, boardId: boardId, threadId: id);
+      return 'https://$path';
+    }
+    return null;
+  }
+
   String? get compatibleUrl =>
-      fiveChUrlForHtml ?? pinkChUrlForHtml ?? machiUrlForHtml;
+      fiveChUrlForHtml ?? pinkChUrlForHtml ?? machiUrlForHtml ?? shitarabaUrlForHtml;
 
   String? get htmlUrl {
     switch (type) {
@@ -76,6 +85,8 @@ abstract class ThreadBase {
         return pinkChUrlForHtml;
       case Communities.machi:
         return machiUrlForHtml;
+      case Communities.shitaraba:
+        return shitarabaUrlForHtml;
       default:
         return getFullUrl;
     }
