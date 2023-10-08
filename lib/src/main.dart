@@ -142,7 +142,8 @@ mixin WithDateTime {
   DateTime epochToDateTime(final int value) =>
       DateTime.fromMillisecondsSinceEpoch(value);
   String? getTimeago(final DateTime value, final String locale,
-      {final TimeagoList settings = TimeagoList.enable}) {
+      {final TimeagoList settings = TimeagoList.enable, final double? hot}) {
+    // logger.i('timeago: settings: $settings, hot: $hot');
     final result = ta.format(value, locale: locale);
     switch (settings) {
       case TimeagoList.disable:
@@ -154,6 +155,11 @@ mixin WithDateTime {
                 result.contains(_localeMinutes(locale)))
             ? null
             : result;
+      case TimeagoList.disableWhenHotIsOver2000:
+        if (hot != null && hot > 2000.0) {
+          return null;
+        }
+        return result;
       default:
     }
     return result;

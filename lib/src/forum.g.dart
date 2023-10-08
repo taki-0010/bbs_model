@@ -54,6 +54,8 @@ abstract class _$ForumSettingsDataCWProxy {
   ForumSettingsData autoDownloadableSizeLimit(
       AutoDownloadableSizeLimit autoDownloadableSizeLimit);
 
+  ForumSettingsData timeago(TimeagoList timeago);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -84,6 +86,7 @@ abstract class _$ForumSettingsDataCWProxy {
     MovedToLastThreads? movedToLastThreads,
     ThreadsOrderType? threadsOrderType,
     AutoDownloadableSizeLimit? autoDownloadableSizeLimit,
+    TimeagoList? timeago,
   });
 }
 
@@ -183,6 +186,9 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(autoDownloadableSizeLimit: autoDownloadableSizeLimit);
 
   @override
+  ForumSettingsData timeago(TimeagoList timeago) => this(timeago: timeago);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -214,6 +220,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? movedToLastThreads = const $CopyWithPlaceholder(),
     Object? threadsOrderType = const $CopyWithPlaceholder(),
     Object? autoDownloadableSizeLimit = const $CopyWithPlaceholder(),
+    Object? timeago = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       userId: userId == const $CopyWithPlaceholder() || userId == null
@@ -328,6 +335,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
               ? _value.autoDownloadableSizeLimit
               // ignore: cast_nullable_to_non_nullable
               : autoDownloadableSizeLimit as AutoDownloadableSizeLimit,
+      timeago: timeago == const $CopyWithPlaceholder() || timeago == null
+          ? _value.timeago
+          // ignore: cast_nullable_to_non_nullable
+          : timeago as TimeagoList,
     );
   }
 }
@@ -520,6 +531,8 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
               _$AutoDownloadableSizeLimitEnumMap,
               json['autoDownloadableSizeLimit']) ??
           AutoDownloadableSizeLimit.noLimit,
+      timeago: $enumDecodeNullable(_$TimeagoListEnumMap, json['timeago']) ??
+          TimeagoList.enable,
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -550,6 +563,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'threadsOrderType': _$ThreadsOrderTypeEnumMap[instance.threadsOrderType]!,
       'autoDownloadableSizeLimit': _$AutoDownloadableSizeLimitEnumMap[
           instance.autoDownloadableSizeLimit]!,
+      'timeago': _$TimeagoListEnumMap[instance.timeago]!,
     };
 
 const _$CommunitiesEnumMap = {
@@ -622,6 +636,14 @@ const _$AutoDownloadableSizeLimitEnumMap = {
   AutoDownloadableSizeLimit.to1000000: 'to1000000',
   AutoDownloadableSizeLimit.to1500000: 'to1500000',
   AutoDownloadableSizeLimit.noLimit: 'noLimit',
+};
+
+const _$TimeagoListEnumMap = {
+  TimeagoList.disable: 'disable',
+  TimeagoList.disableWhenHotIsOver2000: 'disableWhenHotIsOver2000',
+  TimeagoList.disableSeconds: 'disableSeconds',
+  TimeagoList.disableSecondsAndMinutes: 'disableSecondsAndMinutes',
+  TimeagoList.enable: 'enable',
 };
 
 SrcData _$SrcDataFromJson(Map<String, dynamic> json) => SrcData(

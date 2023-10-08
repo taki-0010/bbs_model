@@ -33,7 +33,8 @@ class ForumSettingsData {
       this.listViewStyle = ListViewStyle.list,
       this.movedToLastThreads = MovedToLastThreads.none,
       this.threadsOrderType = ThreadsOrderType.importance,
-      this.autoDownloadableSizeLimit = AutoDownloadableSizeLimit.noLimit});
+      this.autoDownloadableSizeLimit = AutoDownloadableSizeLimit.noLimit,
+      this.timeago = TimeagoList.enable});
 
   final String userId;
   final Communities forum;
@@ -62,6 +63,7 @@ class ForumSettingsData {
   final MovedToLastThreads movedToLastThreads;
   final ThreadsOrderType threadsOrderType;
   final AutoDownloadableSizeLimit autoDownloadableSizeLimit;
+  final TimeagoList timeago;
 
   List<ImportanceData?> get boardImportanceList => boardImportance
       .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)

@@ -75,7 +75,10 @@ abstract class ThreadBase {
   }
 
   String? get compatibleUrl =>
-      fiveChUrlForHtml ?? pinkChUrlForHtml ?? machiUrlForHtml ?? shitarabaUrlForHtml;
+      fiveChUrlForHtml ??
+      pinkChUrlForHtml ??
+      machiUrlForHtml ??
+      shitarabaUrlForHtml;
 
   String? get htmlUrl {
     switch (type) {
@@ -171,7 +174,8 @@ class ThreadContentData {
       required this.type,
       // this.archived = false,
       this.threadLength = 1,
-      this.content = const []});
+      this.content = const [],
+      required this.hot});
   final String id;
   final String boardId;
   final Communities type;
@@ -179,6 +183,7 @@ class ThreadContentData {
   final int threadLength;
   // final String title;
   final List<ContentData?> content;
+  final double hot;
 
   int? get lastIndex => content.isNotEmpty ? content.last?.index : null;
 

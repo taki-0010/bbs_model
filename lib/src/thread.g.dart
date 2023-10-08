@@ -190,6 +190,8 @@ abstract class _$ThreadContentDataCWProxy {
 
   ThreadContentData content(List<ContentData?> content);
 
+  ThreadContentData hot(double hot);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadContentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -202,6 +204,7 @@ abstract class _$ThreadContentDataCWProxy {
     Communities? type,
     int? threadLength,
     List<ContentData?>? content,
+    double? hot,
   });
 }
 
@@ -229,6 +232,9 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
       this(content: content);
 
   @override
+  ThreadContentData hot(double hot) => this(hot: hot);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadContentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -242,6 +248,7 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
     Object? type = const $CopyWithPlaceholder(),
     Object? threadLength = const $CopyWithPlaceholder(),
     Object? content = const $CopyWithPlaceholder(),
+    Object? hot = const $CopyWithPlaceholder(),
   }) {
     return ThreadContentData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -265,6 +272,10 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
           ? _value.content
           // ignore: cast_nullable_to_non_nullable
           : content as List<ContentData?>,
+      hot: hot == const $CopyWithPlaceholder() || hot == null
+          ? _value.hot
+          // ignore: cast_nullable_to_non_nullable
+          : hot as double,
     );
   }
 }
