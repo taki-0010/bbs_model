@@ -8,6 +8,7 @@ class ShitarabaData {
   static const threadPath = 'bbs/rawmode.cgi';
   static const htmlPath = 'bbs/read.cgi';
   static const writePath = 'bbs/write.cgi';
+  static const search = 'jbbs/search/';
   static final topUrl = 'rentalbbs.shitaraba.com';
   static final idReg = RegExp(r'[0-9]{8,}');
   static String getThreadUrlPath(

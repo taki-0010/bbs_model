@@ -122,6 +122,7 @@ class InitialForumData {
         // threadsOrder: ThreadsOrder.hot,
         threadsOrderType: ThreadsOrderType.hot,
         // commentCountDisplayThreshold: 2,
+        openLink: false,
         useFavoritesBoards: false,
         searchWordList: searchWords,
         // sortHistory: SortHistory.boards,
