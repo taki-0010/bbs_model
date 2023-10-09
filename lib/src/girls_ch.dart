@@ -210,3 +210,14 @@ class GirlsChContent extends ContentData with WithDateTime {
       _$GirlsChContentFromJson(json);
   Map<String, dynamic> toJson() => _$GirlsChContentToJson(this);
 }
+
+@immutable
+class GirlsPages {
+  const GirlsPages(
+      {this.first, this.prev, this.next, this.last, required this.current});
+  final int? first;
+  final int? prev;
+  final int? next;
+  final int? last;
+  final int current;
+}

@@ -15,8 +15,6 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData retentionPeriod(RetentionPeriodList retentionPeriod);
 
-  ForumSettingsData positionToGet(PositionToGet positionToGet);
-
   ForumSettingsData openLink(bool openLink);
 
   ForumSettingsData blurThumbnail(bool blurThumbnail);
@@ -67,7 +65,6 @@ abstract class _$ForumSettingsDataCWProxy {
     Communities? forum,
     ThemeList? theme,
     RetentionPeriodList? retentionPeriod,
-    PositionToGet? positionToGet,
     bool? openLink,
     bool? blurThumbnail,
     bool? useFavoritesBoards,
@@ -108,10 +105,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
   @override
   ForumSettingsData retentionPeriod(RetentionPeriodList retentionPeriod) =>
       this(retentionPeriod: retentionPeriod);
-
-  @override
-  ForumSettingsData positionToGet(PositionToGet positionToGet) =>
-      this(positionToGet: positionToGet);
 
   @override
   ForumSettingsData openLink(bool openLink) => this(openLink: openLink);
@@ -201,7 +194,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? forum = const $CopyWithPlaceholder(),
     Object? theme = const $CopyWithPlaceholder(),
     Object? retentionPeriod = const $CopyWithPlaceholder(),
-    Object? positionToGet = const $CopyWithPlaceholder(),
     Object? openLink = const $CopyWithPlaceholder(),
     Object? blurThumbnail = const $CopyWithPlaceholder(),
     Object? useFavoritesBoards = const $CopyWithPlaceholder(),
@@ -240,11 +232,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.retentionPeriod
           // ignore: cast_nullable_to_non_nullable
           : retentionPeriod as RetentionPeriodList,
-      positionToGet:
-          positionToGet == const $CopyWithPlaceholder() || positionToGet == null
-              ? _value.positionToGet
-              // ignore: cast_nullable_to_non_nullable
-              : positionToGet as PositionToGet,
       openLink: openLink == const $CopyWithPlaceholder() || openLink == null
           ? _value.openLink
           // ignore: cast_nullable_to_non_nullable
@@ -483,9 +470,6 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
       theme: $enumDecode(_$ThemeListEnumMap, json['theme']),
       retentionPeriod:
           $enumDecode(_$RetentionPeriodListEnumMap, json['retentionPeriod']),
-      positionToGet:
-          $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
-              PositionToGet.first,
       openLink: json['openLink'] as bool? ?? true,
       blurThumbnail: json['blurThumbnail'] as bool? ?? false,
       useFavoritesBoards: json['useFavoritesBoards'] as bool? ?? false,
@@ -542,7 +526,6 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'theme': _$ThemeListEnumMap[instance.theme]!,
       'retentionPeriod':
           _$RetentionPeriodListEnumMap[instance.retentionPeriod]!,
-      'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
       'openLink': instance.openLink,
       'blurThumbnail': instance.blurThumbnail,
       'useFavoritesBoards': instance.useFavoritesBoards,
@@ -594,11 +577,6 @@ const _$RetentionPeriodListEnumMap = {
   RetentionPeriodList.oneWeek: 'oneWeek',
   RetentionPeriodList.twoWeeks: 'twoWeeks',
   RetentionPeriodList.oneMonth: 'oneMonth',
-};
-
-const _$PositionToGetEnumMap = {
-  PositionToGet.first: 'first',
-  PositionToGet.last: 'last',
 };
 
 const _$SortHistoryListEnumMap = {

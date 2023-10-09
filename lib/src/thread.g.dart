@@ -25,8 +25,6 @@ abstract class _$ThreadDataCWProxy {
 
   ThreadData boardName(String? boardName);
 
-  ThreadData positionToGet(PositionToGet positionToGet);
-
   ThreadData catalog(bool catalog);
 
   ThreadData isNewPost(bool isNewPost);
@@ -47,7 +45,6 @@ abstract class _$ThreadDataCWProxy {
     String? updateAtStr,
     String? boardId,
     String? boardName,
-    PositionToGet? positionToGet,
     bool? catalog,
     bool? isNewPost,
   });
@@ -88,10 +85,6 @@ class _$ThreadDataCWProxyImpl implements _$ThreadDataCWProxy {
   ThreadData boardName(String? boardName) => this(boardName: boardName);
 
   @override
-  ThreadData positionToGet(PositionToGet positionToGet) =>
-      this(positionToGet: positionToGet);
-
-  @override
   ThreadData catalog(bool catalog) => this(catalog: catalog);
 
   @override
@@ -115,7 +108,6 @@ class _$ThreadDataCWProxyImpl implements _$ThreadDataCWProxy {
     Object? updateAtStr = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? boardName = const $CopyWithPlaceholder(),
-    Object? positionToGet = const $CopyWithPlaceholder(),
     Object? catalog = const $CopyWithPlaceholder(),
     Object? isNewPost = const $CopyWithPlaceholder(),
   }) {
@@ -156,11 +148,6 @@ class _$ThreadDataCWProxyImpl implements _$ThreadDataCWProxy {
           ? _value.boardName
           // ignore: cast_nullable_to_non_nullable
           : boardName as String?,
-      positionToGet:
-          positionToGet == const $CopyWithPlaceholder() || positionToGet == null
-              ? _value.positionToGet
-              // ignore: cast_nullable_to_non_nullable
-              : positionToGet as PositionToGet,
       catalog: catalog == const $CopyWithPlaceholder() || catalog == null
           ? _value.catalog
           // ignore: cast_nullable_to_non_nullable
@@ -192,6 +179,10 @@ abstract class _$ThreadContentDataCWProxy {
 
   ThreadContentData hot(double hot);
 
+  ThreadContentData range(RangeList? range);
+
+  ThreadContentData girlsPages(GirlsPages? girlsPages);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadContentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -205,6 +196,8 @@ abstract class _$ThreadContentDataCWProxy {
     int? threadLength,
     List<ContentData?>? content,
     double? hot,
+    RangeList? range,
+    GirlsPages? girlsPages,
   });
 }
 
@@ -235,6 +228,13 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
   ThreadContentData hot(double hot) => this(hot: hot);
 
   @override
+  ThreadContentData range(RangeList? range) => this(range: range);
+
+  @override
+  ThreadContentData girlsPages(GirlsPages? girlsPages) =>
+      this(girlsPages: girlsPages);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadContentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -249,6 +249,8 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
     Object? threadLength = const $CopyWithPlaceholder(),
     Object? content = const $CopyWithPlaceholder(),
     Object? hot = const $CopyWithPlaceholder(),
+    Object? range = const $CopyWithPlaceholder(),
+    Object? girlsPages = const $CopyWithPlaceholder(),
   }) {
     return ThreadContentData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -276,6 +278,14 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
           ? _value.hot
           // ignore: cast_nullable_to_non_nullable
           : hot as double,
+      range: range == const $CopyWithPlaceholder()
+          ? _value.range
+          // ignore: cast_nullable_to_non_nullable
+          : range as RangeList?,
+      girlsPages: girlsPages == const $CopyWithPlaceholder()
+          ? _value.girlsPages
+          // ignore: cast_nullable_to_non_nullable
+          : girlsPages as GirlsPages?,
     );
   }
 }

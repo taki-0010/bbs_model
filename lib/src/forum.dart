@@ -12,7 +12,7 @@ class ForumSettingsData {
       required this.theme,
       required this.retentionPeriod,
       // this.threadsOrder = ThreadsOrder.hot,
-      this.positionToGet = PositionToGet.first,
+      // this.positionToGet = PositionToGet.first,
       // this.commentCountDisplayThreshold = 5,
       this.openLink = true,
       this.blurThumbnail = false,
@@ -41,7 +41,7 @@ class ForumSettingsData {
   final ThemeList theme;
   final RetentionPeriodList retentionPeriod;
   // final ThreadsOrder threadsOrder;
-  final PositionToGet positionToGet;
+  // final PositionToGet positionToGet;
   // final int commentCountDisplayThreshold;
   final bool openLink;
   final bool blurThumbnail;

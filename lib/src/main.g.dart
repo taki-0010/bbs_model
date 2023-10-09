@@ -25,8 +25,6 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData boardName(String? boardName);
 
-  ThreadMarkData positionToGet(PositionToGet positionToGet);
-
   ThreadMarkData lastOpendIndex(int? lastOpendIndex);
 
   ThreadMarkData lastReadAt(int? lastReadAt);
@@ -49,6 +47,10 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData archived(bool archived);
 
+  ThreadMarkData range(RangeList? range);
+
+  ThreadMarkData lastPageOfGirlsCh(int? lastPageOfGirlsCh);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -65,7 +67,6 @@ abstract class _$ThreadMarkDataCWProxy {
     String? boardId,
     String? title,
     String? boardName,
-    PositionToGet? positionToGet,
     int? lastOpendIndex,
     int? lastReadAt,
     String? sessionId,
@@ -77,6 +78,8 @@ abstract class _$ThreadMarkDataCWProxy {
     List<String?>? importance,
     Set<int?>? agreedIndexSet,
     bool? archived,
+    RangeList? range,
+    int? lastPageOfGirlsCh,
   });
 }
 
@@ -113,10 +116,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
 
   @override
   ThreadMarkData boardName(String? boardName) => this(boardName: boardName);
-
-  @override
-  ThreadMarkData positionToGet(PositionToGet positionToGet) =>
-      this(positionToGet: positionToGet);
 
   @override
   ThreadMarkData lastOpendIndex(int? lastOpendIndex) =>
@@ -157,6 +156,13 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
   ThreadMarkData archived(bool archived) => this(archived: archived);
 
   @override
+  ThreadMarkData range(RangeList? range) => this(range: range);
+
+  @override
+  ThreadMarkData lastPageOfGirlsCh(int? lastPageOfGirlsCh) =>
+      this(lastPageOfGirlsCh: lastPageOfGirlsCh);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -174,7 +180,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? boardId = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? boardName = const $CopyWithPlaceholder(),
-    Object? positionToGet = const $CopyWithPlaceholder(),
     Object? lastOpendIndex = const $CopyWithPlaceholder(),
     Object? lastReadAt = const $CopyWithPlaceholder(),
     Object? sessionId = const $CopyWithPlaceholder(),
@@ -186,6 +191,8 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? importance = const $CopyWithPlaceholder(),
     Object? agreedIndexSet = const $CopyWithPlaceholder(),
     Object? archived = const $CopyWithPlaceholder(),
+    Object? range = const $CopyWithPlaceholder(),
+    Object? lastPageOfGirlsCh = const $CopyWithPlaceholder(),
   }) {
     return ThreadMarkData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -224,11 +231,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.boardName
           // ignore: cast_nullable_to_non_nullable
           : boardName as String?,
-      positionToGet:
-          positionToGet == const $CopyWithPlaceholder() || positionToGet == null
-              ? _value.positionToGet
-              // ignore: cast_nullable_to_non_nullable
-              : positionToGet as PositionToGet,
       lastOpendIndex: lastOpendIndex == const $CopyWithPlaceholder()
           ? _value.lastOpendIndex
           // ignore: cast_nullable_to_non_nullable
@@ -279,6 +281,14 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.archived
           // ignore: cast_nullable_to_non_nullable
           : archived as bool,
+      range: range == const $CopyWithPlaceholder()
+          ? _value.range
+          // ignore: cast_nullable_to_non_nullable
+          : range as RangeList?,
+      lastPageOfGirlsCh: lastPageOfGirlsCh == const $CopyWithPlaceholder()
+          ? _value.lastPageOfGirlsCh
+          // ignore: cast_nullable_to_non_nullable
+          : lastPageOfGirlsCh as int?,
     );
   }
 }
@@ -446,9 +456,6 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       boardId: json['boardId'] as String,
       title: json['title'] as String,
       boardName: json['boardName'] as String?,
-      positionToGet:
-          $enumDecodeNullable(_$PositionToGetEnumMap, json['positionToGet']) ??
-              PositionToGet.first,
       lastOpendIndex: json['lastOpendIndex'] as int?,
       lastReadAt: json['lastReadAt'] as int?,
       sessionId: json['sessionId'] as String,
@@ -468,6 +475,8 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
               .toSet() ??
           const {},
       archived: json['archived'] as bool? ?? false,
+      range: $enumDecodeNullable(_$RangeListEnumMap, json['range']),
+      lastPageOfGirlsCh: json['lastPageOfGirlsCh'] as int?,
     );
 
 Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
@@ -479,7 +488,6 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'boardId': instance.boardId,
       'boardName': instance.boardName,
       'url': instance.url,
-      'positionToGet': _$PositionToGetEnumMap[instance.positionToGet]!,
       'thumbnailStr': instance.thumbnailStr,
       'userId': instance.userId,
       'documentId': instance.documentId,
@@ -493,6 +501,8 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'importance': instance.importance,
       'agreedIndexSet': instance.agreedIndexSet.toList(),
       'archived': instance.archived,
+      'range': _$RangeListEnumMap[instance.range],
+      'lastPageOfGirlsCh': instance.lastPageOfGirlsCh,
     };
 
 const _$CommunitiesEnumMap = {
@@ -504,9 +514,18 @@ const _$CommunitiesEnumMap = {
   Communities.machi: 'machi',
 };
 
-const _$PositionToGetEnumMap = {
-  PositionToGet.first: 'first',
-  PositionToGet.last: 'last',
+const _$RangeListEnumMap = {
+  RangeList.to1000: 'to1000',
+  RangeList.to2000: 'to2000',
+  RangeList.to3000: 'to3000',
+  RangeList.to4000: 'to4000',
+  RangeList.to5000: 'to5000',
+  RangeList.to6000: 'to6000',
+  RangeList.to7000: 'to7000',
+  RangeList.to8000: 'to8000',
+  RangeList.to9000: 'to9000',
+  RangeList.to10000: 'to10000',
+  RangeList.last1000: 'last1000',
 };
 
 ResMarkData _$ResMarkDataFromJson(Map<String, dynamic> json) => ResMarkData(

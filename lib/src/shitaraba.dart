@@ -2,6 +2,24 @@ import 'package:model/src/importer.dart';
 
 part 'shitaraba.g.dart';
 
+enum RangeList {
+  to1000(min: 1, max: 1000),
+  to2000(min: 1001, max: 2000),
+  to3000(min: 2001, max: 3000),
+  to4000(min: 3001, max: 4000),
+  to5000(min: 4001, max: 5000),
+  to6000(min: 5001, max: 6000),
+  to7000(min: 6001, max: 7000),
+  to8000(min: 7001, max: 8000),
+  to9000(min: 8001, max: 9000),
+  to10000(min: 9001, max: 10000),
+  last1000(min: 0, max: 0);
+
+  const RangeList({required this.min, required this.max});
+  final int min;
+  final int max;
+}
+
 class ShitarabaData {
   static final host = Communities.shitaraba.host;
   static const sub = 'jbbs';
@@ -10,6 +28,7 @@ class ShitarabaData {
   static const writePath = 'bbs/write.cgi';
   static const search = 'jbbs/search/';
   static final topUrl = 'rentalbbs.shitaraba.com';
+  static const subject = 'subject.txt';
   static final idReg = RegExp(r'[0-9]{8,}');
   static String getThreadUrlPath(
       {required final String category,
@@ -201,6 +220,41 @@ class ShitarabaData {
       default:
         return '';
     }
+  }
+
+  static RangeList? getRange(final ThreadBase thread) {
+    if (thread.type != Communities.shitaraba) {
+      return null;
+    }
+    if (thread is ThreadData) {
+      return RangeList.last1000;
+    }
+    if (thread is ThreadMarkData) {
+      return thread.range;
+    }
+    return null;
+    // final range = RangeList.values.firstWhere(
+    //   (element) =>
+    //       element.min <= lastOpenedIndex && element.max >= lastOpenedIndex,
+    //   orElse: () => RangeList.to1000,
+    // );
+    // return range;
+  }
+
+  static String getRangePath(final RangeList range) {
+    if (range == RangeList.last1000) {
+      return 'l1000';
+    }
+    return '${range.min}-${range.max}';
+  }
+
+  static List<RangeList?> getRangeList(final int resCount) {
+    if (resCount <= 1000) {
+      return [];
+    }
+    final list =
+        RangeList.values.where((element) => element.min <= resCount).toList();
+    return list;
   }
 }
 

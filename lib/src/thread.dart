@@ -12,7 +12,7 @@ abstract class ThreadBase {
       required this.boardId,
       required this.url,
       this.boardName,
-      required this.positionToGet,
+      // required this.positionToGet,
       this.thumbnailStr});
   final String id;
   final Communities type;
@@ -21,7 +21,7 @@ abstract class ThreadBase {
   final String boardId;
   final String? boardName;
   final String url;
-  final PositionToGet positionToGet;
+  // final PositionToGet positionToGet;
   final String? thumbnailStr;
 
   double get ikioi {
@@ -128,7 +128,7 @@ class ThreadData extends ThreadBase {
       this.updateAtStr,
       required super.boardId,
       super.boardName,
-      super.positionToGet = PositionToGet.first,
+      // super.positionToGet = PositionToGet.first,
       this.catalog = false,
       this.isNewPost = false});
 
@@ -175,7 +175,9 @@ class ThreadContentData {
       // this.archived = false,
       this.threadLength = 1,
       this.content = const [],
-      required this.hot});
+      required this.hot,
+      this.range,
+      this.girlsPages});
   final String id;
   final String boardId;
   final Communities type;
@@ -184,6 +186,8 @@ class ThreadContentData {
   // final String title;
   final List<ContentData?> content;
   final double hot;
+  final RangeList? range;
+  final GirlsPages? girlsPages;
 
   int? get lastIndex => content.isNotEmpty ? content.last?.index : null;
 
@@ -316,12 +320,14 @@ class FetchContentResultData {
       this.statusCode,
       this.deleted,
       this.archived,
-      this.threadLength});
+      this.threadLength,
+      this.girlsPages});
   final List<ContentData?>? contentList;
   final int? statusCode;
   final bool? deleted;
   final bool? archived;
   final int? threadLength;
+  final GirlsPages? girlsPages;
 
   FetchResult get result {
     if (contentList != null && contentList!.isNotEmpty) {

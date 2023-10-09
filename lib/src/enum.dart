@@ -72,13 +72,13 @@ enum ThreadsOrderType {
   catalog;
 }
 
-enum PositionToGet {
-  first(label: 'First 1000 Comments'),
-  last(label: 'Last 1000 Comments');
+// enum PositionToGet {
+//   first(label: 'First 1000 Comments'),
+//   last(label: 'Last 1000 Comments');
 
-  const PositionToGet({required this.label});
-  final String label;
-}
+//   const PositionToGet({required this.label});
+//   final String label;
+// }
 
 enum MarkIcon {
   edit,
