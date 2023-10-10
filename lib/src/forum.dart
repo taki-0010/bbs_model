@@ -165,6 +165,11 @@ class InitialForumData {
             sortHistoryList: SortHistoryList.history,
             movedToLastThreads: MovedToLastThreads.over1000,
             retentionPeriod: RetentionPeriodList.oneMonth);
+        case Communities.open2Ch:
+          return base.copyWith(
+            theme: ThemeList.sanJuanBlue,
+            sortHistoryList: SortHistoryList.history,
+            retentionPeriod: RetentionPeriodList.oneWeek);
       default:
     }
     return null;

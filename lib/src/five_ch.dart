@@ -10,6 +10,9 @@ class FiveChData {
   static final idReg = RegExp(r'[0-9]{5,}');
   // https://egg.5ch.net/test/read.cgi/software/1690261572/l50
   // https://egg.5ch.net/software/dat/1690261572.dat
+  // static String? htmlUrlToDat(final String value){
+
+  // }
   static String? toDatUrl(final String value) {
     String? result;
     try {
@@ -160,6 +163,8 @@ class FiveChBoardData {
     final domain = replaced.substring(0, replaced.indexOf('/'));
     return domain;
   }
+
+
 
   factory FiveChBoardData.fromJson(Map<String, dynamic> json) =>
       _$FiveChBoardDataFromJson(json);

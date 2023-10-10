@@ -16,7 +16,8 @@ class BoardData {
       this.futabaCh,
       this.machi,
       this.shitarabaCategory,
-      this.shitarabaBoard});
+      this.shitarabaBoard,
+      this.open2chBoards = const[]});
   final String id;
   final String name;
   final Communities forum;
@@ -27,6 +28,7 @@ class BoardData {
   final MachiBoardData? machi;
   final ShitarabaCategoryData? shitarabaCategory;
   final ShitarabaBoardData? shitarabaBoard;
+  final List<BoardData?> open2chBoards;
 
   String? get sub => shitarabaBoard?.sub;
 
@@ -42,13 +44,13 @@ class FetchBoardsResultData {
     this.statusCode = 200,
   });
   final List<BoardData?>? boards;
-  final int statusCode;
+  final int? statusCode;
 
   FetchResult get result {
     if (boards != null && boards!.isNotEmpty) {
       return FetchResult.success;
     }
-    if (statusCode >= 400) {
+    if (statusCode != null && statusCode! >= 400) {
       return FetchResult.networkError;
     }
 

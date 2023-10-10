@@ -218,7 +218,7 @@ class FutabaData {
       required final String boardId,
       required final ThreadsOrderType order}) {
     final path = '$directory.$host/$boardId';
-    
+
     switch (order) {
       case ThreadsOrderType.catalog:
         return '$path/futaba.php$catalog';
@@ -256,6 +256,14 @@ class FutabaData {
   static String getUrlByPath(
       final String directory, final String boardId, final String threadId) {
     return '$directory.$host/$boardId/res/$threadId.htm';
+  }
+
+  static String getHost(final String directory) {
+    return '$directory.$host';
+  }
+
+  static String threadPath(final String boardId, final String threadId) {
+    return '$boardId/res/$threadId.htm';
   }
 
   static FutabaChThread? parseFromJson(
@@ -472,8 +480,16 @@ class FutabaChThread extends ThreadData with WithDateTime {
 
   // String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override
-  String get thumbnailUrl => thumbnail?.thumbnailUri ?? '';
+  String get thumbnailUrl => thumbnail?.thumbnailUri != null
+      ? Uri.tryParse(thumbnail!.thumbnailUri!).toString()
+      : '';
   // 'https://$directory.2chan.net${thumbnail?.thumbnailUri}';
+  // @override
+  // String get thumbnailUrl => Uri.https(
+  //         '$directory.${Communities.futabaCh.host}',
+  //         '${thumbnail?.thumbnailUri}')
+  //     .toString();
+  // // 'https://$directory.2chan.net${thumbnail?.thumbnailUri}';
 
   @override
   DateTime? get dateTime => DateTime.fromMillisecondsSinceEpoch(
@@ -523,12 +539,15 @@ class FutabaChContent extends ContentData with WithDateTime {
 
   @override
   String? get srcThumbnail => src?.thumbnailUri != null
-      ? 'https://$directory.2chan.net/${src?.thumbnailUri}'
+      ? Uri.https(
+              '$directory.${Communities.futabaCh.host}', '${src?.thumbnailUri}')
+          .toString()
       : null;
 
   @override
   String? get srcContent => src?.srcUri != null
-      ? 'https://$directory.2chan.net/${src?.srcUri}'
+      ? Uri.https('$directory.${Communities.futabaCh.host}', '${src?.srcUri}')
+          .toString()
       : null;
 
   @override

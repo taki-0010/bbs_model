@@ -511,6 +511,7 @@ const _$CommunitiesEnumMap = {
   Communities.futabaCh: 'futabaCh',
   Communities.pinkCh: 'pinkCh',
   Communities.shitaraba: 'shitaraba',
+  Communities.open2Ch: 'open2Ch',
   Communities.machi: 'machi',
 };
 

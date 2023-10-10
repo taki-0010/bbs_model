@@ -119,7 +119,9 @@ class GirlsChThread extends ThreadData with WithDateTime {
       : null;
 
   @override
-  String? get thumbnailUrl => thumbnail?.thumbnailUri;
+  String? get thumbnailUrl => thumbnail?.thumbnailUri != null
+      ? Uri.tryParse(thumbnail!.thumbnailUri!).toString()
+      : null;
 
   @override
   DateTime? get dateTime {
@@ -189,9 +191,11 @@ class GirlsChContent extends ContentData with WithDateTime {
   }
 
   @override
-  String? get srcThumbnail => src?.srcUri;
+  String? get srcThumbnail =>
+      src?.srcUri != null ? Uri.tryParse(src!.srcUri!).toString() : null;
   @override
-  String? get srcContent => src?.srcUri;
+  String? get srcContent =>
+      src?.srcUri != null ? Uri.tryParse(src!.srcUri!).toString() : null;
 
   @override
   String? get getPostId => id;

@@ -27,6 +27,8 @@ abstract class _$BoardDataCWProxy {
 
   BoardData shitarabaBoard(ShitarabaBoardData? shitarabaBoard);
 
+  BoardData open2chBoards(List<BoardData?> open2chBoards);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BoardData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -44,6 +46,7 @@ abstract class _$BoardDataCWProxy {
     MachiBoardData? machi,
     ShitarabaCategoryData? shitarabaCategory,
     ShitarabaBoardData? shitarabaBoard,
+    List<BoardData?>? open2chBoards,
   });
 }
 
@@ -87,6 +90,10 @@ class _$BoardDataCWProxyImpl implements _$BoardDataCWProxy {
       this(shitarabaBoard: shitarabaBoard);
 
   @override
+  BoardData open2chBoards(List<BoardData?> open2chBoards) =>
+      this(open2chBoards: open2chBoards);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BoardData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -105,6 +112,7 @@ class _$BoardDataCWProxyImpl implements _$BoardDataCWProxy {
     Object? machi = const $CopyWithPlaceholder(),
     Object? shitarabaCategory = const $CopyWithPlaceholder(),
     Object? shitarabaBoard = const $CopyWithPlaceholder(),
+    Object? open2chBoards = const $CopyWithPlaceholder(),
   }) {
     return BoardData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -147,6 +155,11 @@ class _$BoardDataCWProxyImpl implements _$BoardDataCWProxy {
           ? _value.shitarabaBoard
           // ignore: cast_nullable_to_non_nullable
           : shitarabaBoard as ShitarabaBoardData?,
+      open2chBoards:
+          open2chBoards == const $CopyWithPlaceholder() || open2chBoards == null
+              ? _value.open2chBoards
+              // ignore: cast_nullable_to_non_nullable
+              : open2chBoards as List<BoardData?>,
     );
   }
 }
@@ -318,6 +331,12 @@ BoardData _$BoardDataFromJson(Map<String, dynamic> json) => BoardData(
           ? null
           : ShitarabaBoardData.fromJson(
               json['shitarabaBoard'] as Map<String, dynamic>),
+      open2chBoards: (json['open2chBoards'] as List<dynamic>?)
+              ?.map((e) => e == null
+                  ? null
+                  : BoardData.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$BoardDataToJson(BoardData instance) => <String, dynamic>{
@@ -331,6 +350,7 @@ Map<String, dynamic> _$BoardDataToJson(BoardData instance) => <String, dynamic>{
       'machi': instance.machi?.toJson(),
       'shitarabaCategory': instance.shitarabaCategory?.toJson(),
       'shitarabaBoard': instance.shitarabaBoard?.toJson(),
+      'open2chBoards': instance.open2chBoards.map((e) => e?.toJson()).toList(),
     };
 
 const _$CommunitiesEnumMap = {
@@ -339,6 +359,7 @@ const _$CommunitiesEnumMap = {
   Communities.futabaCh: 'futabaCh',
   Communities.pinkCh: 'pinkCh',
   Communities.shitaraba: 'shitaraba',
+  Communities.open2Ch: 'open2Ch',
   Communities.machi: 'machi',
 };
 
