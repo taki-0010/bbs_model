@@ -272,7 +272,7 @@ class FutabaData {
         id: markData.id,
         title: markData.title,
         resCount: resCount,
-        directory: markData.futabaDirectory,
+        directory: markData.getSubdomain,
         boardId: markData.boardId,
         type: markData.type,
         url: markData.url);
@@ -509,7 +509,8 @@ class FutabaChThread extends ThreadData with WithDateTime {
 @immutable
 class FutabaChContent extends ContentData with WithDateTime {
   const FutabaChContent(
-      {required super.index,
+      {required super.forum,
+        required super.index,
       // this.thumbnail,
       super.src,
       required super.body,

@@ -205,7 +205,8 @@ class MachiContentDataFromJson {
 @immutable
 class MachiContentData extends ContentData with WithDateTime {
   const MachiContentData(
-      {required super.index,
+      {required super.forum,
+        required super.index,
       required super.name,
       required this.email,
       required this.dateAndId,

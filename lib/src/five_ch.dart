@@ -59,6 +59,16 @@ class FiveChData {
     return null;
   }
 
+  static String? getBoardIdFromHtmlUrl(final String value) {
+    final uri = Uri.tryParse(value);
+    logger.i('pathSeg: ${uri?.pathSegments}');
+    if (uri != null && uri.pathSegments.length >= 4) {
+      final id = uri.pathSegments[2];
+      return id;
+    }
+    return null;
+  }
+
   static String? toMobileBoardUrl(
       {required final String host,
       required final String boardId,
@@ -164,8 +174,6 @@ class FiveChBoardData {
     return domain;
   }
 
-
-
   factory FiveChBoardData.fromJson(Map<String, dynamic> json) =>
       _$FiveChBoardDataFromJson(json);
 
@@ -233,7 +241,8 @@ class FiveChThreadTitleData extends ThreadData with WithDateTime {
 @immutable
 class FiveChThreadContentData extends ContentData with WithDateTime {
   const FiveChThreadContentData(
-      {required super.index,
+      {required super.forum,
+      required super.index,
       required super.name,
       this.email,
       required this.dateAndId,

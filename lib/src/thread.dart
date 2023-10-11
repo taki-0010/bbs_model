@@ -74,13 +74,24 @@ abstract class ThreadBase {
     return null;
   }
 
+  String? get open2chUrlForHtml {
+    if (url.contains(Communities.open2Ch.host)) {
+      final sub = url.substring(0, url.indexOf('.'));
+      final path = '$sub.${Communities.open2Ch.host}/test/read.cgi/$boardId/$id';
+      return 'https://$path';
+    }
+    return null;
+  }
+
   String? get compatibleUrl =>
       fiveChUrlForHtml ??
       pinkChUrlForHtml ??
       machiUrlForHtml ??
+      open2chUrlForHtml ??
       shitarabaUrlForHtml;
 
   String? get htmlUrl {
+    
     switch (type) {
       case Communities.fiveCh:
         return fiveChUrlForHtml;
@@ -95,7 +106,7 @@ abstract class ThreadBase {
     }
   }
 
-  String get futabaDirectory {
+  String get getSubdomain {
     final origin = uri.host;
     final index = origin.indexOf('.');
     return origin.substring(0, index);

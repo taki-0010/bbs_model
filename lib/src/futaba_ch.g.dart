@@ -928,6 +928,8 @@ extension $FutabaChThreadCopyWith on FutabaChThread {
 }
 
 abstract class _$FutabaChContentCWProxy {
+  FutabaChContent forum(Communities forum);
+
   FutabaChContent index(int index);
 
   FutabaChContent src(SrcData? src);
@@ -963,6 +965,7 @@ abstract class _$FutabaChContentCWProxy {
   /// FutabaChContent(...).copyWith(id: 12, name: "My name")
   /// ````
   FutabaChContent call({
+    Communities? forum,
     int? index,
     SrcData? src,
     String? body,
@@ -985,6 +988,9 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
   const _$FutabaChContentCWProxyImpl(this._value);
 
   final FutabaChContent _value;
+
+  @override
+  FutabaChContent forum(Communities forum) => this(forum: forum);
 
   @override
   FutabaChContent index(int index) => this(index: index);
@@ -1038,6 +1044,7 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
   /// FutabaChContent(...).copyWith(id: 12, name: "My name")
   /// ````
   FutabaChContent call({
+    Object? forum = const $CopyWithPlaceholder(),
     Object? index = const $CopyWithPlaceholder(),
     Object? src = const $CopyWithPlaceholder(),
     Object? body = const $CopyWithPlaceholder(),
@@ -1054,6 +1061,10 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
     Object? quotes = const $CopyWithPlaceholder(),
   }) {
     return FutabaChContent(
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
       index: index == const $CopyWithPlaceholder() || index == null
           ? _value.index
           // ignore: cast_nullable_to_non_nullable
@@ -1284,6 +1295,7 @@ Map<String, dynamic> _$FutabaChBoardToJson(FutabaChBoard instance) =>
 
 FutabaChContent _$FutabaChContentFromJson(Map<String, dynamic> json) =>
     FutabaChContent(
+      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
       index: json['index'] as int,
       src: json['src'] == null
           ? null
@@ -1307,6 +1319,7 @@ FutabaChContent _$FutabaChContentFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$FutabaChContentToJson(FutabaChContent instance) =>
     <String, dynamic>{
+      'forum': _$CommunitiesEnumMap[instance.forum]!,
       'index': instance.index,
       'body': instance.body,
       'src': instance.src,
@@ -1322,3 +1335,13 @@ Map<String, dynamic> _$FutabaChContentToJson(FutabaChContent instance) =>
       'hash': instance.hash,
       'limit': instance.limit,
     };
+
+const _$CommunitiesEnumMap = {
+  Communities.fiveCh: 'fiveCh',
+  Communities.girlsCh: 'girlsCh',
+  Communities.futabaCh: 'futabaCh',
+  Communities.pinkCh: 'pinkCh',
+  Communities.shitaraba: 'shitaraba',
+  Communities.open2Ch: 'open2Ch',
+  Communities.machi: 'machi',
+};

@@ -565,6 +565,8 @@ extension $MachiContentDataFromJsonCopyWith on MachiContentDataFromJson {
 }
 
 abstract class _$MachiContentDataCWProxy {
+  MachiContentData forum(Communities forum);
+
   MachiContentData index(int index);
 
   MachiContentData name(String name);
@@ -588,6 +590,7 @@ abstract class _$MachiContentDataCWProxy {
   /// MachiContentData(...).copyWith(id: 12, name: "My name")
   /// ````
   MachiContentData call({
+    Communities? forum,
     int? index,
     String? name,
     String? email,
@@ -604,6 +607,9 @@ class _$MachiContentDataCWProxyImpl implements _$MachiContentDataCWProxy {
   const _$MachiContentDataCWProxyImpl(this._value);
 
   final MachiContentData _value;
+
+  @override
+  MachiContentData forum(Communities forum) => this(forum: forum);
 
   @override
   MachiContentData index(int index) => this(index: index);
@@ -638,6 +644,7 @@ class _$MachiContentDataCWProxyImpl implements _$MachiContentDataCWProxy {
   /// MachiContentData(...).copyWith(id: 12, name: "My name")
   /// ````
   MachiContentData call({
+    Object? forum = const $CopyWithPlaceholder(),
     Object? index = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? email = const $CopyWithPlaceholder(),
@@ -648,6 +655,10 @@ class _$MachiContentDataCWProxyImpl implements _$MachiContentDataCWProxy {
     Object? userId = const $CopyWithPlaceholder(),
   }) {
     return MachiContentData(
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
       index: index == const $CopyWithPlaceholder() || index == null
           ? _value.index
           // ignore: cast_nullable_to_non_nullable
@@ -795,6 +806,7 @@ Map<String, dynamic> _$MachiContentDataFromJsonToJson(
 
 MachiContentData _$MachiContentDataFromJson(Map<String, dynamic> json) =>
     MachiContentData(
+      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
       index: json['index'] as int,
       name: json['name'] as String,
       email: json['email'] as String,
@@ -808,6 +820,7 @@ MachiContentData _$MachiContentDataFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$MachiContentDataToJson(MachiContentData instance) =>
     <String, dynamic>{
+      'forum': _$CommunitiesEnumMap[instance.forum]!,
       'index': instance.index,
       'body': instance.body,
       'urlSet': instance.urlSet,
@@ -817,3 +830,13 @@ Map<String, dynamic> _$MachiContentDataToJson(MachiContentData instance) =>
       'email': instance.email,
       'dateAndId': instance.dateAndId,
     };
+
+const _$CommunitiesEnumMap = {
+  Communities.fiveCh: 'fiveCh',
+  Communities.girlsCh: 'girlsCh',
+  Communities.futabaCh: 'futabaCh',
+  Communities.pinkCh: 'pinkCh',
+  Communities.shitaraba: 'shitaraba',
+  Communities.open2Ch: 'open2Ch',
+  Communities.machi: 'machi',
+};

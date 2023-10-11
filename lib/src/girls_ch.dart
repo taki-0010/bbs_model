@@ -159,7 +159,8 @@ class GirlsChThread extends ThreadData with WithDateTime {
 @immutable
 class GirlsChContent extends ContentData with WithDateTime {
   const GirlsChContent(
-      {required super.index,
+      {required super.forum,
+        required super.index,
       required super.name,
       required super.body,
       super.src,

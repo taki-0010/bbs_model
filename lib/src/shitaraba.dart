@@ -334,7 +334,8 @@ class ShitarabaThreadData extends ThreadData with WithDateTime {
 @immutable
 class ShitarabaContentData extends ContentData with WithDateTime {
   const ShitarabaContentData(
-      {required super.index,
+      {required super.forum,
+        required super.index,
       required super.name,
       this.email,
       // required this.dateAndId,

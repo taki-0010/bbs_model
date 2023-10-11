@@ -114,7 +114,8 @@ class ImportanceData {
 
 abstract class ContentData {
   const ContentData(
-      {required this.index,
+      {required this.forum,
+      required this.index,
       required this.body,
       this.urlSet,
       this.src,
@@ -122,6 +123,7 @@ abstract class ContentData {
       this.userId,
       this.threadThumbnail,
       required this.name});
+  final Communities forum;
   final int index;
   final String body;
   final List<String?>? urlSet;

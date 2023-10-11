@@ -642,6 +642,8 @@ extension $FiveChThreadTitleDataCopyWith on FiveChThreadTitleData {
 }
 
 abstract class _$FiveChThreadContentDataCWProxy {
+  FiveChThreadContentData forum(Communities forum);
+
   FiveChThreadContentData index(int index);
 
   FiveChThreadContentData name(String name);
@@ -669,6 +671,7 @@ abstract class _$FiveChThreadContentDataCWProxy {
   /// FiveChThreadContentData(...).copyWith(id: 12, name: "My name")
   /// ````
   FiveChThreadContentData call({
+    Communities? forum,
     int? index,
     String? name,
     String? email,
@@ -688,6 +691,9 @@ class _$FiveChThreadContentDataCWProxyImpl
   const _$FiveChThreadContentDataCWProxyImpl(this._value);
 
   final FiveChThreadContentData _value;
+
+  @override
+  FiveChThreadContentData forum(Communities forum) => this(forum: forum);
 
   @override
   FiveChThreadContentData index(int index) => this(index: index);
@@ -730,6 +736,7 @@ class _$FiveChThreadContentDataCWProxyImpl
   /// FiveChThreadContentData(...).copyWith(id: 12, name: "My name")
   /// ````
   FiveChThreadContentData call({
+    Object? forum = const $CopyWithPlaceholder(),
     Object? index = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? email = const $CopyWithPlaceholder(),
@@ -742,6 +749,10 @@ class _$FiveChThreadContentDataCWProxyImpl
     Object? userId = const $CopyWithPlaceholder(),
   }) {
     return FiveChThreadContentData(
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
       index: index == const $CopyWithPlaceholder() || index == null
           ? _value.index
           // ignore: cast_nullable_to_non_nullable
@@ -865,6 +876,7 @@ Map<String, dynamic> _$FiveChBoardDataToJson(FiveChBoardData instance) =>
 FiveChThreadContentData _$FiveChThreadContentDataFromJson(
         Map<String, dynamic> json) =>
     FiveChThreadContentData(
+      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
       index: json['index'] as int,
       name: json['name'] as String,
       email: json['email'] as String?,
@@ -881,6 +893,7 @@ FiveChThreadContentData _$FiveChThreadContentDataFromJson(
 Map<String, dynamic> _$FiveChThreadContentDataToJson(
         FiveChThreadContentData instance) =>
     <String, dynamic>{
+      'forum': _$CommunitiesEnumMap[instance.forum]!,
       'index': instance.index,
       'body': instance.body,
       'urlSet': instance.urlSet,
@@ -892,3 +905,13 @@ Map<String, dynamic> _$FiveChThreadContentDataToJson(
       'domain': instance.domain,
       'directoryName': instance.directoryName,
     };
+
+const _$CommunitiesEnumMap = {
+  Communities.fiveCh: 'fiveCh',
+  Communities.girlsCh: 'girlsCh',
+  Communities.futabaCh: 'futabaCh',
+  Communities.pinkCh: 'pinkCh',
+  Communities.shitaraba: 'shitaraba',
+  Communities.open2Ch: 'open2Ch',
+  Communities.machi: 'machi',
+};

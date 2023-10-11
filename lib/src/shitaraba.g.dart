@@ -281,6 +281,8 @@ extension $ShitarabaThreadDataCopyWith on ShitarabaThreadData {
 }
 
 abstract class _$ShitarabaContentDataCWProxy {
+  ShitarabaContentData forum(Communities forum);
+
   ShitarabaContentData index(int index);
 
   ShitarabaContentData name(String name);
@@ -310,6 +312,7 @@ abstract class _$ShitarabaContentDataCWProxy {
   /// ShitarabaContentData(...).copyWith(id: 12, name: "My name")
   /// ````
   ShitarabaContentData call({
+    Communities? forum,
     int? index,
     String? name,
     String? email,
@@ -330,6 +333,9 @@ class _$ShitarabaContentDataCWProxyImpl
   const _$ShitarabaContentDataCWProxyImpl(this._value);
 
   final ShitarabaContentData _value;
+
+  @override
+  ShitarabaContentData forum(Communities forum) => this(forum: forum);
 
   @override
   ShitarabaContentData index(int index) => this(index: index);
@@ -373,6 +379,7 @@ class _$ShitarabaContentDataCWProxyImpl
   /// ShitarabaContentData(...).copyWith(id: 12, name: "My name")
   /// ````
   ShitarabaContentData call({
+    Object? forum = const $CopyWithPlaceholder(),
     Object? index = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? email = const $CopyWithPlaceholder(),
@@ -386,6 +393,10 @@ class _$ShitarabaContentDataCWProxyImpl
     Object? userId = const $CopyWithPlaceholder(),
   }) {
     return ShitarabaContentData(
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
       index: index == const $CopyWithPlaceholder() || index == null
           ? _value.index
           // ignore: cast_nullable_to_non_nullable
@@ -476,6 +487,7 @@ Map<String, dynamic> _$ShitarabaBoardDataToJson(ShitarabaBoardData instance) =>
 ShitarabaContentData _$ShitarabaContentDataFromJson(
         Map<String, dynamic> json) =>
     ShitarabaContentData(
+      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
       index: json['index'] as int,
       name: json['name'] as String,
       email: json['email'] as String?,
@@ -493,6 +505,7 @@ ShitarabaContentData _$ShitarabaContentDataFromJson(
 Map<String, dynamic> _$ShitarabaContentDataToJson(
         ShitarabaContentData instance) =>
     <String, dynamic>{
+      'forum': _$CommunitiesEnumMap[instance.forum]!,
       'index': instance.index,
       'body': instance.body,
       'urlSet': instance.urlSet,
@@ -505,3 +518,13 @@ Map<String, dynamic> _$ShitarabaContentDataToJson(
       'id': instance.id,
       'date': instance.date,
     };
+
+const _$CommunitiesEnumMap = {
+  Communities.fiveCh: 'fiveCh',
+  Communities.girlsCh: 'girlsCh',
+  Communities.futabaCh: 'futabaCh',
+  Communities.pinkCh: 'pinkCh',
+  Communities.shitaraba: 'shitaraba',
+  Communities.open2Ch: 'open2Ch',
+  Communities.machi: 'machi',
+};

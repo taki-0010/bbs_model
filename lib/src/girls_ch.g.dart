@@ -195,6 +195,8 @@ extension $GirlsChThreadCopyWith on GirlsChThread {
 }
 
 abstract class _$GirlsChContentCWProxy {
+  GirlsChContent forum(Communities forum);
+
   GirlsChContent index(int index);
 
   GirlsChContent name(String name);
@@ -226,6 +228,7 @@ abstract class _$GirlsChContentCWProxy {
   /// GirlsChContent(...).copyWith(id: 12, name: "My name")
   /// ````
   GirlsChContent call({
+    Communities? forum,
     int? index,
     String? name,
     String? body,
@@ -246,6 +249,9 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
   const _$GirlsChContentCWProxyImpl(this._value);
 
   final GirlsChContent _value;
+
+  @override
+  GirlsChContent forum(Communities forum) => this(forum: forum);
 
   @override
   GirlsChContent index(int index) => this(index: index);
@@ -293,6 +299,7 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
   /// GirlsChContent(...).copyWith(id: 12, name: "My name")
   /// ````
   GirlsChContent call({
+    Object? forum = const $CopyWithPlaceholder(),
     Object? index = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? body = const $CopyWithPlaceholder(),
@@ -307,6 +314,10 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
     Object? urlSet = const $CopyWithPlaceholder(),
   }) {
     return GirlsChContent(
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
       index: index == const $CopyWithPlaceholder() || index == null
           ? _value.index
           // ignore: cast_nullable_to_non_nullable
@@ -382,6 +393,7 @@ Map<String, dynamic> _$GirlsChCategoryToJson(GirlsChCategory instance) =>
 
 GirlsChContent _$GirlsChContentFromJson(Map<String, dynamic> json) =>
     GirlsChContent(
+      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
       index: json['index'] as int,
       name: json['name'] as String,
       body: json['body'] as String,
@@ -401,6 +413,7 @@ GirlsChContent _$GirlsChContentFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$GirlsChContentToJson(GirlsChContent instance) =>
     <String, dynamic>{
+      'forum': _$CommunitiesEnumMap[instance.forum]!,
       'index': instance.index,
       'body': instance.body,
       'urlSet': instance.urlSet,
@@ -414,3 +427,13 @@ Map<String, dynamic> _$GirlsChContentToJson(GirlsChContent instance) =>
       'id': instance.id,
       'categoryId': instance.categoryId,
     };
+
+const _$CommunitiesEnumMap = {
+  Communities.fiveCh: 'fiveCh',
+  Communities.girlsCh: 'girlsCh',
+  Communities.futabaCh: 'futabaCh',
+  Communities.pinkCh: 'pinkCh',
+  Communities.shitaraba: 'shitaraba',
+  Communities.open2Ch: 'open2Ch',
+  Communities.machi: 'machi',
+};
