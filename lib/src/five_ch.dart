@@ -7,12 +7,17 @@ class FiveChData {
   static const permissionOfficial = '0644';
   static const subdomainForMobile = 'itest';
   static const pathForMobile = 'subback';
+  static const threadPath = 'test/read.cgi';
   static final idReg = RegExp(r'[0-9]{5,}');
+  // thread pc
   // https://egg.5ch.net/test/read.cgi/software/1690261572/l50
   // https://egg.5ch.net/software/dat/1690261572.dat
-  // static String? htmlUrlToDat(final String value){
+  // thread mb
+  // https://itest.5ch.net/asahi/test/read.cgi/newsplus/1697080449
 
-  // }
+  // board
+  // mb https://itest.5ch.net/subback/covid19
+  // pc https://krsw.5ch.net/covid19
   static String? toDatUrl(final String value) {
     String? result;
     try {
@@ -65,6 +70,72 @@ class FiveChData {
     if (uri != null && uri.pathSegments.length >= 4) {
       final id = uri.pathSegments[2];
       return id;
+    }
+    return null;
+  }
+
+  static bool? uriIsThreadOrBoard(final Uri uri, final Communities forum) {
+    if (!uri.host.contains(forum.host)) {
+      return null;
+    }
+    if (uri.path.contains(threadPath)) {
+      return true;
+    }
+
+    if (uri.pathSegments.isNotEmpty) {
+      String? seg;
+      if (uri.host.contains(subdomainForMobile) &&
+          uri.path.contains(pathForMobile) &&
+          uri.pathSegments.length >= 2) {
+        seg = uri.pathSegments[1];
+      } else {
+        seg = uri.pathSegments.first;
+      }
+      final name = FiveChBoardNames.getById(seg);
+      if (name != null) {
+        return false;
+      }
+    }
+    return null;
+  }
+
+  static String? getThreadIdFromUri(final Uri uri, final Communities forum) {
+    final tob = uriIsThreadOrBoard(uri, forum);
+    if (tob == null || !tob) {
+      return null;
+    }
+    final path = uri.path;
+    final mached = idReg.firstMatch(path);
+    if (mached != null) {
+      return mached.group(0);
+    }
+    return null;
+  }
+
+
+
+  static String? getBoardIdFromUri(final Uri uri, final Communities forum) {
+    final tob = uriIsThreadOrBoard(uri, forum);
+    if (tob == null) {
+      return null;
+    }
+    final seg = uri.pathSegments;
+    if (tob) {
+      if (uri.host.contains(subdomainForMobile) && seg.length >= 4) {
+        return seg[3];
+      }
+      if (uri.path.contains('.dat') && seg.isNotEmpty) {
+        return seg[0];
+      }
+      if (seg.length >= 3) {
+        return seg[2];
+      }
+    }
+    if (uri.host.contains(subdomainForMobile) && seg.length >= 2) {
+      return seg[1];
+    }
+    if (seg.isNotEmpty) {
+      return seg[0];
     }
     return null;
   }

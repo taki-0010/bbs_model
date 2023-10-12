@@ -74,7 +74,7 @@ Map<String, dynamic> stringToJson(final String value) {
 
 class StringMethodData {
   static final escape = HtmlUnescape();
-  static const urlReg = r'''https://[\w!\?/\+\-_~=;\.,\*&@#\$%\(\)'\[\]]+''';
+  static const urlReg = r'''h?ttps?://[\w!\?/\+\-_~=;\.,\*&@#\$%\(\)'\[\]]+''';
   static const idReg8 = r'''ID:.{8}''';
   static const idReg4 = r'''ID:.{4}''';
   static String? getYoutubeStr(final String value) => getIdFromUrl(value);

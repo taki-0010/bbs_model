@@ -26,10 +26,19 @@ class ShitarabaData {
   static const threadPath = 'bbs/rawmode.cgi';
   static const htmlPath = 'bbs/read.cgi';
   static const writePath = 'bbs/write.cgi';
+  static const subjectPath = 'bbs/subject.cgi';
   static const search = 'jbbs/search/';
   static final topUrl = 'rentalbbs.shitaraba.com';
   static const subject = 'subject.txt';
   static final idReg = RegExp(r'[0-9]{8,}');
+
+  // board
+  //pc https://jbbs.shitaraba.net/music/28333/
+  //mb https://jbbs.shitaraba.net/bbs/subject.cgi/music/28333/
+  // thread
+  //htm https://jbbs.shitaraba.net/bbs/read.cgi/music/28333/1696818255/l50
+  //dat https://jbbs.shitaraba.net/bbs/rawmode.cgi/music/28333/1696818255/l50
+
   static String getThreadUrlPath(
       {required final String category,
       required final String boardId,
@@ -49,6 +58,29 @@ class ShitarabaData {
     required final String boardId,
   }) {
     return '$category/$boardId';
+  }
+
+  static bool? uriIsThreadOrBoard(final Uri uri) {
+    if (!uri.host.contains(host)) {
+      return null;
+    }
+    final path = uri.path;
+    if (path.contains(htmlPath) || path.contains(threadPath)) {
+      return true;
+    }
+    final seg = uri.pathSegments;
+    if (seg.length >= 2) {
+      int? boardId;
+      if (uri.path.contains(subjectPath)) {
+        boardId = int.tryParse(seg[3]);
+      } else {
+        boardId = int.tryParse(seg[1]);
+      }
+      if (boardId != null) {
+        return false;
+      }
+    }
+    return null;
   }
 
   static Uri? _validate(final String url) {
@@ -121,6 +153,37 @@ class ShitarabaData {
     }
     final data = id.first.group(0);
     return data;
+  }
+
+  static String? getBoardIdFromUri(final Uri uri) {
+    final threadOrBoard = uriIsThreadOrBoard(uri);
+    if (threadOrBoard == null) {
+      return null;
+    }
+    final path = uri.path;
+    final seg = uri.pathSegments;
+    if (path.contains('bbs/')) {
+      if (seg.length >= 4) {
+        return seg[3];
+      }
+    }
+    if (seg.length >= 2) {
+      return seg[1];
+    }
+    return null;
+  }
+
+  static String? getThreadIdFromUri(final Uri uri) {
+    final threadOrBoard = uriIsThreadOrBoard(uri);
+    if (threadOrBoard == null || !threadOrBoard) {
+      return null;
+    }
+    final path = uri.path;
+    final mached = idReg.firstMatch(path);
+    if (mached != null) {
+      return mached.group(0);
+    }
+    return null;
   }
 
   static String? getFavoriteStr(final String url) {
@@ -335,7 +398,7 @@ class ShitarabaThreadData extends ThreadData with WithDateTime {
 class ShitarabaContentData extends ContentData with WithDateTime {
   const ShitarabaContentData(
       {required super.forum,
-        required super.index,
+      required super.index,
       required super.name,
       this.email,
       // required this.dateAndId,

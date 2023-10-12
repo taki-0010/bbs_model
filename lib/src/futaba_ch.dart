@@ -213,6 +213,89 @@ class FutabaData {
   static final bbsmenuSp = 'www.$host/i.htm';
   static const catalog = '?mode=cat';
   static const sort = '&sort=';
+  static const index2 = 'index2.html';
+  static const sp = 'i.htm';
+  static const spv = 'v.php';
+
+  // board
+  // https://jun.2chan.net/jun/futaba.htm
+  // https://jun.2chan.net/jun/futaba.php?mode=cat
+  // https://jun.2chan.net/v.php?jun&guid=on
+
+  // thread
+  //pc https://jun.2chan.net/jun/res/24276309.htm
+  //pc https://jun.2chan.net/v.php?jun.24276309
+
+  static bool? uriIsThreadOrBoard(final Uri uri) {
+    if (!uri.host.contains(host)) {
+      return null;
+    }
+    if (uri.path.contains('futaba.htm') || uri.path.contains('futaba.php')) {
+      return false;
+    }
+    final path = uri.path;
+
+    if (path.isNotEmpty && path.contains('/res/')) {
+      return true;
+    }
+    if (path.contains(spv)) {
+      final parm = uri.queryParameters;
+      if (parm.keys.contains('guid')) {
+        return false;
+      }
+      return true;
+    }
+    return null;
+  }
+
+  static String? getBoardIdFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null) {
+      return null;
+    }
+    final path = uri.path;
+    final seg = uri.pathSegments;
+    if (path.contains(spv)) {
+      final prm = uri.queryParameters;
+      if (prm.keys.isNotEmpty) {
+        final prmKey = prm.keys.first;
+        final dot = prmKey.indexOf('.');
+        final id = dot == -1 ? prmKey : prmKey.substring(0, dot);
+        final name = FutabaChBoardNames.getById(id);
+        if (name != null) {
+          return id;
+        }
+      }
+    }
+    if (seg.length >= 2) {
+      return seg.first;
+    }
+    return null;
+  }
+
+  static String? getThreadIdFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null || !tob) {
+      return null;
+    }
+    final path = uri.path;
+    final seg = uri.pathSegments;
+    if (path.contains('/res/') && seg.length >= 3) {
+      return seg[2];
+    }
+    if (path.contains(spv)) {
+      final prm = uri.queryParameters;
+      if (prm.keys.isNotEmpty) {
+        final ptmKey = prm.keys.first;
+        final dot = ptmKey.indexOf('.');
+        if (dot != -1) {
+          return ptmKey.substring(dot + 1);
+        }
+      }
+    }
+    return null;
+  }
+
   static String getBoardPath(
       {required final String directory,
       required final String boardId,
@@ -510,7 +593,7 @@ class FutabaChThread extends ThreadData with WithDateTime {
 class FutabaChContent extends ContentData with WithDateTime {
   const FutabaChContent(
       {required super.forum,
-        required super.index,
+      required super.index,
       // this.thumbnail,
       super.src,
       required super.body,

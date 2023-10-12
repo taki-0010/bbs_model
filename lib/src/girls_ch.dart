@@ -7,6 +7,47 @@ class GirlsChData {
   static const topics = 'topics';
   static const category = 'category';
   static final categoryPath = 'https://$host/$topics/$category';
+
+  static bool? uriIsThreadOrBoard(final Uri uri) {
+    if (!uri.host.contains(host)) {
+      return null;
+    }
+    if (uri.path.contains(category)) {
+      return false;
+    }
+    if (uri.path.contains(topics)) {
+      return true;
+    }
+    return null;
+  }
+
+  static String? getBoardIdFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null) {
+      return null;
+    }
+    final seg = uri.pathSegments;
+    if (tob) {
+      return null;
+    }
+    if (seg.length >= 3 && getBoardNameById(seg[2]) != null) {
+      return seg[2];
+    }
+    return null;
+  }
+
+  static String? getThreadIdFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null || !tob) {
+      return null;
+    }
+    final path = uri.pathSegments;
+    if (path.length >= 2 && int.tryParse(path[1]) != null) {
+      return path[1];
+    }
+    return null;
+  }
+
   static String? getBoardNameById(final String? id) {
     switch (id) {
       case 'animal':
@@ -160,7 +201,7 @@ class GirlsChThread extends ThreadData with WithDateTime {
 class GirlsChContent extends ContentData with WithDateTime {
   const GirlsChContent(
       {required super.forum,
-        required super.index,
+      required super.index,
       required super.name,
       required super.body,
       super.src,

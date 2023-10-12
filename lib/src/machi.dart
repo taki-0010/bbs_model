@@ -7,6 +7,54 @@ class MachiData {
   static const threads = 'bbs/json.cgi';
   static const bbsMenu = 'bbsmenu.html';
   static const search = 'bbs/search.cgi';
+  static const threadPath = 'bbs/read.cgi';
+  static const sp = 'sp.html';
+
+  static bool? uriIsThreadOrBoard(final Uri uri) {
+    if (!uri.host.contains(host)) {
+      return null;
+    }
+    if (uri.path.contains(threadPath)) {
+      return true;
+    }
+    final path = uri.pathSegments;
+    if (getBoardNameById(path.first).isNotEmpty) {
+      return false;
+    }
+    return null;
+  }
+
+  static String? getBoardIdFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null) {
+      return null;
+    }
+    final path = uri.path;
+    final seg = uri.pathSegments;
+    if (tob) {
+      if (path.contains(threadPath) && seg.length >= 3) {
+        return seg[2];
+      }
+    }
+    if (seg.isNotEmpty && getBoardNameById(seg.first).isNotEmpty) {
+      return seg.first;
+    }
+    return null;
+  }
+
+  static String? getThreadIdFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null || !tob) {
+      return null;
+    }
+    final path = uri.path;
+    final mached = FiveChData.idReg.firstMatch(path);
+    if (mached != null) {
+      return mached.group(0);
+    }
+    return null;
+  }
+
   static String? getThreadIdFromUrl(final String url) {
     return '';
   }
@@ -206,7 +254,7 @@ class MachiContentDataFromJson {
 class MachiContentData extends ContentData with WithDateTime {
   const MachiContentData(
       {required super.forum,
-        required super.index,
+      required super.index,
       required super.name,
       required this.email,
       required this.dateAndId,
