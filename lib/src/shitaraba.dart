@@ -155,6 +155,24 @@ class ShitarabaData {
     return data;
   }
 
+  static String? getCategoryFromUri(final Uri uri) {
+    final threadOrBoard = uriIsThreadOrBoard(uri);
+    if (threadOrBoard == null) {
+      return null;
+    }
+    final path = uri.path;
+    final seg = uri.pathSegments;
+    if (path.contains('bbs/')) {
+      if (seg.length >= 4) {
+        return seg[2];
+      }
+    }
+    if (seg.length >= 2) {
+      return seg[0];
+    }
+    return null;
+  }
+
   static String? getBoardIdFromUri(final Uri uri) {
     final threadOrBoard = uriIsThreadOrBoard(uri);
     if (threadOrBoard == null) {
@@ -186,9 +204,9 @@ class ShitarabaData {
     return null;
   }
 
-  static String? getFavoriteStr(final String url) {
-    final category = getCategoryFromUrl(url);
-    final boardId = getBoardIdFromUrl(url);
+  static String? getFavoriteStr(final Uri uri) {
+    final category = getCategoryFromUri(uri);
+    final boardId = getBoardIdFromUri(uri);
     if (category != null && boardId != null) {
       return favoriteBoardStr(category: category, boardId: boardId);
     }

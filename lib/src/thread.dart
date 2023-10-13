@@ -231,8 +231,8 @@ class FetchThreadsResultData {
 
 @immutable
 class LinkData {
-  const LinkData({required this.url, required this.type, this.embed});
-  final String url;
+  const LinkData({required this.uri, required this.type, this.embed});
+  final Uri uri;
   final OpenLinkList type;
   final EmbedSite? embed;
 
@@ -254,7 +254,7 @@ style= "position: relative;
     display:block;" src="https://www.youtube.com/embed/{{str}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ''';
   String youtubeEmbed() {
-    final id = getIdFromUrl(url);
+    final id = getIdFromUrl(uri.toString());
     if (id != null) {
       return youtubeEmbeStr.replaceAll('{{str}}', id);
     }
@@ -266,7 +266,7 @@ style= "position: relative;
 ''';
 
   String? xComEmbed() {
-    return UrlParser.xComEmbed(url);
+    return UrlParser.xComEmbed(uri.toString());
     // if (!url.contains('status/')) {
     //   return null;
     // }

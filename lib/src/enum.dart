@@ -119,7 +119,16 @@ enum ImportanceTarget {
 //   final String label;
 // }
 
-enum OpenLinkList { dialog, browser, embed, copy }
+enum OpenLinkList {
+  dialog,
+  browser,
+  embed,
+  copy,
+  addToFav,
+  removeFromFav,
+  addToHistory,
+  removeFromHistory
+}
 
 enum EmbedSite { xCom, youtube }
 
