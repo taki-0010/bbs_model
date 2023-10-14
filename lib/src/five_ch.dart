@@ -8,6 +8,7 @@ class FiveChData {
   static const subdomainForMobile = 'itest';
   static const pathForMobile = 'subback';
   static const threadPath = 'test/read.cgi';
+  static const wiki = 'index.php';
   static final idReg = RegExp(r'[0-9]{5,}');
   // thread pc
   // https://egg.5ch.net/test/read.cgi/software/1690261572/l50
@@ -18,67 +19,86 @@ class FiveChData {
   // board
   // mb https://itest.5ch.net/subback/covid19
   // pc https://krsw.5ch.net/covid19
-  static String? toDatUrl(final String value) {
-    String? result;
-    try {
-      if (value.contains('test/read.cgi/')) {
-        result = value.replaceAll('test/read.cgi/', '');
-      } else {
-        return null;
-      }
-      final splited = result.split('/');
-      final id = splited.firstWhere(
-        (element) => element.contains(idReg),
-        orElse: () => '',
-      );
-      if (id.isEmpty) {
-        return null;
-      }
-      final path = result.substring(0, result.indexOf(idReg));
-      result = '${path}dat/$id.dat';
-      return result;
-    } catch (e) {
-      logger.e(e);
+
+
+
+  static Uri? htmlToDatUri(final Uri uri, final Communities forum) {
+    final threadId = getThreadIdFromUri(uri, forum);
+    final directory = getDirectoryFromUri(uri, forum);
+    final boardId = getBoardIdFromUri(uri, forum);
+    if (threadId != null && directory != null && boardId != null) {
+      return Uri.https('$directory.${forum.host}', '$boardId/dat/$threadId.dat');
     }
     return null;
   }
 
-  static String? getId(final String value) {
-    try {
-      final id = idReg.allMatches(value);
-      final data = id.first.group(0);
-      return data;
-    } catch (e) {
-      logger.e(e);
-    }
-    return null;
-  }
+  // static String? toDatUrl(final String value) {
+  //   String? result;
+  //   try {
+  //     if (value.contains('test/read.cgi/')) {
+  //       result = value.replaceAll('test/read.cgi/', '');
+  //     } else {
+  //       return null;
+  //     }
+  //     final splited = result.split('/');
+  //     final id = splited.firstWhere(
+  //       (element) => element.contains(idReg),
+  //       orElse: () => '',
+  //     );
+  //     if (id.isEmpty) {
+  //       return null;
+  //     }
+  //     final path = result.substring(0, result.indexOf(idReg));
+  //     result = '${path}dat/$id.dat';
+  //     return result;
+  //   } catch (e) {
+  //     logger.e(e);
+  //   }
+  //   return null;
+  // }
 
-  static String? getBoardIdFromDat(final String value) {
-    try {
-      final uri = Uri.parse(value);
-      return uri.pathSegments[0];
-    } catch (e) {
-      logger.e(e);
-    }
-    return null;
-  }
+  // static String? getId(final String value) {
+  //   try {
+  //     final id = idReg.allMatches(value);
+  //     final data = id.first.group(0);
+  //     return data;
+  //   } catch (e) {
+  //     logger.e(e);
+  //   }
+  //   return null;
+  // }
 
-  static String? getBoardIdFromHtmlUrl(final String value) {
-    final uri = Uri.tryParse(value);
-    logger.i('pathSeg: ${uri?.pathSegments}');
-    if (uri != null && uri.pathSegments.length >= 4) {
-      final id = uri.pathSegments[2];
-      return id;
-    }
-    return null;
-  }
+  // static String? getBoardIdFromDat(final String value) {
+  //   try {
+  //     final uri = Uri.parse(value);
+  //     return uri.pathSegments[0];
+  //   } catch (e) {
+  //     logger.e(e);
+  //   }
+  //   return null;
+  // }
+
+  // static String? getBoardIdFromHtmlUrl(final String value) {
+  //   final uri = Uri.tryParse(value);
+  //   logger.i('pathSeg: ${uri?.pathSegments}');
+  //   if (uri != null && uri.pathSegments.length >= 4) {
+  //     final id = uri.pathSegments[2];
+  //     return id;
+  //   }
+  //   return null;
+  // }
 
   static bool? uriIsThreadOrBoard(final Uri uri, final Communities forum) {
     if (!uri.host.contains(forum.host)) {
       return null;
     }
+    if (uri.path.contains(wiki)) {
+      return null;
+    }
     if (uri.path.contains(threadPath)) {
+      return true;
+    }
+    if (uri.path.endsWith('.dat')) {
       return true;
     }
 
@@ -101,18 +121,41 @@ class FiveChData {
 
   static String? getThreadIdFromUri(final Uri uri, final Communities forum) {
     final tob = uriIsThreadOrBoard(uri, forum);
+    // logger.d('getThreadIdFromUri: tob: $tob, uri: $uri');
     if (tob == null || !tob) {
       return null;
     }
     final path = uri.path;
     final mached = idReg.firstMatch(path);
+    // logger.d('getThreadIdFromUri: path: $path, ${mached?.group(0)}');
     if (mached != null) {
       return mached.group(0);
     }
     return null;
   }
 
-
+  static String? getDirectoryFromUri(final Uri uri, final Communities forum) {
+    final tob = uriIsThreadOrBoard(uri, forum);
+    if (tob == null) {
+      return null;
+    }
+    final seg = uri.pathSegments;
+    if (uri.host.contains(subdomainForMobile)) {
+      if (!tob) {
+        return null;
+      }
+      if (seg.length >= 2) {
+        return seg.first;
+      }
+    } else {
+      final host = uri.host;
+      final splited = host.split('.');
+      if (splited.length >= 3) {
+        return splited.first;
+      }
+    }
+    return null;
+  }
 
   static String? getBoardIdFromUri(final Uri uri, final Communities forum) {
     final tob = uriIsThreadOrBoard(uri, forum);

@@ -273,6 +273,7 @@ class FutabaData {
     return null;
   }
 
+// https://may.2chan.net/b/res/1147290458.htm
   static String? getThreadIdFromUri(final Uri uri) {
     final tob = uriIsThreadOrBoard(uri);
     if (tob == null || !tob) {
@@ -281,7 +282,11 @@ class FutabaData {
     final path = uri.path;
     final seg = uri.pathSegments;
     if (path.contains('/res/') && seg.length >= 3) {
-      return seg[2];
+      final id = seg[2];
+      final dot = id.indexOf('.');
+      if (dot != -1) {
+        return id.substring(0, dot);
+      }
     }
     if (path.contains(spv)) {
       final prm = uri.queryParameters;
@@ -292,6 +297,19 @@ class FutabaData {
           return ptmKey.substring(dot + 1);
         }
       }
+    }
+    return null;
+  }
+
+  static String? getDirectoryFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null) {
+      return null;
+    }
+    final hostPath = uri.host;
+    final splited = hostPath.split('.');
+    if (splited.length == 3) {
+      return splited.first;
     }
     return null;
   }
@@ -314,27 +332,27 @@ class FutabaData {
     return '';
   }
 
-  static String? getIdFromUrl(final String value) {
-    final data = value.substring(value.lastIndexOf('/') + 1);
-    return data.replaceAll('.htm', '');
-  }
+  // static String? getIdFromUrl(final String value) {
+  //   final data = value.substring(value.lastIndexOf('/') + 1);
+  //   return data.replaceAll('.htm', '');
+  // }
 
-  static String? getDirectory(final Uri value) {
-    final origin = value.host;
-    final index = origin.indexOf('.');
-    return origin.substring(0, index);
-  }
+  // static String? getDirectory(final Uri value) {
+  //   final origin = value.host;
+  //   final index = origin.indexOf('.');
+  //   return origin.substring(0, index);
+  // }
 
-  static String? getBoardIdFromUrl(final String value) {
-    try {
-      final uri = Uri.parse(value);
-      final seg = uri.pathSegments[0];
-      return seg;
-    } catch (e) {
-      logger.e(e);
-    }
-    return null;
-  }
+  // static String? getBoardIdFromUrl(final String value) {
+  //   try {
+  //     final uri = Uri.parse(value);
+  //     final seg = uri.pathSegments[0];
+  //     return seg;
+  //   } catch (e) {
+  //     logger.e(e);
+  //   }
+  //   return null;
+  // }
 
   static String getUrlByPath(
       final String directory, final String boardId, final String threadId) {

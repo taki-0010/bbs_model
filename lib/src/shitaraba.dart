@@ -31,7 +31,7 @@ class ShitarabaData {
   static final topUrl = 'rentalbbs.shitaraba.com';
   static const subject = 'subject.txt';
   static final idReg = RegExp(r'[0-9]{8,}');
-
+  
   // board
   //pc https://jbbs.shitaraba.net/music/28333/
   //mb https://jbbs.shitaraba.net/bbs/subject.cgi/music/28333/
@@ -51,6 +51,18 @@ class ShitarabaData {
       required final String boardId,
       required final String threadId}) {
     return '$sub.$host/$htmlPath/$category/$boardId/$threadId';
+  }
+
+  static Uri? htmlToDatUri(final Uri uri) {
+    final category = getCategoryFromUri(uri);
+    final boardId = getBoardIdFromUri(uri);
+    final threadId = getThreadIdFromUri(uri);
+    if (category != null && boardId != null && threadId != null) {
+      final path = getThreadUrlPath(
+          category: category, boardId: boardId, threadId: threadId);
+      return Uri.https(uri.host, path);
+    }
+    return null;
   }
 
   static String favoriteBoardStr({
@@ -83,77 +95,77 @@ class ShitarabaData {
     return null;
   }
 
-  static Uri? _validate(final String url) {
-    final replasedRaw = url.replaceAll('$threadPath/', '');
-    final data = replasedRaw.replaceAll('$htmlPath/', '');
-    final uri = Uri.tryParse(data);
-    if (uri == null) {
-      return null;
-    }
-    return uri;
-  }
+  // static Uri? _validate(final String url) {
+  //   final replasedRaw = url.replaceAll('$threadPath/', '');
+  //   final data = replasedRaw.replaceAll('$htmlPath/', '');
+  //   final uri = Uri.tryParse(data);
+  //   if (uri == null) {
+  //     return null;
+  //   }
+  //   return uri;
+  // }
 
-  static bool validateUrl(final String url) {
-    final uri = _validate(url);
-    if (uri == null) {
-      return false;
-    }
-    final domain = '$sub.$host';
-    if (uri.host != domain) {
-      return false;
-    }
-    logger.d('shitaraba val: $uri');
-    final path = uri.pathSegments;
-    if (path.length < 2) {
-      return false;
-    }
-    final category = categoryName(path.first);
-    if (category.isEmpty) {
-      return false;
-    }
-    final boardId = int.tryParse(path[1]);
-    if (boardId == null) {
-      return false;
-    }
-    return true;
-  }
+  // static bool validateUrl(final String url) {
+  //   final uri = _validate(url);
+  //   if (uri == null) {
+  //     return false;
+  //   }
+  //   final domain = '$sub.$host';
+  //   if (uri.host != domain) {
+  //     return false;
+  //   }
+  //   logger.d('shitaraba val: $uri');
+  //   final path = uri.pathSegments;
+  //   if (path.length < 2) {
+  //     return false;
+  //   }
+  //   final category = categoryName(path.first);
+  //   if (category.isEmpty) {
+  //     return false;
+  //   }
+  //   final boardId = int.tryParse(path[1]);
+  //   if (boardId == null) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
-  static String? getCategoryFromUrl(final String url) {
-    final uri = _validate(url);
-    if (uri == null) {
-      return null;
-    }
-    final path = uri.pathSegments;
-    if (path.length < 2) {
-      return null;
-    }
-    return path.first;
-  }
+  // static String? getCategoryFromUrl(final String url) {
+  //   final uri = _validate(url);
+  //   if (uri == null) {
+  //     return null;
+  //   }
+  //   final path = uri.pathSegments;
+  //   if (path.length < 2) {
+  //     return null;
+  //   }
+  //   return path.first;
+  // }
 
-  static String? getBoardIdFromUrl(final String url) {
-    final uri = _validate(url);
-    if (uri == null) {
-      return null;
-    }
-    final path = uri.pathSegments;
-    if (path.length < 2) {
-      return null;
-    }
-    return path[1];
-  }
+  // static String? getBoardIdFromUrl(final String url) {
+  //   final uri = _validate(url);
+  //   if (uri == null) {
+  //     return null;
+  //   }
+  //   final path = uri.pathSegments;
+  //   if (path.length < 2) {
+  //     return null;
+  //   }
+  //   return path[1];
+  // }
 
-  static String? getThreadIdFromUrl(final String url) {
-    final uri = _validate(url);
-    if (uri == null) {
-      return null;
-    }
-    final id = idReg.allMatches(url);
-    if (id.length >= 2) {
-      return id.elementAt(1).group(0);
-    }
-    final data = id.first.group(0);
-    return data;
-  }
+  // static String? getThreadIdFromUrl(final String url) {
+  //   final uri = _validate(url);
+  //   if (uri == null) {
+  //     return null;
+  //   }
+  //   final id = idReg.allMatches(url);
+  //   if (id.length >= 2) {
+  //     return id.elementAt(1).group(0);
+  //   }
+  //   final data = id.first.group(0);
+  //   return data;
+  // }
 
   static String? getCategoryFromUri(final Uri uri) {
     final threadOrBoard = uriIsThreadOrBoard(uri);

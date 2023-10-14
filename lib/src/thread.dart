@@ -25,7 +25,7 @@ abstract class ThreadBase {
   final String? thumbnailStr;
 
   double get ikioi {
-    return 0.0;
+    return -1.0;
   }
 
   int get getResCount => resCount;

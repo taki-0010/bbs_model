@@ -10,11 +10,29 @@ class MachiData {
   static const threadPath = 'bbs/read.cgi';
   static const sp = 'sp.html';
 
+  // threads
+  // http://www.machi.to/bbs/json.cgi/tawara/
+
+  // thread
+  // http://www.machi.to/bbs/json.cgi/tawara/1269441710/
+
+  static Uri? htmlToDatUri(final Uri uri) {
+    final boardId = getBoardIdFromUri(uri);
+    final threadId = getThreadIdFromUri(uri);
+    if (boardId != null && threadId != null) {
+      return Uri.https(host, '$threadPath/$boardId/$threadId');
+    }
+    return null;
+  }
+
   static bool? uriIsThreadOrBoard(final Uri uri) {
     if (!uri.host.contains(host)) {
       return null;
     }
     if (uri.path.contains(threadPath)) {
+      return true;
+    }
+    if (uri.path.contains(threads)) {
       return true;
     }
     final path = uri.pathSegments;
@@ -29,10 +47,11 @@ class MachiData {
     if (tob == null) {
       return null;
     }
-    final path = uri.path;
+    // final path = uri.path;
     final seg = uri.pathSegments;
+    // logger.d('getBoardIdFromUri: $path, seg: $seg, tob:$tob');
     if (tob) {
-      if (path.contains(threadPath) && seg.length >= 3) {
+      if (seg.length >= 3) {
         return seg[2];
       }
     }
@@ -55,18 +74,18 @@ class MachiData {
     return null;
   }
 
-  static String? getThreadIdFromUrl(final String url) {
-    return '';
-  }
+  // static String? getThreadIdFromUrl(final String url) {
+  //   return '';
+  // }
 
-  static String? getBoardIdFromUrl(final String? url) {
-    final replacedHttps = url?.replaceAll(RegExp(r'''https?://'''), '');
-    final replacedSlash = replacedHttps?.replaceAll('//', '');
-    final replacedWWW = replacedSlash?.replaceAll('www.', '');
-    final replaced = replacedWWW?.replaceAll('machi.to/bbs/read.cgi/', '');
-    final boardId = replaced?.substring(0, replaced.indexOf('/'));
-    return boardId;
-  }
+  // static String? getBoardIdFromUrl(final String? url) {
+  //   final replacedHttps = url?.replaceAll(RegExp(r'''https?://'''), '');
+  //   final replacedSlash = replacedHttps?.replaceAll('//', '');
+  //   final replacedWWW = replacedSlash?.replaceAll('www.', '');
+  //   final replaced = replacedWWW?.replaceAll('machi.to/bbs/read.cgi/', '');
+  //   final boardId = replaced?.substring(0, replaced.indexOf('/'));
+  //   return boardId;
+  // }
 
   static String getBoardNameById(final String? id) {
     switch (id) {

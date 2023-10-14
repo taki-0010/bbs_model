@@ -127,7 +127,9 @@ enum OpenLinkList {
   addToFav,
   removeFromFav,
   addToHistory,
-  removeFromHistory
+  removeFromHistory,
+  name,
+  openBoard;
 }
 
 enum EmbedSite { xCom, youtube }
