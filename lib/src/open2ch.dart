@@ -62,6 +62,19 @@ class Open2ChData {
     return null;
   }
 
+  static int? getResNumFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null || !tob) {
+      return null;
+    }
+    final seg = uri.pathSegments;
+    if (seg.length >= 5) {
+      final str = seg.last;
+      return StringMethodData.getResNum(str);
+    }
+    return null;
+  }
+
   static String? getBoardIdFromUri(final Uri uri) {
     final tob = uriIsThreadOrBoard(uri);
     if (tob == null) {

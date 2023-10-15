@@ -6,7 +6,9 @@ class GirlsChData {
   static final host = Communities.girlsCh.host;
   static const topics = 'topics';
   static const category = 'category';
+  static const comment = 'comment';
   static final categoryPath = 'https://$host/$topics/$category';
+  // https://girlschannel.net/comment/4828638/4483
 
   static bool? uriIsThreadOrBoard(final Uri uri) {
     if (!uri.host.contains(host)) {
@@ -15,7 +17,7 @@ class GirlsChData {
     if (uri.path.contains(category)) {
       return false;
     }
-    if (uri.path.contains(topics)) {
+    if (uri.path.contains(topics) || uri.path.contains(comment)) {
       return true;
     }
     return null;
@@ -44,6 +46,20 @@ class GirlsChData {
     final path = uri.pathSegments;
     if (path.length >= 2 && int.tryParse(path[1]) != null) {
       return path[1];
+    }
+    return null;
+  }
+
+  static int? getResNumFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null || !tob) {
+      return null;
+    }
+    final path = uri.path;
+    final seg = uri.pathSegments;
+    if (path.contains(comment) && seg.length >= 3) {
+      final str = seg[2];
+      return int.tryParse(str);
     }
     return null;
   }

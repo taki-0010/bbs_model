@@ -15,6 +15,7 @@ class MachiData {
 
   // thread
   // http://www.machi.to/bbs/json.cgi/tawara/1269441710/
+  // https://machi.to/bbs/read.cgi/hokkaidou/1689276249/500
 
   static Uri? htmlToDatUri(final Uri uri) {
     final boardId = getBoardIdFromUri(uri);
@@ -70,6 +71,19 @@ class MachiData {
     final mached = FiveChData.idReg.firstMatch(path);
     if (mached != null) {
       return mached.group(0);
+    }
+    return null;
+  }
+
+  static int? getResNumFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null || !tob) {
+      return null;
+    }
+    final seg = uri.pathSegments;
+    if (seg.length >= 5) {
+      final str = seg.last;
+      return StringMethodData.getResNum(str);
     }
     return null;
   }

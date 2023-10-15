@@ -31,7 +31,7 @@ class ShitarabaData {
   static final topUrl = 'rentalbbs.shitaraba.com';
   static const subject = 'subject.txt';
   static final idReg = RegExp(r'[0-9]{8,}');
-  
+
   // board
   //pc https://jbbs.shitaraba.net/music/28333/
   //mb https://jbbs.shitaraba.net/bbs/subject.cgi/music/28333/
@@ -212,6 +212,19 @@ class ShitarabaData {
     final mached = idReg.firstMatch(path);
     if (mached != null) {
       return mached.group(0);
+    }
+    return null;
+  }
+
+  static int? getResNumFromUri(final Uri uri) {
+    final threadOrBoard = uriIsThreadOrBoard(uri);
+    if (threadOrBoard == null || !threadOrBoard) {
+      return null;
+    }
+    final seg = uri.pathSegments;
+    if (seg.length >= 6) {
+      final str = seg.last;
+      return StringMethodData.getResNum(str);
     }
     return null;
   }

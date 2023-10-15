@@ -20,14 +20,13 @@ class FiveChData {
   // mb https://itest.5ch.net/subback/covid19
   // pc https://krsw.5ch.net/covid19
 
-
-
   static Uri? htmlToDatUri(final Uri uri, final Communities forum) {
     final threadId = getThreadIdFromUri(uri, forum);
     final directory = getDirectoryFromUri(uri, forum);
     final boardId = getBoardIdFromUri(uri, forum);
     if (threadId != null && directory != null && boardId != null) {
-      return Uri.https('$directory.${forum.host}', '$boardId/dat/$threadId.dat');
+      return Uri.https(
+          '$directory.${forum.host}', '$boardId/dat/$threadId.dat');
     }
     return null;
   }
@@ -179,6 +178,19 @@ class FiveChData {
     }
     if (seg.isNotEmpty) {
       return seg[0];
+    }
+    return null;
+  }
+
+  static int? getResNumFromUri(final Uri uri, final Communities forum) {
+    final tob = uriIsThreadOrBoard(uri, forum);
+    if (tob == null || !tob) {
+      return null;
+    }
+    final seg = uri.pathSegments;
+    if (seg.length >= 5) {
+      final resStr = seg.last;
+      return StringMethodData.getResNum(resStr);
     }
     return null;
   }

@@ -77,6 +77,22 @@ class StringMethodData {
   static const urlReg = r'''h?ttps?://[\w!\?/\+\-_~=;\.,\*&@#\$%\(\)'\[\]]+''';
   static const idReg8 = r'''ID:.{8}''';
   static const idReg4 = r'''ID:.{4}''';
+  static const resNumReg = r'''^[0-9]+''';
+
+  static int? getResNum(final String value) {
+    final exist = RegExp(r'''^[0-9]+''').firstMatch(value);
+    if (exist != null) {
+      final res = exist.group(0);
+      if (res != null) {
+        final result = int.tryParse(res);
+        if (result != 1) {
+          return result;
+        }
+      }
+    }
+    return null;
+  }
+
   static String? getYoutubeStr(final String value) => getIdFromUrl(value);
   static String replaceSpecialNum(final String value) {
     final existNum = RegExp(r'&#[0-9]+;').firstMatch(value);
