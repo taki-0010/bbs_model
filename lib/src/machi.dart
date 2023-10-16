@@ -139,20 +139,22 @@ class MachiData {
   }
 }
 
-@JsonSerializable(explicitToJson: true)
+// @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class MachiBoardData {
+class MachiBoardData extends BoardData{
   const MachiBoardData({
-    required this.id,
+    required super.id,
+    required super.name,
+    required super.forum,
   });
-  final String id;
+  // final String id;
   // final String url;
 
-  factory MachiBoardData.fromJson(Map<String, dynamic> json) =>
-      _$MachiBoardDataFromJson(json);
+  // factory MachiBoardData.fromJson(Map<String, dynamic> json) =>
+  //     _$MachiBoardDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$MachiBoardDataToJson(this);
+  // Map<String, dynamic> toJson() => _$MachiBoardDataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)

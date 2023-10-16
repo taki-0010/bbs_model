@@ -532,8 +532,11 @@ class FutabaContentFromJson {
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class FutabaChBoard {
-  const FutabaChBoard({required this.directory, required this.path});
+class FutabaChBoard extends BoardData{
+  const FutabaChBoard({required super.id,
+      required super.name,
+      required super.forum,
+      required this.directory, required this.path});
   final String directory;
   final String path;
   // final String name;

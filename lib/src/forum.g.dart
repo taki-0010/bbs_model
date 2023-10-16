@@ -54,6 +54,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData timeago(TimeagoList timeago);
 
+  ForumSettingsData usedNames(List<String?> usedNames);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -84,6 +86,7 @@ abstract class _$ForumSettingsDataCWProxy {
     ThreadsOrderType? threadsOrderType,
     AutoDownloadableSizeLimit? autoDownloadableSizeLimit,
     TimeagoList? timeago,
+    List<String?>? usedNames,
   });
 }
 
@@ -182,6 +185,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
   ForumSettingsData timeago(TimeagoList timeago) => this(timeago: timeago);
 
   @override
+  ForumSettingsData usedNames(List<String?> usedNames) =>
+      this(usedNames: usedNames);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -213,6 +220,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? threadsOrderType = const $CopyWithPlaceholder(),
     Object? autoDownloadableSizeLimit = const $CopyWithPlaceholder(),
     Object? timeago = const $CopyWithPlaceholder(),
+    Object? usedNames = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       userId: userId == const $CopyWithPlaceholder() || userId == null
@@ -326,6 +334,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.timeago
           // ignore: cast_nullable_to_non_nullable
           : timeago as TimeagoList,
+      usedNames: usedNames == const $CopyWithPlaceholder() || usedNames == null
+          ? _value.usedNames
+          // ignore: cast_nullable_to_non_nullable
+          : usedNames as List<String?>,
     );
   }
 }
@@ -517,6 +529,10 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
           AutoDownloadableSizeLimit.noLimit,
       timeago: $enumDecodeNullable(_$TimeagoListEnumMap, json['timeago']) ??
           TimeagoList.enable,
+      usedNames: (json['usedNames'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -547,6 +563,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'autoDownloadableSizeLimit': _$AutoDownloadableSizeLimitEnumMap[
           instance.autoDownloadableSizeLimit]!,
       'timeago': _$TimeagoListEnumMap[instance.timeago]!,
+      'usedNames': instance.usedNames,
     };
 
 const _$CommunitiesEnumMap = {

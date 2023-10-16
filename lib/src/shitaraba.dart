@@ -367,12 +367,14 @@ class ShitarabaData {
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class ShitarabaCategoryData {
+class ShitarabaCategoryData extends BoardData {
   const ShitarabaCategoryData({
-    required this.id,
+    required super.id,
+    required super.name,
+    required super.forum,
     // this.boards = const []
   });
-  final String id;
+  // final String id;
   // final List<BoardData?> boards;
 
   factory ShitarabaCategoryData.fromJson(Map<String, dynamic> json) =>
@@ -384,15 +386,16 @@ class ShitarabaCategoryData {
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class ShitarabaBoardData {
+class ShitarabaBoardData extends BoardData {
   const ShitarabaBoardData(
-      {required this.id,
+      {required super.id,
+      required super.name,
+      required super.forum,
       required this.category,
-      required this.name,
       required this.sub});
-  final String id;
+  // final String id;
   final String category;
-  final String name;
+  // final String name;
   final String sub;
 
   factory ShitarabaBoardData.fromJson(Map<String, dynamic> json) =>

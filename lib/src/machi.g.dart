@@ -9,6 +9,10 @@ part of 'machi.dart';
 abstract class _$MachiBoardDataCWProxy {
   MachiBoardData id(String id);
 
+  MachiBoardData name(String name);
+
+  MachiBoardData forum(Communities forum);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MachiBoardData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -17,6 +21,8 @@ abstract class _$MachiBoardDataCWProxy {
   /// ````
   MachiBoardData call({
     String? id,
+    String? name,
+    Communities? forum,
   });
 }
 
@@ -30,6 +36,12 @@ class _$MachiBoardDataCWProxyImpl implements _$MachiBoardDataCWProxy {
   MachiBoardData id(String id) => this(id: id);
 
   @override
+  MachiBoardData name(String name) => this(name: name);
+
+  @override
+  MachiBoardData forum(Communities forum) => this(forum: forum);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MachiBoardData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -39,12 +51,22 @@ class _$MachiBoardDataCWProxyImpl implements _$MachiBoardDataCWProxy {
   /// ````
   MachiBoardData call({
     Object? id = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+    Object? forum = const $CopyWithPlaceholder(),
   }) {
     return MachiBoardData(
       id: id == const $CopyWithPlaceholder() || id == null
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as String,
+      name: name == const $CopyWithPlaceholder() || name == null
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String,
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
     );
   }
 }
@@ -704,16 +726,6 @@ extension $MachiContentDataCopyWith on MachiContentData {
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
-
-MachiBoardData _$MachiBoardDataFromJson(Map<String, dynamic> json) =>
-    MachiBoardData(
-      id: json['id'] as String,
-    );
-
-Map<String, dynamic> _$MachiBoardDataToJson(MachiBoardData instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-    };
 
 MachiThreadsBaseData _$MachiThreadsBaseDataFromJson(
         Map<String, dynamic> json) =>

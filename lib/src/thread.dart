@@ -77,7 +77,8 @@ abstract class ThreadBase {
   String? get open2chUrlForHtml {
     if (url.contains(Communities.open2Ch.host)) {
       final sub = url.substring(0, url.indexOf('.'));
-      final path = '$sub.${Communities.open2Ch.host}/test/read.cgi/$boardId/$id';
+      final path =
+          '$sub.${Communities.open2Ch.host}/test/read.cgi/$boardId/$id';
       return 'https://$path';
     }
     return null;
@@ -91,7 +92,6 @@ abstract class ThreadBase {
       shitarabaUrlForHtml;
 
   String? get htmlUrl {
-    
     switch (type) {
       case Communities.fiveCh:
         return fiveChUrlForHtml;
@@ -352,4 +352,23 @@ class FetchContentResultData {
     }
     return FetchResult.error;
   }
+}
+
+@JsonSerializable()
+@CopyWith()
+@immutable
+class PostDraftData {
+  const PostDraftData(
+      {this.body,
+      required this.userId,
+      // this.threadMarkDocumentId,
+      required this.forum});
+  final String? body;
+  final String userId;
+  // final String? threadMarkDocumentId;
+  final Communities forum;
+
+    factory PostDraftData.fromJson(Map<String, dynamic> json) =>
+      _$PostDraftDataFromJson(json);
+  Map<String, dynamic> toJson() => _$PostDraftDataToJson(this);
 }

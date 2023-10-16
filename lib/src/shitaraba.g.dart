@@ -9,6 +9,10 @@ part of 'shitaraba.dart';
 abstract class _$ShitarabaCategoryDataCWProxy {
   ShitarabaCategoryData id(String id);
 
+  ShitarabaCategoryData name(String name);
+
+  ShitarabaCategoryData forum(Communities forum);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ShitarabaCategoryData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -17,6 +21,8 @@ abstract class _$ShitarabaCategoryDataCWProxy {
   /// ````
   ShitarabaCategoryData call({
     String? id,
+    String? name,
+    Communities? forum,
   });
 }
 
@@ -31,6 +37,12 @@ class _$ShitarabaCategoryDataCWProxyImpl
   ShitarabaCategoryData id(String id) => this(id: id);
 
   @override
+  ShitarabaCategoryData name(String name) => this(name: name);
+
+  @override
+  ShitarabaCategoryData forum(Communities forum) => this(forum: forum);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ShitarabaCategoryData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -40,12 +52,22 @@ class _$ShitarabaCategoryDataCWProxyImpl
   /// ````
   ShitarabaCategoryData call({
     Object? id = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+    Object? forum = const $CopyWithPlaceholder(),
   }) {
     return ShitarabaCategoryData(
       id: id == const $CopyWithPlaceholder() || id == null
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as String,
+      name: name == const $CopyWithPlaceholder() || name == null
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String,
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
     );
   }
 }
@@ -60,9 +82,11 @@ extension $ShitarabaCategoryDataCopyWith on ShitarabaCategoryData {
 abstract class _$ShitarabaBoardDataCWProxy {
   ShitarabaBoardData id(String id);
 
-  ShitarabaBoardData category(String category);
-
   ShitarabaBoardData name(String name);
+
+  ShitarabaBoardData forum(Communities forum);
+
+  ShitarabaBoardData category(String category);
 
   ShitarabaBoardData sub(String sub);
 
@@ -74,8 +98,9 @@ abstract class _$ShitarabaBoardDataCWProxy {
   /// ````
   ShitarabaBoardData call({
     String? id,
-    String? category,
     String? name,
+    Communities? forum,
+    String? category,
     String? sub,
   });
 }
@@ -90,10 +115,13 @@ class _$ShitarabaBoardDataCWProxyImpl implements _$ShitarabaBoardDataCWProxy {
   ShitarabaBoardData id(String id) => this(id: id);
 
   @override
-  ShitarabaBoardData category(String category) => this(category: category);
+  ShitarabaBoardData name(String name) => this(name: name);
 
   @override
-  ShitarabaBoardData name(String name) => this(name: name);
+  ShitarabaBoardData forum(Communities forum) => this(forum: forum);
+
+  @override
+  ShitarabaBoardData category(String category) => this(category: category);
 
   @override
   ShitarabaBoardData sub(String sub) => this(sub: sub);
@@ -108,8 +136,9 @@ class _$ShitarabaBoardDataCWProxyImpl implements _$ShitarabaBoardDataCWProxy {
   /// ````
   ShitarabaBoardData call({
     Object? id = const $CopyWithPlaceholder(),
-    Object? category = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
+    Object? forum = const $CopyWithPlaceholder(),
+    Object? category = const $CopyWithPlaceholder(),
     Object? sub = const $CopyWithPlaceholder(),
   }) {
     return ShitarabaBoardData(
@@ -117,14 +146,18 @@ class _$ShitarabaBoardDataCWProxyImpl implements _$ShitarabaBoardDataCWProxy {
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as String,
-      category: category == const $CopyWithPlaceholder() || category == null
-          ? _value.category
-          // ignore: cast_nullable_to_non_nullable
-          : category as String,
       name: name == const $CopyWithPlaceholder() || name == null
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String,
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
+      category: category == const $CopyWithPlaceholder() || category == null
+          ? _value.category
+          // ignore: cast_nullable_to_non_nullable
+          : category as String,
       sub: sub == const $CopyWithPlaceholder() || sub == null
           ? _value.sub
           // ignore: cast_nullable_to_non_nullable
@@ -460,27 +493,43 @@ ShitarabaCategoryData _$ShitarabaCategoryDataFromJson(
         Map<String, dynamic> json) =>
     ShitarabaCategoryData(
       id: json['id'] as String,
+      name: json['name'] as String,
+      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
     );
 
 Map<String, dynamic> _$ShitarabaCategoryDataToJson(
         ShitarabaCategoryData instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'name': instance.name,
+      'forum': _$CommunitiesEnumMap[instance.forum]!,
     };
+
+const _$CommunitiesEnumMap = {
+  Communities.fiveCh: 'fiveCh',
+  Communities.girlsCh: 'girlsCh',
+  Communities.futabaCh: 'futabaCh',
+  Communities.pinkCh: 'pinkCh',
+  Communities.shitaraba: 'shitaraba',
+  Communities.open2Ch: 'open2Ch',
+  Communities.machi: 'machi',
+};
 
 ShitarabaBoardData _$ShitarabaBoardDataFromJson(Map<String, dynamic> json) =>
     ShitarabaBoardData(
       id: json['id'] as String,
-      category: json['category'] as String,
       name: json['name'] as String,
+      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
+      category: json['category'] as String,
       sub: json['sub'] as String,
     );
 
 Map<String, dynamic> _$ShitarabaBoardDataToJson(ShitarabaBoardData instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'category': instance.category,
       'name': instance.name,
+      'forum': _$CommunitiesEnumMap[instance.forum]!,
+      'category': instance.category,
       'sub': instance.sub,
     };
 
@@ -518,13 +567,3 @@ Map<String, dynamic> _$ShitarabaContentDataToJson(
       'id': instance.id,
       'date': instance.date,
     };
-
-const _$CommunitiesEnumMap = {
-  Communities.fiveCh: 'fiveCh',
-  Communities.girlsCh: 'girlsCh',
-  Communities.futabaCh: 'futabaCh',
-  Communities.pinkCh: 'pinkCh',
-  Communities.shitaraba: 'shitaraba',
-  Communities.open2Ch: 'open2Ch',
-  Communities.machi: 'machi',
-};

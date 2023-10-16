@@ -1,0 +1,6 @@
+
+
+class Chan4BoardData{
+
+}
+

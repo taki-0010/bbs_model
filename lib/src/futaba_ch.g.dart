@@ -707,6 +707,12 @@ extension $FutabaContentFromJsonCopyWith on FutabaContentFromJson {
 }
 
 abstract class _$FutabaChBoardCWProxy {
+  FutabaChBoard id(String id);
+
+  FutabaChBoard name(String name);
+
+  FutabaChBoard forum(Communities forum);
+
   FutabaChBoard directory(String directory);
 
   FutabaChBoard path(String path);
@@ -718,6 +724,9 @@ abstract class _$FutabaChBoardCWProxy {
   /// FutabaChBoard(...).copyWith(id: 12, name: "My name")
   /// ````
   FutabaChBoard call({
+    String? id,
+    String? name,
+    Communities? forum,
     String? directory,
     String? path,
   });
@@ -728,6 +737,15 @@ class _$FutabaChBoardCWProxyImpl implements _$FutabaChBoardCWProxy {
   const _$FutabaChBoardCWProxyImpl(this._value);
 
   final FutabaChBoard _value;
+
+  @override
+  FutabaChBoard id(String id) => this(id: id);
+
+  @override
+  FutabaChBoard name(String name) => this(name: name);
+
+  @override
+  FutabaChBoard forum(Communities forum) => this(forum: forum);
 
   @override
   FutabaChBoard directory(String directory) => this(directory: directory);
@@ -744,10 +762,25 @@ class _$FutabaChBoardCWProxyImpl implements _$FutabaChBoardCWProxy {
   /// FutabaChBoard(...).copyWith(id: 12, name: "My name")
   /// ````
   FutabaChBoard call({
+    Object? id = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+    Object? forum = const $CopyWithPlaceholder(),
     Object? directory = const $CopyWithPlaceholder(),
     Object? path = const $CopyWithPlaceholder(),
   }) {
     return FutabaChBoard(
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as String,
+      name: name == const $CopyWithPlaceholder() || name == null
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String,
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
       directory: directory == const $CopyWithPlaceholder() || directory == null
           ? _value.directory
           // ignore: cast_nullable_to_non_nullable
@@ -1283,15 +1316,31 @@ Map<String, dynamic> _$FutabaContentFromJsonToJson(
 
 FutabaChBoard _$FutabaChBoardFromJson(Map<String, dynamic> json) =>
     FutabaChBoard(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
       directory: json['directory'] as String,
       path: json['path'] as String,
     );
 
 Map<String, dynamic> _$FutabaChBoardToJson(FutabaChBoard instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'forum': _$CommunitiesEnumMap[instance.forum]!,
       'directory': instance.directory,
       'path': instance.path,
     };
+
+const _$CommunitiesEnumMap = {
+  Communities.fiveCh: 'fiveCh',
+  Communities.girlsCh: 'girlsCh',
+  Communities.futabaCh: 'futabaCh',
+  Communities.pinkCh: 'pinkCh',
+  Communities.shitaraba: 'shitaraba',
+  Communities.open2Ch: 'open2Ch',
+  Communities.machi: 'machi',
+};
 
 FutabaChContent _$FutabaChContentFromJson(Map<String, dynamic> json) =>
     FutabaChContent(
@@ -1335,13 +1384,3 @@ Map<String, dynamic> _$FutabaChContentToJson(FutabaChContent instance) =>
       'hash': instance.hash,
       'limit': instance.limit,
     };
-
-const _$CommunitiesEnumMap = {
-  Communities.fiveCh: 'fiveCh',
-  Communities.girlsCh: 'girlsCh',
-  Communities.futabaCh: 'futabaCh',
-  Communities.pinkCh: 'pinkCh',
-  Communities.shitaraba: 'shitaraba',
-  Communities.open2Ch: 'open2Ch',
-  Communities.machi: 'machi',
-};

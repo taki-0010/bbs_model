@@ -262,27 +262,34 @@ class FiveChBoardJsonData {
       _$FiveChBoardJsonDataFromJson(json);
 }
 
-@JsonSerializable(explicitToJson: true)
+// @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class FiveChCategoryData {
+class FiveChCategoryData extends BoardData {
   const FiveChCategoryData(
-      {required this.categoryNumber, required this.categoryContent});
+      {required super.id,
+      required super.name,
+      required super.forum,
+      required this.categoryNumber,
+      required this.categoryContent});
   final String categoryNumber;
   final List<BoardData> categoryContent;
 
-  factory FiveChCategoryData.fromJson(Map<String, dynamic> json) =>
-      _$FiveChCategoryDataFromJson(json);
+  // factory FiveChCategoryData.fromJson(Map<String, dynamic> json) =>
+  //     _$FiveChCategoryDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$FiveChCategoryDataToJson(this);
+  // Map<String, dynamic> toJson() => _$FiveChCategoryDataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class FiveChBoardData {
+class FiveChBoardData extends BoardData {
   const FiveChBoardData(
-      {required this.url,
+      {required super.id,
+      required super.name,
+      required super.forum,
+      required this.url,
       required this.category,
       required this.categoryOrder,
       required this.categoryName,

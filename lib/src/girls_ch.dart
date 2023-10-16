@@ -135,18 +135,22 @@ class GirlsChParser {
   }
 }
 
-@JsonSerializable(explicitToJson: true)
+// @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class GirlsChCategory {
-  const GirlsChCategory({required this.url});
+class GirlsChCategory extends BoardData {
+  const GirlsChCategory(
+      {required super.id,
+      required super.name,
+      required super.forum,
+      required this.url});
   final String url;
   // final String name;
   // String get url => '/topics/category/$id/';
-  factory GirlsChCategory.fromJson(Map<String, dynamic> json) =>
-      _$GirlsChCategoryFromJson(json);
+  // factory GirlsChCategory.fromJson(Map<String, dynamic> json) =>
+  //     _$GirlsChCategoryFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GirlsChCategoryToJson(this);
+  // Map<String, dynamic> toJson() => _$GirlsChCategoryToJson(this);
 }
 
 @CopyWith()

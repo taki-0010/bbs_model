@@ -289,6 +289,12 @@ extension $FiveChBoardJsonDataCopyWith on FiveChBoardJsonData {
 }
 
 abstract class _$FiveChCategoryDataCWProxy {
+  FiveChCategoryData id(String id);
+
+  FiveChCategoryData name(String name);
+
+  FiveChCategoryData forum(Communities forum);
+
   FiveChCategoryData categoryNumber(String categoryNumber);
 
   FiveChCategoryData categoryContent(List<BoardData> categoryContent);
@@ -300,6 +306,9 @@ abstract class _$FiveChCategoryDataCWProxy {
   /// FiveChCategoryData(...).copyWith(id: 12, name: "My name")
   /// ````
   FiveChCategoryData call({
+    String? id,
+    String? name,
+    Communities? forum,
     String? categoryNumber,
     List<BoardData>? categoryContent,
   });
@@ -310,6 +319,15 @@ class _$FiveChCategoryDataCWProxyImpl implements _$FiveChCategoryDataCWProxy {
   const _$FiveChCategoryDataCWProxyImpl(this._value);
 
   final FiveChCategoryData _value;
+
+  @override
+  FiveChCategoryData id(String id) => this(id: id);
+
+  @override
+  FiveChCategoryData name(String name) => this(name: name);
+
+  @override
+  FiveChCategoryData forum(Communities forum) => this(forum: forum);
 
   @override
   FiveChCategoryData categoryNumber(String categoryNumber) =>
@@ -328,10 +346,25 @@ class _$FiveChCategoryDataCWProxyImpl implements _$FiveChCategoryDataCWProxy {
   /// FiveChCategoryData(...).copyWith(id: 12, name: "My name")
   /// ````
   FiveChCategoryData call({
+    Object? id = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+    Object? forum = const $CopyWithPlaceholder(),
     Object? categoryNumber = const $CopyWithPlaceholder(),
     Object? categoryContent = const $CopyWithPlaceholder(),
   }) {
     return FiveChCategoryData(
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as String,
+      name: name == const $CopyWithPlaceholder() || name == null
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String,
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
       categoryNumber: categoryNumber == const $CopyWithPlaceholder() ||
               categoryNumber == null
           ? _value.categoryNumber
@@ -354,6 +387,12 @@ extension $FiveChCategoryDataCopyWith on FiveChCategoryData {
 }
 
 abstract class _$FiveChBoardDataCWProxy {
+  FiveChBoardData id(String id);
+
+  FiveChBoardData name(String name);
+
+  FiveChBoardData forum(Communities forum);
+
   FiveChBoardData url(String url);
 
   FiveChBoardData category(int category);
@@ -371,6 +410,9 @@ abstract class _$FiveChBoardDataCWProxy {
   /// FiveChBoardData(...).copyWith(id: 12, name: "My name")
   /// ````
   FiveChBoardData call({
+    String? id,
+    String? name,
+    Communities? forum,
     String? url,
     int? category,
     int? categoryOrder,
@@ -384,6 +426,15 @@ class _$FiveChBoardDataCWProxyImpl implements _$FiveChBoardDataCWProxy {
   const _$FiveChBoardDataCWProxyImpl(this._value);
 
   final FiveChBoardData _value;
+
+  @override
+  FiveChBoardData id(String id) => this(id: id);
+
+  @override
+  FiveChBoardData name(String name) => this(name: name);
+
+  @override
+  FiveChBoardData forum(Communities forum) => this(forum: forum);
 
   @override
   FiveChBoardData url(String url) => this(url: url);
@@ -412,6 +463,9 @@ class _$FiveChBoardDataCWProxyImpl implements _$FiveChBoardDataCWProxy {
   /// FiveChBoardData(...).copyWith(id: 12, name: "My name")
   /// ````
   FiveChBoardData call({
+    Object? id = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+    Object? forum = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
     Object? category = const $CopyWithPlaceholder(),
     Object? categoryOrder = const $CopyWithPlaceholder(),
@@ -419,6 +473,18 @@ class _$FiveChBoardDataCWProxyImpl implements _$FiveChBoardDataCWProxy {
     Object? directoryName = const $CopyWithPlaceholder(),
   }) {
     return FiveChBoardData(
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as String,
+      name: name == const $CopyWithPlaceholder() || name == null
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String,
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
       url: url == const $CopyWithPlaceholder() || url == null
           ? _value.url
           // ignore: cast_nullable_to_non_nullable
@@ -840,23 +906,11 @@ FiveChBoardJsonData _$FiveChBoardJsonDataFromJson(Map<String, dynamic> json) =>
       boardName: json['board_name'] as String,
     );
 
-FiveChCategoryData _$FiveChCategoryDataFromJson(Map<String, dynamic> json) =>
-    FiveChCategoryData(
-      categoryNumber: json['categoryNumber'] as String,
-      categoryContent: (json['categoryContent'] as List<dynamic>)
-          .map((e) => BoardData.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$FiveChCategoryDataToJson(FiveChCategoryData instance) =>
-    <String, dynamic>{
-      'categoryNumber': instance.categoryNumber,
-      'categoryContent':
-          instance.categoryContent.map((e) => e.toJson()).toList(),
-    };
-
 FiveChBoardData _$FiveChBoardDataFromJson(Map<String, dynamic> json) =>
     FiveChBoardData(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
       url: json['url'] as String,
       category: json['category'] as int,
       categoryOrder: json['categoryOrder'] as int,
@@ -866,12 +920,25 @@ FiveChBoardData _$FiveChBoardDataFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$FiveChBoardDataToJson(FiveChBoardData instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'forum': _$CommunitiesEnumMap[instance.forum]!,
       'categoryOrder': instance.categoryOrder,
       'directoryName': instance.directoryName,
       'url': instance.url,
       'category': instance.category,
       'categoryName': instance.categoryName,
     };
+
+const _$CommunitiesEnumMap = {
+  Communities.fiveCh: 'fiveCh',
+  Communities.girlsCh: 'girlsCh',
+  Communities.futabaCh: 'futabaCh',
+  Communities.pinkCh: 'pinkCh',
+  Communities.shitaraba: 'shitaraba',
+  Communities.open2Ch: 'open2Ch',
+  Communities.machi: 'machi',
+};
 
 FiveChThreadContentData _$FiveChThreadContentDataFromJson(
         Map<String, dynamic> json) =>
@@ -905,13 +972,3 @@ Map<String, dynamic> _$FiveChThreadContentDataToJson(
       'domain': instance.domain,
       'directoryName': instance.directoryName,
     };
-
-const _$CommunitiesEnumMap = {
-  Communities.fiveCh: 'fiveCh',
-  Communities.girlsCh: 'girlsCh',
-  Communities.futabaCh: 'futabaCh',
-  Communities.pinkCh: 'pinkCh',
-  Communities.shitaraba: 'shitaraba',
-  Communities.open2Ch: 'open2Ch',
-  Communities.machi: 'machi',
-};

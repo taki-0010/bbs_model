@@ -11,9 +11,6 @@ class ForumSettingsData {
       required this.forum,
       required this.theme,
       required this.retentionPeriod,
-      // this.threadsOrder = ThreadsOrder.hot,
-      // this.positionToGet = PositionToGet.first,
-      // this.commentCountDisplayThreshold = 5,
       this.openLink = true,
       this.blurThumbnail = false,
       this.useFavoritesBoards = false,
@@ -23,8 +20,6 @@ class ForumSettingsData {
       this.searchBoardIdForMachi = 'tokyo',
       this.deleteKeyForFutaba = '48009',
       this.searchBoardId,
-      // this.sortHistoryByRetention = false,
-      // this.sortHistory = SortHistory.hot,
       this.sortHistoryList = SortHistoryList.boards,
       this.googleFonts,
       this.addedFonts = const [],
@@ -34,15 +29,13 @@ class ForumSettingsData {
       this.movedToLastThreads = MovedToLastThreads.none,
       this.threadsOrderType = ThreadsOrderType.importance,
       this.autoDownloadableSizeLimit = AutoDownloadableSizeLimit.noLimit,
-      this.timeago = TimeagoList.enable});
+      this.timeago = TimeagoList.enable,
+      this.usedNames = const []});
 
   final String userId;
   final Communities forum;
   final ThemeList theme;
   final RetentionPeriodList retentionPeriod;
-  // final ThreadsOrder threadsOrder;
-  // final PositionToGet positionToGet;
-  // final int commentCountDisplayThreshold;
   final bool openLink;
   final bool blurThumbnail;
   final bool useFavoritesBoards;
@@ -64,6 +57,7 @@ class ForumSettingsData {
   final ThreadsOrderType threadsOrderType;
   final AutoDownloadableSizeLimit autoDownloadableSizeLimit;
   final TimeagoList timeago;
+  final List<String?> usedNames;
 
   List<ImportanceData?> get boardImportanceList => boardImportance
       .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
@@ -165,8 +159,8 @@ class InitialForumData {
             sortHistoryList: SortHistoryList.history,
             movedToLastThreads: MovedToLastThreads.over1000,
             retentionPeriod: RetentionPeriodList.oneMonth);
-        case Communities.open2Ch:
-          return base.copyWith(
+      case Communities.open2Ch:
+        return base.copyWith(
             theme: ThemeList.sanJuanBlue,
             sortHistoryList: SortHistoryList.history,
             retentionPeriod: RetentionPeriodList.oneWeek);
