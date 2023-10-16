@@ -56,6 +56,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData usedNames(List<String?> usedNames);
 
+  ForumSettingsData nsfw(bool nsfw);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -87,6 +89,7 @@ abstract class _$ForumSettingsDataCWProxy {
     AutoDownloadableSizeLimit? autoDownloadableSizeLimit,
     TimeagoList? timeago,
     List<String?>? usedNames,
+    bool? nsfw,
   });
 }
 
@@ -189,6 +192,9 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(usedNames: usedNames);
 
   @override
+  ForumSettingsData nsfw(bool nsfw) => this(nsfw: nsfw);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -221,6 +227,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? autoDownloadableSizeLimit = const $CopyWithPlaceholder(),
     Object? timeago = const $CopyWithPlaceholder(),
     Object? usedNames = const $CopyWithPlaceholder(),
+    Object? nsfw = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       userId: userId == const $CopyWithPlaceholder() || userId == null
@@ -338,6 +345,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.usedNames
           // ignore: cast_nullable_to_non_nullable
           : usedNames as List<String?>,
+      nsfw: nsfw == const $CopyWithPlaceholder() || nsfw == null
+          ? _value.nsfw
+          // ignore: cast_nullable_to_non_nullable
+          : nsfw as bool,
     );
   }
 }
@@ -533,6 +544,7 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String?)
               .toList() ??
           const [],
+      nsfw: json['nsfw'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -564,6 +576,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
           instance.autoDownloadableSizeLimit]!,
       'timeago': _$TimeagoListEnumMap[instance.timeago]!,
       'usedNames': instance.usedNames,
+      'nsfw': instance.nsfw,
     };
 
 const _$CommunitiesEnumMap = {
@@ -574,6 +587,7 @@ const _$CommunitiesEnumMap = {
   Communities.shitaraba: 'shitaraba',
   Communities.open2Ch: 'open2Ch',
   Communities.machi: 'machi',
+  Communities.chan4: 'chan4',
 };
 
 const _$ThemeListEnumMap = {

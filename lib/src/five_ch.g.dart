@@ -938,6 +938,7 @@ const _$CommunitiesEnumMap = {
   Communities.shitaraba: 'shitaraba',
   Communities.open2Ch: 'open2Ch',
   Communities.machi: 'machi',
+  Communities.chan4: 'chan4',
 };
 
 FiveChThreadContentData _$FiveChThreadContentDataFromJson(

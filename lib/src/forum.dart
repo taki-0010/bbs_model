@@ -30,7 +30,8 @@ class ForumSettingsData {
       this.threadsOrderType = ThreadsOrderType.importance,
       this.autoDownloadableSizeLimit = AutoDownloadableSizeLimit.noLimit,
       this.timeago = TimeagoList.enable,
-      this.usedNames = const []});
+      this.usedNames = const [],
+      this.nsfw = false});
 
   final String userId;
   final Communities forum;
@@ -58,6 +59,7 @@ class ForumSettingsData {
   final AutoDownloadableSizeLimit autoDownloadableSizeLimit;
   final TimeagoList timeago;
   final List<String?> usedNames;
+  final bool nsfw;
 
   List<ImportanceData?> get boardImportanceList => boardImportance
       .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
@@ -104,6 +106,7 @@ class SrcDataForStorage {
 class InitialForumData {
   static const searchWords = ['ニュース', 'スポーツ', '天気'];
   static const searchWordsFutaba = ['雑談', '画像', '天気'];
+  static const searchWordsEn = ['News', 'SDGs', 'Weather'];
   static ForumSettingsData? getInitialSettings(
       final Communities value, final String userId) {
     // final userId = user?.$id;
@@ -163,6 +166,13 @@ class InitialForumData {
         return base.copyWith(
             theme: ThemeList.sanJuanBlue,
             sortHistoryList: SortHistoryList.history,
+            retentionPeriod: RetentionPeriodList.oneWeek);
+      case Communities.chan4:
+        return base.copyWith(
+            theme: ThemeList.greenForest,
+            searchWordList: searchWordsEn,
+            searchBoardId: 'a',
+            listViewStyle: ListViewStyle.gridMedium,
             retentionPeriod: RetentionPeriodList.oneWeek);
       default:
     }
