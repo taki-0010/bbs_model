@@ -106,7 +106,7 @@ class SrcDataForStorage {
 class InitialForumData {
   static const searchWords = ['ニュース', 'スポーツ', '天気'];
   static const searchWordsFutaba = ['雑談', '画像', '天気'];
-  static const searchWordsEn = ['News', 'SDGs', 'Weather'];
+  static const searchWordsChan4 = ['News', 'SDGs', 'waifu draw'];
   static ForumSettingsData? getInitialSettings(
       final Communities value, final String userId) {
     // final userId = user?.$id;
@@ -170,7 +170,7 @@ class InitialForumData {
       case Communities.chan4:
         return base.copyWith(
             theme: ThemeList.greenForest,
-            searchWordList: searchWordsEn,
+            searchWordList: searchWordsChan4,
             searchBoardId: 'a',
             listViewStyle: ListViewStyle.gridMedium,
             retentionPeriod: RetentionPeriodList.oneWeek);

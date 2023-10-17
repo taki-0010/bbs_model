@@ -32,6 +32,9 @@ class Open2ChData {
     if (uri.host.split('.').length == 2) {
       return null;
     }
+    if (uri.path.contains(bbsMenuPath)) {
+      return null;
+    }
     if (uri.path.contains(threadPath)) {
       return true;
     }

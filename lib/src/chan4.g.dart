@@ -481,7 +481,7 @@ abstract class _$Chan4BaseDataFromJsonCWProxy {
 
   Chan4BaseDataFromJson now(String now);
 
-  Chan4BaseDataFromJson name(String name);
+  Chan4BaseDataFromJson name(String? name);
 
   Chan4BaseDataFromJson resto(int resto);
 
@@ -630,7 +630,7 @@ class _$Chan4BaseDataFromJsonCWProxyImpl
   Chan4BaseDataFromJson now(String now) => this(now: now);
 
   @override
-  Chan4BaseDataFromJson name(String name) => this(name: name);
+  Chan4BaseDataFromJson name(String? name) => this(name: name);
 
   @override
   Chan4BaseDataFromJson resto(int resto) => this(resto: resto);
@@ -826,10 +826,10 @@ class _$Chan4BaseDataFromJsonCWProxyImpl
           ? _value.now
           // ignore: cast_nullable_to_non_nullable
           : now as String,
-      name: name == const $CopyWithPlaceholder() || name == null
+      name: name == const $CopyWithPlaceholder()
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
-          : name as String,
+          : name as String?,
       resto: resto == const $CopyWithPlaceholder() || resto == null
           ? _value.resto
           // ignore: cast_nullable_to_non_nullable
@@ -1213,6 +1213,10 @@ abstract class _$Chan4ContentCWProxy {
 
   Chan4Content ext(String? ext);
 
+  Chan4Content boardId(String boardId);
+
+  Chan4Content no(int no);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Chan4Content(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1230,6 +1234,8 @@ abstract class _$Chan4ContentCWProxy {
     int? time,
     int? tim,
     String? ext,
+    String? boardId,
+    int? no,
   });
 }
 
@@ -1270,6 +1276,12 @@ class _$Chan4ContentCWProxyImpl implements _$Chan4ContentCWProxy {
   Chan4Content ext(String? ext) => this(ext: ext);
 
   @override
+  Chan4Content boardId(String boardId) => this(boardId: boardId);
+
+  @override
+  Chan4Content no(int no) => this(no: no);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Chan4Content(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1288,6 +1300,8 @@ class _$Chan4ContentCWProxyImpl implements _$Chan4ContentCWProxy {
     Object? time = const $CopyWithPlaceholder(),
     Object? tim = const $CopyWithPlaceholder(),
     Object? ext = const $CopyWithPlaceholder(),
+    Object? boardId = const $CopyWithPlaceholder(),
+    Object? no = const $CopyWithPlaceholder(),
   }) {
     return Chan4Content(
       forum: forum == const $CopyWithPlaceholder() || forum == null
@@ -1330,6 +1344,14 @@ class _$Chan4ContentCWProxyImpl implements _$Chan4ContentCWProxy {
           ? _value.ext
           // ignore: cast_nullable_to_non_nullable
           : ext as String?,
+      boardId: boardId == const $CopyWithPlaceholder() || boardId == null
+          ? _value.boardId
+          // ignore: cast_nullable_to_non_nullable
+          : boardId as String,
+      no: no == const $CopyWithPlaceholder() || no == null
+          ? _value.no
+          // ignore: cast_nullable_to_non_nullable
+          : no as int,
     );
   }
 }
@@ -1367,7 +1389,7 @@ Chan4BaseDataFromJson _$Chan4BaseDataFromJsonFromJson(
     Chan4BaseDataFromJson(
       no: json['no'] as int,
       now: json['now'] as String,
-      name: json['name'] as String,
+      name: json['name'] as String?,
       resto: json['resto'] as int,
       time: json['time'] as int,
       sticky: json['sticky'] as int?,

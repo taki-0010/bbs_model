@@ -4,13 +4,115 @@ part 'chan4.g.dart';
 
 class Chan4Data {
   static final host = Communities.chan4.host;
+  static const hostAlt = '4channel.org';
+  static const endpoint = '4cdn.org';
   static const endpointA = 'a.4cdn.org';
   static const endpointI = 'i.4cdn.org';
   static const boards = 'boards.json';
   static const catalog = 'catalog.json';
+  static const sub = 'boards';
+  static const mobileSub = 'p';
+  static const endpointSub = 'a';
+  static const thread = 'thread';
+  static const search = 'search';
   // https://boards.4channel.org/a/thread/258411307
   // https://boards.4chan.org/a/thread/258411307
+  // https://boards.4channel.org/a/thread/258459900/kawaii
   // https://is2.4chan.org/a/1697395658490192.jpg
+  // https://a.4chan.org/a/thread/1697395658490192.json
+
+  // https://boards.4channel.org/a/archive
+
+  static Uri? getThumbnailUri(final int? tim, final String boardId) {
+    if (tim == null) {
+      return null;
+    }
+    return Uri.https(endpointI, '$boardId/${tim}s.jpg');
+  }
+
+  static Uri? getSrcUri(
+      final int? tim, final String? ext, final String boardId) {
+    if (tim == null || ext == null) {
+      return null;
+    }
+    return Uri.https(endpointI, '$boardId/$tim$ext');
+  }
+
+  // https://a.4cdn.org/po/thread/570368.json
+  static Uri? jsonToHtmlUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    // logger.d('getThreadIdFromUri: tob: $tob, uri: $uri');
+    if (tob == null) {
+      return null;
+    }
+    final threadId = getThreadIdFromUri(uri);
+    final boardId = getBoardIdFromUri(uri);
+    if (boardId == null) {
+      return null;
+    }
+    if (tob && threadId != null) {
+      return Uri.https('$sub.$host', '$boardId/$thread/$threadId');
+    }
+    if (!tob) {
+      return Uri.https('$sub.$host', boardId);
+    }
+    return null;
+  }
+
+  static bool? uriIsThreadOrBoard(final Uri uri) {
+    if (uri.host.contains(host) ||
+        uri.host.contains(hostAlt) ||
+        uri.host.contains(endpoint)) {
+      final seg = uri.pathSegments;
+      if (seg.isEmpty) {
+        return null;
+      }
+      final hostName = uri.host.split('.');
+      if (hostName.length == 2) {
+        return null;
+      }
+      if (hostName.first == sub ||
+          hostName.first == mobileSub ||
+          hostName.first == endpointSub) {
+        if (seg.first == search) {
+          return null;
+        }
+        if (seg.length == 1) {
+          return false;
+        }
+        if (seg.length >= 3) {
+          final threadId = seg[2].replaceAll('.json', '');
+          if (seg[1] == thread && int.tryParse(threadId) != null) {
+            return true;
+          }
+        }
+      }
+    }
+
+    return null;
+  }
+
+  static String? getThreadIdFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    // logger.d('getThreadIdFromUri: tob: $tob, uri: $uri');
+    if (tob == null || !tob) {
+      return null;
+    }
+    final seg = uri.pathSegments;
+    final threadId = seg[2].replaceAll('.json', '');
+    return threadId;
+  }
+
+  static String? getBoardIdFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null) {
+      return null;
+    }
+    // final path = uri.path;
+    final seg = uri.pathSegments;
+    // logger.d('getBoardIdFromUri: $path, seg: $seg, tob:$tob');
+    return seg.first;
+  }
 }
 
 @JsonSerializable(createToJson: false, explicitToJson: true)
@@ -161,7 +263,7 @@ class Chan4BaseDataFromJson {
   const Chan4BaseDataFromJson({
     required this.no,
     required this.now,
-    required this.name,
+    this.name,
     required this.resto,
     required this.time,
     this.sticky,
@@ -205,7 +307,7 @@ class Chan4BaseDataFromJson {
   });
   final int no;
   final String now;
-  final String name;
+  final String? name;
   final int resto;
   final int time;
   final int? sticky;
@@ -272,16 +374,31 @@ class Chan4ThreadData extends ThreadData {
     super.thumbnailStr,
     this.ext,
     this.tim,
+    this.archived = false,
+    this.time,
   });
   final String? ext;
   final int? tim;
+  final bool archived;
+  final int? time;
 
   @override
   String? get thumbnailUrl {
-    // if(ext == '.webm' || ext == '.pdf' || ext == '.swf'){
-    return 'https://${Chan4Data.endpointI}/$boardId/${tim}s.jpg';
-    // }
-    // return 'https://${Chan4Data.endpointI}/$boardId/$tim$ext';
+    final data = Chan4Data.getThumbnailUri(tim, boardId);
+    if (data != null) {
+      return data.toString();
+    }
+    return null;
+  }
+
+  @override
+  DateTime? get dateTime {
+    if (time == null) {
+      return null;
+    }
+    // final datetime = int.tryParse(id) ?? 0;
+    // logger.d('datetime: machi: $datetime, id: $id');
+    return DateTime.fromMillisecondsSinceEpoch(time! * 1000);
   }
 }
 
@@ -313,10 +430,48 @@ class Chan4Content extends ContentData {
     super.userId,
     required this.time,
     this.tim,
-    this.ext
+    this.ext,
+    required this.boardId,
+    required this.no,
   });
 
   final int time;
   final int? tim;
   final String? ext;
+  final String boardId;
+  final int no;
+
+  @override
+  String? get srcThumbnail {
+    final data = Chan4Data.getThumbnailUri(tim, boardId);
+    if (data != null) {
+      return data.toString();
+    }
+    return null;
+  }
+
+  @override
+  String? get srcContent {
+    final data = Chan4Data.getSrcUri(tim, ext, boardId);
+    if (data != null) {
+      return data.toString();
+    }
+    return null;
+  }
+
+  @override
+  DateTime get createdAt => DateTime.fromMillisecondsSinceEpoch(time * 1000);
+
+  @override
+  String? get getUserName => name;
+
+  @override
+  String? get getUserId => userId;
+
+  @override
+  Set<String?> get anchorList {
+    final list = RegExp(r'>>[0-9]+').allMatches(body).toSet();
+    // logger.d('anchor: ${list}');
+    return list.map((e) => e.group(0)).toSet();
+  }
 }

@@ -30,6 +30,9 @@ class MachiData {
     if (!uri.host.contains(host)) {
       return null;
     }
+    if (uri.path.contains(bbsMenu)) {
+      return null;
+    }
     if (uri.path.contains(threadPath)) {
       return true;
     }
@@ -142,7 +145,7 @@ class MachiData {
 // @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class MachiBoardData extends BoardData{
+class MachiBoardData extends BoardData {
   const MachiBoardData({
     required super.id,
     required super.name,

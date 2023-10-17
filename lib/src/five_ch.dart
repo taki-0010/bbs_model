@@ -94,6 +94,9 @@ class FiveChData {
     if (uri.path.contains(wiki)) {
       return null;
     }
+    if (uri.host.contains('menu.')) {
+      return null;
+    }
     if (uri.path.contains(threadPath)) {
       return true;
     }

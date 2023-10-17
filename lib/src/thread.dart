@@ -84,12 +84,12 @@ abstract class ThreadBase {
     return null;
   }
 
-  String? get compatibleUrl =>
-      fiveChUrlForHtml ??
-      pinkChUrlForHtml ??
-      machiUrlForHtml ??
-      open2chUrlForHtml ??
-      shitarabaUrlForHtml;
+  // String? get compatibleUrl =>
+  //     fiveChUrlForHtml ??
+  //     pinkChUrlForHtml ??
+  //     machiUrlForHtml ??
+  //     open2chUrlForHtml ??
+  //     shitarabaUrlForHtml;
 
   String? get htmlUrl {
     switch (type) {
@@ -101,6 +101,14 @@ abstract class ThreadBase {
         return machiUrlForHtml;
       case Communities.shitaraba:
         return shitarabaUrlForHtml;
+      case Communities.open2Ch:
+        return open2chUrlForHtml;
+      case Communities.chan4:
+        final uriData = Uri.tryParse('https://$url');
+        if (uriData != null) {
+          return Chan4Data.jsonToHtmlUri(uriData).toString();
+        }
+        return null;
       default:
         return getFullUrl;
     }
@@ -368,7 +376,7 @@ class PostDraftData {
   // final String? threadMarkDocumentId;
   final Communities forum;
 
-    factory PostDraftData.fromJson(Map<String, dynamic> json) =>
+  factory PostDraftData.fromJson(Map<String, dynamic> json) =>
       _$PostDraftDataFromJson(json);
   Map<String, dynamic> toJson() => _$PostDraftDataToJson(this);
 }
