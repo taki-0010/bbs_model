@@ -175,6 +175,14 @@ class GirlsChThread extends ThreadData with WithDateTime {
 
   // String get url => '/topics/$id/';
 
+  @override
+  double? get updateAt {
+    if (dateTime == null) {
+      return -1;
+    }
+    return dateTime!.millisecondsSinceEpoch * 0.001;
+  }
+
   SrcData? get thumbnail => thumbnailStr != null
       ? SrcData.fromJson(stringToJson(thumbnailStr!))
       : null;
@@ -232,7 +240,8 @@ class GirlsChContent extends ContentData with WithDateTime {
       required this.categoryId,
       this.id,
       super.threadThumbnail,
-      super.urlSet});
+      super.urlSet,
+      this.reportHash});
   // final int index;
   // final String name;
   // final String body;
@@ -243,6 +252,7 @@ class GirlsChContent extends ContentData with WithDateTime {
   // final String? title;
   final String? id;
   final String categoryId;
+  final String? reportHash;
 
   // 2023/08/25(金) 16:35:32
 

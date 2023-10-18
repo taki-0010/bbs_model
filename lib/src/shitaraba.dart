@@ -39,6 +39,13 @@ class ShitarabaData {
   //htm https://jbbs.shitaraba.net/bbs/read.cgi/music/28333/1696818255/l50
   //dat https://jbbs.shitaraba.net/bbs/rawmode.cgi/music/28333/1696818255/l50
 
+  // report
+  // https://rentalbbs.shitaraba.com/jbbs/user_inquiry/?dir=music&bbs=28333
+
+  static String reportUrl(final String category, final String boardId) {
+    return 'https://rentalbbs.shitaraba.com/jbbs/user_inquiry/?dir=$category&bbs=$boardId';
+  }
+
   static String getThreadUrlPath(
       {required final String category,
       required final String boardId,
@@ -421,6 +428,9 @@ class ShitarabaThreadData extends ThreadData with WithDateTime {
 
   @override
   String? get thumbnailUrl => null;
+
+  @override
+  int? get createdAt => int.tryParse(id);
 
   @override
   DateTime? get dateTime {

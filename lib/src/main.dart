@@ -59,6 +59,8 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
   Set<ResMarkData?> get markList => marks
       .map((e) => e != null ? ResMarkData.fromJson(stringToJson(e)) : null)
       .toSet();
+  @override
+  int? get createdAt => createdAtBySeconds;
 
   @override
   double get ikioi {

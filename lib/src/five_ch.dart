@@ -10,6 +10,10 @@ class FiveChData {
   static const threadPath = 'test/read.cgi';
   static const wiki = 'index.php';
   static final idReg = RegExp(r'[0-9]{5,}');
+  static const reportUrl =
+      'https://info.5ch.net/index.php/%E8%8D%92%E3%82%89%E3%81%97%E5%A0%B1%E5%91%8A';
+  static const pinkReportUrl =
+      'https://deleter.bbspink.com/wiki/wiki.cgi?page=GUIDELINE';
   // thread pc
   // https://egg.5ch.net/test/read.cgi/software/1690261572/l50
   // https://egg.5ch.net/software/dat/1690261572.dat
@@ -344,6 +348,9 @@ class FiveChThreadTitleData extends ThreadData with WithDateTime {
   // String get datId {
   //   return '$id.dat';
   // }
+
+  @override
+  int? get createdAt => int.tryParse(id);
 
   @override
   String? get thumbnailUrl => null;

@@ -21,6 +21,7 @@ class OfficialSite {
   static const terms = 'about/terms';
   static const help = 'guides/faq';
   static const addforums = 'reference/add_forum/';
+  static const email = 'taki.dev.5225@gmail.com';
 }
 
 class ParamsData {

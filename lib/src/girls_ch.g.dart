@@ -254,6 +254,8 @@ abstract class _$GirlsChContentCWProxy {
 
   GirlsChContent urlSet(List<String?>? urlSet);
 
+  GirlsChContent reportHash(String? reportHash);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GirlsChContent(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -274,6 +276,7 @@ abstract class _$GirlsChContentCWProxy {
     String? id,
     String? threadThumbnail,
     List<String?>? urlSet,
+    String? reportHash,
   });
 }
 
@@ -324,6 +327,9 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
   GirlsChContent urlSet(List<String?>? urlSet) => this(urlSet: urlSet);
 
   @override
+  GirlsChContent reportHash(String? reportHash) => this(reportHash: reportHash);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GirlsChContent(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -345,6 +351,7 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
     Object? id = const $CopyWithPlaceholder(),
     Object? threadThumbnail = const $CopyWithPlaceholder(),
     Object? urlSet = const $CopyWithPlaceholder(),
+    Object? reportHash = const $CopyWithPlaceholder(),
   }) {
     return GirlsChContent(
       forum: forum == const $CopyWithPlaceholder() || forum == null
@@ -400,6 +407,10 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
           ? _value.urlSet
           // ignore: cast_nullable_to_non_nullable
           : urlSet as List<String?>?,
+      reportHash: reportHash == const $CopyWithPlaceholder()
+          ? _value.reportHash
+          // ignore: cast_nullable_to_non_nullable
+          : reportHash as String?,
     );
   }
 }
@@ -432,6 +443,7 @@ GirlsChContent _$GirlsChContentFromJson(Map<String, dynamic> json) =>
       threadThumbnail: json['threadThumbnail'] as String?,
       urlSet:
           (json['urlSet'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      reportHash: json['reportHash'] as String?,
     );
 
 Map<String, dynamic> _$GirlsChContentToJson(GirlsChContent instance) =>
@@ -449,6 +461,7 @@ Map<String, dynamic> _$GirlsChContentToJson(GirlsChContent instance) =>
       'postAt': instance.postAt,
       'id': instance.id,
       'categoryId': instance.categoryId,
+      'reportHash': instance.reportHash,
     };
 
 const _$CommunitiesEnumMap = {

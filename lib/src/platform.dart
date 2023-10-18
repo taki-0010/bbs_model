@@ -47,4 +47,6 @@ class PlatformData {
   static const windowHeight = 'windowHeight';
   static const windowOffsetX = 'windowOffsetX';
   static const windowOffsetY = 'windowOffsetY';
+
+  static const ageedTerms = 'ageedTerms';
 }

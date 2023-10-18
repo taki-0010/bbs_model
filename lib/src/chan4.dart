@@ -363,24 +363,36 @@ class Chan4BaseDataFromJson {
 
 @CopyWith()
 @immutable
-class Chan4ThreadData extends ThreadData {
-  const Chan4ThreadData({
-    required super.id,
-    required super.title,
-    required super.resCount,
-    required super.boardId,
-    required super.type,
-    required super.url,
-    super.thumbnailStr,
-    this.ext,
-    this.tim,
-    this.archived = false,
-    this.time,
-  });
+class Chan4ThreadData extends ThreadData with WithDateTime {
+  const Chan4ThreadData(
+      {required super.id,
+      required super.title,
+      required super.resCount,
+      required super.boardId,
+      required super.type,
+      required super.url,
+      super.thumbnailStr,
+      this.ext,
+      this.tim,
+      this.archived = false,
+      this.time,
+      this.lastModified});
   final String? ext;
   final int? tim;
   final bool archived;
   final int? time;
+  final int? lastModified;
+
+  @override
+  double? get updateAt => lastModified?.toDouble();
+
+  @override
+  int? get createdAt => time;
+
+  @override
+  double get ikioi {
+    return getIkioi(time! * 1000, resCount);
+  }
 
   @override
   String? get thumbnailUrl {
@@ -433,6 +445,8 @@ class Chan4Content extends ContentData {
     this.ext,
     required this.boardId,
     required this.no,
+    this.country,
+    this.countryName
   });
 
   final int time;
@@ -440,6 +454,8 @@ class Chan4Content extends ContentData {
   final String? ext;
   final String boardId;
   final int no;
+  final String? country;
+  final String? countryName;
 
   @override
   String? get srcThumbnail {

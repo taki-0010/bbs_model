@@ -1021,6 +1021,12 @@ abstract class _$Chan4ThreadDataCWProxy {
 
   Chan4ThreadData tim(int? tim);
 
+  Chan4ThreadData archived(bool archived);
+
+  Chan4ThreadData time(int? time);
+
+  Chan4ThreadData lastModified(int? lastModified);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Chan4ThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1037,6 +1043,9 @@ abstract class _$Chan4ThreadDataCWProxy {
     String? thumbnailStr,
     String? ext,
     int? tim,
+    bool? archived,
+    int? time,
+    int? lastModified,
   });
 }
 
@@ -1075,6 +1084,16 @@ class _$Chan4ThreadDataCWProxyImpl implements _$Chan4ThreadDataCWProxy {
   Chan4ThreadData tim(int? tim) => this(tim: tim);
 
   @override
+  Chan4ThreadData archived(bool archived) => this(archived: archived);
+
+  @override
+  Chan4ThreadData time(int? time) => this(time: time);
+
+  @override
+  Chan4ThreadData lastModified(int? lastModified) =>
+      this(lastModified: lastModified);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Chan4ThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1092,6 +1111,9 @@ class _$Chan4ThreadDataCWProxyImpl implements _$Chan4ThreadDataCWProxy {
     Object? thumbnailStr = const $CopyWithPlaceholder(),
     Object? ext = const $CopyWithPlaceholder(),
     Object? tim = const $CopyWithPlaceholder(),
+    Object? archived = const $CopyWithPlaceholder(),
+    Object? time = const $CopyWithPlaceholder(),
+    Object? lastModified = const $CopyWithPlaceholder(),
   }) {
     return Chan4ThreadData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -1130,6 +1152,18 @@ class _$Chan4ThreadDataCWProxyImpl implements _$Chan4ThreadDataCWProxy {
           ? _value.tim
           // ignore: cast_nullable_to_non_nullable
           : tim as int?,
+      archived: archived == const $CopyWithPlaceholder() || archived == null
+          ? _value.archived
+          // ignore: cast_nullable_to_non_nullable
+          : archived as bool,
+      time: time == const $CopyWithPlaceholder()
+          ? _value.time
+          // ignore: cast_nullable_to_non_nullable
+          : time as int?,
+      lastModified: lastModified == const $CopyWithPlaceholder()
+          ? _value.lastModified
+          // ignore: cast_nullable_to_non_nullable
+          : lastModified as int?,
     );
   }
 }
@@ -1217,6 +1251,10 @@ abstract class _$Chan4ContentCWProxy {
 
   Chan4Content no(int no);
 
+  Chan4Content country(String? country);
+
+  Chan4Content countryName(String? countryName);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Chan4Content(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1236,6 +1274,8 @@ abstract class _$Chan4ContentCWProxy {
     String? ext,
     String? boardId,
     int? no,
+    String? country,
+    String? countryName,
   });
 }
 
@@ -1282,6 +1322,13 @@ class _$Chan4ContentCWProxyImpl implements _$Chan4ContentCWProxy {
   Chan4Content no(int no) => this(no: no);
 
   @override
+  Chan4Content country(String? country) => this(country: country);
+
+  @override
+  Chan4Content countryName(String? countryName) =>
+      this(countryName: countryName);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Chan4Content(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1302,6 +1349,8 @@ class _$Chan4ContentCWProxyImpl implements _$Chan4ContentCWProxy {
     Object? ext = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? no = const $CopyWithPlaceholder(),
+    Object? country = const $CopyWithPlaceholder(),
+    Object? countryName = const $CopyWithPlaceholder(),
   }) {
     return Chan4Content(
       forum: forum == const $CopyWithPlaceholder() || forum == null
@@ -1352,6 +1401,14 @@ class _$Chan4ContentCWProxyImpl implements _$Chan4ContentCWProxy {
           ? _value.no
           // ignore: cast_nullable_to_non_nullable
           : no as int,
+      country: country == const $CopyWithPlaceholder()
+          ? _value.country
+          // ignore: cast_nullable_to_non_nullable
+          : country as String?,
+      countryName: countryName == const $CopyWithPlaceholder()
+          ? _value.countryName
+          // ignore: cast_nullable_to_non_nullable
+          : countryName as String?,
     );
   }
 }

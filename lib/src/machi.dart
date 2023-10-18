@@ -9,6 +9,7 @@ class MachiData {
   static const search = 'bbs/search.cgi';
   static const threadPath = 'bbs/read.cgi';
   static const sp = 'sp.html';
+  static const reportUrl = 'https://machi.to/saku.htm';
 
   // threads
   // http://www.machi.to/bbs/json.cgi/tawara/
@@ -16,6 +17,9 @@ class MachiData {
   // thread
   // http://www.machi.to/bbs/json.cgi/tawara/1269441710/
   // https://machi.to/bbs/read.cgi/hokkaidou/1689276249/500
+
+  // report
+  // https://hokkaido.machi.to/bbs/read.cgi/hokkaidou/1235446469/
 
   static Uri? htmlToDatUri(final Uri uri) {
     final boardId = getBoardIdFromUri(uri);
@@ -217,6 +221,9 @@ class MachiThreadData extends ThreadData with WithDateTime {
 
   @override
   String? get thumbnailUrl => null;
+
+  @override
+  int? get createdAt => int.tryParse(id);
 
   @override
   DateTime? get dateTime {
