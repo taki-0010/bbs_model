@@ -53,36 +53,26 @@ class PostData {
   final int? resnum;
 }
 
-// @JsonSerializable()
-// @CopyWith()
-// @immutable
-// class CommentData {
-//   const CommentData(
-//       {required this.body,
-//       required this.name,
-//       required this.postAt,
-//       // required this.forum,
-//       // required this.threadId,
-//       // required this.threadTitle,
-//       required this.sage,
-//       this.media,
-//       this.filename,
-//       this.resnum});
+@JsonSerializable()
+@CopyWith()
+@immutable
+class TemplateData {
+  const TemplateData({
+    required this.documentId,
+    required this.forum,
+    required this.userId,
+    this.names = const [],
+    this.subjects = const [],
+    this.bodys = const [],
+  });
+  final String documentId;
+  final Communities forum;
+  final String userId;
+  final List<String?> names;
+  final List<String?> subjects;
+  final List<String?> bodys;
 
-//   final String body;
-//   final String name;
-//   final String postAt;
-//   // final Communities forum;
-//   // final String threadId;
-//   // final String threadTitle;
-//   final String? resnum;
-//   final Uint8List? media;
-//   final String? filename;
-//   final bool sage;
-
-//   int? get index => int.tryParse(resnum ?? '0');
-
-//   // factory CommentData.fromJson(Map<String, dynamic> json) =>
-//   //     _$CommentDataFromJson(json);
-//   // Map<String, dynamic> toJson() => _$CommentDataToJson(this);
-// }
+  factory TemplateData.fromJson(Map<String, dynamic> json) =>
+      _$TemplateDataFromJson(json);
+  Map<String, dynamic> toJson() => _$TemplateDataToJson(this);
+}

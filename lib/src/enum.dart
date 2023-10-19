@@ -189,3 +189,9 @@ enum TimeagoList {
   disableSecondsAndMinutes,
   enable;
 }
+
+enum MediaTypeList{
+  image,
+  video,
+  pdf
+}

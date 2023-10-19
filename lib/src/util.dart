@@ -33,6 +33,35 @@ class UrlParser {
     final replacedName = xEmbeStr.replaceAll('{{name}}', userName);
     return replacedName.replaceAll('{{str}}', idStr);
   }
+
+  static MediaTypeList? getType(final String? url) {
+    if (url == null) {
+      return null;
+    }
+    final uri = Uri.tryParse(url);
+    if (uri == null) {
+      return null;
+    }
+    final path = uri.path;
+    final image = (path.contains(".jpeg") ||
+        path.contains(".jpg") ||
+        path.contains(".png") ||
+        path.contains(".gif") ||
+        path.contains(".avif") ||
+        path.contains(".webp"));
+    final pdf = path.contains(".pdf");
+    final video = path.contains(".mp4") || url.contains(".webm");
+    if (image) {
+      return MediaTypeList.image;
+    }
+    if (video) {
+      return MediaTypeList.video;
+    }
+    if (pdf) {
+      return MediaTypeList.pdf;
+    }
+    return null;
+  }
 }
 
 class GoogleFontsList {
@@ -78,6 +107,7 @@ class StringMethodData {
   static const idReg8 = r'''ID:.{8}''';
   static const idReg4 = r'''ID:.{4}''';
   static const resNumReg = r'''^[0-9]+''';
+  static const quoteReg = r'''>+.*''';
 
   static int? getResNum(final String value) {
     final exist = RegExp(r'''^[0-9]+''').firstMatch(value);

@@ -391,6 +391,9 @@ class Chan4ThreadData extends ThreadData with WithDateTime {
 
   @override
   double get ikioi {
+    if(time == null){
+      return -1;
+    }
     return getIkioi(time! * 1000, resCount);
   }
 
@@ -432,22 +435,22 @@ class Chan4ContentFromJson {
 @CopyWith()
 @immutable
 class Chan4Content extends ContentData {
-  const Chan4Content({
-    required super.forum,
-    required super.index,
-    required super.name,
-    required super.body,
-    super.title,
-    super.urlSet,
-    super.userId,
-    required this.time,
-    this.tim,
-    this.ext,
-    required this.boardId,
-    required this.no,
-    this.country,
-    this.countryName
-  });
+  const Chan4Content(
+      {required super.forum,
+      required super.index,
+      required super.name,
+      required super.body,
+      super.title,
+      super.urlSet,
+      super.userId,
+      required this.time,
+      this.tim,
+      this.ext,
+      required this.boardId,
+      required this.no,
+      this.country,
+      this.countryName,
+      this.fileName});
 
   final int time;
   final int? tim;
@@ -456,6 +459,7 @@ class Chan4Content extends ContentData {
   final int no;
   final String? country;
   final String? countryName;
+  final String? fileName;
 
   @override
   String? get srcThumbnail {

@@ -1255,6 +1255,8 @@ abstract class _$Chan4ContentCWProxy {
 
   Chan4Content countryName(String? countryName);
 
+  Chan4Content fileName(String? fileName);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Chan4Content(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1276,6 +1278,7 @@ abstract class _$Chan4ContentCWProxy {
     int? no,
     String? country,
     String? countryName,
+    String? fileName,
   });
 }
 
@@ -1329,6 +1332,9 @@ class _$Chan4ContentCWProxyImpl implements _$Chan4ContentCWProxy {
       this(countryName: countryName);
 
   @override
+  Chan4Content fileName(String? fileName) => this(fileName: fileName);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Chan4Content(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1351,6 +1357,7 @@ class _$Chan4ContentCWProxyImpl implements _$Chan4ContentCWProxy {
     Object? no = const $CopyWithPlaceholder(),
     Object? country = const $CopyWithPlaceholder(),
     Object? countryName = const $CopyWithPlaceholder(),
+    Object? fileName = const $CopyWithPlaceholder(),
   }) {
     return Chan4Content(
       forum: forum == const $CopyWithPlaceholder() || forum == null
@@ -1409,6 +1416,10 @@ class _$Chan4ContentCWProxyImpl implements _$Chan4ContentCWProxy {
           ? _value.countryName
           // ignore: cast_nullable_to_non_nullable
           : countryName as String?,
+      fileName: fileName == const $CopyWithPlaceholder()
+          ? _value.fileName
+          // ignore: cast_nullable_to_non_nullable
+          : fileName as String?,
     );
   }
 }

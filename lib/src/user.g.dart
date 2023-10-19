@@ -230,6 +230,111 @@ extension $PostDataCopyWith on PostData {
   _$PostDataCWProxy get copyWith => _$PostDataCWProxyImpl(this);
 }
 
+abstract class _$TemplateDataCWProxy {
+  TemplateData documentId(String documentId);
+
+  TemplateData forum(Communities forum);
+
+  TemplateData userId(String userId);
+
+  TemplateData names(List<String?> names);
+
+  TemplateData subjects(List<String?> subjects);
+
+  TemplateData bodys(List<String?> bodys);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `TemplateData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// TemplateData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  TemplateData call({
+    String? documentId,
+    Communities? forum,
+    String? userId,
+    List<String?>? names,
+    List<String?>? subjects,
+    List<String?>? bodys,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfTemplateData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfTemplateData.copyWith.fieldName(...)`
+class _$TemplateDataCWProxyImpl implements _$TemplateDataCWProxy {
+  const _$TemplateDataCWProxyImpl(this._value);
+
+  final TemplateData _value;
+
+  @override
+  TemplateData documentId(String documentId) => this(documentId: documentId);
+
+  @override
+  TemplateData forum(Communities forum) => this(forum: forum);
+
+  @override
+  TemplateData userId(String userId) => this(userId: userId);
+
+  @override
+  TemplateData names(List<String?> names) => this(names: names);
+
+  @override
+  TemplateData subjects(List<String?> subjects) => this(subjects: subjects);
+
+  @override
+  TemplateData bodys(List<String?> bodys) => this(bodys: bodys);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `TemplateData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// TemplateData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  TemplateData call({
+    Object? documentId = const $CopyWithPlaceholder(),
+    Object? forum = const $CopyWithPlaceholder(),
+    Object? userId = const $CopyWithPlaceholder(),
+    Object? names = const $CopyWithPlaceholder(),
+    Object? subjects = const $CopyWithPlaceholder(),
+    Object? bodys = const $CopyWithPlaceholder(),
+  }) {
+    return TemplateData(
+      documentId:
+          documentId == const $CopyWithPlaceholder() || documentId == null
+              ? _value.documentId
+              // ignore: cast_nullable_to_non_nullable
+              : documentId as String,
+      forum: forum == const $CopyWithPlaceholder() || forum == null
+          ? _value.forum
+          // ignore: cast_nullable_to_non_nullable
+          : forum as Communities,
+      userId: userId == const $CopyWithPlaceholder() || userId == null
+          ? _value.userId
+          // ignore: cast_nullable_to_non_nullable
+          : userId as String,
+      names: names == const $CopyWithPlaceholder() || names == null
+          ? _value.names
+          // ignore: cast_nullable_to_non_nullable
+          : names as List<String?>,
+      subjects: subjects == const $CopyWithPlaceholder() || subjects == null
+          ? _value.subjects
+          // ignore: cast_nullable_to_non_nullable
+          : subjects as List<String?>,
+      bodys: bodys == const $CopyWithPlaceholder() || bodys == null
+          ? _value.bodys
+          // ignore: cast_nullable_to_non_nullable
+          : bodys as List<String?>,
+    );
+  }
+}
+
+extension $TemplateDataCopyWith on TemplateData {
+  /// Returns a callable class that can be used as follows: `instanceOfTemplateData.copyWith(...)` or like so:`instanceOfTemplateData.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$TemplateDataCWProxy get copyWith => _$TemplateDataCWProxyImpl(this);
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -268,3 +373,31 @@ const _$LangListEnumMap = {
   LangList.ja: 'ja',
   LangList.en: 'en',
 };
+
+TemplateData _$TemplateDataFromJson(Map<String, dynamic> json) => TemplateData(
+      documentId: json['documentId'] as String,
+      forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
+      userId: json['userId'] as String,
+      names: (json['names'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
+      subjects: (json['subjects'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
+      bodys: (json['bodys'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$TemplateDataToJson(TemplateData instance) =>
+    <String, dynamic>{
+      'documentId': instance.documentId,
+      'forum': _$CommunitiesEnumMap[instance.forum]!,
+      'userId': instance.userId,
+      'names': instance.names,
+      'subjects': instance.subjects,
+      'bodys': instance.bodys,
+    };
