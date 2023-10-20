@@ -114,7 +114,7 @@ abstract class _$PostDataCWProxy {
 
   PostData filename(String? filename);
 
-  PostData sage(bool sage);
+  PostData email(String email);
 
   PostData postThread(bool postThread);
 
@@ -132,7 +132,7 @@ abstract class _$PostDataCWProxy {
     String? title,
     Uint8List? media,
     String? filename,
-    bool? sage,
+    String? email,
     bool? postThread,
     int? resnum,
   });
@@ -160,7 +160,7 @@ class _$PostDataCWProxyImpl implements _$PostDataCWProxy {
   PostData filename(String? filename) => this(filename: filename);
 
   @override
-  PostData sage(bool sage) => this(sage: sage);
+  PostData email(String email) => this(email: email);
 
   @override
   PostData postThread(bool postThread) => this(postThread: postThread);
@@ -182,7 +182,7 @@ class _$PostDataCWProxyImpl implements _$PostDataCWProxy {
     Object? title = const $CopyWithPlaceholder(),
     Object? media = const $CopyWithPlaceholder(),
     Object? filename = const $CopyWithPlaceholder(),
-    Object? sage = const $CopyWithPlaceholder(),
+    Object? email = const $CopyWithPlaceholder(),
     Object? postThread = const $CopyWithPlaceholder(),
     Object? resnum = const $CopyWithPlaceholder(),
   }) {
@@ -207,10 +207,10 @@ class _$PostDataCWProxyImpl implements _$PostDataCWProxy {
           ? _value.filename
           // ignore: cast_nullable_to_non_nullable
           : filename as String?,
-      sage: sage == const $CopyWithPlaceholder() || sage == null
-          ? _value.sage
+      email: email == const $CopyWithPlaceholder() || email == null
+          ? _value.email
           // ignore: cast_nullable_to_non_nullable
-          : sage as bool,
+          : email as String,
       postThread:
           postThread == const $CopyWithPlaceholder() || postThread == null
               ? _value.postThread

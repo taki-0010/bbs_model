@@ -40,7 +40,8 @@ class PostData {
       required this.title,
       this.media,
       this.filename,
-      required this.sage,
+      required this.email,
+      // required this.sage,
       this.postThread = false,
       this.resnum});
   final String body;
@@ -48,7 +49,8 @@ class PostData {
   final String title;
   final Uint8List? media;
   final String? filename;
-  final bool sage;
+  // final bool sage;
+  final String email;
   final bool postThread;
   final int? resnum;
 }
