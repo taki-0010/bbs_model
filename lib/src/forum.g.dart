@@ -43,6 +43,8 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData threadsImportance(List<String?> threadsImportance);
 
+  ForumSettingsData importanceList(List<String?> importanceList);
+
   ForumSettingsData listViewStyle(ListViewStyle listViewStyle);
 
   ForumSettingsData movedToLastThreads(MovedToLastThreads movedToLastThreads);
@@ -83,6 +85,7 @@ abstract class _$ForumSettingsDataCWProxy {
     List<String?>? addedFonts,
     List<String?>? boardImportance,
     List<String?>? threadsImportance,
+    List<String?>? importanceList,
     ListViewStyle? listViewStyle,
     MovedToLastThreads? movedToLastThreads,
     ThreadsOrderType? threadsOrderType,
@@ -168,6 +171,10 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(threadsImportance: threadsImportance);
 
   @override
+  ForumSettingsData importanceList(List<String?> importanceList) =>
+      this(importanceList: importanceList);
+
+  @override
   ForumSettingsData listViewStyle(ListViewStyle listViewStyle) =>
       this(listViewStyle: listViewStyle);
 
@@ -221,6 +228,7 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? addedFonts = const $CopyWithPlaceholder(),
     Object? boardImportance = const $CopyWithPlaceholder(),
     Object? threadsImportance = const $CopyWithPlaceholder(),
+    Object? importanceList = const $CopyWithPlaceholder(),
     Object? listViewStyle = const $CopyWithPlaceholder(),
     Object? movedToLastThreads = const $CopyWithPlaceholder(),
     Object? threadsOrderType = const $CopyWithPlaceholder(),
@@ -316,6 +324,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.threadsImportance
           // ignore: cast_nullable_to_non_nullable
           : threadsImportance as List<String?>,
+      importanceList: importanceList == const $CopyWithPlaceholder() ||
+              importanceList == null
+          ? _value.importanceList
+          // ignore: cast_nullable_to_non_nullable
+          : importanceList as List<String?>,
       listViewStyle:
           listViewStyle == const $CopyWithPlaceholder() || listViewStyle == null
               ? _value.listViewStyle
@@ -525,6 +538,10 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String?)
               .toList() ??
           const [],
+      importanceList: (json['importanceList'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
       listViewStyle:
           $enumDecodeNullable(_$ListViewStyleEnumMap, json['listViewStyle']) ??
               ListViewStyle.list,
@@ -568,6 +585,7 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'addedFonts': instance.addedFonts,
       'boardImportance': instance.boardImportance,
       'threadsImportance': instance.threadsImportance,
+      'importanceList': instance.importanceList,
       'listViewStyle': _$ListViewStyleEnumMap[instance.listViewStyle]!,
       'movedToLastThreads':
           _$MovedToLastThreadsEnumMap[instance.movedToLastThreads]!,
@@ -587,6 +605,7 @@ const _$CommunitiesEnumMap = {
   Communities.shitaraba: 'shitaraba',
   Communities.open2Ch: 'open2Ch',
   Communities.machi: 'machi',
+  Communities.hatena: 'hatena',
   Communities.chan4: 'chan4',
 };
 

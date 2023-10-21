@@ -6,6 +6,7 @@ enum Communities {
   shitaraba(label: 'したらば', host: 'shitaraba.net'),
   open2Ch(label: 'Open 2ch', host: 'open2ch.net'),
   machi(label: 'まち BBS', host: 'machi.to'),
+  hatena(label: 'はてなB', host: 'hatena.ne.jp'),
   chan4(label: '4chan', host: '4chan.org');
 
   const Communities({required this.label, required this.host});
@@ -90,14 +91,15 @@ enum MarkIcon {
 }
 
 enum ImportanceList {
-  veryImportant(level: 'veryImportant'),
-  important(level: 'important'),
+  veryImportant(level: 'veryImportant', label: 'Very Important'),
+  important(level: 'important', label: 'Important'),
   // three(level: 'medium'),
-  unimportant(level: 'unimportant'),
-  veryUnimportant(level: 'veryUnimportant');
+  unimportant(level: 'unimportant', label: 'Unimportant'),
+  veryUnimportant(level: 'veryUnimportant', label: 'Very Unimportant');
 
-  const ImportanceList({required this.level});
+  const ImportanceList({required this.level, required this.label});
   final String level;
+  final String label;
 }
 
 enum ImportanceTarget {
@@ -190,8 +192,4 @@ enum TimeagoList {
   enable;
 }
 
-enum MediaTypeList{
-  image,
-  video,
-  pdf
-}
+enum MediaTypeList { image, video, pdf }

@@ -423,8 +423,11 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
       final subtring = id.length > 3 ? id.substring(3) : '';
       // if(subtring.endsWith('●'))
       // logger.d('getId: splited: $splited, id:$id, sub:$subtring');
+      if (subtring == '???' || subtring.isEmpty) {
+        return null;
+      }
 
-      return subtring == '???' ? null : subtring;
+      return subtring;
     }
     return null;
   }

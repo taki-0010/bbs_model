@@ -424,7 +424,9 @@ class ShitarabaThreadData extends ThreadData with WithDateTime {
       // super.difference,
       super.boardName,
       super.isNewPost,
-      required super.updateAtStr});
+      required super.updateAtStr,
+      required this.category});
+  final String category;
 
   @override
   String? get thumbnailUrl => null;

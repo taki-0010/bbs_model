@@ -25,6 +25,7 @@ class ForumSettingsData {
       this.addedFonts = const [],
       this.boardImportance = const [],
       this.threadsImportance = const [],
+      this.importanceList = const [],
       this.listViewStyle = ListViewStyle.list,
       this.movedToLastThreads = MovedToLastThreads.none,
       this.threadsOrderType = ThreadsOrderType.importance,
@@ -53,6 +54,7 @@ class ForumSettingsData {
   final List<String?> addedFonts;
   final List<String?> boardImportance;
   final List<String?> threadsImportance;
+  final List<String?> importanceList;
   final ListViewStyle listViewStyle;
   final MovedToLastThreads movedToLastThreads;
   final ThreadsOrderType threadsOrderType;
@@ -66,6 +68,10 @@ class ForumSettingsData {
       .toList();
 
   List<ImportanceData?> get threadsImportanceList => threadsImportance
+      .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
+      .toList();
+
+  List<ImportanceData?> get getImportanceList => importanceList
       .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
       .toList();
 

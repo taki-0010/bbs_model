@@ -32,3 +32,7 @@ class ParamsData {
     return Uri.https(google, 'search', {'q': value});
   }
 }
+
+class ConstantsDataBase {
+  static const importanceMaxLength = 80;
+}

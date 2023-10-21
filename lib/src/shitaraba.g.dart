@@ -192,6 +192,8 @@ abstract class _$ShitarabaThreadDataCWProxy {
 
   ShitarabaThreadData updateAtStr(String? updateAtStr);
 
+  ShitarabaThreadData category(String category);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ShitarabaThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -208,6 +210,7 @@ abstract class _$ShitarabaThreadDataCWProxy {
     String? boardName,
     bool? isNewPost,
     String? updateAtStr,
+    String? category,
   });
 }
 
@@ -247,6 +250,9 @@ class _$ShitarabaThreadDataCWProxyImpl implements _$ShitarabaThreadDataCWProxy {
       this(updateAtStr: updateAtStr);
 
   @override
+  ShitarabaThreadData category(String category) => this(category: category);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ShitarabaThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -264,6 +270,7 @@ class _$ShitarabaThreadDataCWProxyImpl implements _$ShitarabaThreadDataCWProxy {
     Object? boardName = const $CopyWithPlaceholder(),
     Object? isNewPost = const $CopyWithPlaceholder(),
     Object? updateAtStr = const $CopyWithPlaceholder(),
+    Object? category = const $CopyWithPlaceholder(),
   }) {
     return ShitarabaThreadData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -302,6 +309,10 @@ class _$ShitarabaThreadDataCWProxyImpl implements _$ShitarabaThreadDataCWProxy {
           ? _value.updateAtStr
           // ignore: cast_nullable_to_non_nullable
           : updateAtStr as String?,
+      category: category == const $CopyWithPlaceholder() || category == null
+          ? _value.category
+          // ignore: cast_nullable_to_non_nullable
+          : category as String,
     );
   }
 }
@@ -513,6 +524,7 @@ const _$CommunitiesEnumMap = {
   Communities.shitaraba: 'shitaraba',
   Communities.open2Ch: 'open2Ch',
   Communities.machi: 'machi',
+  Communities.hatena: 'hatena',
   Communities.chan4: 'chan4',
 };
 
