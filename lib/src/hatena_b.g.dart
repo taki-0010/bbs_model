@@ -6,10 +6,161 @@ part of 'hatena_b.dart';
 // CopyWithGenerator
 // **************************************************************************
 
+abstract class _$HatenaThreadDataCWProxy {
+  HatenaThreadData id(String id);
+
+  HatenaThreadData title(String title);
+
+  HatenaThreadData dec(String dec);
+
+  HatenaThreadData resCount(int resCount);
+
+  HatenaThreadData boardId(String boardId);
+
+  HatenaThreadData type(Communities type);
+
+  HatenaThreadData url(String url);
+
+  HatenaThreadData tags(List<String?> tags);
+
+  HatenaThreadData thumbnailStr(String? thumbnailStr);
+
+  HatenaThreadData originalUrl(String originalUrl);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `HatenaThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// HatenaThreadData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  HatenaThreadData call({
+    String? id,
+    String? title,
+    String? dec,
+    int? resCount,
+    String? boardId,
+    Communities? type,
+    String? url,
+    List<String?>? tags,
+    String? thumbnailStr,
+    String? originalUrl,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfHatenaThreadData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfHatenaThreadData.copyWith.fieldName(...)`
+class _$HatenaThreadDataCWProxyImpl implements _$HatenaThreadDataCWProxy {
+  const _$HatenaThreadDataCWProxyImpl(this._value);
+
+  final HatenaThreadData _value;
+
+  @override
+  HatenaThreadData id(String id) => this(id: id);
+
+  @override
+  HatenaThreadData title(String title) => this(title: title);
+
+  @override
+  HatenaThreadData dec(String dec) => this(dec: dec);
+
+  @override
+  HatenaThreadData resCount(int resCount) => this(resCount: resCount);
+
+  @override
+  HatenaThreadData boardId(String boardId) => this(boardId: boardId);
+
+  @override
+  HatenaThreadData type(Communities type) => this(type: type);
+
+  @override
+  HatenaThreadData url(String url) => this(url: url);
+
+  @override
+  HatenaThreadData tags(List<String?> tags) => this(tags: tags);
+
+  @override
+  HatenaThreadData thumbnailStr(String? thumbnailStr) =>
+      this(thumbnailStr: thumbnailStr);
+
+  @override
+  HatenaThreadData originalUrl(String originalUrl) =>
+      this(originalUrl: originalUrl);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `HatenaThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// HatenaThreadData(...).copyWith(id: 12, name: "My name")
+  /// ````
+  HatenaThreadData call({
+    Object? id = const $CopyWithPlaceholder(),
+    Object? title = const $CopyWithPlaceholder(),
+    Object? dec = const $CopyWithPlaceholder(),
+    Object? resCount = const $CopyWithPlaceholder(),
+    Object? boardId = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
+    Object? url = const $CopyWithPlaceholder(),
+    Object? tags = const $CopyWithPlaceholder(),
+    Object? thumbnailStr = const $CopyWithPlaceholder(),
+    Object? originalUrl = const $CopyWithPlaceholder(),
+  }) {
+    return HatenaThreadData(
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as String,
+      title: title == const $CopyWithPlaceholder() || title == null
+          ? _value.title
+          // ignore: cast_nullable_to_non_nullable
+          : title as String,
+      dec: dec == const $CopyWithPlaceholder() || dec == null
+          ? _value.dec
+          // ignore: cast_nullable_to_non_nullable
+          : dec as String,
+      resCount: resCount == const $CopyWithPlaceholder() || resCount == null
+          ? _value.resCount
+          // ignore: cast_nullable_to_non_nullable
+          : resCount as int,
+      boardId: boardId == const $CopyWithPlaceholder() || boardId == null
+          ? _value.boardId
+          // ignore: cast_nullable_to_non_nullable
+          : boardId as String,
+      type: type == const $CopyWithPlaceholder() || type == null
+          ? _value.type
+          // ignore: cast_nullable_to_non_nullable
+          : type as Communities,
+      url: url == const $CopyWithPlaceholder() || url == null
+          ? _value.url
+          // ignore: cast_nullable_to_non_nullable
+          : url as String,
+      tags: tags == const $CopyWithPlaceholder() || tags == null
+          ? _value.tags
+          // ignore: cast_nullable_to_non_nullable
+          : tags as List<String?>,
+      thumbnailStr: thumbnailStr == const $CopyWithPlaceholder()
+          ? _value.thumbnailStr
+          // ignore: cast_nullable_to_non_nullable
+          : thumbnailStr as String?,
+      originalUrl:
+          originalUrl == const $CopyWithPlaceholder() || originalUrl == null
+              ? _value.originalUrl
+              // ignore: cast_nullable_to_non_nullable
+              : originalUrl as String,
+    );
+  }
+}
+
+extension $HatenaThreadDataCopyWith on HatenaThreadData {
+  /// Returns a callable class that can be used as follows: `instanceOfHatenaThreadData.copyWith(...)` or like so:`instanceOfHatenaThreadData.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$HatenaThreadDataCWProxy get copyWith => _$HatenaThreadDataCWProxyImpl(this);
+}
+
 abstract class _$HatenaEntryDataCWProxy {
   HatenaEntryData title(String title);
 
-  HatenaEntryData count(String count);
+  HatenaEntryData count(int count);
 
   HatenaEntryData url(String url);
 
@@ -29,7 +180,7 @@ abstract class _$HatenaEntryDataCWProxy {
   /// ````
   HatenaEntryData call({
     String? title,
-    String? count,
+    int? count,
     String? url,
     String? entryUrl,
     String? screenshot,
@@ -48,7 +199,7 @@ class _$HatenaEntryDataCWProxyImpl implements _$HatenaEntryDataCWProxy {
   HatenaEntryData title(String title) => this(title: title);
 
   @override
-  HatenaEntryData count(String count) => this(count: count);
+  HatenaEntryData count(int count) => this(count: count);
 
   @override
   HatenaEntryData url(String url) => this(url: url);
@@ -91,7 +242,7 @@ class _$HatenaEntryDataCWProxyImpl implements _$HatenaEntryDataCWProxy {
       count: count == const $CopyWithPlaceholder() || count == null
           ? _value.count
           // ignore: cast_nullable_to_non_nullable
-          : count as String,
+          : count as int,
       url: url == const $CopyWithPlaceholder() || url == null
           ? _value.url
           // ignore: cast_nullable_to_non_nullable
@@ -124,13 +275,13 @@ extension $HatenaEntryDataCopyWith on HatenaEntryData {
 }
 
 abstract class _$HatenaBookmarkDataCWProxy {
-  HatenaBookmarkData user(String? user);
+  HatenaBookmarkData user(String user);
 
-  HatenaBookmarkData tags(dynamic tags);
+  HatenaBookmarkData tags(List<String?> tags);
 
-  HatenaBookmarkData timestamp(dynamic timestamp);
+  HatenaBookmarkData timestamp(String timestamp);
 
-  HatenaBookmarkData comment(String? comment);
+  HatenaBookmarkData comment(String comment);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `HatenaBookmarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -140,8 +291,8 @@ abstract class _$HatenaBookmarkDataCWProxy {
   /// ````
   HatenaBookmarkData call({
     String? user,
-    dynamic tags,
-    dynamic timestamp,
+    List<String?>? tags,
+    String? timestamp,
     String? comment,
   });
 }
@@ -153,16 +304,16 @@ class _$HatenaBookmarkDataCWProxyImpl implements _$HatenaBookmarkDataCWProxy {
   final HatenaBookmarkData _value;
 
   @override
-  HatenaBookmarkData user(String? user) => this(user: user);
+  HatenaBookmarkData user(String user) => this(user: user);
 
   @override
-  HatenaBookmarkData tags(dynamic tags) => this(tags: tags);
+  HatenaBookmarkData tags(List<String?> tags) => this(tags: tags);
 
   @override
-  HatenaBookmarkData timestamp(dynamic timestamp) => this(timestamp: timestamp);
+  HatenaBookmarkData timestamp(String timestamp) => this(timestamp: timestamp);
 
   @override
-  HatenaBookmarkData comment(String? comment) => this(comment: comment);
+  HatenaBookmarkData comment(String comment) => this(comment: comment);
 
   @override
 
@@ -179,22 +330,22 @@ class _$HatenaBookmarkDataCWProxyImpl implements _$HatenaBookmarkDataCWProxy {
     Object? comment = const $CopyWithPlaceholder(),
   }) {
     return HatenaBookmarkData(
-      user: user == const $CopyWithPlaceholder()
+      user: user == const $CopyWithPlaceholder() || user == null
           ? _value.user
           // ignore: cast_nullable_to_non_nullable
-          : user as String?,
+          : user as String,
       tags: tags == const $CopyWithPlaceholder() || tags == null
           ? _value.tags
           // ignore: cast_nullable_to_non_nullable
-          : tags as dynamic,
+          : tags as List<String?>,
       timestamp: timestamp == const $CopyWithPlaceholder() || timestamp == null
           ? _value.timestamp
           // ignore: cast_nullable_to_non_nullable
-          : timestamp as dynamic,
-      comment: comment == const $CopyWithPlaceholder()
+          : timestamp as String,
+      comment: comment == const $CopyWithPlaceholder() || comment == null
           ? _value.comment
           // ignore: cast_nullable_to_non_nullable
-          : comment as String?,
+          : comment as String,
     );
   }
 }
@@ -213,7 +364,7 @@ extension $HatenaBookmarkDataCopyWith on HatenaBookmarkData {
 HatenaEntryData _$HatenaEntryDataFromJson(Map<String, dynamic> json) =>
     HatenaEntryData(
       title: json['title'] as String,
-      count: json['count'] as String,
+      count: json['count'] as int,
       url: json['url'] as String,
       entryUrl: json['entry_url'] as String,
       screenshot: json['screenshot'] as String,
@@ -228,8 +379,10 @@ HatenaEntryData _$HatenaEntryDataFromJson(Map<String, dynamic> json) =>
 
 HatenaBookmarkData _$HatenaBookmarkDataFromJson(Map<String, dynamic> json) =>
     HatenaBookmarkData(
-      user: json['user'] as String?,
-      tags: json['tags'],
-      timestamp: json['timestamp'],
-      comment: json['comment'] as String?,
+      user: json['user'] as String,
+      tags:
+          (json['tags'] as List<dynamic>?)?.map((e) => e as String?).toList() ??
+              const [],
+      timestamp: json['timestamp'] as String,
+      comment: json['comment'] as String,
     );

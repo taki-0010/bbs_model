@@ -24,7 +24,9 @@ enum ThemeList {
   barossa,
   pinkSakura,
   indigoNights,
-  verdunLime
+  verdunLime,
+  brandBlues,
+  redTornado
 }
 
 enum LangList {

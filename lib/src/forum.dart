@@ -180,6 +180,12 @@ class InitialForumData {
             searchBoardId: 'a',
             listViewStyle: ListViewStyle.gridMedium,
             retentionPeriod: RetentionPeriodList.oneWeek);
+      case Communities.hatena:
+        return base.copyWith(
+            theme: ThemeList.brandBlues,
+            searchWordList: searchWords,
+            timeago: TimeagoList.disable,
+            retentionPeriod: RetentionPeriodList.oneWeek);
       default:
     }
     return null;

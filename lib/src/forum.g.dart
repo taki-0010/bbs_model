@@ -620,6 +620,8 @@ const _$ThemeListEnumMap = {
   ThemeList.pinkSakura: 'pinkSakura',
   ThemeList.indigoNights: 'indigoNights',
   ThemeList.verdunLime: 'verdunLime',
+  ThemeList.brandBlues: 'brandBlues',
+  ThemeList.redTornado: 'redTornado',
 };
 
 const _$RetentionPeriodListEnumMap = {

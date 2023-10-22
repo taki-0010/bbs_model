@@ -202,7 +202,8 @@ class ThreadContentData {
       this.content = const [],
       required this.hot,
       this.range,
-      this.girlsPages});
+      this.girlsPages,
+      this.tags = const []});
   final String id;
   final String boardId;
   final Communities type;
@@ -213,6 +214,7 @@ class ThreadContentData {
   final double hot;
   final RangeList? range;
   final GirlsPages? girlsPages;
+  final List<String?> tags;
 
   int? get lastIndex => content.isNotEmpty ? content.last?.index : null;
 
@@ -346,13 +348,15 @@ class FetchContentResultData {
       this.deleted,
       this.archived,
       this.threadLength,
-      this.girlsPages});
+      this.girlsPages,
+      this.tags = const []});
   final List<ContentData?>? contentList;
   final int? statusCode;
   final bool? deleted;
   final bool? archived;
   final int? threadLength;
   final GirlsPages? girlsPages;
+  final List<String?> tags;
 
   FetchResult get result {
     if (contentList != null && contentList!.isNotEmpty) {

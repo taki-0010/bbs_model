@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:hashlib/hashlib.dart';
 import 'package:youtube_parser/youtube_parser.dart';
 
 import 'importer.dart';
@@ -62,6 +63,8 @@ class UrlParser {
     }
     return null;
   }
+
+  static String hashed(final String value) => md5.string(value).toString();
 }
 
 class GoogleFontsList {

@@ -23,6 +23,7 @@ class HatenaData {
   static final host = Communities.hatena.host;
   static const sub = 'b';
   static const hotentry = 'hotentry';
+  static const entry = 'entry';
   static final domain = '$sub.$host';
   static const apiHost = 'bookmark.hatenaapis.com';
 
@@ -30,13 +31,46 @@ class HatenaData {
 // https://b.hatena.ne.jp/hotentry/general
   // https://b.hatena.ne.jp/hotentry/game.rss
   // https://bookmark.hatenaapis.com/count/entry?url=http%3A%2F%2Fwww.hatena.ne.jp%2F
+// https://b.hatena.ne.jp/entry/s/pc.watch.impress.co.jp/docs/column/hothot/1540490.html
+// https://b.hatena.ne.jp/hotentry/it
+// https://b.hatena.ne.jp/entry/json/?url=http%3A%2F%2Fwww.hatena.ne.jp%2F
 
-  static String replaseStr(final String url) {
-    final escape = Uri.encodeFull(url).toString();
-    final slash = escape.replaceAll('/', '%2F');
-    final colon = slash.replaceAll(':', '%3A');
-    return colon;
+  // static String replaseStr(final String url) {
+  //   final escape = Uri.encodeFull(url).toString();
+  //   final slash = escape.replaceAll('/', '%2F');
+  //   final colon = slash.replaceAll(':', '%3A');
+  //   return colon;
+  // }
+
+  static String parseThreadPath(final String url) {
+    final replased = url.substring(url.indexOf('://') + 3);
+    return '$domain/$entry/s/$replased';
   }
+
+  static bool? uriIsThreadOrBoard(final Uri uri) {
+    final h = uri.host;
+    if (h.contains(host) || apiHost == h) {
+      final s = h.split('.');
+      if (s.length >= 4 && s.first == sub) {
+        final seg = uri.pathSegments;
+        if (seg.length >= 2) {
+          if (seg.first == hotentry) {
+            if (boardNameById(seg.last) != null) {
+              return false;
+            }
+          }
+          if (seg.first == entry) {
+            return true;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  // static String? getBoardIdFromUri(final Uri uri) {
+
+  // }
 
   static Uri boardUri(final HatenaCategory value) {
     if (value == HatenaCategory.all) {
@@ -46,14 +80,14 @@ class HatenaData {
     }
   }
 
-  static String boardNameById(final String id) {
+  static String? boardNameById(final String id) {
     String? name;
     for (final i in HatenaCategory.values) {
       if (i.id == id) {
         name = i.label;
       }
     }
-    return name ?? id;
+    return name;
   }
 }
 
@@ -63,21 +97,34 @@ class HatenaBoardData extends BoardData {
       {required super.id, required super.name, required super.forum});
 }
 
+@CopyWith()
 @immutable
 class HatenaThreadData extends ThreadData {
-  const HatenaThreadData({
-    required super.id,
-    required super.title,
-    required this.dec,
-    required super.resCount,
-    required super.boardId,
-    required super.type,
-    required super.url,
-    this.tags = const [],
-  });
+  const HatenaThreadData(
+      {required super.id,
+      required super.title,
+      required this.dec,
+      required super.resCount,
+      required super.boardId,
+      required super.type,
+      required super.url,
+      this.tags = const [],
+      super.thumbnailStr,
+      required this.originalUrl});
   final String dec;
   // final String url;
   final List<String?> tags;
+  final String originalUrl;
+
+  SrcData? get thumbnail => thumbnailStr != null
+      ? SrcData.fromJson(stringToJson(thumbnailStr!))
+      : null;
+
+  // String get url => '$directory.2chan.net/$boardId/res/$id.htm';
+  @override
+  String get thumbnailUrl => thumbnail?.thumbnailUri != null
+      ? Uri.tryParse(thumbnail!.thumbnailUri!).toString()
+      : '';
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake, createToJson: false)
@@ -93,7 +140,7 @@ class HatenaEntryData {
       required this.eid,
       this.bookmarks = const []});
   final String title;
-  final String count;
+  final int count;
   final String url;
   final String entryUrl;
   final String screenshot;
@@ -109,21 +156,39 @@ class HatenaEntryData {
 @immutable
 class HatenaBookmarkData {
   const HatenaBookmarkData(
-      {this.user, this.tags, this.timestamp, this.comment});
-  final String? user;
-  final dynamic tags;
-  final dynamic timestamp;
-  final String? comment;
+      {required this.user,
+      this.tags = const [],
+      required this.timestamp,
+      required this.comment});
+  final String user;
+  final List<String?> tags;
+  final String timestamp;
+  final String comment;
 
   factory HatenaBookmarkData.fromJson(Map<String, dynamic> json) =>
       _$HatenaBookmarkDataFromJson(json);
 }
 
+// class HatenaContentJson{
+//   const HatenaContentJson({});
+//   final String title;
+//   final String eid;
+//   final String screenshot;
+//   final String entryUrl;
+// }
+
 @immutable
 class HatenaContent extends ContentData {
-  HatenaContent(
+  const HatenaContent(
       {required super.forum,
       required super.index,
       required super.body,
-      required super.name});
+      required super.name,
+      super.urlSet,
+      super.title,
+      this.email});
+  final String? email;
+
+  @override
+  String? get getUserName => name;
 }
