@@ -394,7 +394,7 @@ class Chan4ThreadData extends ThreadData with WithDateTime {
     if(time == null){
       return -1;
     }
-    return getIkioi(time! * 1000, resCount);
+    return getIkioi(time!, resCount);
   }
 
   @override

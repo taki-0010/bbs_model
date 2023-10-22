@@ -13,8 +13,6 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData resCount(int resCount);
 
-  ThreadMarkData favorite(bool favorite);
-
   ThreadMarkData thumbnailStr(String? thumbnailStr);
 
   ThreadMarkData url(String url);
@@ -28,8 +26,6 @@ abstract class _$ThreadMarkDataCWProxy {
   ThreadMarkData lastOpendIndex(int? lastOpendIndex);
 
   ThreadMarkData lastReadAt(int? lastReadAt);
-
-  ThreadMarkData sessionId(String sessionId);
 
   ThreadMarkData userId(String userId);
 
@@ -61,7 +57,6 @@ abstract class _$ThreadMarkDataCWProxy {
     String? id,
     Communities? type,
     int? resCount,
-    bool? favorite,
     String? thumbnailStr,
     String? url,
     String? boardId,
@@ -69,7 +64,6 @@ abstract class _$ThreadMarkDataCWProxy {
     String? boardName,
     int? lastOpendIndex,
     int? lastReadAt,
-    String? sessionId,
     String? userId,
     String? documentId,
     int? retentionPeriodSeconds,
@@ -99,9 +93,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
   ThreadMarkData resCount(int resCount) => this(resCount: resCount);
 
   @override
-  ThreadMarkData favorite(bool favorite) => this(favorite: favorite);
-
-  @override
   ThreadMarkData thumbnailStr(String? thumbnailStr) =>
       this(thumbnailStr: thumbnailStr);
 
@@ -123,9 +114,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
 
   @override
   ThreadMarkData lastReadAt(int? lastReadAt) => this(lastReadAt: lastReadAt);
-
-  @override
-  ThreadMarkData sessionId(String sessionId) => this(sessionId: sessionId);
 
   @override
   ThreadMarkData userId(String userId) => this(userId: userId);
@@ -174,7 +162,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? id = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
     Object? resCount = const $CopyWithPlaceholder(),
-    Object? favorite = const $CopyWithPlaceholder(),
     Object? thumbnailStr = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
@@ -182,7 +169,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? boardName = const $CopyWithPlaceholder(),
     Object? lastOpendIndex = const $CopyWithPlaceholder(),
     Object? lastReadAt = const $CopyWithPlaceholder(),
-    Object? sessionId = const $CopyWithPlaceholder(),
     Object? userId = const $CopyWithPlaceholder(),
     Object? documentId = const $CopyWithPlaceholder(),
     Object? retentionPeriodSeconds = const $CopyWithPlaceholder(),
@@ -207,10 +193,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.resCount
           // ignore: cast_nullable_to_non_nullable
           : resCount as int,
-      favorite: favorite == const $CopyWithPlaceholder() || favorite == null
-          ? _value.favorite
-          // ignore: cast_nullable_to_non_nullable
-          : favorite as bool,
       thumbnailStr: thumbnailStr == const $CopyWithPlaceholder()
           ? _value.thumbnailStr
           // ignore: cast_nullable_to_non_nullable
@@ -239,10 +221,6 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.lastReadAt
           // ignore: cast_nullable_to_non_nullable
           : lastReadAt as int?,
-      sessionId: sessionId == const $CopyWithPlaceholder() || sessionId == null
-          ? _value.sessionId
-          // ignore: cast_nullable_to_non_nullable
-          : sessionId as String,
       userId: userId == const $CopyWithPlaceholder() || userId == null
           ? _value.userId
           // ignore: cast_nullable_to_non_nullable
@@ -450,7 +428,6 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       type: $enumDecode(_$CommunitiesEnumMap, json['type']),
       resCount: json['resCount'] as int,
-      favorite: json['favorite'] as bool? ?? false,
       thumbnailStr: json['thumbnailStr'] as String?,
       url: json['url'] as String,
       boardId: json['boardId'] as String,
@@ -458,7 +435,6 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       boardName: json['boardName'] as String?,
       lastOpendIndex: json['lastOpendIndex'] as int?,
       lastReadAt: json['lastReadAt'] as int?,
-      sessionId: json['sessionId'] as String,
       userId: json['userId'] as String,
       documentId: json['documentId'] as String,
       retentionPeriodSeconds: json['retentionPeriodSeconds'] as int? ?? 0,
@@ -493,8 +469,6 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'documentId': instance.documentId,
       'lastOpendIndex': instance.lastOpendIndex,
       'lastReadAt': instance.lastReadAt,
-      'sessionId': instance.sessionId,
-      'favorite': instance.favorite,
       'retentionPeriodSeconds': instance.retentionPeriodSeconds,
       'createdAtBySeconds': instance.createdAtBySeconds,
       'marks': instance.marks.toList(),
