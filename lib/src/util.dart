@@ -127,6 +127,7 @@ class StringMethodData {
   }
 
   static String? getYoutubeStr(final String value) => getIdFromUrl(value);
+  
   static String replaceSpecialNum(final String value) {
     final existNum = RegExp(r'&#[0-9]+;').firstMatch(value);
     if (existNum?.group(0) == null) {
@@ -152,7 +153,7 @@ class StringMethodData {
 
   static String replaceText(final String value) {
     final result = _replaceText(value);
-    return result.isEmpty ? '' : result;
+    return escape.convert(result.isEmpty ? '' : result);
   }
 
   static String convert(final String value) => escape.convert(value);

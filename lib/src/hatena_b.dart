@@ -27,20 +27,42 @@ class HatenaData {
   static final domain = '$sub.$host';
   static const apiHost = 'bookmark.hatenaapis.com';
 
+  // https://b.hatena.ne.jp/-/report/bookmark?url=https%3A%2F%2Fwww.publickey1.jp%2Fblog%2F23%2Fpythonmojomacapplepython9c.html&user_name=bxmcr
+
+  // https://b.hatena.ne.jp/-/report/entry?url=https%3A%2F%2Fpc.watch.impress.co.jp%2Fdocs%2Fcolumn%2Fsemicon%2F1541071.html
+
 // https://b.hatena.ne.jp/hotentry.rss
 // https://b.hatena.ne.jp/hotentry/general
   // https://b.hatena.ne.jp/hotentry/game.rss
   // https://bookmark.hatenaapis.com/count/entry?url=http%3A%2F%2Fwww.hatena.ne.jp%2F
 // https://b.hatena.ne.jp/entry/s/pc.watch.impress.co.jp/docs/column/hothot/1540490.html
 // https://b.hatena.ne.jp/hotentry/it
-// https://b.hatena.ne.jp/entry/json/?url=http%3A%2F%2Fwww.hatena.ne.jp%2F
+// https://b.hatena.ne.jp/entry/jsonlite/?url=http%3A%2F%2Fwww.hatena.ne.jp%2F
 
-  // static String replaseStr(final String url) {
-  //   final escape = Uri.encodeFull(url).toString();
-  //   final slash = escape.replaceAll('/', '%2F');
-  //   final colon = slash.replaceAll(':', '%3A');
-  //   return colon;
-  // }
+  // https://b.hatena.ne.jp/entry/4743822195490264335/comment/wittro
+
+  // https://b.hatena.ne.jp/q/flutter?target=all&users=20&safe=on&sort=recent&date_range=5y
+
+  static Uri? commentUri(final ContentData item) {
+    if (item is HatenaContent) {
+      return Uri.https(domain, 'entry/${item.eid}/comment/${item.getUserName}');
+    }
+    return null;
+  }
+
+  static Uri reportCommentUri(
+    final ContentData item,
+    final String url,
+  ) {
+    final escaped = Uri.encodeComponent(url);
+    return Uri.parse(
+        'https://$domain/-/report/bookmark?url=$escaped&user_name=${item.name}');
+  }
+
+  static Uri reportThreadUri(final String url) {
+    final escaped = Uri.encodeComponent(url);
+    return Uri.parse('https://$domain/-/report/entry?url=$escaped');
+  }
 
   static String parseThreadPath(final String url) {
     final replased = url.substring(url.indexOf('://') + 3);
@@ -99,7 +121,7 @@ class HatenaBoardData extends BoardData {
 
 @CopyWith()
 @immutable
-class HatenaThreadData extends ThreadData {
+class HatenaThreadData extends ThreadData with WithDateTime {
   const HatenaThreadData(
       {required super.id,
       required super.title,
@@ -110,11 +132,36 @@ class HatenaThreadData extends ThreadData {
       required super.url,
       this.tags = const [],
       super.thumbnailStr,
-      required this.originalUrl});
+      this.dateStr,
+      this.dateUtc
+      // required this.originalUrl
+      });
   final String dec;
   // final String url;
   final List<String?> tags;
-  final String originalUrl;
+  final String? dateStr;
+  final DateTime? dateUtc;
+  // final String originalUrl;
+
+  @override
+  int? get createdAt {
+    if (dateTime == null) {
+      return null;
+    }
+    return dateTime!.millisecondsSinceEpoch;
+  }
+
+  @override
+  DateTime? get dateTime {
+    if (dateUtc != null) {
+      return dateUtc;
+    }
+    if (dateStr == null) {
+      return null;
+    }
+    final f = DateFormat('yyyy/MM/dd');
+    return f.parse(dateStr!);
+  }
 
   SrcData? get thumbnail => thumbnailStr != null
       ? SrcData.fromJson(stringToJson(thumbnailStr!))
@@ -125,6 +172,11 @@ class HatenaThreadData extends ThreadData {
   String get thumbnailUrl => thumbnail?.thumbnailUri != null
       ? Uri.tryParse(thumbnail!.thumbnailUri!).toString()
       : '';
+
+  @override
+  double get ikioi {
+    return getIkioi(createdAt ?? 0, resCount);
+  }
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake, createToJson: false)
@@ -186,9 +238,27 @@ class HatenaContent extends ContentData {
       required super.name,
       super.urlSet,
       super.title,
-      this.email});
+      this.email,
+      required this.eid,
+      required this.timestamp});
   final String? email;
+  final String eid;
+  final String timestamp;
 
   @override
   String? get getUserName => name;
+
+  @override
+  String? get getUserId => name;
+
+  @override
+  DateTime? get createdAt {
+    try {
+      final f = DateFormat('yyyy/MM/dd hh:mm');
+      return f.parse(timestamp);
+    } catch (e) {
+      logger.e('hatena: createdAt: $e');
+    }
+    return null;
+  }
 }

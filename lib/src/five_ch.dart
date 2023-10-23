@@ -24,6 +24,14 @@ class FiveChData {
   // mb https://itest.5ch.net/subback/covid19
   // pc https://krsw.5ch.net/covid19
 
+  static Uri get getReportUri {
+    return Uri.https('info.$host', 'index.php/%E8%8D%92%E3%82%89%E3%81%97%E5%A0%B1%E5%91%8A');
+  }
+
+  static Uri get getReportUriPink {
+    return Uri.https('deleter.bbspink.com', 'wiki/wiki.cgi', {'page': 'GUIDELINE'});
+  }
+
   static Uri? htmlToDatUri(final Uri uri, final Communities forum) {
     final threadId = getThreadIdFromUri(uri, forum);
     final directory = getDirectoryFromUri(uri, forum);
@@ -210,6 +218,30 @@ class FiveChData {
       return 'https://$subdomainForMobile.${type.host}/$pathForMobile/$boardId';
     }
     return null;
+  }
+
+  static String? getTrip(final String name) {
+    final splited = name.split(' ');
+    if (splited.length >= 2) {
+      final result = splited.firstWhere(
+          (element) => element.contains('◆') || element.contains('★'),
+          orElse: () => '');
+      if (result.isNotEmpty) {
+        return result;
+      }
+    }
+    // if (name.contains('◆') && name.contains('<b>')) {
+    //   return name.substring(name.indexOf('◆'), name.lastIndexOf('<b>'));
+    // }
+    return null;
+  }
+
+  static String getUserName(final String value) {
+    final splited = value.split(' ');
+    if (splited.length >= 2) {
+      return splited.first;
+    }
+    return value;
   }
 }
 
@@ -432,28 +464,27 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
     return null;
   }
 
-  String? get getUserTrip {
-    if (name.contains('◆') && name.contains('<b>')) {
-      return name.substring(name.indexOf('◆'), name.lastIndexOf('<b>'));
+  String? get getUserTrip => FiveChData.getTrip(name);
+
+  @override
+  String? get getUserName => FiveChData.getUserName(name);
+
+  @override
+  String? get getUserId {
+    final index = name.indexOf('(ﾜｯﾁｮｲ');
+    // final endIndex = name.lastIndexOf(')');
+    if (index != -1) {
+      return name.substring(index);
     }
+    // if (splited.length >= 2) {
+    //   final result = splited.firstWhere((element) => element.contains('ﾜｯﾁｮｲ'),
+    //       orElse: () => '');
+    //   if (result.isNotEmpty) {
+    //     return result;
+    //   }
+    // }
     return null;
   }
-
-  @override
-  String? get getUserName {
-    String result = name;
-    if (name.contains('<b>')) {
-      final replaceTrip = name.replaceAll('$getUserTrip', '');
-      final rep = replaceTrip.replaceAll('</b>', '');
-      final re = rep.replaceAll('<b>', '');
-      final r = re.trim();
-      result = '$r $getUserTrip';
-    }
-    return result;
-  }
-
-  @override
-  String? get getUserId => userId;
 
   @override
   Set<String?> get anchorList {

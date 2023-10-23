@@ -25,7 +25,9 @@ abstract class _$HatenaThreadDataCWProxy {
 
   HatenaThreadData thumbnailStr(String? thumbnailStr);
 
-  HatenaThreadData originalUrl(String originalUrl);
+  HatenaThreadData dateStr(String? dateStr);
+
+  HatenaThreadData dateUtc(DateTime? dateUtc);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `HatenaThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -43,7 +45,8 @@ abstract class _$HatenaThreadDataCWProxy {
     String? url,
     List<String?>? tags,
     String? thumbnailStr,
-    String? originalUrl,
+    String? dateStr,
+    DateTime? dateUtc,
   });
 }
 
@@ -82,8 +85,10 @@ class _$HatenaThreadDataCWProxyImpl implements _$HatenaThreadDataCWProxy {
       this(thumbnailStr: thumbnailStr);
 
   @override
-  HatenaThreadData originalUrl(String originalUrl) =>
-      this(originalUrl: originalUrl);
+  HatenaThreadData dateStr(String? dateStr) => this(dateStr: dateStr);
+
+  @override
+  HatenaThreadData dateUtc(DateTime? dateUtc) => this(dateUtc: dateUtc);
 
   @override
 
@@ -103,7 +108,8 @@ class _$HatenaThreadDataCWProxyImpl implements _$HatenaThreadDataCWProxy {
     Object? url = const $CopyWithPlaceholder(),
     Object? tags = const $CopyWithPlaceholder(),
     Object? thumbnailStr = const $CopyWithPlaceholder(),
-    Object? originalUrl = const $CopyWithPlaceholder(),
+    Object? dateStr = const $CopyWithPlaceholder(),
+    Object? dateUtc = const $CopyWithPlaceholder(),
   }) {
     return HatenaThreadData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -142,11 +148,14 @@ class _$HatenaThreadDataCWProxyImpl implements _$HatenaThreadDataCWProxy {
           ? _value.thumbnailStr
           // ignore: cast_nullable_to_non_nullable
           : thumbnailStr as String?,
-      originalUrl:
-          originalUrl == const $CopyWithPlaceholder() || originalUrl == null
-              ? _value.originalUrl
-              // ignore: cast_nullable_to_non_nullable
-              : originalUrl as String,
+      dateStr: dateStr == const $CopyWithPlaceholder()
+          ? _value.dateStr
+          // ignore: cast_nullable_to_non_nullable
+          : dateStr as String?,
+      dateUtc: dateUtc == const $CopyWithPlaceholder()
+          ? _value.dateUtc
+          // ignore: cast_nullable_to_non_nullable
+          : dateUtc as DateTime?,
     );
   }
 }

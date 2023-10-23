@@ -21,6 +21,8 @@ class MachiData {
   // report
   // https://hokkaido.machi.to/bbs/read.cgi/hokkaidou/1235446469/
 
+  static Uri get reportUri => Uri.https(host, 'saku.htm');
+
   static Uri? htmlToDatUri(final Uri uri) {
     final boardId = getBoardIdFromUri(uri);
     final threadId = getThreadIdFromUri(uri);
@@ -343,25 +345,10 @@ class MachiContentData extends ContentData with WithDateTime {
     return null;
   }
 
-  String? get getUserTrip {
-    if (name.contains('◆') && name.contains('<b>')) {
-      return name.substring(name.indexOf('◆'), name.lastIndexOf('<b>'));
-    }
-    return null;
-  }
+  String? get getUserTrip => FiveChData.getTrip(name);
 
   @override
-  String? get getUserName {
-    String result = name;
-    if (name.contains('<b>')) {
-      final replaceTrip = name.replaceAll('$getUserTrip', '');
-      final rep = replaceTrip.replaceAll('</b>', '');
-      final re = rep.replaceAll('<b>', '');
-      final r = re.trim();
-      result = '$r $getUserTrip';
-    }
-    return result;
-  }
+  String? get getUserName => FiveChData.getUserName(name);
 
   @override
   String? get getUserId => userId;

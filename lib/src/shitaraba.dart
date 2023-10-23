@@ -42,8 +42,14 @@ class ShitarabaData {
   // report
   // https://rentalbbs.shitaraba.com/jbbs/user_inquiry/?dir=music&bbs=28333
 
-  static String reportUrl(final String category, final String boardId) {
-    return 'https://rentalbbs.shitaraba.com/jbbs/user_inquiry/?dir=$category&bbs=$boardId';
+  static Uri? reportUri(final String? boardId, final String? category) {
+    // final boardId = item is ShitarabaContentData ? item.boardId : null;
+    // final category = item is ShitarabaContentData ? item.category : null;
+    if (boardId != null && category != null) {
+      return Uri.https(
+          topUrl, 'jbbs/user_inquiry', {'dir': category, 'bbs': boardId});
+    }
+    return null;
   }
 
   static String getThreadUrlPath(
@@ -503,25 +509,10 @@ class ShitarabaContentData extends ContentData with WithDateTime {
     return id;
   }
 
-  String? get getUserTrip {
-    if (name.contains('◆') && name.contains('<b>')) {
-      return name.substring(name.indexOf('◆'), name.lastIndexOf('<b>'));
-    }
-    return null;
-  }
+  String? get getUserTrip => FiveChData.getTrip(name);
 
   @override
-  String? get getUserName {
-    String result = name;
-    if (name.contains('<b>')) {
-      final replaceTrip = name.replaceAll('$getUserTrip', '');
-      final rep = replaceTrip.replaceAll('</b>', '');
-      final re = rep.replaceAll('<b>', '');
-      final r = re.trim();
-      result = '$r $getUserTrip';
-    }
-    return result;
-  }
+  String? get getUserName => FiveChData.getUserName(name);
 
   @override
   String? get getUserId => userId;
