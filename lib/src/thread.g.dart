@@ -25,6 +25,8 @@ abstract class _$ThreadDataCWProxy {
 
   ThreadData boardName(String? boardName);
 
+  ThreadData thumbnailFullUrl(String? thumbnailFullUrl);
+
   ThreadData catalog(bool catalog);
 
   ThreadData isNewPost(bool isNewPost);
@@ -45,6 +47,7 @@ abstract class _$ThreadDataCWProxy {
     String? updateAtStr,
     String? boardId,
     String? boardName,
+    String? thumbnailFullUrl,
     bool? catalog,
     bool? isNewPost,
   });
@@ -85,6 +88,10 @@ class _$ThreadDataCWProxyImpl implements _$ThreadDataCWProxy {
   ThreadData boardName(String? boardName) => this(boardName: boardName);
 
   @override
+  ThreadData thumbnailFullUrl(String? thumbnailFullUrl) =>
+      this(thumbnailFullUrl: thumbnailFullUrl);
+
+  @override
   ThreadData catalog(bool catalog) => this(catalog: catalog);
 
   @override
@@ -108,6 +115,7 @@ class _$ThreadDataCWProxyImpl implements _$ThreadDataCWProxy {
     Object? updateAtStr = const $CopyWithPlaceholder(),
     Object? boardId = const $CopyWithPlaceholder(),
     Object? boardName = const $CopyWithPlaceholder(),
+    Object? thumbnailFullUrl = const $CopyWithPlaceholder(),
     Object? catalog = const $CopyWithPlaceholder(),
     Object? isNewPost = const $CopyWithPlaceholder(),
   }) {
@@ -148,6 +156,10 @@ class _$ThreadDataCWProxyImpl implements _$ThreadDataCWProxy {
           ? _value.boardName
           // ignore: cast_nullable_to_non_nullable
           : boardName as String?,
+      thumbnailFullUrl: thumbnailFullUrl == const $CopyWithPlaceholder()
+          ? _value.thumbnailFullUrl
+          // ignore: cast_nullable_to_non_nullable
+          : thumbnailFullUrl as String?,
       catalog: catalog == const $CopyWithPlaceholder() || catalog == null
           ? _value.catalog
           // ignore: cast_nullable_to_non_nullable

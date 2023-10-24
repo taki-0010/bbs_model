@@ -21,6 +21,8 @@ abstract class _$HatenaThreadDataCWProxy {
 
   HatenaThreadData url(String url);
 
+  HatenaThreadData thumbnailFullUrl(String? thumbnailFullUrl);
+
   HatenaThreadData tags(List<String?> tags);
 
   HatenaThreadData thumbnailStr(String? thumbnailStr);
@@ -28,6 +30,8 @@ abstract class _$HatenaThreadDataCWProxy {
   HatenaThreadData dateStr(String? dateStr);
 
   HatenaThreadData dateUtc(DateTime? dateUtc);
+
+  HatenaThreadData searched(bool searched);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `HatenaThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -43,10 +47,12 @@ abstract class _$HatenaThreadDataCWProxy {
     String? boardId,
     Communities? type,
     String? url,
+    String? thumbnailFullUrl,
     List<String?>? tags,
     String? thumbnailStr,
     String? dateStr,
     DateTime? dateUtc,
+    bool? searched,
   });
 }
 
@@ -78,6 +84,10 @@ class _$HatenaThreadDataCWProxyImpl implements _$HatenaThreadDataCWProxy {
   HatenaThreadData url(String url) => this(url: url);
 
   @override
+  HatenaThreadData thumbnailFullUrl(String? thumbnailFullUrl) =>
+      this(thumbnailFullUrl: thumbnailFullUrl);
+
+  @override
   HatenaThreadData tags(List<String?> tags) => this(tags: tags);
 
   @override
@@ -89,6 +99,9 @@ class _$HatenaThreadDataCWProxyImpl implements _$HatenaThreadDataCWProxy {
 
   @override
   HatenaThreadData dateUtc(DateTime? dateUtc) => this(dateUtc: dateUtc);
+
+  @override
+  HatenaThreadData searched(bool searched) => this(searched: searched);
 
   @override
 
@@ -106,10 +119,12 @@ class _$HatenaThreadDataCWProxyImpl implements _$HatenaThreadDataCWProxy {
     Object? boardId = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
+    Object? thumbnailFullUrl = const $CopyWithPlaceholder(),
     Object? tags = const $CopyWithPlaceholder(),
     Object? thumbnailStr = const $CopyWithPlaceholder(),
     Object? dateStr = const $CopyWithPlaceholder(),
     Object? dateUtc = const $CopyWithPlaceholder(),
+    Object? searched = const $CopyWithPlaceholder(),
   }) {
     return HatenaThreadData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -140,6 +155,10 @@ class _$HatenaThreadDataCWProxyImpl implements _$HatenaThreadDataCWProxy {
           ? _value.url
           // ignore: cast_nullable_to_non_nullable
           : url as String,
+      thumbnailFullUrl: thumbnailFullUrl == const $CopyWithPlaceholder()
+          ? _value.thumbnailFullUrl
+          // ignore: cast_nullable_to_non_nullable
+          : thumbnailFullUrl as String?,
       tags: tags == const $CopyWithPlaceholder() || tags == null
           ? _value.tags
           // ignore: cast_nullable_to_non_nullable
@@ -156,6 +175,10 @@ class _$HatenaThreadDataCWProxyImpl implements _$HatenaThreadDataCWProxy {
           ? _value.dateUtc
           // ignore: cast_nullable_to_non_nullable
           : dateUtc as DateTime?,
+      searched: searched == const $CopyWithPlaceholder() || searched == null
+          ? _value.searched
+          // ignore: cast_nullable_to_non_nullable
+          : searched as bool,
     );
   }
 }

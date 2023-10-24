@@ -13,7 +13,8 @@ abstract class ThreadBase {
       required this.url,
       this.boardName,
       // required this.positionToGet,
-      this.thumbnailStr});
+      this.thumbnailStr,
+      this.thumbnailFullUrl});
   final String id;
   final Communities type;
   final String title;
@@ -23,6 +24,7 @@ abstract class ThreadBase {
   final String url;
   // final PositionToGet positionToGet;
   final String? thumbnailStr;
+  final String? thumbnailFullUrl;
 
   double get ikioi {
     return -1.0;
@@ -150,6 +152,7 @@ class ThreadData extends ThreadBase {
       this.updateAtStr,
       required super.boardId,
       super.boardName,
+      super.thumbnailFullUrl,
       // super.positionToGet = PositionToGet.first,
       this.catalog = false,
       this.isNewPost = false});
@@ -349,7 +352,8 @@ class FetchContentResultData {
       this.archived,
       this.threadLength,
       this.girlsPages,
-      this.tags = const []});
+      this.tags = const [],
+      this.thumbnailUrl});
   final List<ContentData?>? contentList;
   final int? statusCode;
   final bool? deleted;
@@ -357,6 +361,7 @@ class FetchContentResultData {
   final int? threadLength;
   final GirlsPages? girlsPages;
   final List<String?> tags;
+  final String? thumbnailUrl;
 
   FetchResult get result {
     if (contentList != null && contentList!.isNotEmpty) {

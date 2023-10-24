@@ -3,8 +3,8 @@ import 'importer.dart';
 part 'hatena_b.g.dart';
 
 enum HatenaCategory {
-  all(label: '総合', id: 'hotentry'),
-  genaral(label: '一般', id: 'genaral'),
+  // all(label: '総合', id: 'hotentry'),
+  genaral(label: '一般', id: 'general'),
   social(label: '世の中', id: 'social'),
   economics(label: '政治と経済', id: 'economics'),
   life(label: '暮らし', id: 'life'),
@@ -30,7 +30,7 @@ class HatenaData {
   // https://b.hatena.ne.jp/-/report/bookmark?url=https%3A%2F%2Fwww.publickey1.jp%2Fblog%2F23%2Fpythonmojomacapplepython9c.html&user_name=bxmcr
 
   // https://b.hatena.ne.jp/-/report/entry?url=https%3A%2F%2Fpc.watch.impress.co.jp%2Fdocs%2Fcolumn%2Fsemicon%2F1541071.html
-
+// https://b.hatena.ne.jp/entry/s/somethingorange.jp/entry/otakusabetu
 // https://b.hatena.ne.jp/hotentry.rss
 // https://b.hatena.ne.jp/hotentry/general
   // https://b.hatena.ne.jp/hotentry/game.rss
@@ -42,6 +42,33 @@ class HatenaData {
   // https://b.hatena.ne.jp/entry/4743822195490264335/comment/wittro
 
   // https://b.hatena.ne.jp/q/flutter?target=all&users=20&safe=on&sort=recent&date_range=5y
+// https://b.hatena.ne.jp/entry/4740168581049266767/comment/blueboy
+
+  static Uri boardUri(final String id) {
+    return Uri.https(domain, '$hotentry/$id');
+  }
+
+  static String? _getUrl(final String value) {
+    final index = value.indexOf('/s/');
+    if (index != -1) {
+      return value.substring(index + 3);
+    }
+    return null;
+  }
+
+  static Uri? htmlToJsonUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob != null && tob) {
+      final path = uri.path;
+      final subed = _getUrl(path);
+      if (subed != null) {
+        final escaped = Uri.encodeComponent(subed);
+        logger.d('hatena es: $escaped');
+        return Uri.parse('https://$domain/$entry/s/$escaped');
+      }
+    }
+    return null;
+  }
 
   static Uri? commentUri(final ContentData item) {
     if (item is HatenaContent) {
@@ -72,9 +99,13 @@ class HatenaData {
   static bool? uriIsThreadOrBoard(final Uri uri) {
     final h = uri.host;
     if (h.contains(host) || apiHost == h) {
+      final seg = uri.pathSegments;
+      if (seg.isEmpty) {
+        return null;
+      }
+      logger.d('hatena flag: $seg');
       final s = h.split('.');
       if (s.length >= 4 && s.first == sub) {
-        final seg = uri.pathSegments;
         if (seg.length >= 2) {
           if (seg.first == hotentry) {
             if (boardNameById(seg.last) != null) {
@@ -82,6 +113,9 @@ class HatenaData {
             }
           }
           if (seg.first == entry) {
+            if (seg[2] == 'comment') {
+              return null;
+            }
             return true;
           }
         }
@@ -94,12 +128,27 @@ class HatenaData {
 
   // }
 
-  static Uri boardUri(final HatenaCategory value) {
-    if (value == HatenaCategory.all) {
-      return Uri.https(domain, '${value.id}.rss');
-    } else {
-      return Uri.https(domain, '$hotentry/${value.id}.rss');
+  static Uri boardRssUri(final HatenaCategory value) {
+    return Uri.https(domain, '$hotentry/${value.id}.rss');
+    // if (value == HatenaCategory.all) {
+    //   return Uri.https(domain, '${value.id}.rss');
+    // } else {
+    //   return Uri.https(domain, '$hotentry/${value.id}.rss');
+    // }
+  }
+
+  static String? getThreadIdFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null || !tob) {
+      return null;
     }
+    final path = uri.path;
+    final subed = _getUrl(path);
+    if (subed != null) {
+      final str = subed.startsWith('http') ? subed : 'https://$subed';
+      return Uri.decodeComponent(str);
+    }
+    return null;
   }
 
   static String? boardNameById(final String id) {
@@ -110,6 +159,31 @@ class HatenaData {
       }
     }
     return name;
+  }
+
+  static String? boardIdFromUri(final Uri uri) {
+    final tob = uriIsThreadOrBoard(uri);
+    if (tob == null) {
+      return null;
+    }
+    if (tob) {
+      return null;
+    }
+    final seg = uri.pathSegments;
+    if (seg.length >= 2) {
+      return seg[1];
+    }
+    return null;
+  }
+
+  static String? getCommentNameFromUri(final Uri uri) {
+    if (uri.host.contains(host)) {
+      final seg = uri.pathSegments;
+      if (seg.length >= 4 && seg[2] == 'comment') {
+        return seg.last;
+      }
+    }
+    return null;
   }
 }
 
@@ -130,10 +204,12 @@ class HatenaThreadData extends ThreadData with WithDateTime {
       required super.boardId,
       required super.type,
       required super.url,
+      super.thumbnailFullUrl,
       this.tags = const [],
       super.thumbnailStr,
       this.dateStr,
-      this.dateUtc
+      this.dateUtc,
+      this.searched = false
       // required this.originalUrl
       });
   final String dec;
@@ -141,6 +217,7 @@ class HatenaThreadData extends ThreadData with WithDateTime {
   final List<String?> tags;
   final String? dateStr;
   final DateTime? dateUtc;
+  final bool searched;
   // final String originalUrl;
 
   @override
@@ -169,12 +246,17 @@ class HatenaThreadData extends ThreadData with WithDateTime {
 
   // String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override
-  String get thumbnailUrl => thumbnail?.thumbnailUri != null
-      ? Uri.tryParse(thumbnail!.thumbnailUri!).toString()
-      : '';
+  String get thumbnailUrl =>
+      thumbnailFullUrl ??
+      (thumbnail?.thumbnailUri != null
+          ? Uri.tryParse(thumbnail!.thumbnailUri!).toString()
+          : '');
 
   @override
   double get ikioi {
+    if (searched) {
+      return -1.0;
+    }
     return getIkioi(createdAt ?? 0, resCount);
   }
 }
@@ -239,11 +321,23 @@ class HatenaContent extends ContentData {
       super.urlSet,
       super.title,
       this.email,
+      super.src,
+      super.srcUrl,
+      super.thumbUrl,
+      required this.boardId,
       required this.eid,
       required this.timestamp});
   final String? email;
   final String eid;
   final String timestamp;
+  final String boardId;
+
+  @override
+  String? get srcThumbnail =>
+      thumbUrl ??
+      (src?.thumbnailUri != null
+          ? Uri.tryParse(src!.thumbnailUri!).toString()
+          : null);
 
   @override
   String? get getUserName => name;

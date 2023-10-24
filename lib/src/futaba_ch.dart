@@ -532,11 +532,13 @@ class FutabaContentFromJson {
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 @immutable
-class FutabaChBoard extends BoardData{
-  const FutabaChBoard({required super.id,
+class FutabaChBoard extends BoardData {
+  const FutabaChBoard(
+      {required super.id,
       required super.name,
       required super.forum,
-      required this.directory, required this.path});
+      required this.directory,
+      required this.path});
   final String directory;
   final String path;
   // final String name;
@@ -570,6 +572,7 @@ class FutabaChThread extends ThreadData with WithDateTime {
     required super.boardId,
     required super.type,
     required super.url,
+    super.thumbnailFullUrl,
     // super.difference,
     super.isNewPost,
     super.updateAtStr,
@@ -584,9 +587,11 @@ class FutabaChThread extends ThreadData with WithDateTime {
 
   // String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override
-  String get thumbnailUrl => thumbnail?.thumbnailUri != null
-      ? Uri.tryParse(thumbnail!.thumbnailUri!).toString()
-      : '';
+  String get thumbnailUrl => thumbnailFullUrl != null
+      ? thumbnailFullUrl!
+      : thumbnail?.thumbnailUri != null
+          ? Uri.tryParse(thumbnail!.thumbnailUri!).toString()
+          : '';
   // 'https://$directory.2chan.net${thumbnail?.thumbnailUri}';
   // @override
   // String get thumbnailUrl => Uri.https(
@@ -625,6 +630,8 @@ class FutabaChContent extends ContentData with WithDateTime {
       required this.directory,
       super.title,
       super.threadThumbnail,
+      super.srcUrl,
+      super.thumbUrl,
       this.resto,
       this.hash,
       this.limit,
@@ -643,17 +650,17 @@ class FutabaChContent extends ContentData with WithDateTime {
   final String? limit;
 
   @override
-  String? get srcThumbnail => src?.thumbnailUri != null
+  String? get srcThumbnail => thumbUrl ??  (src?.thumbnailUri != null
       ? Uri.https(
               '$directory.${Communities.futabaCh.host}', '${src?.thumbnailUri}')
           .toString()
-      : null;
+      : null);
 
   @override
-  String? get srcContent => src?.srcUri != null
+  String? get srcContent => srcUrl ?? (src?.srcUri != null
       ? Uri.https('$directory.${Communities.futabaCh.host}', '${src?.srcUri}')
           .toString()
-      : null;
+      : null);
 
   @override
   DateTime get createdAt {

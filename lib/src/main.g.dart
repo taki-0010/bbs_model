@@ -23,6 +23,8 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData boardName(String? boardName);
 
+  ThreadMarkData thumbnailFullUrl(String? thumbnailFullUrl);
+
   ThreadMarkData lastOpendIndex(int? lastOpendIndex);
 
   ThreadMarkData lastReadAt(int? lastReadAt);
@@ -62,6 +64,7 @@ abstract class _$ThreadMarkDataCWProxy {
     String? boardId,
     String? title,
     String? boardName,
+    String? thumbnailFullUrl,
     int? lastOpendIndex,
     int? lastReadAt,
     String? userId,
@@ -107,6 +110,10 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
 
   @override
   ThreadMarkData boardName(String? boardName) => this(boardName: boardName);
+
+  @override
+  ThreadMarkData thumbnailFullUrl(String? thumbnailFullUrl) =>
+      this(thumbnailFullUrl: thumbnailFullUrl);
 
   @override
   ThreadMarkData lastOpendIndex(int? lastOpendIndex) =>
@@ -167,6 +174,7 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? boardId = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? boardName = const $CopyWithPlaceholder(),
+    Object? thumbnailFullUrl = const $CopyWithPlaceholder(),
     Object? lastOpendIndex = const $CopyWithPlaceholder(),
     Object? lastReadAt = const $CopyWithPlaceholder(),
     Object? userId = const $CopyWithPlaceholder(),
@@ -213,6 +221,10 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.boardName
           // ignore: cast_nullable_to_non_nullable
           : boardName as String?,
+      thumbnailFullUrl: thumbnailFullUrl == const $CopyWithPlaceholder()
+          ? _value.thumbnailFullUrl
+          // ignore: cast_nullable_to_non_nullable
+          : thumbnailFullUrl as String?,
       lastOpendIndex: lastOpendIndex == const $CopyWithPlaceholder()
           ? _value.lastOpendIndex
           // ignore: cast_nullable_to_non_nullable
@@ -433,6 +445,7 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       boardId: json['boardId'] as String,
       title: json['title'] as String,
       boardName: json['boardName'] as String?,
+      thumbnailFullUrl: json['thumbnailFullUrl'] as String?,
       lastOpendIndex: json['lastOpendIndex'] as int?,
       lastReadAt: json['lastReadAt'] as int?,
       userId: json['userId'] as String,
@@ -465,6 +478,7 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'boardName': instance.boardName,
       'url': instance.url,
       'thumbnailStr': instance.thumbnailStr,
+      'thumbnailFullUrl': instance.thumbnailFullUrl,
       'userId': instance.userId,
       'documentId': instance.documentId,
       'lastOpendIndex': instance.lastOpendIndex,

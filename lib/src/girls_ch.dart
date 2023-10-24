@@ -167,7 +167,7 @@ class GirlsChThread extends ThreadData with WithDateTime {
       // super.threadLength,
       // super.difference,
       super.isNewPost,
-      // super.thumbnail,
+      super.thumbnailFullUrl,
       super.thumbnailStr,
       required super.updateAtStr});
   // final String? img;
@@ -188,9 +188,9 @@ class GirlsChThread extends ThreadData with WithDateTime {
       : null;
 
   @override
-  String? get thumbnailUrl => thumbnail?.thumbnailUri != null
+  String? get thumbnailUrl => thumbnailFullUrl ?? (thumbnail?.thumbnailUri != null
       ? Uri.tryParse(thumbnail!.thumbnailUri!).toString()
-      : null;
+      : null);
 
   @override
   DateTime? get dateTime {
@@ -238,6 +238,8 @@ class GirlsChContent extends ContentData with WithDateTime {
       required this.postAt,
       super.title,
       required this.categoryId,
+      super.srcUrl,
+      super.thumbUrl,
       this.id,
       super.threadThumbnail,
       super.urlSet,
@@ -263,11 +265,11 @@ class GirlsChContent extends ContentData with WithDateTime {
   }
 
   @override
-  String? get srcThumbnail =>
-      src?.srcUri != null ? Uri.tryParse(src!.srcUri!).toString() : null;
+  String? get srcThumbnail => thumbUrl ??
+      (src?.srcUri != null ? Uri.tryParse(src!.srcUri!).toString() : null);
   @override
-  String? get srcContent =>
-      src?.srcUri != null ? Uri.tryParse(src!.srcUri!).toString() : null;
+  String? get srcContent => srcUrl ??
+      (src?.srcUri != null ? Uri.tryParse(src!.srcUri!).toString() : null);
 
   @override
   String? get getPostId => id;

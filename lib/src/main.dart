@@ -16,6 +16,7 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
       required super.boardId,
       required super.title,
       super.boardName,
+      super.thumbnailFullUrl,
       // super.positionToGet = PositionToGet.first,
       this.lastOpendIndex,
       this.lastReadAt,
@@ -71,7 +72,7 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
   // int get getResCount => endIndex ?? 0;
 
   @override
-  String? get thumbnailUrl => thumbnail?.thumbnailUri;
+  String? get thumbnailUrl => thumbnailFullUrl ?? thumbnail?.thumbnailUri;
 
   factory ThreadMarkData.fromJson(Map<String, dynamic> json) =>
       _$ThreadMarkDataFromJson(json);
@@ -124,6 +125,8 @@ abstract class ContentData {
       this.title,
       this.userId,
       this.threadThumbnail,
+      this.srcUrl,
+      this.thumbUrl,
       required this.name});
   final Communities forum;
   final int index;
@@ -134,6 +137,8 @@ abstract class ContentData {
   final String? userId;
   final String? title;
   final String? threadThumbnail;
+  final String? srcUrl;
+  final String? thumbUrl;
 
   String? get srcThumbnail => null;
   String? get srcContent => null;

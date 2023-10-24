@@ -816,6 +816,8 @@ abstract class _$FutabaChThreadCWProxy {
 
   FutabaChThread url(String url);
 
+  FutabaChThread thumbnailFullUrl(String? thumbnailFullUrl);
+
   FutabaChThread isNewPost(bool isNewPost);
 
   FutabaChThread updateAtStr(String? updateAtStr);
@@ -837,6 +839,7 @@ abstract class _$FutabaChThreadCWProxy {
     String? boardId,
     Communities? type,
     String? url,
+    String? thumbnailFullUrl,
     bool? isNewPost,
     String? updateAtStr,
     bool? catalog,
@@ -875,6 +878,10 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
   FutabaChThread url(String url) => this(url: url);
 
   @override
+  FutabaChThread thumbnailFullUrl(String? thumbnailFullUrl) =>
+      this(thumbnailFullUrl: thumbnailFullUrl);
+
+  @override
   FutabaChThread isNewPost(bool isNewPost) => this(isNewPost: isNewPost);
 
   @override
@@ -901,6 +908,7 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
     Object? boardId = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
+    Object? thumbnailFullUrl = const $CopyWithPlaceholder(),
     Object? isNewPost = const $CopyWithPlaceholder(),
     Object? updateAtStr = const $CopyWithPlaceholder(),
     Object? catalog = const $CopyWithPlaceholder(),
@@ -938,6 +946,10 @@ class _$FutabaChThreadCWProxyImpl implements _$FutabaChThreadCWProxy {
           ? _value.url
           // ignore: cast_nullable_to_non_nullable
           : url as String,
+      thumbnailFullUrl: thumbnailFullUrl == const $CopyWithPlaceholder()
+          ? _value.thumbnailFullUrl
+          // ignore: cast_nullable_to_non_nullable
+          : thumbnailFullUrl as String?,
       isNewPost: isNewPost == const $CopyWithPlaceholder() || isNewPost == null
           ? _value.isNewPost
           // ignore: cast_nullable_to_non_nullable
@@ -983,6 +995,10 @@ abstract class _$FutabaChContentCWProxy {
 
   FutabaChContent threadThumbnail(String? threadThumbnail);
 
+  FutabaChContent srcUrl(String? srcUrl);
+
+  FutabaChContent thumbUrl(String? thumbUrl);
+
   FutabaChContent resto(String? resto);
 
   FutabaChContent hash(String? hash);
@@ -1009,6 +1025,8 @@ abstract class _$FutabaChContentCWProxy {
     String? directory,
     String? title,
     String? threadThumbnail,
+    String? srcUrl,
+    String? thumbUrl,
     String? resto,
     String? hash,
     String? limit,
@@ -1057,6 +1075,12 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
       this(threadThumbnail: threadThumbnail);
 
   @override
+  FutabaChContent srcUrl(String? srcUrl) => this(srcUrl: srcUrl);
+
+  @override
+  FutabaChContent thumbUrl(String? thumbUrl) => this(thumbUrl: thumbUrl);
+
+  @override
   FutabaChContent resto(String? resto) => this(resto: resto);
 
   @override
@@ -1088,6 +1112,8 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
     Object? directory = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? threadThumbnail = const $CopyWithPlaceholder(),
+    Object? srcUrl = const $CopyWithPlaceholder(),
+    Object? thumbUrl = const $CopyWithPlaceholder(),
     Object? resto = const $CopyWithPlaceholder(),
     Object? hash = const $CopyWithPlaceholder(),
     Object? limit = const $CopyWithPlaceholder(),
@@ -1138,6 +1164,14 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
           ? _value.threadThumbnail
           // ignore: cast_nullable_to_non_nullable
           : threadThumbnail as String?,
+      srcUrl: srcUrl == const $CopyWithPlaceholder()
+          ? _value.srcUrl
+          // ignore: cast_nullable_to_non_nullable
+          : srcUrl as String?,
+      thumbUrl: thumbUrl == const $CopyWithPlaceholder()
+          ? _value.thumbUrl
+          // ignore: cast_nullable_to_non_nullable
+          : thumbUrl as String?,
       resto: resto == const $CopyWithPlaceholder()
           ? _value.resto
           // ignore: cast_nullable_to_non_nullable
@@ -1359,6 +1393,8 @@ FutabaChContent _$FutabaChContentFromJson(Map<String, dynamic> json) =>
       directory: json['directory'] as String,
       title: json['title'] as String?,
       threadThumbnail: json['threadThumbnail'] as String?,
+      srcUrl: json['srcUrl'] as String?,
+      thumbUrl: json['thumbUrl'] as String?,
       resto: json['resto'] as String?,
       hash: json['hash'] as String?,
       limit: json['limit'] as String?,
@@ -1377,6 +1413,8 @@ Map<String, dynamic> _$FutabaChContentToJson(FutabaChContent instance) =>
       'name': instance.name,
       'title': instance.title,
       'threadThumbnail': instance.threadThumbnail,
+      'srcUrl': instance.srcUrl,
+      'thumbUrl': instance.thumbUrl,
       'number': instance.number,
       'created': instance.created,
       'agree': instance.agree,

@@ -103,6 +103,8 @@ abstract class _$GirlsChThreadCWProxy {
 
   GirlsChThread isNewPost(bool isNewPost);
 
+  GirlsChThread thumbnailFullUrl(String? thumbnailFullUrl);
+
   GirlsChThread thumbnailStr(String? thumbnailStr);
 
   GirlsChThread updateAtStr(String? updateAtStr);
@@ -121,6 +123,7 @@ abstract class _$GirlsChThreadCWProxy {
     Communities? type,
     String? url,
     bool? isNewPost,
+    String? thumbnailFullUrl,
     String? thumbnailStr,
     String? updateAtStr,
   });
@@ -154,6 +157,10 @@ class _$GirlsChThreadCWProxyImpl implements _$GirlsChThreadCWProxy {
   GirlsChThread isNewPost(bool isNewPost) => this(isNewPost: isNewPost);
 
   @override
+  GirlsChThread thumbnailFullUrl(String? thumbnailFullUrl) =>
+      this(thumbnailFullUrl: thumbnailFullUrl);
+
+  @override
   GirlsChThread thumbnailStr(String? thumbnailStr) =>
       this(thumbnailStr: thumbnailStr);
 
@@ -177,6 +184,7 @@ class _$GirlsChThreadCWProxyImpl implements _$GirlsChThreadCWProxy {
     Object? type = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
     Object? isNewPost = const $CopyWithPlaceholder(),
+    Object? thumbnailFullUrl = const $CopyWithPlaceholder(),
     Object? thumbnailStr = const $CopyWithPlaceholder(),
     Object? updateAtStr = const $CopyWithPlaceholder(),
   }) {
@@ -209,6 +217,10 @@ class _$GirlsChThreadCWProxyImpl implements _$GirlsChThreadCWProxy {
           ? _value.isNewPost
           // ignore: cast_nullable_to_non_nullable
           : isNewPost as bool,
+      thumbnailFullUrl: thumbnailFullUrl == const $CopyWithPlaceholder()
+          ? _value.thumbnailFullUrl
+          // ignore: cast_nullable_to_non_nullable
+          : thumbnailFullUrl as String?,
       thumbnailStr: thumbnailStr == const $CopyWithPlaceholder()
           ? _value.thumbnailStr
           // ignore: cast_nullable_to_non_nullable
@@ -248,6 +260,10 @@ abstract class _$GirlsChContentCWProxy {
 
   GirlsChContent categoryId(String categoryId);
 
+  GirlsChContent srcUrl(String? srcUrl);
+
+  GirlsChContent thumbUrl(String? thumbUrl);
+
   GirlsChContent id(String? id);
 
   GirlsChContent threadThumbnail(String? threadThumbnail);
@@ -273,6 +289,8 @@ abstract class _$GirlsChContentCWProxy {
     String? postAt,
     String? title,
     String? categoryId,
+    String? srcUrl,
+    String? thumbUrl,
     String? id,
     String? threadThumbnail,
     List<String?>? urlSet,
@@ -317,6 +335,12 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
   GirlsChContent categoryId(String categoryId) => this(categoryId: categoryId);
 
   @override
+  GirlsChContent srcUrl(String? srcUrl) => this(srcUrl: srcUrl);
+
+  @override
+  GirlsChContent thumbUrl(String? thumbUrl) => this(thumbUrl: thumbUrl);
+
+  @override
   GirlsChContent id(String? id) => this(id: id);
 
   @override
@@ -348,6 +372,8 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
     Object? postAt = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? categoryId = const $CopyWithPlaceholder(),
+    Object? srcUrl = const $CopyWithPlaceholder(),
+    Object? thumbUrl = const $CopyWithPlaceholder(),
     Object? id = const $CopyWithPlaceholder(),
     Object? threadThumbnail = const $CopyWithPlaceholder(),
     Object? urlSet = const $CopyWithPlaceholder(),
@@ -395,6 +421,14 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
               ? _value.categoryId
               // ignore: cast_nullable_to_non_nullable
               : categoryId as String,
+      srcUrl: srcUrl == const $CopyWithPlaceholder()
+          ? _value.srcUrl
+          // ignore: cast_nullable_to_non_nullable
+          : srcUrl as String?,
+      thumbUrl: thumbUrl == const $CopyWithPlaceholder()
+          ? _value.thumbUrl
+          // ignore: cast_nullable_to_non_nullable
+          : thumbUrl as String?,
       id: id == const $CopyWithPlaceholder()
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
@@ -439,6 +473,8 @@ GirlsChContent _$GirlsChContentFromJson(Map<String, dynamic> json) =>
       postAt: json['postAt'] as String,
       title: json['title'] as String?,
       categoryId: json['categoryId'] as String,
+      srcUrl: json['srcUrl'] as String?,
+      thumbUrl: json['thumbUrl'] as String?,
       id: json['id'] as String?,
       threadThumbnail: json['threadThumbnail'] as String?,
       urlSet:
@@ -456,6 +492,8 @@ Map<String, dynamic> _$GirlsChContentToJson(GirlsChContent instance) =>
       'name': instance.name,
       'title': instance.title,
       'threadThumbnail': instance.threadThumbnail,
+      'srcUrl': instance.srcUrl,
+      'thumbUrl': instance.thumbUrl,
       'plus': instance.plus,
       'minus': instance.minus,
       'postAt': instance.postAt,
