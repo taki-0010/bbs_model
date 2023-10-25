@@ -11,6 +11,7 @@ export 'src/forum.dart';
 export 'src/girls_ch.dart';
 export 'src/chan4.dart';
 export 'src/hatena_b.dart';
+export 'src/mal.dart';
 export 'src/futaba_ch.dart';
 export 'src/open2ch.dart';
 export 'src/machi.dart';

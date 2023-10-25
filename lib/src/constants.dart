@@ -35,4 +35,6 @@ class ParamsData {
 
 class ConstantsDataBase {
   static const importanceMaxLength = 80;
+  static const notFound = 'notFound';
+  static const malId = 'MYANIMELIST_CLIENT_ID';
 }
