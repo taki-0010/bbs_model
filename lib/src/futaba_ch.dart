@@ -700,8 +700,20 @@ class FutabaChContent extends ContentData with WithDateTime {
     return line;
   }
 
-  // >+No.[0-9]+
-  // >+.+
+  //   @override
+  // Uri? get avatarUri {
+  //   if (email == null) {
+  //     return null;
+  //   }
+  //   final data = Uri.tryParse(email!);
+  //   if (data == null) {
+  //     return null;
+  //   }
+  //   if (UrlParser.getType(email) == MediaTypeList.image) {
+  //     return data;
+  //   }
+  //   return null;
+  // }
 
   factory FutabaChContent.fromJson(Map<String, dynamic> json) =>
       _$FutabaChContentFromJson(json);

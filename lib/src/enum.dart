@@ -7,6 +7,7 @@ enum Communities {
   open2Ch(label: 'Open 2ch', host: 'open2ch.net'),
   machi(label: 'まち BBS', host: 'machi.to'),
   hatena(label: 'はてなB', host: 'hatena.ne.jp'),
+  mal(label: 'MAL', host: 'myanimelist.net'),
   chan4(label: '4chan', host: '4chan.org');
 
   const Communities({required this.label, required this.host});

@@ -355,4 +355,10 @@ class HatenaContent extends ContentData {
     }
     return null;
   }
+
+  @override
+  Uri? get avatarUri {
+    // https://cdn.profile-image.st-hatena.com/users/mewton/profile.png
+    return Uri.tryParse('https://cdn.profile-image.st-hatena.com/users/$name/profile.png');
+  }
 }

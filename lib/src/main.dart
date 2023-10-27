@@ -148,6 +148,7 @@ abstract class ContentData {
   Set<String?> get anchorList => {};
   String? get getUserId => null;
   String? get getUserName => null;
+  Uri? get avatarUri => null;
 }
 
 mixin WithDateTime {

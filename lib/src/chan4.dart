@@ -15,6 +15,7 @@ class Chan4Data {
   static const endpointSub = 'a';
   static const thread = 'thread';
   static const search = 'search';
+  static const defaultName = 'Anonymous';
   // https://boards.4channel.org/a/thread/258411307
   // https://boards.4chan.org/a/thread/258411307
   // https://boards.4channel.org/a/thread/258459900/kawaii
@@ -376,7 +377,8 @@ class Chan4ThreadData extends ThreadData with WithDateTime {
       this.tim,
       this.archived = false,
       this.time,
-      this.lastModified});
+      this.lastModified,
+      super.thumbnailFullUrl});
   final String? ext;
   final int? tim;
   final bool archived;
@@ -391,7 +393,7 @@ class Chan4ThreadData extends ThreadData with WithDateTime {
 
   @override
   double get ikioi {
-    if(time == null){
+    if (time == null) {
       return -1;
     }
     return getIkioi(time!, resCount);

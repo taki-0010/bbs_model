@@ -6,19 +6,19 @@ import 'importer.dart';
 // @CopyWith()
 // @immutable
 abstract class BoardData {
-  const BoardData(
-      {required this.id,
-      required this.name,
-      required this.forum,
-      // this.fiveChCategory,
-      // this.fiveCh,
-      // this.girlsCh,
-      // this.futabaCh,
-      // this.machi,
-      // this.shitarabaCategory,
-      // this.shitarabaBoard,
-      // this.open2chBoards = const[]
-      });
+  const BoardData({
+    required this.id,
+    required this.name,
+    required this.forum,
+    // this.fiveChCategory,
+    // this.fiveCh,
+    // this.girlsCh,
+    // this.futabaCh,
+    // this.machi,
+    // this.shitarabaCategory,
+    // this.shitarabaBoard,
+    // this.open2chBoards = const[]
+  });
   final String id;
   final String name;
   final Communities forum;
@@ -36,6 +36,10 @@ abstract class BoardData {
   // factory BoardData.fromJson(Map<String, dynamic> json) =>
   //     _$BoardDataFromJson(json);
   // Map<String, dynamic> toJson() => _$BoardDataToJson(this);
+
+  bool get isCategory => false;
+  List<BoardData> get childrenBoards => [];
+  String get categoryName => '';
 }
 
 @immutable

@@ -25,11 +25,13 @@ class FiveChData {
   // pc https://krsw.5ch.net/covid19
 
   static Uri get getReportUri {
-    return Uri.https('info.$host', 'index.php/%E8%8D%92%E3%82%89%E3%81%97%E5%A0%B1%E5%91%8A');
+    return Uri.https('info.$host',
+        'index.php/%E8%8D%92%E3%82%89%E3%81%97%E5%A0%B1%E5%91%8A');
   }
 
   static Uri get getReportUriPink {
-    return Uri.https('deleter.bbspink.com', 'wiki/wiki.cgi', {'page': 'GUIDELINE'});
+    return Uri.https(
+        'deleter.bbspink.com', 'wiki/wiki.cgi', {'page': 'GUIDELINE'});
   }
 
   static Uri? htmlToDatUri(final Uri uri, final Communities forum) {
@@ -171,6 +173,13 @@ class FiveChData {
     return null;
   }
 
+  //   static String _boardId(final List<String> seg) {
+  //   return seg.firstWhere(
+  //     (element) => FiveChBoardNames.getById(element) != null,
+  //     orElse: () => '',
+  //   );
+  // }
+
   static String? getBoardIdFromUri(final Uri uri, final Communities forum) {
     final tob = uriIsThreadOrBoard(uri, forum);
     if (tob == null) {
@@ -179,7 +188,11 @@ class FiveChData {
     final seg = uri.pathSegments;
     if (tob) {
       if (uri.host.contains(subdomainForMobile) && seg.length >= 4) {
-        return seg[3];
+        final id = int.tryParse(seg[3]);
+        if (id != null) {
+          return seg[2];
+        }
+        // return seg[3];
       }
       if (uri.path.contains('.dat') && seg.isNotEmpty) {
         return seg[0];
@@ -314,6 +327,12 @@ class FiveChCategoryData extends BoardData {
   final String categoryNumber;
   final List<BoardData> categoryContent;
 
+  @override
+  bool get isCategory => true;
+
+  @override
+  List<BoardData> get childrenBoards => categoryContent;
+
   // factory FiveChCategoryData.fromJson(Map<String, dynamic> json) =>
   //     _$FiveChCategoryDataFromJson(json);
 
@@ -331,13 +350,16 @@ class FiveChBoardData extends BoardData {
       required this.url,
       required this.category,
       required this.categoryOrder,
-      required this.categoryName,
+      required this.categoryNameStr,
       required this.directoryName});
   final int categoryOrder;
   final String directoryName;
   final String url;
   final int category;
-  final String categoryName;
+  final String categoryNameStr;
+
+  @override
+  String get categoryName => categoryNameStr;
 
   String? get domain {
     // return Uri.parse(url).host;
@@ -491,6 +513,21 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
     final list = RegExp(r'>>[0-9]+').allMatches(body).toSet();
     // logger.d('anchor: ${list}');
     return list.map((e) => e.group(0)).toSet();
+  }
+
+  @override
+  Uri? get avatarUri {
+    if (email == null) {
+      return null;
+    }
+    final data = Uri.tryParse(email!);
+    if (data == null) {
+      return null;
+    }
+    if (UrlParser.getType(email) == MediaTypeList.image) {
+      return data;
+    }
+    return null;
   }
 
   factory FiveChThreadContentData.fromJson(Map<String, dynamic> json) =>

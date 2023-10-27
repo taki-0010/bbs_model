@@ -399,7 +399,7 @@ abstract class _$FiveChBoardDataCWProxy {
 
   FiveChBoardData categoryOrder(int categoryOrder);
 
-  FiveChBoardData categoryName(String categoryName);
+  FiveChBoardData categoryNameStr(String categoryNameStr);
 
   FiveChBoardData directoryName(String directoryName);
 
@@ -416,7 +416,7 @@ abstract class _$FiveChBoardDataCWProxy {
     String? url,
     int? category,
     int? categoryOrder,
-    String? categoryName,
+    String? categoryNameStr,
     String? directoryName,
   });
 }
@@ -447,8 +447,8 @@ class _$FiveChBoardDataCWProxyImpl implements _$FiveChBoardDataCWProxy {
       this(categoryOrder: categoryOrder);
 
   @override
-  FiveChBoardData categoryName(String categoryName) =>
-      this(categoryName: categoryName);
+  FiveChBoardData categoryNameStr(String categoryNameStr) =>
+      this(categoryNameStr: categoryNameStr);
 
   @override
   FiveChBoardData directoryName(String directoryName) =>
@@ -469,7 +469,7 @@ class _$FiveChBoardDataCWProxyImpl implements _$FiveChBoardDataCWProxy {
     Object? url = const $CopyWithPlaceholder(),
     Object? category = const $CopyWithPlaceholder(),
     Object? categoryOrder = const $CopyWithPlaceholder(),
-    Object? categoryName = const $CopyWithPlaceholder(),
+    Object? categoryNameStr = const $CopyWithPlaceholder(),
     Object? directoryName = const $CopyWithPlaceholder(),
   }) {
     return FiveChBoardData(
@@ -498,11 +498,11 @@ class _$FiveChBoardDataCWProxyImpl implements _$FiveChBoardDataCWProxy {
               ? _value.categoryOrder
               // ignore: cast_nullable_to_non_nullable
               : categoryOrder as int,
-      categoryName:
-          categoryName == const $CopyWithPlaceholder() || categoryName == null
-              ? _value.categoryName
-              // ignore: cast_nullable_to_non_nullable
-              : categoryName as String,
+      categoryNameStr: categoryNameStr == const $CopyWithPlaceholder() ||
+              categoryNameStr == null
+          ? _value.categoryNameStr
+          // ignore: cast_nullable_to_non_nullable
+          : categoryNameStr as String,
       directoryName:
           directoryName == const $CopyWithPlaceholder() || directoryName == null
               ? _value.directoryName
@@ -914,7 +914,7 @@ FiveChBoardData _$FiveChBoardDataFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String,
       category: json['category'] as int,
       categoryOrder: json['categoryOrder'] as int,
-      categoryName: json['categoryName'] as String,
+      categoryNameStr: json['categoryNameStr'] as String,
       directoryName: json['directoryName'] as String,
     );
 
@@ -927,7 +927,7 @@ Map<String, dynamic> _$FiveChBoardDataToJson(FiveChBoardData instance) =>
       'directoryName': instance.directoryName,
       'url': instance.url,
       'category': instance.category,
-      'categoryName': instance.categoryName,
+      'categoryNameStr': instance.categoryNameStr,
     };
 
 const _$CommunitiesEnumMap = {
@@ -939,6 +939,7 @@ const _$CommunitiesEnumMap = {
   Communities.open2Ch: 'open2Ch',
   Communities.machi: 'machi',
   Communities.hatena: 'hatena',
+  Communities.mal: 'mal',
   Communities.chan4: 'chan4',
 };
 

@@ -390,6 +390,9 @@ class ShitarabaCategoryData extends BoardData {
   // final String id;
   // final List<BoardData?> boards;
 
+  @override
+  bool get isCategory => true;
+
   factory ShitarabaCategoryData.fromJson(Map<String, dynamic> json) =>
       _$ShitarabaCategoryDataFromJson(json);
 
@@ -410,6 +413,9 @@ class ShitarabaBoardData extends BoardData {
   final String category;
   // final String name;
   final String sub;
+
+  @override
+  String get categoryName => category;
 
   factory ShitarabaBoardData.fromJson(Map<String, dynamic> json) =>
       _$ShitarabaBoardDataFromJson(json);

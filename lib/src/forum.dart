@@ -186,6 +186,13 @@ class InitialForumData {
             searchWordList: searchWords,
             timeago: TimeagoList.disable,
             retentionPeriod: RetentionPeriodList.oneWeek);
+      case Communities.mal:
+        return base.copyWith(
+            theme: ThemeList.redTornado,
+            searchWordList: null,
+            searchBoardId: 'all',
+            timeago: TimeagoList.disableSecondsAndMinutes,
+            retentionPeriod: RetentionPeriodList.oneWeek);
       default:
     }
     return null;

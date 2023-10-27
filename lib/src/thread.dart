@@ -200,6 +200,7 @@ class ThreadContentData {
       {required this.id,
       required this.boardId,
       required this.type,
+      // required this.title,
       // this.archived = false,
       this.threadLength = 1,
       this.content = const [],
@@ -210,6 +211,7 @@ class ThreadContentData {
   final String id;
   final String boardId;
   final Communities type;
+  // final String title;
   // final bool archived;
   final int threadLength;
   // final String title;
@@ -341,6 +343,20 @@ style= "position: relative;
 //   final int statusCode;
 //   final bool? deleted;
 //   final bool? archived;
+// }
+
+// @immutable
+// abstract class ContentBaseData{
+//   const ContentBaseData({required this.title, required this.threadLength,required this.content,
+//   this.girlsPages,
+//   this.tags = const []});
+//   final String title;
+//   final int threadLength;
+//   // final String title;
+//   final List<ContentData?> content;
+//   // final RangeList? range;
+//   final GirlsPages? girlsPages;
+//   final List<String?> tags;
 // }
 
 @immutable

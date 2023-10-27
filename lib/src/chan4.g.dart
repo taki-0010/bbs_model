@@ -1027,6 +1027,8 @@ abstract class _$Chan4ThreadDataCWProxy {
 
   Chan4ThreadData lastModified(int? lastModified);
 
+  Chan4ThreadData thumbnailFullUrl(String? thumbnailFullUrl);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Chan4ThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1046,6 +1048,7 @@ abstract class _$Chan4ThreadDataCWProxy {
     bool? archived,
     int? time,
     int? lastModified,
+    String? thumbnailFullUrl,
   });
 }
 
@@ -1094,6 +1097,10 @@ class _$Chan4ThreadDataCWProxyImpl implements _$Chan4ThreadDataCWProxy {
       this(lastModified: lastModified);
 
   @override
+  Chan4ThreadData thumbnailFullUrl(String? thumbnailFullUrl) =>
+      this(thumbnailFullUrl: thumbnailFullUrl);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Chan4ThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1114,6 +1121,7 @@ class _$Chan4ThreadDataCWProxyImpl implements _$Chan4ThreadDataCWProxy {
     Object? archived = const $CopyWithPlaceholder(),
     Object? time = const $CopyWithPlaceholder(),
     Object? lastModified = const $CopyWithPlaceholder(),
+    Object? thumbnailFullUrl = const $CopyWithPlaceholder(),
   }) {
     return Chan4ThreadData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -1164,6 +1172,10 @@ class _$Chan4ThreadDataCWProxyImpl implements _$Chan4ThreadDataCWProxy {
           ? _value.lastModified
           // ignore: cast_nullable_to_non_nullable
           : lastModified as int?,
+      thumbnailFullUrl: thumbnailFullUrl == const $CopyWithPlaceholder()
+          ? _value.thumbnailFullUrl
+          // ignore: cast_nullable_to_non_nullable
+          : thumbnailFullUrl as String?,
     );
   }
 }
