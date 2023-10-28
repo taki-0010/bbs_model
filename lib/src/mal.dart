@@ -16,6 +16,64 @@ class MalData {
   static final apiHost = 'api.$host';
   static final urlReg = RegExp(r'\[url=.+?\]');
   static final spoilerReg = RegExp(r'\[spoiler\].+?\[/spoiler\]');
+  static final imgReg = RegExp(r'\[img\].+?\[/img\]');
+  static final ytReg = RegExp(r'\[yt\].+?\[/yt\]');
+
+  static String? boardNameById(final String value) {
+    if (value.startsWith('s')) {
+      final v = value.replaceAll('s', '');
+      switch (v) {
+        case '2':
+          return 'Anime DB';
+        case '3':
+          return 'Character & People DB';
+        case '5':
+          return 'Manga DB';
+        case '1':
+          return 'Anime Series';
+        case '4':
+          return 'Manga Series';
+        default:
+      }
+      return null;
+    }
+    switch (value) {
+      case '5':
+        return 'Updates & Announcements';
+      case '14':
+        return 'MAL Guidelines & FAQ';
+      case '3':
+        return 'Support';
+      case '4':
+        return 'Suggestions';
+      case '13':
+        return 'MAL Contests';
+      case '15':
+        return 'News Discussion';
+      case '16':
+        return 'Anime & Manga Recommendations';
+      case '1':
+        return 'Anime Discussion';
+      case '2':
+        return 'Manga Discussion';
+      case '8':
+        return 'Introductions';
+      case '7':
+        return 'Games, Computers & Tech Support';
+      case '10':
+        return 'Music & Entertainment';
+      case '11':
+        return 'Casual Discussion';
+      case '12':
+        return 'Creative Corner';
+      case '9':
+        return 'Forum Games';
+      case '6':
+        return 'Current Events';
+      default:
+    }
+    return null;
+  }
 }
 
 @JsonSerializable(createToJson: false, explicitToJson: true)

@@ -53,6 +53,26 @@ class ShitarabaData {
   // report
   // https://rentalbbs.shitaraba.com/jbbs/user_inquiry/?dir=music&bbs=28333
 
+  static String? boardNameFromSetting(final String value) {
+    final list = value.split('\n');
+    for (final i in list) {
+      if (i.startsWith('BBS_TITLE')) {
+        return i.replaceAll('BBS_TITLE=', '').trim();
+      }
+    }
+    return null;
+  }
+
+  static String? boardSubFromSetting(final String value) {
+    final list = value.split('\n');
+    for (final i in list) {
+      if (i.startsWith('BBS_COMMENT')) {
+        return i.replaceAll('BBS_COMMENT=', '').trim();
+      }
+    }
+    return null;
+  }
+
   static String? defaultName(final String value) {
     final list = value.split('\n');
     for (final i in list) {
