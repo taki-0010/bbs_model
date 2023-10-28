@@ -345,6 +345,8 @@ class HatenaContent extends ContentData {
   @override
   String? get getUserId => name;
 
+
+
   @override
   DateTime? get createdAt {
     try {

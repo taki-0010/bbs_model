@@ -14,6 +14,8 @@ class MalData {
 
   static final host = Communities.mal.host;
   static final apiHost = 'api.$host';
+  static final urlReg = RegExp(r'\[url=.+?\]');
+  static final spoilerReg = RegExp(r'\[spoiler\].+?\[/spoiler\]');
 }
 
 @JsonSerializable(createToJson: false, explicitToJson: true)
@@ -218,6 +220,7 @@ class MalContentData extends ContentData {
       required super.body,
       required super.name,
       super.title,
+      super.urlSet,
       required this.createdAtStr,
       required this.signature,
       required this.user});

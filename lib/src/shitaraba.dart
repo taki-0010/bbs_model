@@ -31,6 +31,17 @@ class ShitarabaData {
   static final topUrl = 'rentalbbs.shitaraba.com';
   static const subject = 'subject.txt';
   static final idReg = RegExp(r'[0-9]{8,}');
+// https://jbbs.shitaraba.net/bbs/api/setting.cgi/music/28333/
+// TOP=https://jbbs.shitaraba.net/music/28333/
+// DIR=music
+// BBS=28333
+// CATEGORY=音楽/芸能/芸術/ファッション
+// BBS_ADULT=0
+// BBS_THREAD_STOP=1000
+// BBS_NONAME_NAME=名無しさん
+// BBS_DELETE_NAME=
+// BBS_TITLE=EXILE TRIBE専用掲示板
+// BBS_COMMENT=管理人不在の為 移動先として活用して頂ければと思い立てました
 
   // board
   //pc https://jbbs.shitaraba.net/music/28333/
@@ -41,6 +52,16 @@ class ShitarabaData {
 
   // report
   // https://rentalbbs.shitaraba.com/jbbs/user_inquiry/?dir=music&bbs=28333
+
+  static String? defaultName(final String value) {
+    final list = value.split('\n');
+    for (final i in list) {
+      if (i.startsWith('BBS_NONAME_NAME')) {
+        return i.replaceAll('BBS_NONAME_NAME=', '').trim();
+      }
+    }
+    return null;
+  }
 
   static Uri? reportUri(final String? boardId, final String? category) {
     // final boardId = item is ShitarabaContentData ? item.boardId : null;

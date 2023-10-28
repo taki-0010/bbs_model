@@ -9,6 +9,8 @@ class FiveChData {
   static const pathForMobile = 'subback';
   static const threadPath = 'test/read.cgi';
   static const wiki = 'index.php';
+  static const titileField = 'BBS_TITLE_ORIG';
+  static const defaultNameField = 'BBS_NONAME_NAME';
   static final idReg = RegExp(r'[0-9]{5,}');
   static const reportUrl =
       'https://info.5ch.net/index.php/%E8%8D%92%E3%82%89%E3%81%97%E5%A0%B1%E5%91%8A';
@@ -32,6 +34,37 @@ class FiveChData {
   static Uri get getReportUriPink {
     return Uri.https(
         'deleter.bbspink.com', 'wiki/wiki.cgi', {'page': 'GUIDELINE'});
+  }
+
+  static String? subdomainFromUrl(final String url) {
+    final uri = Uri.tryParse(url);
+    if (uri != null) {
+      final splited = uri.host.split('.');
+      if (splited.length >= 3) {
+        return splited.first;
+      }
+    }
+    return null;
+  }
+
+  static String? defaultName(final String value) {
+    final list = value.split('\n');
+    for (final i in list) {
+      if (i.startsWith(defaultNameField)) {
+        return i.replaceAll('$defaultNameField=', '').trim();
+      }
+    }
+    return null;
+  }
+
+  static String? boardNameById(final String value) {
+    final list = value.split('\n');
+    for (final i in list) {
+      if (i.startsWith(titileField)) {
+        return i.replaceAll('$titileField=', '').trim();
+      }
+    }
+    return null;
   }
 
   static Uri? htmlToDatUri(final Uri uri, final Communities forum) {
@@ -250,9 +283,11 @@ class FiveChData {
   }
 
   static String getUserName(final String value) {
+    
     final splited = value.split(' ');
     if (splited.length >= 2) {
-      return splited.first;
+      final name = splited.first.trim();
+      return name;
     }
     return value;
   }
@@ -343,15 +378,16 @@ class FiveChCategoryData extends BoardData {
 @CopyWith()
 @immutable
 class FiveChBoardData extends BoardData {
-  const FiveChBoardData(
-      {required super.id,
-      required super.name,
-      required super.forum,
-      required this.url,
-      required this.category,
-      required this.categoryOrder,
-      required this.categoryNameStr,
-      required this.directoryName});
+  const FiveChBoardData({
+    required super.id,
+    required super.name,
+    required super.forum,
+    required this.url,
+    required this.category,
+    required this.categoryOrder,
+    required this.categoryNameStr,
+    required this.directoryName,
+  });
   final int categoryOrder;
   final String directoryName;
   final String url;
@@ -366,6 +402,10 @@ class FiveChBoardData extends BoardData {
     final replaced = url.replaceFirst('https://', '');
     final domain = replaced.substring(0, replaced.indexOf('/'));
     return domain;
+  }
+
+  String? get subdomain {
+    return FiveChData.subdomainFromUrl(url);
   }
 
   factory FiveChBoardData.fromJson(Map<String, dynamic> json) =>
@@ -457,6 +497,8 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
   final String directoryName;
   // final String? userId;
   // final List<String?>? urlSet;
+
+
 
   @override
   DateTime? get createdAt {
