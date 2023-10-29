@@ -55,7 +55,7 @@ class PostData {
   final int? resnum;
 }
 
-@JsonSerializable()
+@JsonSerializable( explicitToJson:true)
 @CopyWith()
 @immutable
 class TemplateData {
@@ -64,17 +64,38 @@ class TemplateData {
     required this.forum,
     required this.userId,
     this.names = const [],
+    this.emails = const [],
     this.subjects = const [],
     this.bodys = const [],
+    // this.nameList = const [],
+    // this.subjectList = const [],
+    // this.bodyList = const [],
   });
   final String documentId;
   final Communities forum;
   final String userId;
   final List<String?> names;
+  final List<String?> emails;
   final List<String?> subjects;
   final List<String?> bodys;
+  // final List<TemplateItem?> nameList;
+  // final List<TemplateItem?> subjectList;
+  // final List<TemplateItem?> bodyList;
 
   factory TemplateData.fromJson(Map<String, dynamic> json) =>
       _$TemplateDataFromJson(json);
   Map<String, dynamic> toJson() => _$TemplateDataToJson(this);
+}
+
+@JsonSerializable( explicitToJson:true)
+@CopyWith()
+@immutable
+class TemplateItem {
+  const TemplateItem({required this.id, required this.data});
+  final int id;
+  final String data;
+
+  factory TemplateItem.fromJson(Map<String, dynamic> json) =>
+      _$TemplateItemFromJson(json);
+  Map<String, dynamic> toJson() => _$TemplateItemToJson(this);
 }

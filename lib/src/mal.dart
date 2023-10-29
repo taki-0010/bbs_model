@@ -15,9 +15,16 @@ class MalData {
   static final host = Communities.mal.host;
   static final apiHost = 'api.$host';
   static final urlReg = RegExp(r'\[url=.+?\]');
+  static final urlAndTextReg = RegExp(r'\[url=.*\].+?\[/url\]');
   static final spoilerReg = RegExp(r'\[spoiler\].+?\[/spoiler\]');
-  static final imgReg = RegExp(r'\[img\].+?\[/img\]');
+  static final imgReg = RegExp(r'\[img.*\].+?\[/img\]');
   static final ytReg = RegExp(r'\[yt\].+?\[/yt\]');
+
+  // https://myanimelist.net/forum/?topicid=2120426
+
+  static String getThreadUrl(final String threadId) {
+    return '$host/forum/?topicid=$threadId';
+  }
 
   static String? boardNameById(final String value) {
     if (value.startsWith('s')) {

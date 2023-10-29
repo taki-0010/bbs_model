@@ -15,8 +15,6 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData retentionPeriod(RetentionPeriodList retentionPeriod);
 
-  ForumSettingsData openLink(bool openLink);
-
   ForumSettingsData blurThumbnail(bool blurThumbnail);
 
   ForumSettingsData useFavoritesBoards(bool useFavoritesBoards);
@@ -56,9 +54,19 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData timeago(TimeagoList timeago);
 
-  ForumSettingsData usedNames(List<String?> usedNames);
-
   ForumSettingsData nsfw(bool nsfw);
+
+  ForumSettingsData lastUsedName(String? lastUsedName);
+
+  ForumSettingsData lastUsedEmail(String? lastUsedEmail);
+
+  ForumSettingsData lastUsedSubject(String? lastUsedSubject);
+
+  ForumSettingsData saveLastUsedName(bool saveLastUsedName);
+
+  ForumSettingsData saveLastUsedEmail(bool saveLastUsedEmail);
+
+  ForumSettingsData saveLastUsedSubject(bool saveLastUsedSubject);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ForumSettingsData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -71,7 +79,6 @@ abstract class _$ForumSettingsDataCWProxy {
     Communities? forum,
     ThemeList? theme,
     RetentionPeriodList? retentionPeriod,
-    bool? openLink,
     bool? blurThumbnail,
     bool? useFavoritesBoards,
     List<String?>? favoritesBoardList,
@@ -91,8 +98,13 @@ abstract class _$ForumSettingsDataCWProxy {
     ThreadsOrderType? threadsOrderType,
     AutoDownloadableSizeLimit? autoDownloadableSizeLimit,
     TimeagoList? timeago,
-    List<String?>? usedNames,
     bool? nsfw,
+    String? lastUsedName,
+    String? lastUsedEmail,
+    String? lastUsedSubject,
+    bool? saveLastUsedName,
+    bool? saveLastUsedEmail,
+    bool? saveLastUsedSubject,
   });
 }
 
@@ -114,9 +126,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
   @override
   ForumSettingsData retentionPeriod(RetentionPeriodList retentionPeriod) =>
       this(retentionPeriod: retentionPeriod);
-
-  @override
-  ForumSettingsData openLink(bool openLink) => this(openLink: openLink);
 
   @override
   ForumSettingsData blurThumbnail(bool blurThumbnail) =>
@@ -195,11 +204,31 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
   ForumSettingsData timeago(TimeagoList timeago) => this(timeago: timeago);
 
   @override
-  ForumSettingsData usedNames(List<String?> usedNames) =>
-      this(usedNames: usedNames);
+  ForumSettingsData nsfw(bool nsfw) => this(nsfw: nsfw);
 
   @override
-  ForumSettingsData nsfw(bool nsfw) => this(nsfw: nsfw);
+  ForumSettingsData lastUsedName(String? lastUsedName) =>
+      this(lastUsedName: lastUsedName);
+
+  @override
+  ForumSettingsData lastUsedEmail(String? lastUsedEmail) =>
+      this(lastUsedEmail: lastUsedEmail);
+
+  @override
+  ForumSettingsData lastUsedSubject(String? lastUsedSubject) =>
+      this(lastUsedSubject: lastUsedSubject);
+
+  @override
+  ForumSettingsData saveLastUsedName(bool saveLastUsedName) =>
+      this(saveLastUsedName: saveLastUsedName);
+
+  @override
+  ForumSettingsData saveLastUsedEmail(bool saveLastUsedEmail) =>
+      this(saveLastUsedEmail: saveLastUsedEmail);
+
+  @override
+  ForumSettingsData saveLastUsedSubject(bool saveLastUsedSubject) =>
+      this(saveLastUsedSubject: saveLastUsedSubject);
 
   @override
 
@@ -214,7 +243,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? forum = const $CopyWithPlaceholder(),
     Object? theme = const $CopyWithPlaceholder(),
     Object? retentionPeriod = const $CopyWithPlaceholder(),
-    Object? openLink = const $CopyWithPlaceholder(),
     Object? blurThumbnail = const $CopyWithPlaceholder(),
     Object? useFavoritesBoards = const $CopyWithPlaceholder(),
     Object? favoritesBoardList = const $CopyWithPlaceholder(),
@@ -234,8 +262,13 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? threadsOrderType = const $CopyWithPlaceholder(),
     Object? autoDownloadableSizeLimit = const $CopyWithPlaceholder(),
     Object? timeago = const $CopyWithPlaceholder(),
-    Object? usedNames = const $CopyWithPlaceholder(),
     Object? nsfw = const $CopyWithPlaceholder(),
+    Object? lastUsedName = const $CopyWithPlaceholder(),
+    Object? lastUsedEmail = const $CopyWithPlaceholder(),
+    Object? lastUsedSubject = const $CopyWithPlaceholder(),
+    Object? saveLastUsedName = const $CopyWithPlaceholder(),
+    Object? saveLastUsedEmail = const $CopyWithPlaceholder(),
+    Object? saveLastUsedSubject = const $CopyWithPlaceholder(),
   }) {
     return ForumSettingsData(
       userId: userId == const $CopyWithPlaceholder() || userId == null
@@ -255,10 +288,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.retentionPeriod
           // ignore: cast_nullable_to_non_nullable
           : retentionPeriod as RetentionPeriodList,
-      openLink: openLink == const $CopyWithPlaceholder() || openLink == null
-          ? _value.openLink
-          // ignore: cast_nullable_to_non_nullable
-          : openLink as bool,
       blurThumbnail:
           blurThumbnail == const $CopyWithPlaceholder() || blurThumbnail == null
               ? _value.blurThumbnail
@@ -354,14 +383,38 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.timeago
           // ignore: cast_nullable_to_non_nullable
           : timeago as TimeagoList,
-      usedNames: usedNames == const $CopyWithPlaceholder() || usedNames == null
-          ? _value.usedNames
-          // ignore: cast_nullable_to_non_nullable
-          : usedNames as List<String?>,
       nsfw: nsfw == const $CopyWithPlaceholder() || nsfw == null
           ? _value.nsfw
           // ignore: cast_nullable_to_non_nullable
           : nsfw as bool,
+      lastUsedName: lastUsedName == const $CopyWithPlaceholder()
+          ? _value.lastUsedName
+          // ignore: cast_nullable_to_non_nullable
+          : lastUsedName as String?,
+      lastUsedEmail: lastUsedEmail == const $CopyWithPlaceholder()
+          ? _value.lastUsedEmail
+          // ignore: cast_nullable_to_non_nullable
+          : lastUsedEmail as String?,
+      lastUsedSubject: lastUsedSubject == const $CopyWithPlaceholder()
+          ? _value.lastUsedSubject
+          // ignore: cast_nullable_to_non_nullable
+          : lastUsedSubject as String?,
+      saveLastUsedName: saveLastUsedName == const $CopyWithPlaceholder() ||
+              saveLastUsedName == null
+          ? _value.saveLastUsedName
+          // ignore: cast_nullable_to_non_nullable
+          : saveLastUsedName as bool,
+      saveLastUsedEmail: saveLastUsedEmail == const $CopyWithPlaceholder() ||
+              saveLastUsedEmail == null
+          ? _value.saveLastUsedEmail
+          // ignore: cast_nullable_to_non_nullable
+          : saveLastUsedEmail as bool,
+      saveLastUsedSubject:
+          saveLastUsedSubject == const $CopyWithPlaceholder() ||
+                  saveLastUsedSubject == null
+              ? _value.saveLastUsedSubject
+              // ignore: cast_nullable_to_non_nullable
+              : saveLastUsedSubject as bool,
     );
   }
 }
@@ -506,7 +559,6 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
       theme: $enumDecode(_$ThemeListEnumMap, json['theme']),
       retentionPeriod:
           $enumDecode(_$RetentionPeriodListEnumMap, json['retentionPeriod']),
-      openLink: json['openLink'] as bool? ?? true,
       blurThumbnail: json['blurThumbnail'] as bool? ?? false,
       useFavoritesBoards: json['useFavoritesBoards'] as bool? ?? false,
       favoritesBoardList: (json['favoritesBoardList'] as List<dynamic>?)
@@ -557,11 +609,13 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
           AutoDownloadableSizeLimit.noLimit,
       timeago: $enumDecodeNullable(_$TimeagoListEnumMap, json['timeago']) ??
           TimeagoList.enable,
-      usedNames: (json['usedNames'] as List<dynamic>?)
-              ?.map((e) => e as String?)
-              .toList() ??
-          const [],
       nsfw: json['nsfw'] as bool? ?? false,
+      lastUsedName: json['lastUsedName'] as String?,
+      lastUsedEmail: json['lastUsedEmail'] as String?,
+      lastUsedSubject: json['lastUsedSubject'] as String?,
+      saveLastUsedName: json['saveLastUsedName'] as bool? ?? false,
+      saveLastUsedEmail: json['saveLastUsedEmail'] as bool? ?? false,
+      saveLastUsedSubject: json['saveLastUsedSubject'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
@@ -571,7 +625,6 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'theme': _$ThemeListEnumMap[instance.theme]!,
       'retentionPeriod':
           _$RetentionPeriodListEnumMap[instance.retentionPeriod]!,
-      'openLink': instance.openLink,
       'blurThumbnail': instance.blurThumbnail,
       'useFavoritesBoards': instance.useFavoritesBoards,
       'favoritesBoardList': instance.favoritesBoardList,
@@ -593,8 +646,13 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'autoDownloadableSizeLimit': _$AutoDownloadableSizeLimitEnumMap[
           instance.autoDownloadableSizeLimit]!,
       'timeago': _$TimeagoListEnumMap[instance.timeago]!,
-      'usedNames': instance.usedNames,
       'nsfw': instance.nsfw,
+      'saveLastUsedName': instance.saveLastUsedName,
+      'saveLastUsedEmail': instance.saveLastUsedEmail,
+      'saveLastUsedSubject': instance.saveLastUsedSubject,
+      'lastUsedName': instance.lastUsedName,
+      'lastUsedEmail': instance.lastUsedEmail,
+      'lastUsedSubject': instance.lastUsedSubject,
     };
 
 const _$CommunitiesEnumMap = {

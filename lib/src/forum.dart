@@ -11,7 +11,7 @@ class ForumSettingsData {
       required this.forum,
       required this.theme,
       required this.retentionPeriod,
-      this.openLink = true,
+      // this.openLink = true,
       this.blurThumbnail = false,
       this.useFavoritesBoards = false,
       this.favoritesBoardList = const [],
@@ -31,14 +31,19 @@ class ForumSettingsData {
       this.threadsOrderType = ThreadsOrderType.importance,
       this.autoDownloadableSizeLimit = AutoDownloadableSizeLimit.noLimit,
       this.timeago = TimeagoList.enable,
-      this.usedNames = const [],
-      this.nsfw = false});
+      this.nsfw = false,
+      this.lastUsedName,
+      this.lastUsedEmail,
+      this.lastUsedSubject,
+      this.saveLastUsedName = false,
+      this.saveLastUsedEmail = false,
+      this.saveLastUsedSubject = false});
 
   final String userId;
   final Communities forum;
   final ThemeList theme;
   final RetentionPeriodList retentionPeriod;
-  final bool openLink;
+  // final bool openLink;
   final bool blurThumbnail;
   final bool useFavoritesBoards;
   final List<String?> favoritesBoardList;
@@ -60,8 +65,13 @@ class ForumSettingsData {
   final ThreadsOrderType threadsOrderType;
   final AutoDownloadableSizeLimit autoDownloadableSizeLimit;
   final TimeagoList timeago;
-  final List<String?> usedNames;
   final bool nsfw;
+  final bool saveLastUsedName;
+  final bool saveLastUsedEmail;
+  final bool saveLastUsedSubject;
+  final String? lastUsedName;
+  final String? lastUsedEmail;
+  final String? lastUsedSubject;
 
   List<ImportanceData?> get boardImportanceList => boardImportance
       .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
@@ -125,7 +135,7 @@ class InitialForumData {
         // threadsOrder: ThreadsOrder.hot,
         threadsOrderType: ThreadsOrderType.hot,
         // commentCountDisplayThreshold: 2,
-        openLink: false,
+        // openLink: false,
         useFavoritesBoards: false,
         searchWordList: searchWords,
         // sortHistory: SortHistory.boards,

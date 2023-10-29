@@ -196,3 +196,14 @@ enum TimeagoList {
 }
 
 enum MediaTypeList { image, video, pdf }
+
+enum InputCommentFields {
+  body(label: 'Body'),
+  name(label: 'Name'),
+  email(label: 'Email'),
+  media(label: 'Media'),
+  subject(label: 'Title');
+
+  const InputCommentFields({required this.label});
+  final String label;
+}

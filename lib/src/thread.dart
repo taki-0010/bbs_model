@@ -392,22 +392,3 @@ class FetchContentResultData {
     return FetchResult.error;
   }
 }
-
-@JsonSerializable()
-@CopyWith()
-@immutable
-class PostDraftData {
-  const PostDraftData(
-      {this.body,
-      required this.userId,
-      // this.threadMarkDocumentId,
-      required this.forum});
-  final String? body;
-  final String userId;
-  // final String? threadMarkDocumentId;
-  final Communities forum;
-
-  factory PostDraftData.fromJson(Map<String, dynamic> json) =>
-      _$PostDraftDataFromJson(json);
-  Map<String, dynamic> toJson() => _$PostDraftDataToJson(this);
-}

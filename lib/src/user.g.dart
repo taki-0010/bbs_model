@@ -239,6 +239,8 @@ abstract class _$TemplateDataCWProxy {
 
   TemplateData names(List<String?> names);
 
+  TemplateData emails(List<String?> emails);
+
   TemplateData subjects(List<String?> subjects);
 
   TemplateData bodys(List<String?> bodys);
@@ -254,6 +256,7 @@ abstract class _$TemplateDataCWProxy {
     Communities? forum,
     String? userId,
     List<String?>? names,
+    List<String?>? emails,
     List<String?>? subjects,
     List<String?>? bodys,
   });
@@ -278,6 +281,9 @@ class _$TemplateDataCWProxyImpl implements _$TemplateDataCWProxy {
   TemplateData names(List<String?> names) => this(names: names);
 
   @override
+  TemplateData emails(List<String?> emails) => this(emails: emails);
+
+  @override
   TemplateData subjects(List<String?> subjects) => this(subjects: subjects);
 
   @override
@@ -296,6 +302,7 @@ class _$TemplateDataCWProxyImpl implements _$TemplateDataCWProxy {
     Object? forum = const $CopyWithPlaceholder(),
     Object? userId = const $CopyWithPlaceholder(),
     Object? names = const $CopyWithPlaceholder(),
+    Object? emails = const $CopyWithPlaceholder(),
     Object? subjects = const $CopyWithPlaceholder(),
     Object? bodys = const $CopyWithPlaceholder(),
   }) {
@@ -317,6 +324,10 @@ class _$TemplateDataCWProxyImpl implements _$TemplateDataCWProxy {
           ? _value.names
           // ignore: cast_nullable_to_non_nullable
           : names as List<String?>,
+      emails: emails == const $CopyWithPlaceholder() || emails == null
+          ? _value.emails
+          // ignore: cast_nullable_to_non_nullable
+          : emails as List<String?>,
       subjects: subjects == const $CopyWithPlaceholder() || subjects == null
           ? _value.subjects
           // ignore: cast_nullable_to_non_nullable
@@ -333,6 +344,66 @@ extension $TemplateDataCopyWith on TemplateData {
   /// Returns a callable class that can be used as follows: `instanceOfTemplateData.copyWith(...)` or like so:`instanceOfTemplateData.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$TemplateDataCWProxy get copyWith => _$TemplateDataCWProxyImpl(this);
+}
+
+abstract class _$TemplateItemCWProxy {
+  TemplateItem id(int id);
+
+  TemplateItem data(String data);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `TemplateItem(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// TemplateItem(...).copyWith(id: 12, name: "My name")
+  /// ````
+  TemplateItem call({
+    int? id,
+    String? data,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfTemplateItem.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfTemplateItem.copyWith.fieldName(...)`
+class _$TemplateItemCWProxyImpl implements _$TemplateItemCWProxy {
+  const _$TemplateItemCWProxyImpl(this._value);
+
+  final TemplateItem _value;
+
+  @override
+  TemplateItem id(int id) => this(id: id);
+
+  @override
+  TemplateItem data(String data) => this(data: data);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `TemplateItem(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// TemplateItem(...).copyWith(id: 12, name: "My name")
+  /// ````
+  TemplateItem call({
+    Object? id = const $CopyWithPlaceholder(),
+    Object? data = const $CopyWithPlaceholder(),
+  }) {
+    return TemplateItem(
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as int,
+      data: data == const $CopyWithPlaceholder() || data == null
+          ? _value.data
+          // ignore: cast_nullable_to_non_nullable
+          : data as String,
+    );
+  }
+}
+
+extension $TemplateItemCopyWith on TemplateItem {
+  /// Returns a callable class that can be used as follows: `instanceOfTemplateItem.copyWith(...)` or like so:`instanceOfTemplateItem.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$TemplateItemCWProxy get copyWith => _$TemplateItemCWProxyImpl(this);
 }
 
 // **************************************************************************
@@ -384,6 +455,10 @@ TemplateData _$TemplateDataFromJson(Map<String, dynamic> json) => TemplateData(
               ?.map((e) => e as String?)
               .toList() ??
           const [],
+      emails: (json['emails'] as List<dynamic>?)
+              ?.map((e) => e as String?)
+              .toList() ??
+          const [],
       subjects: (json['subjects'] as List<dynamic>?)
               ?.map((e) => e as String?)
               .toList() ??
@@ -400,6 +475,18 @@ Map<String, dynamic> _$TemplateDataToJson(TemplateData instance) =>
       'forum': _$CommunitiesEnumMap[instance.forum]!,
       'userId': instance.userId,
       'names': instance.names,
+      'emails': instance.emails,
       'subjects': instance.subjects,
       'bodys': instance.bodys,
+    };
+
+TemplateItem _$TemplateItemFromJson(Map<String, dynamic> json) => TemplateItem(
+      id: json['id'] as int,
+      data: json['data'] as String,
+    );
+
+Map<String, dynamic> _$TemplateItemToJson(TemplateItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'data': instance.data,
     };
