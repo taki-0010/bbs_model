@@ -210,7 +210,8 @@ class ThreadContentData {
       // required this.hot,
       this.range,
       this.girlsPages,
-      this.tags = const []});
+      this.tags = const [],
+      this.malOption});
   final String id;
   final String boardId;
   final Communities type;
@@ -223,6 +224,7 @@ class ThreadContentData {
   final RangeList? range;
   final GirlsPages? girlsPages;
   final List<String?> tags;
+  final MalOptionData? malOption;
 
   int? get lastIndex => content.isNotEmpty ? content.last?.index : null;
   int? get createdAt {

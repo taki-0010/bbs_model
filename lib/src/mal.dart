@@ -278,7 +278,7 @@ class MalPollBaseJson {
   final bool close;
   final List<MalPollItemJson?> options;
 
-  Map<int, double>? pollRatio() {
+  Map<int, double>? get pollRatio {
     // final options = value.options;
     if (options.isEmpty) {
       return null;
@@ -318,6 +318,13 @@ class MalPollItemJson {
 
   factory MalPollItemJson.fromJson(Map<String, dynamic> json) =>
       _$MalPollItemJsonFromJson(json);
+}
+
+@immutable
+class MalOptionData {
+  const MalOptionData({this.paging, this.poll = const []});
+  final MalPaging? paging;
+  final List<MalPollBaseJson?> poll;
 }
 
 @JsonSerializable(
