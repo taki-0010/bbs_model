@@ -189,8 +189,6 @@ abstract class _$ThreadContentDataCWProxy {
 
   ThreadContentData content(List<ContentData?> content);
 
-  ThreadContentData hot(double hot);
-
   ThreadContentData range(RangeList? range);
 
   ThreadContentData girlsPages(GirlsPages? girlsPages);
@@ -209,7 +207,6 @@ abstract class _$ThreadContentDataCWProxy {
     Communities? type,
     int? threadLength,
     List<ContentData?>? content,
-    double? hot,
     RangeList? range,
     GirlsPages? girlsPages,
     List<String?>? tags,
@@ -240,9 +237,6 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
       this(content: content);
 
   @override
-  ThreadContentData hot(double hot) => this(hot: hot);
-
-  @override
   ThreadContentData range(RangeList? range) => this(range: range);
 
   @override
@@ -266,7 +260,6 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
     Object? type = const $CopyWithPlaceholder(),
     Object? threadLength = const $CopyWithPlaceholder(),
     Object? content = const $CopyWithPlaceholder(),
-    Object? hot = const $CopyWithPlaceholder(),
     Object? range = const $CopyWithPlaceholder(),
     Object? girlsPages = const $CopyWithPlaceholder(),
     Object? tags = const $CopyWithPlaceholder(),
@@ -293,10 +286,6 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
           ? _value.content
           // ignore: cast_nullable_to_non_nullable
           : content as List<ContentData?>,
-      hot: hot == const $CopyWithPlaceholder() || hot == null
-          ? _value.hot
-          // ignore: cast_nullable_to_non_nullable
-          : hot as double,
       range: range == const $CopyWithPlaceholder()
           ? _value.range
           // ignore: cast_nullable_to_non_nullable

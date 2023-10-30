@@ -43,7 +43,7 @@ MalThreadsBaseJson _$MalThreadsBaseJsonFromJson(Map<String, dynamic> json) =>
               ? null
               : MalThreadJson.fromJson(e as Map<String, dynamic>))
           .toList(),
-      paging: json['paging'],
+      paging: MalPaging.fromJson(json['paging'] as Map<String, dynamic>),
     );
 
 MalThreadJson _$MalThreadJsonFromJson(Map<String, dynamic> json) =>
@@ -58,6 +58,11 @@ MalThreadJson _$MalThreadJsonFromJson(Map<String, dynamic> json) =>
           MalUserJson.fromJson(json['created_by'] as Map<String, dynamic>),
     );
 
+MalPaging _$MalPagingFromJson(Map<String, dynamic> json) => MalPaging(
+      next: json['next'] as String?,
+      previous: json['previous'] as String?,
+    );
+
 MalUserJson _$MalUserJsonFromJson(Map<String, dynamic> json) => MalUserJson(
       id: json['id'] as int,
       name: json['name'] as String,
@@ -69,7 +74,7 @@ MalUserJson _$MalUserJsonFromJson(Map<String, dynamic> json) => MalUserJson(
 MalContentDataJson _$MalContentDataJsonFromJson(Map<String, dynamic> json) =>
     MalContentDataJson(
       data: MalContentBaseJson.fromJson(json['data'] as Map<String, dynamic>),
-      paging: json['paging'],
+      paging: MalPaging.fromJson(json['paging'] as Map<String, dynamic>),
     );
 
 MalContentBaseJson _$MalContentBaseJsonFromJson(Map<String, dynamic> json) =>
@@ -80,6 +85,32 @@ MalContentBaseJson _$MalContentBaseJsonFromJson(Map<String, dynamic> json) =>
               : MalContentJson.fromJson(e as Map<String, dynamic>))
           .toList(),
       title: json['title'] as String,
+      poll: (json['poll'] as List<dynamic>?)
+              ?.map((e) => e == null
+                  ? null
+                  : MalPollBaseJson.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+MalPollBaseJson _$MalPollBaseJsonFromJson(Map<String, dynamic> json) =>
+    MalPollBaseJson(
+      id: json['id'] as int,
+      question: json['question'] as String,
+      close: json['close'] as bool,
+      options: (json['options'] as List<dynamic>?)
+              ?.map((e) => e == null
+                  ? null
+                  : MalPollItemJson.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+MalPollItemJson _$MalPollItemJsonFromJson(Map<String, dynamic> json) =>
+    MalPollItemJson(
+      id: json['id'] as int,
+      text: json['text'] as String,
+      votes: json['votes'] as int,
     );
 
 MalContentJson _$MalContentJsonFromJson(Map<String, dynamic> json) =>

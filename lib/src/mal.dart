@@ -1,6 +1,6 @@
 // import 'package:hashlib/hashlib.dart';
 import 'package:model/src/importer.dart';
-
+import 'dart:math';
 part 'mal.g.dart';
 
 class MalData {
@@ -16,10 +16,13 @@ class MalData {
   static final apiHost = 'api.$host';
   static final urlReg = RegExp(r'\[url=.+?\]');
   static final urlAndTextReg = RegExp(r'\[url=.*\].+?\[/url\]');
+  static final malUrlAndTextReg = RegExp(r'\[mal_url=.*\].+?\[/mal_url\]');
   static final spoilerReg = RegExp(r'\[spoiler\].+?\[/spoiler\]');
+  static final spReg = RegExp(r'\[sp\].+?\[/sp\]');
   static final imgReg = RegExp(r'\[img.*\].+?\[/img\]');
   static final ytReg = RegExp(r'\[yt\].+?\[/yt\]');
-
+  static final quoteReg = RegExp(r'\[quote\].+?\[/quote\]');
+// [\[\]].+?\[/[b5]+\]
   // https://myanimelist.net/forum/?topicid=2120426
 
   static String getThreadUrl(final String threadId) {
@@ -154,7 +157,7 @@ class MalThreadsBaseJson {
     required this.paging,
   });
   final List<MalThreadJson?> data;
-  final dynamic paging;
+  final MalPaging paging;
 
   factory MalThreadsBaseJson.fromJson(Map<String, dynamic> json) =>
       _$MalThreadsBaseJsonFromJson(json);
@@ -185,6 +188,18 @@ class MalThreadJson {
 
   factory MalThreadJson.fromJson(Map<String, dynamic> json) =>
       _$MalThreadJsonFromJson(json);
+}
+
+@JsonSerializable(
+    fieldRename: FieldRename.snake, createToJson: false, explicitToJson: true)
+@immutable
+class MalPaging {
+  const MalPaging({this.next, this.previous});
+  final String? next;
+  final String? previous;
+
+  factory MalPaging.fromJson(Map<String, dynamic> json) =>
+      _$MalPagingFromJson(json);
 }
 
 @JsonSerializable(
@@ -229,7 +244,7 @@ class MalContentDataJson {
     required this.paging,
   });
   final MalContentBaseJson data;
-  final dynamic paging;
+  final MalPaging paging;
 
   factory MalContentDataJson.fromJson(Map<String, dynamic> json) =>
       _$MalContentDataJsonFromJson(json);
@@ -239,15 +254,70 @@ class MalContentDataJson {
     fieldRename: FieldRename.snake, createToJson: false, explicitToJson: true)
 @immutable
 class MalContentBaseJson {
-  const MalContentBaseJson({
-    required this.posts,
-    required this.title,
-  });
+  const MalContentBaseJson(
+      {required this.posts, required this.title, this.poll = const []});
   final List<MalContentJson?> posts;
   final String title;
+  final List<MalPollBaseJson?> poll;
 
   factory MalContentBaseJson.fromJson(Map<String, dynamic> json) =>
       _$MalContentBaseJsonFromJson(json);
+}
+
+@JsonSerializable(
+    fieldRename: FieldRename.snake, createToJson: false, explicitToJson: true)
+@immutable
+class MalPollBaseJson {
+  const MalPollBaseJson(
+      {required this.id,
+      required this.question,
+      required this.close,
+      this.options = const []});
+  final int id;
+  final String question;
+  final bool close;
+  final List<MalPollItemJson?> options;
+
+  Map<int, double>? pollRatio() {
+    // final options = value.options;
+    if (options.isEmpty) {
+      return null;
+    }
+    final counter = <int, double>{};
+    final nums = options.map((e) => e?.votes).whereType<int>();
+
+    final maxNum = nums.reduce(max);
+    // String? result;
+    for (final i in options) {
+      if (i != null) {
+        if (i.votes == maxNum) {
+          counter[i.id] = 100.0;
+        } else {
+          final ratio = (maxNum * i.votes);
+          final result = ratio > 0 ? ratio / 100 : 0.0;
+          counter[i.id] = result;
+        }
+      }
+    }
+    return counter;
+  }
+
+  factory MalPollBaseJson.fromJson(Map<String, dynamic> json) =>
+      _$MalPollBaseJsonFromJson(json);
+}
+
+@JsonSerializable(
+    fieldRename: FieldRename.snake, createToJson: false, explicitToJson: true)
+@immutable
+class MalPollItemJson {
+  const MalPollItemJson(
+      {required this.id, required this.text, required this.votes});
+  final int id;
+  final String text;
+  final int votes;
+
+  factory MalPollItemJson.fromJson(Map<String, dynamic> json) =>
+      _$MalPollItemJsonFromJson(json);
 }
 
 @JsonSerializable(

@@ -126,8 +126,33 @@ class StringMethodData {
     return null;
   }
 
+  // static String? getYoutubeStr(final String value) {
+  //   final uri = Uri.tryParse(value);
+  //   if (uri == null) {
+  //     return null;
+  //   }
+  //   final splited = uri.host.split('.');
+  //   if (splited.length >= 3) {
+  //     splited.removeAt(0);
+  //   }
+  //   final host = splited.join('.');
+  //   if (host == 'youtube.com') {
+  //     // final seg = uri.pathSegments;
+  //     final param = uri.queryParameters;
+  //     if (param.containsKey('v')) {
+  //       return param['v'];
+  //     }
+  //   }
+  //   if (host == 'youtu.be') {
+  //     final seg = uri.pathSegments;
+  //     if (seg.length == 1) {
+  //       return seg.first;
+  //     }
+  //   }
+  //   return null;
+  // }
   static String? getYoutubeStr(final String value) => getIdFromUrl(value);
-  
+
   static String replaceSpecialNum(final String value) {
     final existNum = RegExp(r'&#[0-9]+;').firstMatch(value);
     if (existNum?.group(0) == null) {

@@ -369,14 +369,17 @@ class FutabaData {
 
   static FutabaChThread? parseFromJson(
       final int resCount, final ThreadMarkData markData) {
-    return FutabaChThread(
-        id: markData.id,
-        title: markData.title,
-        resCount: resCount,
-        directory: markData.getSubdomain,
-        boardId: markData.boardId,
-        type: markData.type,
-        url: markData.url);
+    if (markData.getSubdomain != null) {
+      return FutabaChThread(
+          id: markData.id,
+          title: markData.title,
+          resCount: resCount,
+          directory: markData.getSubdomain!,
+          boardId: markData.boardId,
+          type: markData.type,
+          url: markData.url);
+    }
+    return null;
   }
 }
 
@@ -650,17 +653,22 @@ class FutabaChContent extends ContentData with WithDateTime {
   final String? limit;
 
   @override
-  String? get srcThumbnail => thumbUrl ??  (src?.thumbnailUri != null
-      ? Uri.https(
-              '$directory.${Communities.futabaCh.host}', '${src?.thumbnailUri}')
-          .toString()
-      : null);
+  String? get srcThumbnail =>
+      thumbUrl ??
+      (src?.thumbnailUri != null
+          ? Uri.https('$directory.${Communities.futabaCh.host}',
+                  '${src?.thumbnailUri}')
+              .toString()
+          : null);
 
   @override
-  String? get srcContent => srcUrl ?? (src?.srcUri != null
-      ? Uri.https('$directory.${Communities.futabaCh.host}', '${src?.srcUri}')
-          .toString()
-      : null);
+  String? get srcContent =>
+      srcUrl ??
+      (src?.srcUri != null
+          ? Uri.https(
+                  '$directory.${Communities.futabaCh.host}', '${src?.srcUri}')
+              .toString()
+          : null);
 
   @override
   DateTime get createdAt {

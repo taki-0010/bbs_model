@@ -119,10 +119,13 @@ abstract class ThreadBase {
     }
   }
 
-  String get getSubdomain {
+  String? get getSubdomain {
     final origin = uri.host;
-    final index = origin.indexOf('.');
-    return origin.substring(0, index);
+    final splited = origin.split('.');
+    if (splited.length >= 3) {
+      return splited.first;
+    }
+    return null;
   }
 
   String get futabaId {
@@ -204,7 +207,7 @@ class ThreadContentData {
       // this.archived = false,
       this.threadLength = 1,
       this.content = const [],
-      required this.hot,
+      // required this.hot,
       this.range,
       this.girlsPages,
       this.tags = const []});
@@ -216,12 +219,35 @@ class ThreadContentData {
   final int threadLength;
   // final String title;
   final List<ContentData?> content;
-  final double hot;
+  // final double hot;
   final RangeList? range;
   final GirlsPages? girlsPages;
   final List<String?> tags;
 
   int? get lastIndex => content.isNotEmpty ? content.last?.index : null;
+  int? get createdAt {
+    final first = content.first;
+    if (first != null) {
+      switch (first.forum) {
+        case Communities.chan4:
+          return (first as Chan4Content).createdAt.millisecondsSinceEpoch;
+        case Communities.fiveCh:
+          return int.tryParse(id);
+        case Communities.pinkCh:
+          return int.tryParse(id);
+        case Communities.shitaraba:
+          return int.tryParse(id);
+        case Communities.machi:
+          return int.tryParse(id);
+        case Communities.open2Ch:
+          return int.tryParse(id);
+        case Communities.girlsCh:
+          return (first as GirlsChContent).createdAt.millisecondsSinceEpoch;
+        default:
+      }
+    }
+    return null;
+  }
 
   // factory ThreadContentData.fromJson(Map<String, dynamic> json) =>
   //     _$ThreadContentDataFromJson(json);
@@ -362,25 +388,27 @@ style= "position: relative;
 @immutable
 class FetchContentResultData {
   const FetchContentResultData(
-      {this.contentList,
+      {this.content,
+      // this.contentList,
       this.statusCode,
       this.deleted,
       this.archived,
-      this.threadLength,
-      this.girlsPages,
-      this.tags = const [],
+      // this.threadLength,
+      // this.girlsPages,
+      // this.tags = const [],
       this.thumbnailUrl});
-  final List<ContentData?>? contentList;
+  final ThreadContentData? content;
+  // final List<ContentData?>? contentList;
   final int? statusCode;
   final bool? deleted;
   final bool? archived;
-  final int? threadLength;
-  final GirlsPages? girlsPages;
-  final List<String?> tags;
+  // final int? threadLength;
+  // final GirlsPages? girlsPages;
+  // final List<String?> tags;
   final String? thumbnailUrl;
 
   FetchResult get result {
-    if (contentList != null && contentList!.isNotEmpty) {
+    if (content?.content != null && content!.content.isNotEmpty) {
       return FetchResult.success;
     }
     if (statusCode != null && statusCode! >= 400) {

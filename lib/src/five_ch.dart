@@ -287,9 +287,9 @@ class FiveChData {
     final splited = value.split(' ');
     if (splited.length >= 2) {
       final name = splited.first.trim();
-      return name;
+      return name.trim();
     }
-    return value;
+    return value.trim();
   }
 }
 
