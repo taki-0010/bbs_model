@@ -85,19 +85,16 @@ MalContentBaseJson _$MalContentBaseJsonFromJson(Map<String, dynamic> json) =>
               : MalContentJson.fromJson(e as Map<String, dynamic>))
           .toList(),
       title: json['title'] as String,
-      poll: (json['poll'] as List<dynamic>?)
-              ?.map((e) => e == null
-                  ? null
-                  : MalPollBaseJson.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
+      poll: json['poll'] == null
+          ? null
+          : MalPollBaseJson.fromJson(json['poll'] as Map<String, dynamic>),
     );
 
 MalPollBaseJson _$MalPollBaseJsonFromJson(Map<String, dynamic> json) =>
     MalPollBaseJson(
       id: json['id'] as int,
       question: json['question'] as String,
-      close: json['close'] as bool,
+      closed: json['closed'] as bool,
       options: (json['options'] as List<dynamic>?)
               ?.map((e) => e == null
                   ? null

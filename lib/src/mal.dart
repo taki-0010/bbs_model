@@ -255,10 +255,10 @@ class MalContentDataJson {
 @immutable
 class MalContentBaseJson {
   const MalContentBaseJson(
-      {required this.posts, required this.title, this.poll = const []});
+      {required this.posts, required this.title, this.poll});
   final List<MalContentJson?> posts;
   final String title;
-  final List<MalPollBaseJson?> poll;
+  final MalPollBaseJson? poll;
 
   factory MalContentBaseJson.fromJson(Map<String, dynamic> json) =>
       _$MalContentBaseJsonFromJson(json);
@@ -271,11 +271,11 @@ class MalPollBaseJson {
   const MalPollBaseJson(
       {required this.id,
       required this.question,
-      required this.close,
+      required this.closed,
       this.options = const []});
   final int id;
   final String question;
-  final bool close;
+  final bool closed;
   final List<MalPollItemJson?> options;
 
   Map<int, double>? get pollRatio {
@@ -322,9 +322,9 @@ class MalPollItemJson {
 
 @immutable
 class MalOptionData {
-  const MalOptionData({this.paging, this.poll = const []});
+  const MalOptionData({this.paging, this.poll});
   final MalPaging? paging;
-  final List<MalPollBaseJson?> poll;
+  final MalPollBaseJson? poll;
 }
 
 @JsonSerializable(
