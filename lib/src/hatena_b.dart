@@ -30,7 +30,10 @@ class HatenaData {
   // https://b.hatena.ne.jp/-/report/bookmark?url=https%3A%2F%2Fwww.publickey1.jp%2Fblog%2F23%2Fpythonmojomacapplepython9c.html&user_name=bxmcr
 
   // https://b.hatena.ne.jp/-/report/entry?url=https%3A%2F%2Fpc.watch.impress.co.jp%2Fdocs%2Fcolumn%2Fsemicon%2F1541071.html
+  // https
 // https://b.hatena.ne.jp/entry/s/somethingorange.jp/entry/otakusabetu
+  // http
+// https://b.hatena.ne.jp/entry/somethingorange.jp/entry/otakusabetu
 // https://b.hatena.ne.jp/hotentry.rss
 // https://b.hatena.ne.jp/hotentry/general
   // https://b.hatena.ne.jp/hotentry/game.rss
@@ -48,24 +51,31 @@ class HatenaData {
     return Uri.https(domain, '$hotentry/$id');
   }
 
-  static String? _getUrl(final String value) {
-    final index = value.indexOf('/s/');
-    if (index != -1) {
-      return value.substring(index + 3);
-    }
-    return null;
+  static String _getUrl(final Uri uri) {
+    final path = uri.path;
+    final seg = uri.pathSegments;
+    final withHttps = seg[1] == 's';
+    final index = withHttps ? path.indexOf('/s/') + 3 : path.indexOf('/$entry/') + 7;
+    logger.d('hatena: getUrl: $path, seg: $seg');
+    return path.substring(index);
+    // final index = value.indexOf('/s/');
+    // if (index != -1) {
+    //   return value.substring(index + 3);
+    // }
+    // return null;
   }
 
   static Uri? htmlToJsonUri(final Uri uri) {
     final tob = uriIsThreadOrBoard(uri);
     if (tob != null && tob) {
-      final path = uri.path;
-      final subed = _getUrl(path);
-      if (subed != null) {
-        final escaped = Uri.encodeComponent(subed);
-        logger.d('hatena es: $escaped');
-        return Uri.parse('https://$domain/$entry/s/$escaped');
-      }
+      // final path = uri.path;
+      final subed = _getUrl(uri);
+      // if (subed != null) {
+      final escaped = Uri.encodeComponent(subed);
+      logger.d('hatena es: $escaped');
+      return Uri.parse('https://$domain/$entry/jsonlite/?url=$escaped');
+      // return Uri.parse('https://$domain/$entry/s/$escaped');
+      // }
     }
     return null;
   }
@@ -92,8 +102,10 @@ class HatenaData {
   }
 
   static String parseThreadPath(final String url) {
+    logger.d('hatena: parse: $url');
     final replased = url.substring(url.indexOf('://') + 3);
-    return '$domain/$entry/s/$replased';
+    final withHttps = url.startsWith('https');
+    return '$domain/$entry/${withHttps ? 's/' : ''}$replased';
   }
 
   static bool? uriIsThreadOrBoard(final Uri uri) {
@@ -143,9 +155,22 @@ class HatenaData {
       return null;
     }
     final path = uri.path;
-    final subed = _getUrl(path);
-    if (subed != null) {
-      final str = subed.startsWith('http') ? subed : 'https://$subed';
+    final seg = uri.pathSegments;
+    if (seg[1] == 'jsonlite' || seg[1] == 'json') {
+      final param = uri.queryParameters;
+      if (param.containsKey('url')) {
+        final url = param['url']!;
+        return Uri.decodeComponent(url);
+      }
+    } else {
+      final withHttps = seg[1] == 's';
+      final index = withHttps ? path.indexOf('/s/') + 3 : path.indexOf('/entry/') + 7;
+      final subed = path.substring(index);
+      // final subed = _getUrl(path);
+      // if (subed != null) {
+      final str = subed.startsWith('http')
+          ? subed
+          : 'http${withHttps ? 's' : ''}://$subed';
       return Uri.decodeComponent(str);
     }
     return null;
@@ -345,8 +370,6 @@ class HatenaContent extends ContentData {
   @override
   String? get getUserId => name;
 
-
-
   @override
   DateTime? get createdAt {
     try {
@@ -361,6 +384,7 @@ class HatenaContent extends ContentData {
   @override
   Uri? get avatarUri {
     // https://cdn.profile-image.st-hatena.com/users/mewton/profile.png
-    return Uri.tryParse('https://cdn.profile-image.st-hatena.com/users/$name/profile.png');
+    return Uri.tryParse(
+        'https://cdn.profile-image.st-hatena.com/users/$name/profile.png');
   }
 }

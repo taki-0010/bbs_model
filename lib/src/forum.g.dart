@@ -670,17 +670,19 @@ const _$CommunitiesEnumMap = {
 
 const _$ThemeListEnumMap = {
   ThemeList.m3Purple: 'm3Purple',
-  ThemeList.rosewood: 'rosewood',
-  ThemeList.sanJuanBlue: 'sanJuanBlue',
   ThemeList.espresso: 'espresso',
   ThemeList.greenForest: 'greenForest',
   ThemeList.goldSunset: 'goldSunset',
+  ThemeList.sanJuanBlue: 'sanJuanBlue',
   ThemeList.barossa: 'barossa',
   ThemeList.pinkSakura: 'pinkSakura',
   ThemeList.indigoNights: 'indigoNights',
   ThemeList.verdunLime: 'verdunLime',
   ThemeList.brandBlues: 'brandBlues',
+  ThemeList.rosewood: 'rosewood',
   ThemeList.redTornado: 'redTornado',
+  ThemeList.hippieBlue: 'hippieBlue',
+  ThemeList.ebonyClay: 'ebonyClay',
 };
 
 const _$RetentionPeriodListEnumMap = {

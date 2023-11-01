@@ -17,17 +17,19 @@ enum Communities {
 
 enum ThemeList {
   m3Purple,
-  rosewood,
-  sanJuanBlue,
   espresso,
   greenForest,
   goldSunset,
+  sanJuanBlue,
   barossa,
   pinkSakura,
   indigoNights,
   verdunLime,
   brandBlues,
-  redTornado
+  rosewood,
+  redTornado,
+  hippieBlue,
+  ebonyClay
 }
 
 enum LangList {

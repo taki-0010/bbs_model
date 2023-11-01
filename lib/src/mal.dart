@@ -19,10 +19,13 @@ class MalData {
   static final malUrlAndTextReg = RegExp(r'\[mal_url=.*\].+?\[/mal_url\]');
   static final spoilerReg = RegExp(r'\[spoiler\].+?\[/spoiler\]');
   static final spReg = RegExp(r'\[sp\].+?\[/sp\]');
-  static final imgReg = RegExp(r'\[img.*\].+?\[/img\]');
+  static final imgReg = RegExp(r'\[img.*\].+?\[/[img]+\]');
   static final ytReg = RegExp(r'\[yt\].+?\[/yt\]');
   static final quoteReg = RegExp(r'\[quote\].+?\[/quote\]');
 // [\[\]].+?\[/[b5]+\]
+// \[b\].+?\[/[b]+\]
+// \[.+?\].+?\[/.+?\]
+// \[color=.+?\][\s\S]*?\[/color\]
   // https://myanimelist.net/forum/?topicid=2120426
 
   static String getThreadUrl(final String threadId) {
