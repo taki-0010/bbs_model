@@ -26,6 +26,7 @@ class MalData {
 // \[b\].+?\[/[b]+\]
 // \[.+?\].+?\[/.+?\]
 // \[color=.+?\][\s\S]*?\[/color\]
+// \[size=\d+?\][\s\S]*?\[/size\]
   // https://myanimelist.net/forum/?topicid=2120426
 
   static String getThreadUrl(final String threadId) {
