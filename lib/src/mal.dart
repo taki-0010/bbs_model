@@ -202,6 +202,44 @@ class MalPaging {
   final String? next;
   final String? previous;
 
+  int? get limitNum {
+    final url = next ?? previous;
+    if (url == null) {
+      return null;
+    }
+    final uri = Uri.tryParse(url);
+    if (uri == null) {
+      return null;
+    }
+    final param = uri.queryParameters;
+    if (param.containsKey('limit')) {
+      final str = param['limit'];
+      if (str != null) {
+        return int.tryParse(str);
+      }
+    }
+    return null;
+  }
+
+  int? get offsetNum {
+    final url = next ?? previous;
+    if (url == null) {
+      return null;
+    }
+    final uri = Uri.tryParse(url);
+    if (uri == null) {
+      return null;
+    }
+    final param = uri.queryParameters;
+    if (param.containsKey('offset')) {
+      final str = param['offset'];
+      if (str != null) {
+        return int.tryParse(str);
+      }
+    }
+    return null;
+  }
+
   factory MalPaging.fromJson(Map<String, dynamic> json) =>
       _$MalPagingFromJson(json);
 }
