@@ -200,7 +200,7 @@ class InitialForumData {
         return base.copyWith(
             theme: ThemeList.redTornado,
             searchWordList: null,
-            searchBoardId: 'all',
+            searchBoardId: '1',
             timeago: TimeagoList.disableSecondsAndMinutes,
             retentionPeriod: RetentionPeriodList.oneWeek);
       default:

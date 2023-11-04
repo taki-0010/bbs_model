@@ -33,6 +33,25 @@ class MalData {
     return '$host/forum/?topicid=$threadId';
   }
 
+  static List<SearchCategoryData> get searchBoardList {
+    final main = List.generate(
+        20,
+        (index) => SearchCategoryData(
+            id: index.toString(),
+            boardId: index.toString(),
+            name: boardNameById(index.toString()) ?? '',
+            forum: Communities.mal));
+    main.removeWhere((element) => element.id == '18' || element.id == '0');
+    return [
+      SearchCategoryData(
+          id: '-1',
+          boardId: '-1',
+          name: boardNameById('-1') ?? '',
+          forum: Communities.mal),
+      ...main
+    ];
+  }
+
   static String? boardNameById(final String value) {
     if (value.startsWith('s')) {
       final v = value.replaceAll('s', '');
@@ -52,6 +71,8 @@ class MalData {
       return null;
     }
     switch (value) {
+      case '-1':
+        return 'All';
       case '5':
         return 'Updates & Announcements';
       case '14':
@@ -84,6 +105,10 @@ class MalData {
         return 'Forum Games';
       case '6':
         return 'Current Events';
+      case '17':
+        return 'DB Modofication Requests';
+      case '19':
+        return 'Series Discussion';
       default:
     }
     return null;
@@ -275,6 +300,11 @@ class MalThreadData extends ThreadData with WithDateTime {
       this.isSubboard = false});
 
   final bool isSubboard;
+  Uri get reportUri {
+    // https://myanimelist.net/modules.php?go=report&type=forummessage&id=1&id2=2127504
+    return Uri.https(MalData.host, 'modules.php',
+        {'go': 'report', 'type': 'forummessage', 'id': '1', 'id2': id});
+  }
 }
 
 @JsonSerializable(
@@ -407,10 +437,12 @@ class MalContentData extends ContentData {
       super.urlSet,
       required this.createdAtStr,
       required this.signature,
-      required this.user});
+      required this.user,
+      required this.postId});
   final String createdAtStr;
   final String signature;
   final MalUserJson user;
+  final int postId;
 
   @override
   String? get getUserName => user.name;
@@ -419,6 +451,21 @@ class MalContentData extends ContentData {
   DateTime? get createdAt {
     final p = DateTime.tryParse(createdAtStr);
     return p;
+  }
+
+  String resUrlStr(final String threadId) {
+// https: //myanimelist.net/forum/?goto=post&topicid=1527253&id=46729858
+    return 'https://${MalData.host}/forum/?goto=post&topicId=$threadId&id=$postId';
+  }
+
+  Uri reportUri(final String threadId) {
+    // https://myanimelist.net/modules.php?go=report&type=forummessagenew&id=46729858&id2=1527253
+    return Uri.https(MalData.host, 'modules.php', {
+      'go': 'report',
+      'type': 'forummessagene',
+      'id': postId,
+      'id2': threadId
+    });
   }
 
   @override
@@ -435,4 +482,13 @@ class MalContentData extends ContentData {
     }
     return null;
   }
+}
+
+class SearchCategoryData extends BoardData {
+  const SearchCategoryData(
+      {required super.id,
+      required this.boardId,
+      required super.name,
+      required super.forum});
+  final String boardId;
 }
