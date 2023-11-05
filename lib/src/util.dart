@@ -44,14 +44,14 @@ class UrlParser {
       return null;
     }
     final path = uri.path;
-    final image = (path.contains(".jpeg") ||
-        path.contains(".jpg") ||
-        path.contains(".png") ||
-        path.contains(".gif") ||
-        path.contains(".avif") ||
-        path.contains(".webp"));
-    final pdf = path.contains(".pdf");
-    final video = path.contains(".mp4") || url.contains(".webm");
+    final image = (path.endsWith(".jpeg") ||
+        path.endsWith(".jpg") ||
+        path.endsWith(".png") ||
+        path.endsWith(".gif") ||
+        path.endsWith(".avif") ||
+        path.endsWith(".webp"));
+    final pdf = path.endsWith(".pdf");
+    final video = path.endsWith(".mp4") || url.endsWith(".webm");
     if (image) {
       return MediaTypeList.image;
     }

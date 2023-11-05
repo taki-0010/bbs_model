@@ -11,6 +11,7 @@ class MalData {
   factory MalData() => instance;
   void set(final String value) => _clientId = value;
   bool get error => clientId == ConstantsDataBase.notFound;
+  static const int contentsLimit = 50;
 
   static final host = Communities.mal.host;
   static final apiHost = 'api.$host';
@@ -28,6 +29,14 @@ class MalData {
 // \[color=.+?\][\s\S]*?\[/color\]
 // \[size=\d+?\][\s\S]*?\[/size\]
   // https://myanimelist.net/forum/?topicid=2120426
+
+  static String? getThreadIdFromUri(final Uri uri) {
+    final param = uri.queryParameters;
+    if (param.containsKey('topicid')) {
+      return param['topicid'];
+    }
+    return null;
+  }
 
   static String getThreadUrl(final String threadId) {
     return '$host/forum/?topicid=$threadId';
@@ -175,6 +184,14 @@ class MalBoardData extends BoardData {
       required super.forum,
       this.subboard = false});
   final bool subboard;
+
+  Uri get boardUri {
+    // https://myanimelist.net/forum/?board=1
+    // https: //myanimelist.net/forum/?subboard=1
+    final boardId = subboard ? id.replaceAll('s', '') : id;
+    final q = subboard ? 'subboard' : 'board';
+    return Uri.https(MalData.host, 'forum', {q: boardId});
+  }
 }
 
 @JsonSerializable(
@@ -221,11 +238,13 @@ class MalThreadJson {
 
 @JsonSerializable(
     fieldRename: FieldRename.snake, createToJson: false, explicitToJson: true)
+@CopyWith()
 @immutable
 class MalPaging {
-  const MalPaging({this.next, this.previous});
+  const MalPaging({this.next, this.previous, this.last});
   final String? next;
   final String? previous;
+  final String? last;
 
   int? get limitNum {
     final url = next ?? previous;
@@ -246,11 +265,31 @@ class MalPaging {
     return null;
   }
 
-  int? get offsetNum {
-    final url = next ?? previous;
+  int? get prevOffsetNum {
+    final url = previous;
     if (url == null) {
       return null;
     }
+    return _offsetNum(url);
+  }
+
+  int? get nextOffsetNum {
+    final url = next;
+    if (url == null) {
+      return null;
+    }
+    return _offsetNum(url);
+  }
+
+  int? get lastOffsetNum {
+    final url = last;
+    if (url == null) {
+      return null;
+    }
+    return _offsetNum(url);
+  }
+
+  int? _offsetNum(final String url) {
     final uri = Uri.tryParse(url);
     if (uri == null) {
       return null;
@@ -297,9 +336,60 @@ class MalThreadData extends ThreadData with WithDateTime {
       required super.boardId,
       required super.type,
       required super.url,
-      this.isSubboard = false});
+      super.updateAtStr,
+      required this.createdAtStr,
+      this.isSubboard = false,
+      this.createdAtFromSearch,
+      this.isLocked = false});
+  final String createdAtStr;
+  final String? createdAtFromSearch;
 
   final bool isSubboard;
+  final bool isLocked;
+
+  @override
+  bool get locked => isLocked;
+
+  @override
+  DateTime? get dateTime {
+    if (createdAtFromSearch != null) {
+      final splited = createdAtFromSearch?.split(' ');
+      if (splited == null || splited.isEmpty) {
+        return null;
+      }
+      final y = splited.length >= 3
+          ? splited[2]
+          : splited.length <= 2
+              ? DateTime.now().year.toString()
+              : null;
+      final m = splited.first;
+      final d = splited[1];
+      final p = DateFormat('yyyy MMM d').parse('$y $m $d');
+      return p;
+    }
+    return DateTime.tryParse(createdAtStr);
+  }
+
+  @override
+  int? get createdAt {
+    final datetime = DateTime.tryParse(createdAtStr);
+    if (datetime != null) {
+      return (datetime.millisecondsSinceEpoch * 0.001).toInt();
+    }
+    return null;
+  }
+
+  @override
+  double? get updateAt {
+    if (updateAtStr != null) {
+      final datetime = DateTime.tryParse(updateAtStr!);
+      if (datetime != null) {
+        return datetime.millisecondsSinceEpoch * 0.001;
+      }
+    }
+    return null;
+  }
+
   Uri get reportUri {
     // https://myanimelist.net/modules.php?go=report&type=forummessage&id=1&id2=2127504
     return Uri.https(MalData.host, 'modules.php',
@@ -445,6 +535,9 @@ class MalContentData extends ContentData {
   final int postId;
 
   @override
+  String? get getUserId => user.id.toString();
+
+  @override
   String? get getUserName => user.name;
 
   @override
@@ -455,7 +548,7 @@ class MalContentData extends ContentData {
 
   String resUrlStr(final String threadId) {
 // https: //myanimelist.net/forum/?goto=post&topicid=1527253&id=46729858
-    return 'https://${MalData.host}/forum/?goto=post&topicId=$threadId&id=$postId';
+    return 'https://${MalData.host}/forum/?goto=post&topicid=$threadId&id=$postId';
   }
 
   Uri reportUri(final String threadId) {

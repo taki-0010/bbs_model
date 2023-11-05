@@ -3,6 +3,81 @@
 part of 'mal.dart';
 
 // **************************************************************************
+// CopyWithGenerator
+// **************************************************************************
+
+abstract class _$MalPagingCWProxy {
+  MalPaging next(String? next);
+
+  MalPaging previous(String? previous);
+
+  MalPaging last(String? last);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MalPaging(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// MalPaging(...).copyWith(id: 12, name: "My name")
+  /// ````
+  MalPaging call({
+    String? next,
+    String? previous,
+    String? last,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfMalPaging.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfMalPaging.copyWith.fieldName(...)`
+class _$MalPagingCWProxyImpl implements _$MalPagingCWProxy {
+  const _$MalPagingCWProxyImpl(this._value);
+
+  final MalPaging _value;
+
+  @override
+  MalPaging next(String? next) => this(next: next);
+
+  @override
+  MalPaging previous(String? previous) => this(previous: previous);
+
+  @override
+  MalPaging last(String? last) => this(last: last);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MalPaging(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// MalPaging(...).copyWith(id: 12, name: "My name")
+  /// ````
+  MalPaging call({
+    Object? next = const $CopyWithPlaceholder(),
+    Object? previous = const $CopyWithPlaceholder(),
+    Object? last = const $CopyWithPlaceholder(),
+  }) {
+    return MalPaging(
+      next: next == const $CopyWithPlaceholder()
+          ? _value.next
+          // ignore: cast_nullable_to_non_nullable
+          : next as String?,
+      previous: previous == const $CopyWithPlaceholder()
+          ? _value.previous
+          // ignore: cast_nullable_to_non_nullable
+          : previous as String?,
+      last: last == const $CopyWithPlaceholder()
+          ? _value.last
+          // ignore: cast_nullable_to_non_nullable
+          : last as String?,
+    );
+  }
+}
+
+extension $MalPagingCopyWith on MalPaging {
+  /// Returns a callable class that can be used as follows: `instanceOfMalPaging.copyWith(...)` or like so:`instanceOfMalPaging.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$MalPagingCWProxy get copyWith => _$MalPagingCWProxyImpl(this);
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
@@ -61,6 +136,7 @@ MalThreadJson _$MalThreadJsonFromJson(Map<String, dynamic> json) =>
 MalPaging _$MalPagingFromJson(Map<String, dynamic> json) => MalPaging(
       next: json['next'] as String?,
       previous: json['previous'] as String?,
+      last: json['last'] as String?,
     );
 
 MalUserJson _$MalUserJsonFromJson(Map<String, dynamic> json) => MalUserJson(

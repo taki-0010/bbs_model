@@ -584,6 +584,9 @@ class FutabaChThread extends ThreadData with WithDateTime {
   // final String boardId;
   final String directory;
 
+  @override
+  bool get locked => resCount >= 1000;
+
   SrcData? get thumbnail => thumbnailStr != null
       ? SrcData.fromJson(stringToJson(thumbnailStr!))
       : null;

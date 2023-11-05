@@ -123,6 +123,7 @@ class InitialForumData {
   static const searchWords = ['ニュース', 'スポーツ', '天気'];
   static const searchWordsFutaba = ['雑談', '画像', '天気'];
   static const searchWordsChan4 = ['News', 'SDGs', 'waifu draw'];
+  static const searchWordsMal = ['isekai', 'shonen', 'mecha'];
   static ForumSettingsData? getInitialSettings(
       final Communities value, final String userId) {
     // final userId = user?.$id;
@@ -198,11 +199,12 @@ class InitialForumData {
             retentionPeriod: RetentionPeriodList.oneWeek);
       case Communities.mal:
         return base.copyWith(
-            theme: ThemeList.redTornado,
-            searchWordList: null,
+            theme: ThemeList.hippieBlue,
+            searchWordList: searchWordsMal,
             searchBoardId: '1',
+            threadsOrderType: ThreadsOrderType.newerResponce,
             timeago: TimeagoList.disableSecondsAndMinutes,
-            retentionPeriod: RetentionPeriodList.oneWeek);
+            retentionPeriod: RetentionPeriodList.twoWeeks);
       default:
     }
     return null;

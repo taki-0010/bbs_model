@@ -30,6 +30,8 @@ abstract class ThreadBase {
     return -1.0;
   }
 
+  bool get locked => false;
+
   int get getResCount => resCount;
 
   String? get thumbnailUrl => null;
