@@ -55,7 +55,8 @@ class HatenaData {
     final path = uri.path;
     final seg = uri.pathSegments;
     final withHttps = seg[1] == 's';
-    final index = withHttps ? path.indexOf('/s/') + 3 : path.indexOf('/$entry/') + 7;
+    final index =
+        withHttps ? path.indexOf('/s/') + 3 : path.indexOf('/$entry/') + 7;
     logger.d('hatena: getUrl: $path, seg: $seg');
     return path.substring(index);
     // final index = value.indexOf('/s/');
@@ -164,7 +165,8 @@ class HatenaData {
       }
     } else {
       final withHttps = seg[1] == 's';
-      final index = withHttps ? path.indexOf('/s/') + 3 : path.indexOf('/entry/') + 7;
+      final index =
+          withHttps ? path.indexOf('/s/') + 3 : path.indexOf('/entry/') + 7;
       final subed = path.substring(index);
       // final subed = _getUrl(path);
       // if (subed != null) {
@@ -265,17 +267,13 @@ class HatenaThreadData extends ThreadData with WithDateTime {
     return f.parse(dateStr!);
   }
 
-  SrcData? get thumbnail => thumbnailStr != null
-      ? SrcData.fromJson(stringToJson(thumbnailStr!))
-      : null;
+  // SrcData? get thumbnail => thumbnailStr != null
+  //     ? SrcData.fromJson(stringToJson(thumbnailStr!))
+  //     : null;
 
   // String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override
-  String get thumbnailUrl =>
-      thumbnailFullUrl ??
-      (thumbnail?.thumbnailUri != null
-          ? Uri.tryParse(thumbnail!.thumbnailUri!).toString()
-          : '');
+  String? get thumbnailUrl => thumbnailFullUrl;
 
   @override
   double get ikioi {
@@ -346,7 +344,7 @@ class HatenaContent extends ContentData {
       super.urlSet,
       super.title,
       this.email,
-      super.src,
+      // super.src,
       super.srcUrl,
       super.thumbUrl,
       required this.boardId,
@@ -359,10 +357,7 @@ class HatenaContent extends ContentData {
 
   @override
   String? get srcThumbnail =>
-      thumbUrl ??
-      (src?.thumbnailUri != null
-          ? Uri.tryParse(src!.thumbnailUri!).toString()
-          : null);
+      thumbUrl;
 
   @override
   String? get getUserName => name;

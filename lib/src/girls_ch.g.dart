@@ -248,8 +248,6 @@ abstract class _$GirlsChContentCWProxy {
 
   GirlsChContent body(String body);
 
-  GirlsChContent src(SrcData? src);
-
   GirlsChContent plus(int plus);
 
   GirlsChContent minus(int minus);
@@ -283,7 +281,6 @@ abstract class _$GirlsChContentCWProxy {
     int? index,
     String? name,
     String? body,
-    SrcData? src,
     int? plus,
     int? minus,
     String? postAt,
@@ -315,9 +312,6 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
 
   @override
   GirlsChContent body(String body) => this(body: body);
-
-  @override
-  GirlsChContent src(SrcData? src) => this(src: src);
 
   @override
   GirlsChContent plus(int plus) => this(plus: plus);
@@ -366,7 +360,6 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
     Object? index = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? body = const $CopyWithPlaceholder(),
-    Object? src = const $CopyWithPlaceholder(),
     Object? plus = const $CopyWithPlaceholder(),
     Object? minus = const $CopyWithPlaceholder(),
     Object? postAt = const $CopyWithPlaceholder(),
@@ -396,10 +389,6 @@ class _$GirlsChContentCWProxyImpl implements _$GirlsChContentCWProxy {
           ? _value.body
           // ignore: cast_nullable_to_non_nullable
           : body as String,
-      src: src == const $CopyWithPlaceholder()
-          ? _value.src
-          // ignore: cast_nullable_to_non_nullable
-          : src as SrcData?,
       plus: plus == const $CopyWithPlaceholder() || plus == null
           ? _value.plus
           // ignore: cast_nullable_to_non_nullable
@@ -465,9 +454,6 @@ GirlsChContent _$GirlsChContentFromJson(Map<String, dynamic> json) =>
       index: json['index'] as int,
       name: json['name'] as String,
       body: json['body'] as String,
-      src: json['src'] == null
-          ? null
-          : SrcData.fromJson(json['src'] as Map<String, dynamic>),
       plus: json['plus'] as int,
       minus: json['minus'] as int,
       postAt: json['postAt'] as String,
@@ -488,7 +474,6 @@ Map<String, dynamic> _$GirlsChContentToJson(GirlsChContent instance) =>
       'index': instance.index,
       'body': instance.body,
       'urlSet': instance.urlSet,
-      'src': instance.src,
       'name': instance.name,
       'title': instance.title,
       'threadThumbnail': instance.threadThumbnail,

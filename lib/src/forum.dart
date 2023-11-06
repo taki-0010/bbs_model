@@ -16,15 +16,15 @@ class ForumSettingsData {
       this.useFavoritesBoards = false,
       this.favoritesBoardList = const [],
       this.searchWordList = const [],
-      this.searchBoardIdForFutaba = 'b',
-      this.searchBoardIdForMachi = 'tokyo',
+      // this.searchBoardIdForFutaba = 'b',
+      // this.searchBoardIdForMachi = 'tokyo',
       this.deleteKeyForFutaba = '48009',
       this.searchBoardId,
       this.sortHistoryList = SortHistoryList.boards,
       this.googleFonts,
       this.addedFonts = const [],
-      this.boardImportance = const [],
-      this.threadsImportance = const [],
+      // this.boardImportance = const [],
+      // this.threadsImportance = const [],
       this.importanceList = const [],
       this.listViewStyle = ListViewStyle.list,
       this.movedToLastThreads = MovedToLastThreads.none,
@@ -48,8 +48,8 @@ class ForumSettingsData {
   final bool useFavoritesBoards;
   final List<String?> favoritesBoardList;
   final List<String?> searchWordList;
-  final String searchBoardIdForFutaba;
-  final String searchBoardIdForMachi;
+  // final String searchBoardIdForFutaba;
+  // final String searchBoardIdForMachi;
   final String deleteKeyForFutaba;
   final String? searchBoardId;
   // final bool sortHistoryByRetention;
@@ -57,8 +57,8 @@ class ForumSettingsData {
   final SortHistoryList sortHistoryList;
   final String? googleFonts;
   final List<String?> addedFonts;
-  final List<String?> boardImportance;
-  final List<String?> threadsImportance;
+  // final List<String?> boardImportance;
+  // final List<String?> threadsImportance;
   final List<String?> importanceList;
   final ListViewStyle listViewStyle;
   final MovedToLastThreads movedToLastThreads;
@@ -73,13 +73,13 @@ class ForumSettingsData {
   final String? lastUsedEmail;
   final String? lastUsedSubject;
 
-  List<ImportanceData?> get boardImportanceList => boardImportance
-      .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
-      .toList();
+  // List<ImportanceData?> get boardImportanceList => boardImportance
+  //     .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
+  //     .toList();
 
-  List<ImportanceData?> get threadsImportanceList => threadsImportance
-      .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
-      .toList();
+  // List<ImportanceData?> get threadsImportanceList => threadsImportance
+  //     .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
+  //     .toList();
 
   List<ImportanceData?> get getImportanceList => importanceList
       .map((e) => e != null ? ImportanceData.fromJson(stringToJson(e)) : null)
@@ -90,34 +90,34 @@ class ForumSettingsData {
   Map<String, dynamic> toJson() => _$ForumSettingsDataToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-@CopyWith()
-@immutable
-class SrcData {
-  const SrcData({this.thumbnailUri, this.srcUri});
-  final String? thumbnailUri;
-  final String? srcUri;
+// @JsonSerializable(explicitToJson: true)
+// @CopyWith()
+// @immutable
+// class SrcData {
+//   const SrcData({this.thumbnailUri, this.srcUri});
+//   final String? thumbnailUri;
+//   final String? srcUri;
 
-  factory SrcData.fromJson(Map<String, dynamic> json) =>
-      _$SrcDataFromJson(json);
-  Map<String, dynamic> toJson() => _$SrcDataToJson(this);
-}
+//   factory SrcData.fromJson(Map<String, dynamic> json) =>
+//       _$SrcDataFromJson(json);
+//   Map<String, dynamic> toJson() => _$SrcDataToJson(this);
+// }
 
-@JsonSerializable(explicitToJson: true)
-@CopyWith()
-@immutable
-class SrcDataForStorage {
-  const SrcDataForStorage({
-    this.data,
-    required this.id,
-  });
-  final String id;
-  final List<int>? data;
+// @JsonSerializable(explicitToJson: true)
+// @CopyWith()
+// @immutable
+// class SrcDataForStorage {
+//   const SrcDataForStorage({
+//     this.data,
+//     required this.id,
+//   });
+//   final String id;
+//   final List<int>? data;
 
-  factory SrcDataForStorage.fromJson(Map<String, dynamic> json) =>
-      _$SrcDataForStorageFromJson(json);
-  Map<String, dynamic> toJson() => _$SrcDataForStorageToJson(this);
-}
+//   factory SrcDataForStorage.fromJson(Map<String, dynamic> json) =>
+//       _$SrcDataForStorageFromJson(json);
+//   Map<String, dynamic> toJson() => _$SrcDataForStorageToJson(this);
+// }
 
 class InitialForumData {
   static const searchWords = ['ニュース', 'スポーツ', '天気'];

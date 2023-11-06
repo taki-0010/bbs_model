@@ -246,6 +246,8 @@ class MalPaging {
   final String? previous;
   final String? last;
 
+  bool get hasLinks => next != null || previous != null || last != null;
+
   int? get limitNum {
     final url = next ?? previous;
     if (url == null) {

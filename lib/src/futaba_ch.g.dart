@@ -977,8 +977,6 @@ abstract class _$FutabaChContentCWProxy {
 
   FutabaChContent index(int index);
 
-  FutabaChContent src(SrcData? src);
-
   FutabaChContent body(String body);
 
   FutabaChContent number(int number);
@@ -1016,7 +1014,6 @@ abstract class _$FutabaChContentCWProxy {
   FutabaChContent call({
     Communities? forum,
     int? index,
-    SrcData? src,
     String? body,
     int? number,
     String? created,
@@ -1045,9 +1042,6 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
 
   @override
   FutabaChContent index(int index) => this(index: index);
-
-  @override
-  FutabaChContent src(SrcData? src) => this(src: src);
 
   @override
   FutabaChContent body(String body) => this(body: body);
@@ -1103,7 +1097,6 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
   FutabaChContent call({
     Object? forum = const $CopyWithPlaceholder(),
     Object? index = const $CopyWithPlaceholder(),
-    Object? src = const $CopyWithPlaceholder(),
     Object? body = const $CopyWithPlaceholder(),
     Object? number = const $CopyWithPlaceholder(),
     Object? created = const $CopyWithPlaceholder(),
@@ -1128,10 +1121,6 @@ class _$FutabaChContentCWProxyImpl implements _$FutabaChContentCWProxy {
           ? _value.index
           // ignore: cast_nullable_to_non_nullable
           : index as int,
-      src: src == const $CopyWithPlaceholder()
-          ? _value.src
-          // ignore: cast_nullable_to_non_nullable
-          : src as SrcData?,
       body: body == const $CopyWithPlaceholder() || body == null
           ? _value.body
           // ignore: cast_nullable_to_non_nullable
@@ -1383,9 +1372,6 @@ FutabaChContent _$FutabaChContentFromJson(Map<String, dynamic> json) =>
     FutabaChContent(
       forum: $enumDecode(_$CommunitiesEnumMap, json['forum']),
       index: json['index'] as int,
-      src: json['src'] == null
-          ? null
-          : SrcData.fromJson(json['src'] as Map<String, dynamic>),
       body: json['body'] as String,
       number: json['number'] as int,
       created: json['created'] as String,
@@ -1410,7 +1396,6 @@ Map<String, dynamic> _$FutabaChContentToJson(FutabaChContent instance) =>
       'forum': _$CommunitiesEnumMap[instance.forum]!,
       'index': instance.index,
       'body': instance.body,
-      'src': instance.src,
       'name': instance.name,
       'title': instance.title,
       'threadThumbnail': instance.threadThumbnail,

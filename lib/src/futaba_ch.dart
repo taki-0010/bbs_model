@@ -584,20 +584,16 @@ class FutabaChThread extends ThreadData with WithDateTime {
   // final String boardId;
   final String directory;
 
-  @override
-  bool get locked => resCount >= 1000;
+  // @override
+  // bool get locked => resCount >= 1000;
 
-  SrcData? get thumbnail => thumbnailStr != null
-      ? SrcData.fromJson(stringToJson(thumbnailStr!))
-      : null;
+  // SrcData? get thumbnail => thumbnailStr != null
+  //     ? SrcData.fromJson(stringToJson(thumbnailStr!))
+  //     : null;
 
   // String get url => '$directory.2chan.net/$boardId/res/$id.htm';
   @override
-  String get thumbnailUrl => thumbnailFullUrl != null
-      ? thumbnailFullUrl!
-      : thumbnail?.thumbnailUri != null
-          ? Uri.tryParse(thumbnail!.thumbnailUri!).toString()
-          : '';
+  String? get thumbnailUrl => thumbnailFullUrl;
   // 'https://$directory.2chan.net${thumbnail?.thumbnailUri}';
   // @override
   // String get thumbnailUrl => Uri.https(
@@ -627,7 +623,7 @@ class FutabaChContent extends ContentData with WithDateTime {
       {required super.forum,
       required super.index,
       // this.thumbnail,
-      super.src,
+      // super.src,
       required super.body,
       required this.number,
       required this.created,
@@ -657,21 +653,11 @@ class FutabaChContent extends ContentData with WithDateTime {
 
   @override
   String? get srcThumbnail =>
-      thumbUrl ??
-      (src?.thumbnailUri != null
-          ? Uri.https('$directory.${Communities.futabaCh.host}',
-                  '${src?.thumbnailUri}')
-              .toString()
-          : null);
+      thumbUrl;
 
   @override
   String? get srcContent =>
-      srcUrl ??
-      (src?.srcUri != null
-          ? Uri.https(
-                  '$directory.${Communities.futabaCh.host}', '${src?.srcUri}')
-              .toString()
-          : null);
+      srcUrl;
 
   @override
   DateTime get createdAt {

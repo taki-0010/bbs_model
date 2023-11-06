@@ -23,10 +23,6 @@ abstract class _$ForumSettingsDataCWProxy {
 
   ForumSettingsData searchWordList(List<String?> searchWordList);
 
-  ForumSettingsData searchBoardIdForFutaba(String searchBoardIdForFutaba);
-
-  ForumSettingsData searchBoardIdForMachi(String searchBoardIdForMachi);
-
   ForumSettingsData deleteKeyForFutaba(String deleteKeyForFutaba);
 
   ForumSettingsData searchBoardId(String? searchBoardId);
@@ -36,10 +32,6 @@ abstract class _$ForumSettingsDataCWProxy {
   ForumSettingsData googleFonts(String? googleFonts);
 
   ForumSettingsData addedFonts(List<String?> addedFonts);
-
-  ForumSettingsData boardImportance(List<String?> boardImportance);
-
-  ForumSettingsData threadsImportance(List<String?> threadsImportance);
 
   ForumSettingsData importanceList(List<String?> importanceList);
 
@@ -83,15 +75,11 @@ abstract class _$ForumSettingsDataCWProxy {
     bool? useFavoritesBoards,
     List<String?>? favoritesBoardList,
     List<String?>? searchWordList,
-    String? searchBoardIdForFutaba,
-    String? searchBoardIdForMachi,
     String? deleteKeyForFutaba,
     String? searchBoardId,
     SortHistoryList? sortHistoryList,
     String? googleFonts,
     List<String?>? addedFonts,
-    List<String?>? boardImportance,
-    List<String?>? threadsImportance,
     List<String?>? importanceList,
     ListViewStyle? listViewStyle,
     MovedToLastThreads? movedToLastThreads,
@@ -144,14 +132,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
       this(searchWordList: searchWordList);
 
   @override
-  ForumSettingsData searchBoardIdForFutaba(String searchBoardIdForFutaba) =>
-      this(searchBoardIdForFutaba: searchBoardIdForFutaba);
-
-  @override
-  ForumSettingsData searchBoardIdForMachi(String searchBoardIdForMachi) =>
-      this(searchBoardIdForMachi: searchBoardIdForMachi);
-
-  @override
   ForumSettingsData deleteKeyForFutaba(String deleteKeyForFutaba) =>
       this(deleteKeyForFutaba: deleteKeyForFutaba);
 
@@ -170,14 +150,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
   @override
   ForumSettingsData addedFonts(List<String?> addedFonts) =>
       this(addedFonts: addedFonts);
-
-  @override
-  ForumSettingsData boardImportance(List<String?> boardImportance) =>
-      this(boardImportance: boardImportance);
-
-  @override
-  ForumSettingsData threadsImportance(List<String?> threadsImportance) =>
-      this(threadsImportance: threadsImportance);
 
   @override
   ForumSettingsData importanceList(List<String?> importanceList) =>
@@ -247,15 +219,11 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
     Object? useFavoritesBoards = const $CopyWithPlaceholder(),
     Object? favoritesBoardList = const $CopyWithPlaceholder(),
     Object? searchWordList = const $CopyWithPlaceholder(),
-    Object? searchBoardIdForFutaba = const $CopyWithPlaceholder(),
-    Object? searchBoardIdForMachi = const $CopyWithPlaceholder(),
     Object? deleteKeyForFutaba = const $CopyWithPlaceholder(),
     Object? searchBoardId = const $CopyWithPlaceholder(),
     Object? sortHistoryList = const $CopyWithPlaceholder(),
     Object? googleFonts = const $CopyWithPlaceholder(),
     Object? addedFonts = const $CopyWithPlaceholder(),
-    Object? boardImportance = const $CopyWithPlaceholder(),
-    Object? threadsImportance = const $CopyWithPlaceholder(),
     Object? importanceList = const $CopyWithPlaceholder(),
     Object? listViewStyle = const $CopyWithPlaceholder(),
     Object? movedToLastThreads = const $CopyWithPlaceholder(),
@@ -308,18 +276,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
           ? _value.searchWordList
           // ignore: cast_nullable_to_non_nullable
           : searchWordList as List<String?>,
-      searchBoardIdForFutaba:
-          searchBoardIdForFutaba == const $CopyWithPlaceholder() ||
-                  searchBoardIdForFutaba == null
-              ? _value.searchBoardIdForFutaba
-              // ignore: cast_nullable_to_non_nullable
-              : searchBoardIdForFutaba as String,
-      searchBoardIdForMachi:
-          searchBoardIdForMachi == const $CopyWithPlaceholder() ||
-                  searchBoardIdForMachi == null
-              ? _value.searchBoardIdForMachi
-              // ignore: cast_nullable_to_non_nullable
-              : searchBoardIdForMachi as String,
       deleteKeyForFutaba: deleteKeyForFutaba == const $CopyWithPlaceholder() ||
               deleteKeyForFutaba == null
           ? _value.deleteKeyForFutaba
@@ -343,16 +299,6 @@ class _$ForumSettingsDataCWProxyImpl implements _$ForumSettingsDataCWProxy {
               ? _value.addedFonts
               // ignore: cast_nullable_to_non_nullable
               : addedFonts as List<String?>,
-      boardImportance: boardImportance == const $CopyWithPlaceholder() ||
-              boardImportance == null
-          ? _value.boardImportance
-          // ignore: cast_nullable_to_non_nullable
-          : boardImportance as List<String?>,
-      threadsImportance: threadsImportance == const $CopyWithPlaceholder() ||
-              threadsImportance == null
-          ? _value.threadsImportance
-          // ignore: cast_nullable_to_non_nullable
-          : threadsImportance as List<String?>,
       importanceList: importanceList == const $CopyWithPlaceholder() ||
               importanceList == null
           ? _value.importanceList
@@ -426,128 +372,6 @@ extension $ForumSettingsDataCopyWith on ForumSettingsData {
       _$ForumSettingsDataCWProxyImpl(this);
 }
 
-abstract class _$SrcDataCWProxy {
-  SrcData thumbnailUri(String? thumbnailUri);
-
-  SrcData srcUri(String? srcUri);
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `SrcData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// SrcData(...).copyWith(id: 12, name: "My name")
-  /// ````
-  SrcData call({
-    String? thumbnailUri,
-    String? srcUri,
-  });
-}
-
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfSrcData.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfSrcData.copyWith.fieldName(...)`
-class _$SrcDataCWProxyImpl implements _$SrcDataCWProxy {
-  const _$SrcDataCWProxyImpl(this._value);
-
-  final SrcData _value;
-
-  @override
-  SrcData thumbnailUri(String? thumbnailUri) =>
-      this(thumbnailUri: thumbnailUri);
-
-  @override
-  SrcData srcUri(String? srcUri) => this(srcUri: srcUri);
-
-  @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `SrcData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// SrcData(...).copyWith(id: 12, name: "My name")
-  /// ````
-  SrcData call({
-    Object? thumbnailUri = const $CopyWithPlaceholder(),
-    Object? srcUri = const $CopyWithPlaceholder(),
-  }) {
-    return SrcData(
-      thumbnailUri: thumbnailUri == const $CopyWithPlaceholder()
-          ? _value.thumbnailUri
-          // ignore: cast_nullable_to_non_nullable
-          : thumbnailUri as String?,
-      srcUri: srcUri == const $CopyWithPlaceholder()
-          ? _value.srcUri
-          // ignore: cast_nullable_to_non_nullable
-          : srcUri as String?,
-    );
-  }
-}
-
-extension $SrcDataCopyWith on SrcData {
-  /// Returns a callable class that can be used as follows: `instanceOfSrcData.copyWith(...)` or like so:`instanceOfSrcData.copyWith.fieldName(...)`.
-  // ignore: library_private_types_in_public_api
-  _$SrcDataCWProxy get copyWith => _$SrcDataCWProxyImpl(this);
-}
-
-abstract class _$SrcDataForStorageCWProxy {
-  SrcDataForStorage data(List<int>? data);
-
-  SrcDataForStorage id(String id);
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `SrcDataForStorage(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// SrcDataForStorage(...).copyWith(id: 12, name: "My name")
-  /// ````
-  SrcDataForStorage call({
-    List<int>? data,
-    String? id,
-  });
-}
-
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfSrcDataForStorage.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfSrcDataForStorage.copyWith.fieldName(...)`
-class _$SrcDataForStorageCWProxyImpl implements _$SrcDataForStorageCWProxy {
-  const _$SrcDataForStorageCWProxyImpl(this._value);
-
-  final SrcDataForStorage _value;
-
-  @override
-  SrcDataForStorage data(List<int>? data) => this(data: data);
-
-  @override
-  SrcDataForStorage id(String id) => this(id: id);
-
-  @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `SrcDataForStorage(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// SrcDataForStorage(...).copyWith(id: 12, name: "My name")
-  /// ````
-  SrcDataForStorage call({
-    Object? data = const $CopyWithPlaceholder(),
-    Object? id = const $CopyWithPlaceholder(),
-  }) {
-    return SrcDataForStorage(
-      data: data == const $CopyWithPlaceholder()
-          ? _value.data
-          // ignore: cast_nullable_to_non_nullable
-          : data as List<int>?,
-      id: id == const $CopyWithPlaceholder() || id == null
-          ? _value.id
-          // ignore: cast_nullable_to_non_nullable
-          : id as String,
-    );
-  }
-}
-
-extension $SrcDataForStorageCopyWith on SrcDataForStorage {
-  /// Returns a callable class that can be used as follows: `instanceOfSrcDataForStorage.copyWith(...)` or like so:`instanceOfSrcDataForStorage.copyWith.fieldName(...)`.
-  // ignore: library_private_types_in_public_api
-  _$SrcDataForStorageCWProxy get copyWith =>
-      _$SrcDataForStorageCWProxyImpl(this);
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -569,9 +393,6 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String?)
               .toList() ??
           const [],
-      searchBoardIdForFutaba: json['searchBoardIdForFutaba'] as String? ?? 'b',
-      searchBoardIdForMachi:
-          json['searchBoardIdForMachi'] as String? ?? 'tokyo',
       deleteKeyForFutaba: json['deleteKeyForFutaba'] as String? ?? '48009',
       searchBoardId: json['searchBoardId'] as String?,
       sortHistoryList: $enumDecodeNullable(
@@ -579,14 +400,6 @@ ForumSettingsData _$ForumSettingsDataFromJson(Map<String, dynamic> json) =>
           SortHistoryList.boards,
       googleFonts: json['googleFonts'] as String?,
       addedFonts: (json['addedFonts'] as List<dynamic>?)
-              ?.map((e) => e as String?)
-              .toList() ??
-          const [],
-      boardImportance: (json['boardImportance'] as List<dynamic>?)
-              ?.map((e) => e as String?)
-              .toList() ??
-          const [],
-      threadsImportance: (json['threadsImportance'] as List<dynamic>?)
               ?.map((e) => e as String?)
               .toList() ??
           const [],
@@ -629,15 +442,11 @@ Map<String, dynamic> _$ForumSettingsDataToJson(ForumSettingsData instance) =>
       'useFavoritesBoards': instance.useFavoritesBoards,
       'favoritesBoardList': instance.favoritesBoardList,
       'searchWordList': instance.searchWordList,
-      'searchBoardIdForFutaba': instance.searchBoardIdForFutaba,
-      'searchBoardIdForMachi': instance.searchBoardIdForMachi,
       'deleteKeyForFutaba': instance.deleteKeyForFutaba,
       'searchBoardId': instance.searchBoardId,
       'sortHistoryList': _$SortHistoryListEnumMap[instance.sortHistoryList]!,
       'googleFonts': instance.googleFonts,
       'addedFonts': instance.addedFonts,
-      'boardImportance': instance.boardImportance,
-      'threadsImportance': instance.threadsImportance,
       'importanceList': instance.importanceList,
       'listViewStyle': _$ListViewStyleEnumMap[instance.listViewStyle]!,
       'movedToLastThreads':
@@ -737,25 +546,3 @@ const _$TimeagoListEnumMap = {
   TimeagoList.disableSecondsAndMinutes: 'disableSecondsAndMinutes',
   TimeagoList.enable: 'enable',
 };
-
-SrcData _$SrcDataFromJson(Map<String, dynamic> json) => SrcData(
-      thumbnailUri: json['thumbnailUri'] as String?,
-      srcUri: json['srcUri'] as String?,
-    );
-
-Map<String, dynamic> _$SrcDataToJson(SrcData instance) => <String, dynamic>{
-      'thumbnailUri': instance.thumbnailUri,
-      'srcUri': instance.srcUri,
-    };
-
-SrcDataForStorage _$SrcDataForStorageFromJson(Map<String, dynamic> json) =>
-    SrcDataForStorage(
-      data: (json['data'] as List<dynamic>?)?.map((e) => e as int).toList(),
-      id: json['id'] as String,
-    );
-
-Map<String, dynamic> _$SrcDataForStorageToJson(SrcDataForStorage instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'data': instance.data,
-    };
