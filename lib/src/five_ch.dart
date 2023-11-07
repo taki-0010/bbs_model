@@ -221,9 +221,10 @@ class FiveChData {
     final seg = uri.pathSegments;
     if (tob) {
       if (uri.host.contains(subdomainForMobile) && seg.length >= 4) {
-        final id = int.tryParse(seg[3]);
+        final reversed = seg.reversed.toList();
+        final id = int.tryParse(reversed.first);
         if (id != null) {
-          return seg[2];
+          return reversed[1];
         }
         // return seg[3];
       }
@@ -248,10 +249,11 @@ class FiveChData {
     if (tob == null || !tob) {
       return null;
     }
-    final seg = uri.pathSegments;
-    if (seg.length >= 5) {
-      final resStr = seg.last;
-      return StringMethodData.getResNum(resStr);
+    final seg = uri.pathSegments.reversed.toList();
+    final first = int.tryParse(seg.first);
+    // final second = seg.length >= 2 ? int.tryParse(seg[1]) : null;
+    if (first != null && first <= 1020) {
+      return first;
     }
     return null;
   }
@@ -283,7 +285,6 @@ class FiveChData {
   }
 
   static String getUserName(final String value) {
-    
     final splited = value.split(' ');
     if (splited.length >= 2) {
       final name = splited.first.trim();
@@ -497,8 +498,6 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
   final String directoryName;
   // final String? userId;
   // final List<String?>? urlSet;
-
-
 
   @override
   DateTime? get createdAt {
