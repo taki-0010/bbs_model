@@ -219,10 +219,15 @@ class FiveChData {
       return null;
     }
     final seg = uri.pathSegments;
+    // logger.d('getBoardIdFromUri: tob: $tob, seg: $seg');
     if (tob) {
       if (uri.host.contains(subdomainForMobile) && seg.length >= 4) {
         final reversed = seg.reversed.toList();
+        if (reversed.first.isEmpty) {
+          reversed.removeAt(0);
+        }
         final id = int.tryParse(reversed.first);
+
         if (id != null) {
           return reversed[1];
         }
@@ -250,6 +255,9 @@ class FiveChData {
       return null;
     }
     final seg = uri.pathSegments.reversed.toList();
+    if (seg.first.isEmpty) {
+      seg.removeAt(0);
+    }
     final first = int.tryParse(seg.first);
     // final second = seg.length >= 2 ? int.tryParse(seg[1]) : null;
     if (first != null && first <= 1020) {
