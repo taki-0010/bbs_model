@@ -205,6 +205,20 @@ class InitialForumData {
             threadsOrderType: ThreadsOrderType.newerResponce,
             timeago: TimeagoList.disableSecondsAndMinutes,
             retentionPeriod: RetentionPeriodList.twoWeeks);
+      case Communities.youtube:
+        return base.copyWith(
+            theme: ThemeList.redTornado,
+            searchWordList: searchWordsMal,
+            useFavoritesBoards: true,
+            favoritesBoardList: [
+              'ch/UCabq3No3wXbs6Ut-Pux6SzA',
+              'se/zelda totk',
+              'pl/PL3NSClE94VoRYvPO7ew72yCf8X-WW8-wx'
+            ],
+            searchBoardId: '1',
+            threadsOrderType: ThreadsOrderType.newerThread,
+            timeago: TimeagoList.disable,
+            retentionPeriod: RetentionPeriodList.twoWeeks);
       default:
     }
     return null;

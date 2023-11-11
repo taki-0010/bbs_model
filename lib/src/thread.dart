@@ -32,7 +32,7 @@ abstract class ThreadBase {
 
   bool get locked => false;
 
-  int get getResCount => resCount;
+  String get countStr => resCount.toString();
 
   String? get thumbnailUrl => null;
 
@@ -213,7 +213,8 @@ class ThreadContentData {
       this.range,
       this.girlsPages,
       this.tags = const [],
-      this.malOption});
+      this.malOption,
+      this.ytComments});
   final String id;
   final String boardId;
   final Communities type;
@@ -227,6 +228,7 @@ class ThreadContentData {
   final GirlsPages? girlsPages;
   final List<String?> tags;
   final MalOptionData? malOption;
+  final CommentsList? ytComments;
 
   int? get lastIndex => content.isNotEmpty ? content.last?.index : null;
   int? get createdAt {

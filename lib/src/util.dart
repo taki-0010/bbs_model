@@ -112,6 +112,10 @@ class StringMethodData {
   static const resNumReg = r'''^[0-9]+''';
   static const quoteReg = r'''>+.*''';
 
+  static String formatedNum(final num value) {
+    return NumberFormat.compact().format(value);
+  }
+
   static int? getResNum(final String value) {
     final exist = RegExp(r'''^[0-9]+''').firstMatch(value);
     if (exist != null) {

@@ -7,5 +7,5 @@ export 'package:characters/characters.dart';
 export 'package:recase/recase.dart';
 export 'package:intl/intl.dart';
 // export 'package:string_extensions/string_extensions.dart';
-
+export 'package:youtube_explode_dart/youtube_explode_dart.dart';
 export '../model.dart';

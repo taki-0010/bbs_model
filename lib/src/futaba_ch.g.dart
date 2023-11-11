@@ -1365,6 +1365,7 @@ const _$CommunitiesEnumMap = {
   Communities.machi: 'machi',
   Communities.hatena: 'hatena',
   Communities.mal: 'mal',
+  Communities.youtube: 'youtube',
   Communities.chan4: 'chan4',
 };
 

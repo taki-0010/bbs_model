@@ -68,6 +68,16 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
     return getIkioi(createdAtBySeconds, resCount);
   }
 
+  @override
+  String get countStr {
+    switch (type) {
+      case Communities.youtube:
+        return StringMethodData.formatedNum(resCount);
+      default:
+        return resCount.toString();
+    }
+  }
+
   // @override
   // int get getResCount => endIndex ?? 0;
 
@@ -115,6 +125,7 @@ class ImportanceData {
   Map<String, dynamic> toJson() => _$ImportanceDataToJson(this);
 }
 
+// @CopyWith()
 abstract class ContentData {
   const ContentData(
       {required this.forum,

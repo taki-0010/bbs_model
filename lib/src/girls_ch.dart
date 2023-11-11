@@ -263,11 +263,9 @@ class GirlsChContent extends ContentData with WithDateTime {
   }
 
   @override
-  String? get srcThumbnail =>
-      thumbUrl;
+  String? get srcThumbnail => thumbUrl;
   @override
-  String? get srcContent =>
-      srcUrl;
+  String? get srcContent => srcUrl;
 
   @override
   String? get getPostId => id;

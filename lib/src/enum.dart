@@ -8,6 +8,7 @@ enum Communities {
   machi(label: 'まち BBS', host: 'machi.to'),
   hatena(label: 'はてなB', host: 'hatena.ne.jp'),
   mal(label: 'MAL', host: 'myanimelist.net'),
+  youtube(label: 'Youtube', host: 'youtube.com'),
   chan4(label: '4chan', host: '4chan.org');
 
   const Communities({required this.label, required this.host});

@@ -197,6 +197,8 @@ abstract class _$ThreadContentDataCWProxy {
 
   ThreadContentData malOption(MalOptionData? malOption);
 
+  ThreadContentData ytComments(CommentsList? ytComments);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadContentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -213,6 +215,7 @@ abstract class _$ThreadContentDataCWProxy {
     GirlsPages? girlsPages,
     List<String?>? tags,
     MalOptionData? malOption,
+    CommentsList? ytComments,
   });
 }
 
@@ -254,6 +257,10 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
       this(malOption: malOption);
 
   @override
+  ThreadContentData ytComments(CommentsList? ytComments) =>
+      this(ytComments: ytComments);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadContentData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -271,6 +278,7 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
     Object? girlsPages = const $CopyWithPlaceholder(),
     Object? tags = const $CopyWithPlaceholder(),
     Object? malOption = const $CopyWithPlaceholder(),
+    Object? ytComments = const $CopyWithPlaceholder(),
   }) {
     return ThreadContentData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -310,6 +318,10 @@ class _$ThreadContentDataCWProxyImpl implements _$ThreadContentDataCWProxy {
           ? _value.malOption
           // ignore: cast_nullable_to_non_nullable
           : malOption as MalOptionData?,
+      ytComments: ytComments == const $CopyWithPlaceholder()
+          ? _value.ytComments
+          // ignore: cast_nullable_to_non_nullable
+          : ytComments as CommentsList?,
     );
   }
 }
