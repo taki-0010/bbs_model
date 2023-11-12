@@ -153,7 +153,7 @@ abstract class ContentData {
 
   String? get srcThumbnail => null;
   String? get srcContent => null;
-
+  String? get createdAtStr => null;
   DateTime? get createdAt => null;
   String? get getPostId => null;
   Set<String?> get anchorList => {};

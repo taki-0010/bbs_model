@@ -12,6 +12,7 @@ abstract class ThreadBase {
       required this.boardId,
       required this.url,
       this.boardName,
+      // this.userId,
       // required this.positionToGet,
       this.thumbnailStr,
       this.thumbnailFullUrl});
@@ -25,10 +26,13 @@ abstract class ThreadBase {
   // final PositionToGet positionToGet;
   final String? thumbnailStr;
   final String? thumbnailFullUrl;
+  // final String? userId;
 
   double get ikioi {
     return -1.0;
   }
+
+  String? get getUserId => null;
 
   bool get locked => false;
 

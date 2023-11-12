@@ -342,12 +342,18 @@ class MalThreadData extends ThreadData with WithDateTime {
       required this.createdAtStr,
       this.isSubboard = false,
       this.createdAtFromSearch,
-      this.isLocked = false});
+      this.isLocked = false,
+      this.createdBy});
   final String createdAtStr;
   final String? createdAtFromSearch;
 
   final bool isSubboard;
   final bool isLocked;
+
+  final MalUserJson? createdBy;
+
+  @override
+  String? get getUserId => createdBy != null ? createdBy!.id.toString() : null;
 
   @override
   bool get locked => isLocked;
@@ -527,11 +533,11 @@ class MalContentData extends ContentData {
       required super.name,
       super.title,
       super.urlSet,
-      required this.createdAtStr,
+      required this.createdAtString,
       required this.signature,
       required this.user,
       required this.postId});
-  final String createdAtStr;
+  final String createdAtString;
   final String signature;
   final MalUserJson user;
   final int postId;
@@ -544,7 +550,7 @@ class MalContentData extends ContentData {
 
   @override
   DateTime? get createdAt {
-    final p = DateTime.tryParse(createdAtStr);
+    final p = DateTime.tryParse(createdAtString);
     return p;
   }
 
