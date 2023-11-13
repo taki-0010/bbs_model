@@ -7,6 +7,16 @@ enum YoutubeIdType {
   playList;
 }
 
+enum YoutubeInitialBoards {
+  trends(title: 'Trends'),
+  music(title: 'Music'),
+  gaming(title: 'Gaming'),
+  movies(title: 'Movies');
+
+  const YoutubeInitialBoards({required this.title});
+  final String title;
+}
+
 class YoutubeData {
   static final host = Communities.youtube.host;
   static const sHost = 'youtu.be';
@@ -108,19 +118,21 @@ class YoutubeData {
     return null;
   }
 
-  static YoutubeThreadData getThread(final Video v) {
+  static YoutubeThreadData getThread(final Video v, {final String? boardId}) {
     return YoutubeThreadData(
         id: v.id.value,
         title: v.title,
         dec: v.description,
-        resCount: v.engagement.viewCount,
-        boardId: v.channelId.value,
+        resCount: -1,
+        boardId: boardId ?? v.channelId.value,
         thumbnailFullUrl: v.thumbnails.highResUrl,
         type: Communities.youtube,
         url: v.url,
-        searched: true,
+        searched: boardId == null,
         boardName: v.author,
         dateUtc: v.publishDate,
+        duration: v.duration,
+        viewCount: v.engagement.viewCount,
         channelId: v.channelId.value);
   }
 
@@ -144,7 +156,7 @@ class YoutubeData {
     final s = second?.map((final v) => getThread(v)).toList();
     final list = [...?f, ...?s];
 
-    return value.copyWith(data:second, result: list);
+    return value.copyWith(data: second, result: list);
   }
 
   static List<YoutubeContent?> getComList(final CommentsList value) {
@@ -177,16 +189,20 @@ class YoutubeBoardData extends BoardData {
       required super.forum,
       this.channelHandle,
       this.logo,
-      this.banner});
+      this.banner,
+      this.initial});
   final String? channelHandle;
   final String? logo;
   final String? banner;
+  final YoutubeInitialBoards? initial;
 
   String? get parsedId {
     return YoutubeData.parseBoardId(id);
   }
 
   YoutubeIdType? get idType => YoutubeData.boardIdType(id);
+
+  Uri get boardUri => Uri.https(YoutubeData.host, 'channel/$parsedId');
 }
 
 @CopyWith()
@@ -207,7 +223,11 @@ class YoutubeThreadData extends ThreadData {
       this.dateStr,
       this.dateUtc,
       this.searched = false,
-      required this.channelId
+      required this.channelId,
+      required this.viewCount,
+      this.viewCountStr,
+      required this.duration,
+      this.durationStr
       // required this.originalUrl
       });
   final String dec;
@@ -217,11 +237,29 @@ class YoutubeThreadData extends ThreadData {
   final DateTime? dateUtc;
   final bool searched;
   final String channelId;
+  final int viewCount;
+  final String? viewCountStr;
+  final Duration? duration;
+  final String? durationStr;
   // final String originalUrl;
 
   @override
   String get countStr {
-    return StringMethodData.formatedNum(resCount);
+    if (viewCountStr != null) {
+      return viewCountStr!;
+    }
+    return StringMethodData.formatedNum(viewCount);
+  }
+
+  @override
+  String? get getDurationStr {
+    if (durationStr != null) {
+      return durationStr;
+    }
+    if (duration != null) {
+      return StringMethodData.durationStr(duration!);
+    }
+    return null;
   }
 
   @override
@@ -268,7 +306,8 @@ class YoutubeContent extends ContentData {
       this.channelLogo,
       this.desc,
       this.pubTimeStr,
-      this.pubDatetime});
+      this.pubDatetime,
+      this.viewCount});
 
   final int likeCount;
   final int replyCount;
@@ -279,6 +318,7 @@ class YoutubeContent extends ContentData {
   final String? desc;
   final String? pubTimeStr;
   final DateTime? pubDatetime;
+  final int? viewCount;
 
   String comUrl(final String value) {
     return '$value&ic=$commentId';
@@ -336,4 +376,9 @@ class YoutubeVideoSearchResult {
   final VideoSearchList? data;
   final String keyword;
   final List<YoutubeThreadData?> result;
+}
+
+class YoutubeThreadsResult {
+  const YoutubeThreadsResult({required this.data});
+  final ChannelUploadsList data;
 }

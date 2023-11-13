@@ -32,6 +32,8 @@ abstract class ThreadBase {
     return -1.0;
   }
 
+  String? get getDurationStr => null;
+
   String? get getUserId => null;
 
   bool get locked => false;
@@ -170,6 +172,7 @@ class ThreadData extends ThreadBase {
   // final int? difference;
   final bool isNewPost;
   final bool catalog;
+
   // final List<ContentData?> content;
   // final String boardId;
 
@@ -178,27 +181,6 @@ class ThreadData extends ThreadBase {
   // }
 
   DateTime? get dateTime => DateTime.now();
-
-  // factory ThreadData.fromJson(Map<String, dynamic> json) =>
-  //     _$ThreadDataFromJson(json);
-  // Map<String, dynamic> toJson() => _$ThreadDataToJson(this);
-
-  // int? get createdAt {
-  //   switch (type) {
-  //     case Communities.fiveCh:
-  //       return int.tryParse(id);
-  //     case Communities.pinkCh:
-  //       return int.tryParse(id);
-  //     case Communities.machi:
-  //       return int.tryParse(id);
-  //     // case Communities.chan4:
-  //     //   return time;
-  //     // case Communities.futabaCh:
-  //     //   return int.tryParse(updateAtStr ?? '0');
-  //     default:
-  //   }
-  //   return null;
-  // }
 }
 
 // @JsonSerializable(explicitToJson: true)
@@ -270,9 +252,11 @@ class FetchThreadsResultData {
   const FetchThreadsResultData({
     this.threads,
     this.statusCode,
+    this.ytThreadsResult
   });
   final List<ThreadData?>? threads;
   final int? statusCode;
+  final YoutubeThreadsResult? ytThreadsResult;
 
   FetchResult get result {
     if (threads != null && threads!.isNotEmpty) {

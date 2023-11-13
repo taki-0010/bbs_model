@@ -19,6 +19,8 @@ abstract class _$YoutubeBoardDataCWProxy {
 
   YoutubeBoardData banner(String? banner);
 
+  YoutubeBoardData initial(YoutubeInitialBoards? initial);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `YoutubeBoardData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -32,6 +34,7 @@ abstract class _$YoutubeBoardDataCWProxy {
     String? channelHandle,
     String? logo,
     String? banner,
+    YoutubeInitialBoards? initial,
   });
 }
 
@@ -61,6 +64,10 @@ class _$YoutubeBoardDataCWProxyImpl implements _$YoutubeBoardDataCWProxy {
   YoutubeBoardData banner(String? banner) => this(banner: banner);
 
   @override
+  YoutubeBoardData initial(YoutubeInitialBoards? initial) =>
+      this(initial: initial);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `YoutubeBoardData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -75,6 +82,7 @@ class _$YoutubeBoardDataCWProxyImpl implements _$YoutubeBoardDataCWProxy {
     Object? channelHandle = const $CopyWithPlaceholder(),
     Object? logo = const $CopyWithPlaceholder(),
     Object? banner = const $CopyWithPlaceholder(),
+    Object? initial = const $CopyWithPlaceholder(),
   }) {
     return YoutubeBoardData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -101,6 +109,10 @@ class _$YoutubeBoardDataCWProxyImpl implements _$YoutubeBoardDataCWProxy {
           ? _value.banner
           // ignore: cast_nullable_to_non_nullable
           : banner as String?,
+      initial: initial == const $CopyWithPlaceholder()
+          ? _value.initial
+          // ignore: cast_nullable_to_non_nullable
+          : initial as YoutubeInitialBoards?,
     );
   }
 }
@@ -138,6 +150,14 @@ abstract class _$YoutubeThreadDataCWProxy {
 
   YoutubeThreadData channelId(String channelId);
 
+  YoutubeThreadData viewCount(int viewCount);
+
+  YoutubeThreadData viewCountStr(String? viewCountStr);
+
+  YoutubeThreadData duration(Duration? duration);
+
+  YoutubeThreadData durationStr(String? durationStr);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `YoutubeThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -158,6 +178,10 @@ abstract class _$YoutubeThreadDataCWProxy {
     DateTime? dateUtc,
     bool? searched,
     String? channelId,
+    int? viewCount,
+    String? viewCountStr,
+    Duration? duration,
+    String? durationStr,
   });
 }
 
@@ -208,6 +232,20 @@ class _$YoutubeThreadDataCWProxyImpl implements _$YoutubeThreadDataCWProxy {
   YoutubeThreadData channelId(String channelId) => this(channelId: channelId);
 
   @override
+  YoutubeThreadData viewCount(int viewCount) => this(viewCount: viewCount);
+
+  @override
+  YoutubeThreadData viewCountStr(String? viewCountStr) =>
+      this(viewCountStr: viewCountStr);
+
+  @override
+  YoutubeThreadData duration(Duration? duration) => this(duration: duration);
+
+  @override
+  YoutubeThreadData durationStr(String? durationStr) =>
+      this(durationStr: durationStr);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `YoutubeThreadData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -229,6 +267,10 @@ class _$YoutubeThreadDataCWProxyImpl implements _$YoutubeThreadDataCWProxy {
     Object? dateUtc = const $CopyWithPlaceholder(),
     Object? searched = const $CopyWithPlaceholder(),
     Object? channelId = const $CopyWithPlaceholder(),
+    Object? viewCount = const $CopyWithPlaceholder(),
+    Object? viewCountStr = const $CopyWithPlaceholder(),
+    Object? duration = const $CopyWithPlaceholder(),
+    Object? durationStr = const $CopyWithPlaceholder(),
   }) {
     return YoutubeThreadData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -283,6 +325,22 @@ class _$YoutubeThreadDataCWProxyImpl implements _$YoutubeThreadDataCWProxy {
           ? _value.channelId
           // ignore: cast_nullable_to_non_nullable
           : channelId as String,
+      viewCount: viewCount == const $CopyWithPlaceholder() || viewCount == null
+          ? _value.viewCount
+          // ignore: cast_nullable_to_non_nullable
+          : viewCount as int,
+      viewCountStr: viewCountStr == const $CopyWithPlaceholder()
+          ? _value.viewCountStr
+          // ignore: cast_nullable_to_non_nullable
+          : viewCountStr as String?,
+      duration: duration == const $CopyWithPlaceholder()
+          ? _value.duration
+          // ignore: cast_nullable_to_non_nullable
+          : duration as Duration?,
+      durationStr: durationStr == const $CopyWithPlaceholder()
+          ? _value.durationStr
+          // ignore: cast_nullable_to_non_nullable
+          : durationStr as String?,
     );
   }
 }

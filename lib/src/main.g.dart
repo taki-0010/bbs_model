@@ -49,6 +49,8 @@ abstract class _$ThreadMarkDataCWProxy {
 
   ThreadMarkData lastPageOfGirlsCh(int? lastPageOfGirlsCh);
 
+  ThreadMarkData viewCount(int? viewCount);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -77,6 +79,7 @@ abstract class _$ThreadMarkDataCWProxy {
     bool? archived,
     RangeList? range,
     int? lastPageOfGirlsCh,
+    int? viewCount,
   });
 }
 
@@ -158,6 +161,9 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
       this(lastPageOfGirlsCh: lastPageOfGirlsCh);
 
   @override
+  ThreadMarkData viewCount(int? viewCount) => this(viewCount: viewCount);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ThreadMarkData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -187,6 +193,7 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
     Object? archived = const $CopyWithPlaceholder(),
     Object? range = const $CopyWithPlaceholder(),
     Object? lastPageOfGirlsCh = const $CopyWithPlaceholder(),
+    Object? viewCount = const $CopyWithPlaceholder(),
   }) {
     return ThreadMarkData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -279,6 +286,10 @@ class _$ThreadMarkDataCWProxyImpl implements _$ThreadMarkDataCWProxy {
           ? _value.lastPageOfGirlsCh
           // ignore: cast_nullable_to_non_nullable
           : lastPageOfGirlsCh as int?,
+      viewCount: viewCount == const $CopyWithPlaceholder()
+          ? _value.viewCount
+          // ignore: cast_nullable_to_non_nullable
+          : viewCount as int?,
     );
   }
 }
@@ -466,6 +477,7 @@ ThreadMarkData _$ThreadMarkDataFromJson(Map<String, dynamic> json) =>
       archived: json['archived'] as bool? ?? false,
       range: $enumDecodeNullable(_$RangeListEnumMap, json['range']),
       lastPageOfGirlsCh: json['lastPageOfGirlsCh'] as int?,
+      viewCount: json['viewCount'] as int?,
     );
 
 Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
@@ -491,6 +503,7 @@ Map<String, dynamic> _$ThreadMarkDataToJson(ThreadMarkData instance) =>
       'archived': instance.archived,
       'range': _$RangeListEnumMap[instance.range],
       'lastPageOfGirlsCh': instance.lastPageOfGirlsCh,
+      'viewCount': instance.viewCount,
     };
 
 const _$CommunitiesEnumMap = {

@@ -112,6 +112,17 @@ class StringMethodData {
   static const resNumReg = r'''^[0-9]+''';
   static const quoteReg = r'''>+.*''';
 
+  static String durationStr(final Duration duration) {
+    // final f = Date
+    // final h = duration.inHours;
+    final m = duration.inMinutes;
+    final s = duration.inSeconds;
+    final seconds = s % 60;
+    final hour = m ~/ 60;
+    final minutes = m % 60;
+    return '${hour.toString().padLeft(2, "0")}:${minutes.toString().padLeft(2, "0")}:${seconds.toString().padLeft(2, "0")}';
+  }
+
   static String formatedNum(final num value) {
     return NumberFormat.compact().format(value);
   }

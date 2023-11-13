@@ -338,6 +338,8 @@ abstract class _$FetchThreadsResultDataCWProxy {
 
   FetchThreadsResultData statusCode(int? statusCode);
 
+  FetchThreadsResultData ytThreadsResult(YoutubeThreadsResult? ytThreadsResult);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FetchThreadsResultData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -347,6 +349,7 @@ abstract class _$FetchThreadsResultDataCWProxy {
   FetchThreadsResultData call({
     List<ThreadData?>? threads,
     int? statusCode,
+    YoutubeThreadsResult? ytThreadsResult,
   });
 }
 
@@ -366,6 +369,11 @@ class _$FetchThreadsResultDataCWProxyImpl
       this(statusCode: statusCode);
 
   @override
+  FetchThreadsResultData ytThreadsResult(
+          YoutubeThreadsResult? ytThreadsResult) =>
+      this(ytThreadsResult: ytThreadsResult);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FetchThreadsResultData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -376,6 +384,7 @@ class _$FetchThreadsResultDataCWProxyImpl
   FetchThreadsResultData call({
     Object? threads = const $CopyWithPlaceholder(),
     Object? statusCode = const $CopyWithPlaceholder(),
+    Object? ytThreadsResult = const $CopyWithPlaceholder(),
   }) {
     return FetchThreadsResultData(
       threads: threads == const $CopyWithPlaceholder()
@@ -386,6 +395,10 @@ class _$FetchThreadsResultDataCWProxyImpl
           ? _value.statusCode
           // ignore: cast_nullable_to_non_nullable
           : statusCode as int?,
+      ytThreadsResult: ytThreadsResult == const $CopyWithPlaceholder()
+          ? _value.ytThreadsResult
+          // ignore: cast_nullable_to_non_nullable
+          : ytThreadsResult as YoutubeThreadsResult?,
     );
   }
 }

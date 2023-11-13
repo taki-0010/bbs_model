@@ -30,7 +30,8 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
       this.agreedIndexSet = const {},
       this.archived = false,
       this.range,
-      this.lastPageOfGirlsCh});
+      this.lastPageOfGirlsCh,
+      this.viewCount});
   final String userId;
   final String documentId;
 
@@ -47,6 +48,7 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
   final bool archived;
   final RangeList? range;
   final int? lastPageOfGirlsCh;
+  final int? viewCount;
   // final String? postDraft;
 
   // SrcData? get thumbnail => thumbnailStr != null
@@ -72,7 +74,7 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
   String get countStr {
     switch (type) {
       case Communities.youtube:
-        return StringMethodData.formatedNum(resCount);
+        return viewCount != null ? StringMethodData.formatedNum(viewCount!) : '';
       default:
         return resCount.toString();
     }
