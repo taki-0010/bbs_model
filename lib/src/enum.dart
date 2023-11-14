@@ -210,3 +210,9 @@ enum InputCommentFields {
   const InputCommentFields({required this.label});
   final String label;
 }
+
+enum BoardTileLeading{
+  imageSrc,
+  playListIcon,
+  none
+}

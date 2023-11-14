@@ -6,22 +6,26 @@ import 'importer.dart';
 // @CopyWith()
 // @immutable
 abstract class BoardData {
-  const BoardData({
-    required this.id,
-    required this.name,
-    required this.forum,
-    // this.fiveChCategory,
-    // this.fiveCh,
-    // this.girlsCh,
-    // this.futabaCh,
-    // this.machi,
-    // this.shitarabaCategory,
-    // this.shitarabaBoard,
-    // this.open2chBoards = const[]
-  });
+  const BoardData(
+      {required this.id,
+      required this.name,
+      required this.forum,
+      this.leading = BoardTileLeading.none,
+      this.desc
+      // this.fiveChCategory,
+      // this.fiveCh,
+      // this.girlsCh,
+      // this.futabaCh,
+      // this.machi,
+      // this.shitarabaCategory,
+      // this.shitarabaBoard,
+      // this.open2chBoards = const[]
+      });
   final String id;
   final String name;
   final Communities forum;
+  final BoardTileLeading leading;
+  final String? desc;
 
   // String? get sub => shitarabaBoard?.sub;
 
@@ -32,6 +36,8 @@ abstract class BoardData {
   bool get isCategory => false;
   List<BoardData> get childrenBoards => [];
   String get categoryName => '';
+  String? get leadingIconSrc => null;
+  int? get count => null;
 }
 
 @immutable

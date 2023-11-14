@@ -7,6 +7,16 @@ enum YoutubeIdType {
   playList;
 }
 
+enum YtSorts {
+  newest(title: 'Newest', sort: VideoSorting.newest),
+  popularity(title: 'Popularity', sort: VideoSorting.popularity),
+  oldest(title: 'Oldest', sort: VideoSorting.oldest);
+
+  const YtSorts({required this.title, required this.sort});
+  final String title;
+  final VideoSorting sort;
+}
+
 enum YoutubeInitialBoards {
   trends(title: 'Trends'),
   music(title: 'Music'),
@@ -28,12 +38,20 @@ class YoutubeData {
   static final yt = YoutubeExplode();
   static const reportUrl = 'https://support.google.com/youtube/answer/2802027';
 
+  static const chFilter = 'EgIQAg%253D%253D';
+  static const plFilter = 'EgIQAw%253D%253D';
+  static const viFilter = 'EgIQAQ%253D%253D';
+
   // video
   // https://youtube.com/watch?v=Dpp1sIL1m5Q
 
   // cnannel
   // https://www.youtube.com/@TheTRYChannel
   // https://www.youtube.com/channel/UCabq3No3wXbs6Ut-Pux6SzA
+
+  static String thumbnailUrl(final String id) {
+    return 'https://i.ytimg.com/vi/$id/hqdefault.jpg';
+  }
 
   static YoutubeIdType? boardIdType(final String value) {
     if (value.startsWith(boardPrefixCh)) {
@@ -118,7 +136,8 @@ class YoutubeData {
     return null;
   }
 
-  static YoutubeThreadData getThread(final Video v, {final String? boardId}) {
+  static YoutubeThreadData getThread(final Video v,
+      {final String? boardId, final bool playlist = false}) {
     return YoutubeThreadData(
         id: v.id.value,
         title: v.title,
@@ -132,7 +151,7 @@ class YoutubeData {
         boardName: v.author,
         dateUtc: v.publishDate,
         duration: v.duration,
-        viewCount: v.engagement.viewCount,
+        viewCount: playlist ? -1 : v.engagement.viewCount,
         channelId: v.channelId.value);
   }
 
@@ -178,6 +197,80 @@ class YoutubeData {
     }
     return list;
   }
+
+  static YtSorts selectedSort(final YoutubeSortData value) {
+    switch (value.data) {
+      case VideoSorting.newest:
+        return YtSorts.newest;
+      case VideoSorting.oldest:
+        return YtSorts.oldest;
+      case VideoSorting.popularity:
+        return YtSorts.popularity;
+      default:
+        return YtSorts.newest;
+    }
+  }
+
+  static Stream<void> getThreads(
+    final String id,
+  ) async* {
+    final data = yt.channels.getUploads(id);
+    data.listen((event) {
+      logger.d('yt: ${event.title}');
+    });
+  }
+
+  static Future<List<BoardData?>> searchPlaylist(final String keyword) async {
+    final data =
+        await yt.search.searchContent(keyword, filter: SearchFilter(plFilter));
+    List<BoardData?> result = [];
+    logger.d('yt:  ${data.length}');
+    if (data.isNotEmpty) {
+      for (final i in data) {
+        if (i is SearchPlaylist) {
+          logger.d(
+              'yt: pl: ${i.playlistId}, ${i.playlistTitle}, ${i.playlistVideoCount}, ');
+          final c = YoutubeBoardData(
+              id: i.playlistId.value,
+              name: i.playlistTitle,
+              forum: Communities.youtube,
+              countNum: i.playlistVideoCount);
+          result.add(c);
+        }
+      }
+    }
+    // logger.d('yt: ${data.length}, ${first.title}, ${first.url}, ${first.author}');
+    return result;
+  }
+
+  static Future<List<BoardData?>> searchChannel(final String keyword) async {
+    // final data = await yt.search.
+    // final ch = await yt.search.search(searchQuery)
+    final data =
+        await yt.search.searchContent(keyword, filter: SearchFilter(chFilter));
+    List<BoardData?> result = [];
+    logger.d('yt:  ${data.length}');
+    if (data.isNotEmpty) {
+      for (final i in data) {
+        // if (i is SearchPlaylist) {
+        //   logger.d(
+        //       'yt: pl: ${i.playlistId}, ${i.playlistTitle}, ${i.playlistVideoCount}, ${i.thumbnails.length}');
+        // }
+        if (i is SearchChannel) {
+          logger.d(
+              'yt: ch: ${i.id}, ${i.name}, ${i.description}, ${i.videoCount}');
+          final c = YoutubeBoardData(
+              id: i.id.value,
+              name: i.name,
+              forum: Communities.youtube,
+              desc: i.description);
+          result.add(c);
+        }
+      }
+    }
+    // logger.d('yt: ${data.length}, ${first.title}, ${first.url}, ${first.author}');
+    return result;
+  }
 }
 
 @CopyWith()
@@ -190,11 +283,21 @@ class YoutubeBoardData extends BoardData {
       this.channelHandle,
       this.logo,
       this.banner,
-      this.initial});
+      super.leading,
+      super.desc,
+      this.initial,
+      this.countNum});
   final String? channelHandle;
   final String? logo;
   final String? banner;
   final YoutubeInitialBoards? initial;
+  final int? countNum;
+
+  @override
+  int? get count => countNum;
+
+  @override
+  String? get leadingIconSrc => logo;
 
   String? get parsedId {
     return YoutubeData.parseBoardId(id);
@@ -365,7 +468,7 @@ class YoutubeContent extends ContentData {
 
 class YoutubeCommentsListData {
   const YoutubeCommentsListData({required this.data});
-  final CommentsList data;
+  final CommentsList? data;
 }
 
 @CopyWith()
@@ -379,6 +482,13 @@ class YoutubeVideoSearchResult {
 }
 
 class YoutubeThreadsResult {
-  const YoutubeThreadsResult({required this.data});
-  final ChannelUploadsList data;
+  const YoutubeThreadsResult({
+    this.data,
+  });
+  final ChannelUploadsList? data;
+}
+
+class YoutubeSortData {
+  const YoutubeSortData({this.data = VideoSorting.newest});
+  final VideoSorting data;
 }
