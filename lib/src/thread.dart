@@ -216,6 +216,22 @@ class ThreadContentData {
   final MalOptionData? malOption;
   final CommentsList? ytComments;
 
+  String? get getBoardName {
+    if (content.isEmpty) {
+      return null;
+    }
+    final first = content.first;
+    switch (type) {
+      case Communities.youtube:
+        if (first is YoutubeContent) {
+          return first.name;
+        }
+        break;
+      default:
+    }
+    return null;
+  }
+
   int? get lastIndex => content.isNotEmpty ? content.last?.index : null;
   int? get createdAt {
     final first = content.first;
@@ -249,11 +265,8 @@ class ThreadContentData {
 @CopyWith()
 @immutable
 class FetchThreadsResultData {
-  const FetchThreadsResultData({
-    this.threads,
-    this.statusCode,
-    this.ytThreadsResult
-  });
+  const FetchThreadsResultData(
+      {this.threads, this.statusCode, this.ytThreadsResult});
   final List<ThreadData?>? threads;
   final int? statusCode;
   final YoutubeThreadsResult? ytThreadsResult;

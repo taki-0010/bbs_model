@@ -53,6 +53,10 @@ class YoutubeData {
     return 'https://i.ytimg.com/vi/$id/hqdefault.jpg';
   }
 
+  static String getFavStr(final String id, final bool chOrPl) {
+    return chOrPl ? '$boardPrefixCh$id' : '$boardPrefixPl$id';
+  }
+
   static YoutubeIdType? boardIdType(final String value) {
     if (value.startsWith(boardPrefixCh)) {
       return YoutubeIdType.channel;
@@ -220,30 +224,44 @@ class YoutubeData {
     });
   }
 
-  static Future<List<BoardData?>> searchPlaylist(final String keyword) async {
+  static YoutubeBoardData? getSearchedBoard(final BaseSearchContent value) {
+    if (value is SearchPlaylist) {
+      return YoutubeBoardData(
+          id: value.playlistId.value,
+          name: value.playlistTitle,
+          forum: Communities.youtube,
+          countNum: value.playlistVideoCount);
+    }
+    if (value is SearchChannel) {
+      // logger.d('yt: ch: ${i.id}, ${i.name}, ${i.description}, ${i.videoCount}');
+      return YoutubeBoardData(
+          id: value.id.value,
+          name: value.name,
+          forum: Communities.youtube,
+          desc: value.description);
+    }
+    return null;
+  }
+
+  static Future<YoutubeSearchResult> searchPlaylist(
+      final String keyword) async {
     final data =
         await yt.search.searchContent(keyword, filter: SearchFilter(plFilter));
     List<BoardData?> result = [];
     logger.d('yt:  ${data.length}');
     if (data.isNotEmpty) {
       for (final i in data) {
-        if (i is SearchPlaylist) {
-          logger.d(
-              'yt: pl: ${i.playlistId}, ${i.playlistTitle}, ${i.playlistVideoCount}, ');
-          final c = YoutubeBoardData(
-              id: i.playlistId.value,
-              name: i.playlistTitle,
-              forum: Communities.youtube,
-              countNum: i.playlistVideoCount);
+        final c = getSearchedBoard(i);
+        if (c != null) {
           result.add(c);
         }
       }
     }
-    // logger.d('yt: ${data.length}, ${first.title}, ${first.url}, ${first.author}');
-    return result;
+    final d = YoutubeSearchResult(data: data, list: result);
+    return d;
   }
 
-  static Future<List<BoardData?>> searchChannel(final String keyword) async {
+  static Future<YoutubeSearchResult> searchChannel(final String keyword) async {
     // final data = await yt.search.
     // final ch = await yt.search.search(searchQuery)
     final data =
@@ -252,24 +270,14 @@ class YoutubeData {
     logger.d('yt:  ${data.length}');
     if (data.isNotEmpty) {
       for (final i in data) {
-        // if (i is SearchPlaylist) {
-        //   logger.d(
-        //       'yt: pl: ${i.playlistId}, ${i.playlistTitle}, ${i.playlistVideoCount}, ${i.thumbnails.length}');
-        // }
-        if (i is SearchChannel) {
-          logger.d(
-              'yt: ch: ${i.id}, ${i.name}, ${i.description}, ${i.videoCount}');
-          final c = YoutubeBoardData(
-              id: i.id.value,
-              name: i.name,
-              forum: Communities.youtube,
-              desc: i.description);
+        final c = getSearchedBoard(i);
+        if (c != null) {
           result.add(c);
         }
       }
     }
-    // logger.d('yt: ${data.length}, ${first.title}, ${first.url}, ${first.author}');
-    return result;
+    final d = YoutubeSearchResult(data: data, list: result);
+    return d;
   }
 }
 
@@ -491,4 +499,11 @@ class YoutubeThreadsResult {
 class YoutubeSortData {
   const YoutubeSortData({this.data = VideoSorting.newest});
   final VideoSorting data;
+}
+
+@immutable
+class YoutubeSearchResult {
+  const YoutubeSearchResult({this.list = const [], required this.data});
+  final List<BoardData?> list;
+  final SearchList<BaseSearchContent> data;
 }

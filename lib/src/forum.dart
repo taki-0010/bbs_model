@@ -11,20 +11,15 @@ class ForumSettingsData {
       required this.forum,
       required this.theme,
       required this.retentionPeriod,
-      // this.openLink = true,
       this.blurThumbnail = false,
       this.useFavoritesBoards = false,
       this.favoritesBoardList = const [],
       this.searchWordList = const [],
-      // this.searchBoardIdForFutaba = 'b',
-      // this.searchBoardIdForMachi = 'tokyo',
       this.deleteKeyForFutaba = '48009',
       this.searchBoardId,
       this.sortHistoryList = SortHistoryList.boards,
       this.googleFonts,
       this.addedFonts = const [],
-      // this.boardImportance = const [],
-      // this.threadsImportance = const [],
       this.importanceList = const [],
       this.listViewStyle = ListViewStyle.list,
       this.movedToLastThreads = MovedToLastThreads.none,
@@ -43,22 +38,15 @@ class ForumSettingsData {
   final Communities forum;
   final ThemeList theme;
   final RetentionPeriodList retentionPeriod;
-  // final bool openLink;
   final bool blurThumbnail;
   final bool useFavoritesBoards;
   final List<String?> favoritesBoardList;
   final List<String?> searchWordList;
-  // final String searchBoardIdForFutaba;
-  // final String searchBoardIdForMachi;
   final String deleteKeyForFutaba;
   final String? searchBoardId;
-  // final bool sortHistoryByRetention;
-  // final SortHistory sortHistory;
   final SortHistoryList sortHistoryList;
   final String? googleFonts;
   final List<String?> addedFonts;
-  // final List<String?> boardImportance;
-  // final List<String?> threadsImportance;
   final List<String?> importanceList;
   final ListViewStyle listViewStyle;
   final MovedToLastThreads movedToLastThreads;
@@ -133,13 +121,9 @@ class InitialForumData {
         userId: userId,
         forum: value,
         theme: ThemeList.m3Purple,
-        // threadsOrder: ThreadsOrder.hot,
         threadsOrderType: ThreadsOrderType.hot,
-        // commentCountDisplayThreshold: 2,
-        // openLink: false,
         useFavoritesBoards: false,
         searchWordList: searchWords,
-        // sortHistory: SortHistory.boards,
         sortHistoryList: SortHistoryList.boards,
         retentionPeriod: RetentionPeriodList.oneWeek);
     switch (value) {
@@ -215,7 +199,6 @@ class InitialForumData {
               'se/zelda totk',
               'pl/PL3NSClE94VoRYvPO7ew72yCf8X-WW8-wx'
             ],
-            searchBoardId: '1',
             threadsOrderType: ThreadsOrderType.newerThread,
             timeago: TimeagoList.disable,
             retentionPeriod: RetentionPeriodList.twoWeeks);
