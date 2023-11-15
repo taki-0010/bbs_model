@@ -57,6 +57,18 @@ class YoutubeData {
     return chOrPl ? '$boardPrefixCh$id' : '$boardPrefixPl$id';
   }
 
+  static String getChIdForFavBoard(final String id) => '$boardPrefixCh$id';
+
+  static bool rawId(final String id) {
+    if (id.startsWith(boardPrefixCh)) {
+      return false;
+    }
+    if (id.startsWith(boardPrefixPl)) {
+      return false;
+    }
+    return true;
+  }
+
   static YoutubeIdType? boardIdType(final String value) {
     if (value.startsWith(boardPrefixCh)) {
       return YoutubeIdType.channel;
