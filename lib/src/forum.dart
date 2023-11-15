@@ -112,7 +112,7 @@ class InitialForumData {
   static const searchWordsFutaba = ['雑談', '画像', '天気'];
   static const searchWordsChan4 = ['News', 'SDGs', 'waifu draw'];
   static const searchWordsMal = ['isekai', 'shonen', 'mecha'];
-  static const searchWordsYt = ['try', 'fortnite', 'travel'];
+  static const searchWordsYt = ['music', 'fortnite', 'travel'];
   static ForumSettingsData? getInitialSettings(
       final Communities value, final String userId) {
     // final userId = user?.$id;
@@ -197,7 +197,7 @@ class InitialForumData {
             // useFavoritesBoards: true,
             favoritesBoardList: [
               'ch/UCBR8-60-B28hp2BmDPdntcQ',
-              'pl/PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl'
+              'pl/PLIPIdmqWalEVfd_43DzOt6c1tE-9nYOnH'
             ],
             threadsOrderType: ThreadsOrderType.newerThread,
             timeago: TimeagoList.disable,
