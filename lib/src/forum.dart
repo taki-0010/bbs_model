@@ -112,6 +112,7 @@ class InitialForumData {
   static const searchWordsFutaba = ['雑談', '画像', '天気'];
   static const searchWordsChan4 = ['News', 'SDGs', 'waifu draw'];
   static const searchWordsMal = ['isekai', 'shonen', 'mecha'];
+  static const searchWordsYt = ['try', 'fortnite', 'travel'];
   static ForumSettingsData? getInitialSettings(
       final Communities value, final String userId) {
     // final userId = user?.$id;
@@ -192,12 +193,11 @@ class InitialForumData {
       case Communities.youtube:
         return base.copyWith(
             theme: ThemeList.redTornado,
-            searchWordList: searchWordsMal,
-            useFavoritesBoards: true,
+            searchWordList: searchWordsYt,
+            // useFavoritesBoards: true,
             favoritesBoardList: [
-              'ch/UCabq3No3wXbs6Ut-Pux6SzA',
-              'se/zelda totk',
-              'pl/PL3NSClE94VoRYvPO7ew72yCf8X-WW8-wx'
+              'ch/UCBR8-60-B28hp2BmDPdntcQ',
+              'pl/PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl'
             ],
             threadsOrderType: ThreadsOrderType.newerThread,
             timeago: TimeagoList.disable,
