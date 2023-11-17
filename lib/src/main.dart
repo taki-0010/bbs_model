@@ -74,7 +74,9 @@ class ThreadMarkData extends ThreadBase with WithDateTime {
   String get countStr {
     switch (type) {
       case Communities.youtube:
-        return viewCount != null ? StringMethodData.formatedNum(viewCount!) : '';
+        return viewCount != null
+            ? StringMethodData.formatedNum(viewCount!)
+            : '';
       default:
         return resCount.toString();
     }
@@ -162,6 +164,7 @@ abstract class ContentData {
   String? get getUserId => null;
   String? get getUserName => null;
   Uri? get avatarUri => null;
+  // int? get getThreadCommentsCount => null;
 }
 
 mixin WithDateTime {

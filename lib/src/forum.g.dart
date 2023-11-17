@@ -493,6 +493,8 @@ const _$ThemeListEnumMap = {
   ThemeList.redTornado: 'redTornado',
   ThemeList.hippieBlue: 'hippieBlue',
   ThemeList.ebonyClay: 'ebonyClay',
+  ThemeList.damaskAndLunar: 'damaskAndLunar',
+  ThemeList.greyLaw: 'greyLaw',
 };
 
 const _$RetentionPeriodListEnumMap = {

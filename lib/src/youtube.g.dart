@@ -19,7 +19,13 @@ abstract class _$YoutubeBoardDataCWProxy {
 
   YoutubeBoardData banner(String? banner);
 
+  YoutubeBoardData leading(BoardTileLeading leading);
+
+  YoutubeBoardData desc(String? desc);
+
   YoutubeBoardData initial(YoutubeInitialBoards? initial);
+
+  YoutubeBoardData countNum(int? countNum);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `YoutubeBoardData(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -34,7 +40,10 @@ abstract class _$YoutubeBoardDataCWProxy {
     String? channelHandle,
     String? logo,
     String? banner,
+    BoardTileLeading? leading,
+    String? desc,
     YoutubeInitialBoards? initial,
+    int? countNum,
   });
 }
 
@@ -64,8 +73,17 @@ class _$YoutubeBoardDataCWProxyImpl implements _$YoutubeBoardDataCWProxy {
   YoutubeBoardData banner(String? banner) => this(banner: banner);
 
   @override
+  YoutubeBoardData leading(BoardTileLeading leading) => this(leading: leading);
+
+  @override
+  YoutubeBoardData desc(String? desc) => this(desc: desc);
+
+  @override
   YoutubeBoardData initial(YoutubeInitialBoards? initial) =>
       this(initial: initial);
+
+  @override
+  YoutubeBoardData countNum(int? countNum) => this(countNum: countNum);
 
   @override
 
@@ -82,7 +100,10 @@ class _$YoutubeBoardDataCWProxyImpl implements _$YoutubeBoardDataCWProxy {
     Object? channelHandle = const $CopyWithPlaceholder(),
     Object? logo = const $CopyWithPlaceholder(),
     Object? banner = const $CopyWithPlaceholder(),
+    Object? leading = const $CopyWithPlaceholder(),
+    Object? desc = const $CopyWithPlaceholder(),
     Object? initial = const $CopyWithPlaceholder(),
+    Object? countNum = const $CopyWithPlaceholder(),
   }) {
     return YoutubeBoardData(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -109,10 +130,22 @@ class _$YoutubeBoardDataCWProxyImpl implements _$YoutubeBoardDataCWProxy {
           ? _value.banner
           // ignore: cast_nullable_to_non_nullable
           : banner as String?,
+      leading: leading == const $CopyWithPlaceholder() || leading == null
+          ? _value.leading
+          // ignore: cast_nullable_to_non_nullable
+          : leading as BoardTileLeading,
+      desc: desc == const $CopyWithPlaceholder()
+          ? _value.desc
+          // ignore: cast_nullable_to_non_nullable
+          : desc as String?,
       initial: initial == const $CopyWithPlaceholder()
           ? _value.initial
           // ignore: cast_nullable_to_non_nullable
           : initial as YoutubeInitialBoards?,
+      countNum: countNum == const $CopyWithPlaceholder()
+          ? _value.countNum
+          // ignore: cast_nullable_to_non_nullable
+          : countNum as int?,
     );
   }
 }

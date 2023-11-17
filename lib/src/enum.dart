@@ -30,7 +30,9 @@ enum ThemeList {
   rosewood,
   redTornado,
   hippieBlue,
-  ebonyClay
+  ebonyClay,
+  damaskAndLunar,
+  greyLaw
 }
 
 enum LangList {

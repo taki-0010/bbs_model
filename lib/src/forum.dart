@@ -132,6 +132,7 @@ class InitialForumData {
         return base.copyWith(
             theme: ThemeList.m3Purple,
             sortHistoryList: SortHistoryList.history,
+            timeago: TimeagoList.disableSecondsAndMinutes,
             retentionPeriod: RetentionPeriodList.byPostPace);
       case Communities.girlsCh:
         return base.copyWith(
@@ -150,6 +151,7 @@ class InitialForumData {
             searchBoardId: 'b',
             threadsOrderType: ThreadsOrderType.catalog,
             sortHistoryList: SortHistoryList.history,
+            timeago: TimeagoList.disableSecondsAndMinutes,
             listViewStyle: ListViewStyle.gridSmall,
             deleteKeyForFutaba: randomInt().toString(),
             retentionPeriod: RetentionPeriodList.oneDay);
@@ -175,6 +177,7 @@ class InitialForumData {
             searchWordList: searchWordsChan4,
             searchBoardId: 'a',
             listViewStyle: ListViewStyle.gridMedium,
+            timeago: TimeagoList.disableSecondsAndMinutes,
             retentionPeriod: RetentionPeriodList.oneWeek);
       case Communities.hatena:
         return base.copyWith(

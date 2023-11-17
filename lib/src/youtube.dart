@@ -41,6 +41,8 @@ class YoutubeData {
   static const chFilter = 'EgIQAg%253D%253D';
   static const plFilter = 'EgIQAw%253D%253D';
   static const viFilter = 'EgIQAQ%253D%253D';
+  //short
+  // https://www.youtube.com/shorts/GgjfAmq2mv8
 
   // video
   // https://youtube.com/watch?v=Dpp1sIL1m5Q
@@ -49,12 +51,14 @@ class YoutubeData {
   // https://www.youtube.com/@TheTRYChannel
   // https://www.youtube.com/channel/UCabq3No3wXbs6Ut-Pux6SzA
 
+  // https: //youtu.be/6kguaGI7aZg?feature=shared
   static String thumbnailUrl(final String id) {
     return 'https://i.ytimg.com/vi/$id/hqdefault.jpg';
   }
 
-  static String getFavStr(final String id, final bool chOrPl) {
-    return chOrPl ? '$boardPrefixCh$id' : '$boardPrefixPl$id';
+  static String getFavStr(final String id, final bool chOrPl,
+      {final String? handle}) {
+    return chOrPl ? '$boardPrefixCh$id/$handle' : '$boardPrefixPl$id';
   }
 
   static String getChIdForFavBoard(final String id) => '$boardPrefixCh$id';
@@ -85,7 +89,10 @@ class YoutubeData {
   static String? parseBoardId(final String value) {
     final type = boardIdType(value);
     if (type != null) {
-      return value.substring(3);
+      final sp = value.split('/');
+      if (sp.length >= 2) {
+        return sp[1];
+      }
     }
     // if (value.startsWith(boardPrefixCh)) {
     //   return value.substring(
@@ -121,6 +128,9 @@ class YoutubeData {
     if (first == watch) {
       return true;
     }
+    if (h == sHost && seg.length == 1) {
+      return true;
+    }
     return null;
   }
 
@@ -148,6 +158,10 @@ class YoutubeData {
     final param = uri.queryParameters;
     if (param.containsKey('v')) {
       return param['v'];
+    }
+    final seg = uri.pathSegments;
+    if (uri.host == sHost && seg.length == 1) {
+      return seg.first;
     }
     return null;
   }
@@ -199,7 +213,7 @@ class YoutubeData {
     for (final i in value) {
       final com = YoutubeContent(
           forum: Communities.youtube,
-          index: 1,
+          index: 2,
           body: i.text,
           name: i.author,
           channelId: i.channelId.value,
