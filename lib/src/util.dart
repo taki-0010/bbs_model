@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:hashlib/hashlib.dart';
+import 'package:string_extensions/string_extensions.dart';
 import 'package:youtube_parser/youtube_parser.dart';
 
 import 'importer.dart';
@@ -196,9 +197,17 @@ class StringMethodData {
     return escape.convert(result.isEmpty ? '' : result);
   }
 
+  static String insertAt(
+          final String value, final int index, final String insert) =>
+      value.insertAt(index, insert);
+
   static String convert(final String value) => escape.convert(value);
 
-  // static String stlipHtml(final String value) => value;
+  static String replaced(final String value) => stlipHtml(replaceText(value));
+
+  static String stlipHtml(final String value) => value.stripHtml ?? value;
+
+  static List<String> splitLines(final String value) => value.splitLines();
 
   static String firstAndEllipsis(final String value) {
     int count = 0;

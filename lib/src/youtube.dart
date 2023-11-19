@@ -32,6 +32,7 @@ class YoutubeData {
   static const sHost = 'youtu.be';
   static const ch = 'channel';
   static const watch = 'watch';
+  static const playlist = 'playlist';
   static const boardPrefixCh = 'ch/';
   static const boardPrefixPl = 'pl/';
   static const boardPrefixSe = 'se/';
@@ -44,13 +45,16 @@ class YoutubeData {
   //short
   // https://www.youtube.com/shorts/GgjfAmq2mv8
 
+  // pl
+  //https://www.youtube.com/playlist?list=PLIPIdmqWalEVfd_43DzOt6c1tE-9nYOnH
+
   // video
   // https://youtube.com/watch?v=Dpp1sIL1m5Q
 
   // cnannel
   // https://www.youtube.com/@TheTRYChannel
   // https://www.youtube.com/channel/UCabq3No3wXbs6Ut-Pux6SzA
-
+// https://youtube.com/playlist?list=PLzB-gqTL6xJbyORUU38X7vGj1N5F2h3m5&si=CwgGNU1_c9XQLzNU
   // https: //youtu.be/6kguaGI7aZg?feature=shared
   static String thumbnailUrl(final String id) {
     return 'https://i.ytimg.com/vi/$id/hqdefault.jpg';
@@ -131,6 +135,9 @@ class YoutubeData {
     if (h == sHost && seg.length == 1) {
       return true;
     }
+    if (first == playlist) {
+      return false;
+    }
     return null;
   }
 
@@ -139,6 +146,7 @@ class YoutubeData {
     if (tob == null || tob) {
       return null;
     }
+    final param = uri.queryParameters;
     final seg = uri.pathSegments;
     final first = seg.first;
     if (first == ch && seg[1].isNotEmpty) {
@@ -146,6 +154,9 @@ class YoutubeData {
     }
     if (first.startsWith('@')) {
       return first;
+    }
+    if (first == playlist && param['list'] != null && param['list']!.isNotEmpty) {
+      return param['list'];
     }
     return null;
   }

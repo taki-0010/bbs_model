@@ -78,61 +78,7 @@ class FiveChData {
     return null;
   }
 
-  // static String? toDatUrl(final String value) {
-  //   String? result;
-  //   try {
-  //     if (value.contains('test/read.cgi/')) {
-  //       result = value.replaceAll('test/read.cgi/', '');
-  //     } else {
-  //       return null;
-  //     }
-  //     final splited = result.split('/');
-  //     final id = splited.firstWhere(
-  //       (element) => element.contains(idReg),
-  //       orElse: () => '',
-  //     );
-  //     if (id.isEmpty) {
-  //       return null;
-  //     }
-  //     final path = result.substring(0, result.indexOf(idReg));
-  //     result = '${path}dat/$id.dat';
-  //     return result;
-  //   } catch (e) {
-  //     logger.e(e);
-  //   }
-  //   return null;
-  // }
 
-  // static String? getId(final String value) {
-  //   try {
-  //     final id = idReg.allMatches(value);
-  //     final data = id.first.group(0);
-  //     return data;
-  //   } catch (e) {
-  //     logger.e(e);
-  //   }
-  //   return null;
-  // }
-
-  // static String? getBoardIdFromDat(final String value) {
-  //   try {
-  //     final uri = Uri.parse(value);
-  //     return uri.pathSegments[0];
-  //   } catch (e) {
-  //     logger.e(e);
-  //   }
-  //   return null;
-  // }
-
-  // static String? getBoardIdFromHtmlUrl(final String value) {
-  //   final uri = Uri.tryParse(value);
-  //   logger.i('pathSeg: ${uri?.pathSegments}');
-  //   if (uri != null && uri.pathSegments.length >= 4) {
-  //     final id = uri.pathSegments[2];
-  //     return id;
-  //   }
-  //   return null;
-  // }
 
   static bool? uriIsThreadOrBoard(final Uri uri, final Communities forum) {
     if (!uri.host.contains(forum.host)) {
@@ -142,6 +88,9 @@ class FiveChData {
       return null;
     }
     if (uri.host.contains('menu.')) {
+      return null;
+    }
+    if (uri.host.contains('www2.')) {
       return null;
     }
     if (uri.path.contains(threadPath)) {
@@ -511,7 +460,9 @@ class FiveChThreadContentData extends ContentData with WithDateTime {
   DateTime? get createdAt {
     try {
       final splited = dateAndId.split(' ');
-      return getDateTime(splited[0], splited[1]);
+      if (splited.length >= 2) {
+        return getDateTime(splited[0], splited[1]);
+      }
     } catch (e) {
       logger.e('5ch: createdAt: $e');
     }
