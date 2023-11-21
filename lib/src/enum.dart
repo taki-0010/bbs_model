@@ -16,6 +16,17 @@ enum Communities {
   final String host;
 }
 
+// 直感的で誰でも簡単に
+
+// リンク先のプレビュー表示
+// 画像のサムネイル表示
+// 履歴の自動削除
+// 多彩なテーマ
+// ダークモード
+// PDF閲覧
+// 動画再生
+// 画像保存
+
 enum ThemeList {
   m3Purple,
   espresso,

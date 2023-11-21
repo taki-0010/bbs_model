@@ -353,7 +353,8 @@ class MalThreadData extends ThreadData with WithDateTime {
   final MalUserJson? createdBy;
 
   @override
-  String? get getUserId => createdBy != null ? createdBy!.id.toString() : null;
+  String? get getUserId => createdBy?.id.toString();
+  // String? get getUserId => createdBy != null ? createdBy!.id.toString() : null;
 
   @override
   bool get locked => isLocked;

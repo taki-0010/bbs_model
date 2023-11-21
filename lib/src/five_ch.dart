@@ -78,8 +78,6 @@ class FiveChData {
     return null;
   }
 
-
-
   static bool? uriIsThreadOrBoard(final Uri uri, final Communities forum) {
     if (!uri.host.contains(forum.host)) {
       return null;
@@ -175,10 +173,22 @@ class FiveChData {
         if (reversed.first.isEmpty) {
           reversed.removeAt(0);
         }
+        if (reversed.first.startsWith('l')) {
+          reversed.removeAt(0);
+        }
         final id = int.tryParse(reversed.first);
-
         if (id != null) {
-          return reversed[1];
+          reversed.removeAt(0);
+          // return reversed[1];
+        }
+        final id2 = int.tryParse(reversed.first);
+        if (id2 != null) {
+          reversed.removeAt(0);
+          // return reversed[1];
+        }
+        final id3 = int.tryParse(reversed.first);
+        if (id3 == null) {
+          return reversed.first;
         }
         // return seg[3];
       }

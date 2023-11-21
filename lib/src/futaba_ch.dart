@@ -230,10 +230,16 @@ class FutabaData {
     if (!uri.host.contains(host)) {
       return null;
     }
-    if (uri.path.contains('futaba.htm') || uri.path.contains('futaba.php')) {
+    final path = uri.path;
+    final param = uri.queryParameters;
+    if (param.containsKey('res')) {
+      return true;
+    }
+    if (path.contains('futaba.htm') || path.contains('futaba.php')) {
       return false;
     }
-    final path = uri.path;
+
+    // logger.d('futaba: ');
 
     if (path.isNotEmpty && path.contains('/res/')) {
       return true;
@@ -281,6 +287,10 @@ class FutabaData {
     }
     final path = uri.path;
     final seg = uri.pathSegments;
+    final param = uri.queryParameters;
+    if (param.containsKey('res')) {
+      return param['res'];
+    }
     if (path.contains('/res/') && seg.length >= 3) {
       final id = seg[2];
       final dot = id.indexOf('.');
@@ -652,12 +662,10 @@ class FutabaChContent extends ContentData with WithDateTime {
   final String? limit;
 
   @override
-  String? get srcThumbnail =>
-      thumbUrl;
+  String? get srcThumbnail => thumbUrl;
 
   @override
-  String? get srcContent =>
-      srcUrl;
+  String? get srcContent => srcUrl;
 
   @override
   DateTime get createdAt {
