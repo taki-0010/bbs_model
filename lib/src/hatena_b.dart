@@ -27,6 +27,8 @@ class HatenaData {
   static final domain = '$sub.$host';
   static const apiHost = 'bookmark.hatenaapis.com';
 
+  // https://b.hatena.ne.jp/guide/guideline
+
   // https://b.hatena.ne.jp/-/report/bookmark?url=https%3A%2F%2Fwww.publickey1.jp%2Fblog%2F23%2Fpythonmojomacapplepython9c.html&user_name=bxmcr
 
   // https://b.hatena.ne.jp/-/report/entry?url=https%3A%2F%2Fpc.watch.impress.co.jp%2Fdocs%2Fcolumn%2Fsemicon%2F1541071.html
@@ -114,6 +116,9 @@ class HatenaData {
     if (h.contains(host) || apiHost == h) {
       final seg = uri.pathSegments;
       if (seg.isEmpty) {
+        return null;
+      }
+      if (seg.first == 'guide') {
         return null;
       }
       logger.d('hatena flag: $seg');
@@ -356,8 +361,10 @@ class HatenaContent extends ContentData {
   final String boardId;
 
   @override
-  String? get srcThumbnail =>
-      thumbUrl;
+  String? get srcThumbnail => thumbUrl;
+
+    @override
+  String? get srcContent => thumbUrl;
 
   @override
   String? get getUserName => name;
@@ -367,6 +374,9 @@ class HatenaContent extends ContentData {
 
   @override
   DateTime? get createdAt {
+    if (timestamp.isEmpty) {
+      return null;
+    }
     try {
       final f = DateFormat('yyyy/MM/dd hh:mm');
       return f.parse(timestamp);

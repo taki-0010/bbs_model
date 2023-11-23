@@ -3,8 +3,7 @@ part 'youtube.g.dart';
 
 enum YoutubeIdType {
   channel,
-  search,
-  playList;
+  playlist;
 }
 
 enum YtSorts {
@@ -35,7 +34,7 @@ class YoutubeData {
   static const playlist = 'playlist';
   static const boardPrefixCh = 'ch/';
   static const boardPrefixPl = 'pl/';
-  static const boardPrefixSe = 'se/';
+  // static const boardPrefixSe = 'se/';
   static final yt = YoutubeExplode();
   static const reportUrl = 'https://support.google.com/youtube/answer/2802027';
 
@@ -82,11 +81,11 @@ class YoutubeData {
       return YoutubeIdType.channel;
     }
     if (value.startsWith(boardPrefixPl)) {
-      return YoutubeIdType.playList;
+      return YoutubeIdType.playlist;
     }
-    if (value.startsWith(boardPrefixSe)) {
-      return YoutubeIdType.search;
-    }
+    // if (value.startsWith(boardPrefixSe)) {
+    //   return YoutubeIdType.search;
+    // }
     return null;
   }
 
@@ -155,7 +154,9 @@ class YoutubeData {
     if (first.startsWith('@')) {
       return first;
     }
-    if (first == playlist && param['list'] != null && param['list']!.isNotEmpty) {
+    if (first == playlist &&
+        param['list'] != null &&
+        param['list']!.isNotEmpty) {
       return param['list'];
     }
     return null;
@@ -350,7 +351,18 @@ class YoutubeBoardData extends BoardData {
 
   YoutubeIdType? get idType => YoutubeData.boardIdType(id);
 
-  Uri get boardUri => Uri.https(YoutubeData.host, 'channel/$parsedId');
+  Uri get boardUri {
+    if (idType == null) {
+      return Uri.https(YoutubeData.host);
+    }
+    if (idType == YoutubeIdType.channel) {
+      return Uri.https(YoutubeData.host, '${idType!.name}/$parsedId');
+    }
+    if (idType == YoutubeIdType.playlist) {
+      return Uri.https(YoutubeData.host, idType!.name, {'list': parsedId});
+    }
+    return Uri.https(YoutubeData.host);
+  }
 }
 
 @CopyWith()

@@ -171,6 +171,10 @@ mixin WithDateTime {
   void initialLocaleLoad() => ta.setLocaleMessages('ja', ta.JaMessages());
   DateTime epochToDateTime(final int value) =>
       DateTime.fromMillisecondsSinceEpoch(value);
+  String? timeAgo(final DateTime value, {final String locale = 'en'}) {
+    return ta.format(value, locale: locale);
+  }
+
   String? getTimeago(final DateTime value, final String locale,
       {final TimeagoList settings = TimeagoList.enable, final double? hot}) {
     // logger.i('timeago: settings: $settings, hot: $hot');
